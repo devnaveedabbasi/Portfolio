@@ -37,7 +37,7 @@ const Setting: React.FC = () => {
 
         {/* Color Switcher Menu */}
         <div
-          className={`absolute left-[-250px] top-[40%] z-50 h-[200px] w-[250px] rounded-lg bg-white shadow-md transition-all duration-500 ${
+          className={`fixed left-[-250px] top-[40%] z-50 h-[200px] w-[250px] rounded-lg bg-white shadow-md transition-all duration-500 ${
             isSettingsOpen ? "translate-x-[250px]" : "translate-x-0"
           }`}
         >

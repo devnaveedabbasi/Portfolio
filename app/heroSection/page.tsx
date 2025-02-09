@@ -10,12 +10,13 @@ import Button from "@/component/button";
 import Sidebar from "@/component/partials/sideBarNav";
 import { useSelector } from "react-redux";
 import { RootState } from "@/store";
+import { useRouter } from "next/navigation";
 export default function Page() {
   const selectedColor = useSelector(
     (state: RootState) => state.color.selectedColor,
   );
   const [isMenuBarOpen, setIsMenuBarOpen] = useState<boolean>(false);
-
+const router=useRouter()
   const handleMenuToogle = (): void => {
     setIsMenuBarOpen((prevState) => !prevState);
   };
@@ -70,7 +71,7 @@ export default function Page() {
               around me.
             </p>
             <div className="mt-4">
-              <Button text="More about Me"  icon="mynaui:arrow-right-solid"/>
+              <Button text="More about Me"  icon="mynaui:arrow-right-solid" oNClick={()=>router.push("/about")}/>
             </div>
           </div>
 
@@ -126,7 +127,7 @@ export default function Page() {
               around me.
             </p>
             <div className="mt-6">
-              <Button text="More about Me" icon="mynaui:arrow-right-solid"/>
+              <Button text="More about Me" icon="mynaui:arrow-right-solid" oNClick={()=>router.push("/about")}/>
             </div>
           </div>{" "}
         </div>
