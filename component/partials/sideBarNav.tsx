@@ -4,6 +4,7 @@ import React from "react";
 import SimpleBar from "simplebar-react";
 import { Icon } from "@iconify/react";
 import { menuIcons } from "@/constant/data";
+import { useRouter } from "next/navigation";
 
 type SidebarProps = {
   isOpen: boolean;
@@ -11,6 +12,7 @@ type SidebarProps = {
 };
 
 const Sidebar: React.FC<SidebarProps> = ({ isOpen, closeSidebar }) => {
+  const router = useRouter(); 
   return (
     <div>
       <div
@@ -33,9 +35,11 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, closeSidebar }) => {
 
           {menuIcons.map((menu, idx) => (
             <div
+            onClick={() => router.push(menu.link)}
               key={idx}
               className="group relative mb-5 flex cursor-pointer items-center gap-4 px-3 py-3 pb-2 text-start md:w-[80%] lg:w-full"
             >
+              
               <div className="rounded-full p-3 transition-all duration-300 group-hover:bg-[#ffb400]">
                 <Icon
                   icon={menu.icon}

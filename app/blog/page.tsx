@@ -12,7 +12,7 @@ export default function Page() {
        <HeaderText backHead='Posts' frontHeadSimple='My' frontHeadColor='Blog' />
     </div>
 
-    <div className="flex justify-center items-center py-10  gap-6">
+    <div className="grid grid-cols-1 justify-items-center md:grid-cols-2 lg:grid-cols-3 p-10 gap-6">
     {blogData.map((blog, index) => (
         <BlogCard
           key={index}

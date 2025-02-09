@@ -3,15 +3,16 @@ import { menuIcons } from "@/constant/data";
 import { RootState } from "@/store";
 import { Icon } from "@iconify/react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import React, { HTMLElementType } from "react";
+import { usePathname, useRouter } from "next/navigation";
+import React from "react";
 import { useSelector } from "react-redux";
 
 export default function Navigations() {
   const selectedColor = useSelector(
-    (state: RootState) => state.color.selectedColor,
+    (state: RootState) => state.color.selectedColor
   );
 
+  const router = useRouter();
   const pathname = usePathname() || "";
 
   return (
@@ -19,19 +20,20 @@ export default function Navigations() {
       {menuIcons.map((menu, idx) => (
         <div
           key={idx}
+          onClick={() => router.push(menu.link)}
           style={{
             backgroundColor: pathname === menu.link ? selectedColor : "#212529",
           }}
           onMouseEnter={(e: React.MouseEvent<HTMLDivElement>) => {
-            (e.currentTarget.style.backgroundColor = selectedColor);
-          }} 
+            e.currentTarget.style.backgroundColor = selectedColor;
+          }}
           onMouseLeave={(e: React.MouseEvent<HTMLDivElement>) => {
-            (e.currentTarget.style.backgroundColor = '');
-
-          }} 
-          className={`group relative flex h-[50px] w-[50px] cursor-pointer items-center justify-between gap-4 rounded-full px-3 text-white transition-all duration-500 hover:w-[140px] hover:bg-${selectedColor}`}
+            e.currentTarget.style.backgroundColor =
+              pathname === menu.link ? selectedColor : "#212529";
+          }}
+          className="group relative flex h-[50px] w-[50px] cursor-pointer items-center justify-between gap-4 rounded-full px-3 text-white transition-all duration-500 hover:w-[140px]"
         >
-          <Link href={menu.link}>
+          <Link href={menu.link} className="flex items-center gap-4 w-full">
             <span className="translate-x-[-20px] opacity-0 transition-all duration-500 group-hover:translate-x-0 group-hover:opacity-100">
               {menu.name}
             </span>
