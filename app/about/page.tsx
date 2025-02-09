@@ -10,7 +10,7 @@ import { educations, experiences, skills } from "@/constant/data";
 import SkillsProgressLoader from "@/component/skillsProgressLoader";
 import { Icon } from "@iconify/react";
 import HeaderText from "@/component/headerText";
-import MobileNavigation from "@/component/partials/navigation/mobileNavigation";
+import MobileNavigation from "@/component/partials/navigations/mobileNavigation";
 
 export default function Page() {
  

@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import Navigations from "./partials/navigation/navigations";
+import Navigations from "./partials/navigations/navigations";
 import Setting from "@/component/partials/setting";
 import ChatBot from "@/component/partials/chatbot/page";
 import Animation from "@/component/partials/animation";

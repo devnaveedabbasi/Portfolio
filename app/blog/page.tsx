@@ -1,6 +1,6 @@
 import BlogCard from '@/component/blogCard'
 import HeaderText from '@/component/headerText'
-import MobileNavigation from '@/component/partials/navigation/mobileNavigation'
+import MobileNavigation from '@/component/partials/navigations/mobileNavigation'
 import { blogData } from '@/constant/data'
 import React from 'react'
 
