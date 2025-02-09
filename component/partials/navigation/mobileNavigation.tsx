@@ -2,7 +2,13 @@
 import React, { useState } from "react";
 import Sidebar from "../sideBarNav";
 import { Icon } from "@iconify/react";
-export default function mobileNavigation() {
+interface Props{
+  navHeadFirst:string,
+  NavHeadSec:string
+}
+export default function MobileNavigation({ navHeadFirst, NavHeadSec }: Props) {
+
+
   const [isMenuBarOpen, setIsMenuBarOpen] = useState<boolean>(false);
 
   const handleMenuToogle = (): void => {
@@ -14,7 +20,7 @@ export default function mobileNavigation() {
     <div>
       <div className="fixed left-0 top-0 z-40 flex h-[50px] w-full items-center justify-between bg-[#252525] p-8 md:hidden">
         <h1 className="font-Open_Sans text-[35px] font-bold uppercase text-white">
-          About <span className="text-[#ffb400]">Me</span>
+          {navHeadFirst} <span className="text-[#ffb400]">{NavHeadSec}</span>
         </h1>
         <div className="rounded-md bg-[#252525]">
           <Icon

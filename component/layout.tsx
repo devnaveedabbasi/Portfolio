@@ -5,9 +5,6 @@ import Navigations from "./partials/navigation/navigations";
 import Setting from "@/component/partials/setting";
 import ChatBot from "@/component/partials/chatbot/page";
 import Animation from "@/component/partials/animation";
-import MobileNavigation from "@/component/partials/navigation/mobileNavigation";
-import { useSelector } from "react-redux";
-import { RootState } from "@/store";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -19,7 +16,6 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     <div>
       <>
         <Animation />
-        <MobileNavigation />
         <Setting />
         <main>{children}</main>
 

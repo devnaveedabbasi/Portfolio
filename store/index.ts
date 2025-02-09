@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import colorSlice from "@/store/slices/colorSlice/colorSlice";
+import colorSlice from "@/store/slices/colorSlice";
 
 export const makeStore = () => {
   return configureStore({

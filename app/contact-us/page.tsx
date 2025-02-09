@@ -1,6 +1,7 @@
 "use client";
 import Button from "@/component/button";
 import HeaderText from "@/component/headerText";
+import MobileNavigation from "@/component/partials/navigation/mobileNavigation";
 import { RootState } from "@/store";
 import { Icon } from "@iconify/react";
 import React from "react";
@@ -23,6 +24,9 @@ const ContactUs: React.FC = () => {
   ];
 
   return (
+    <>
+                    <MobileNavigation navHeadFirst='Contact' NavHeadSec='Us' />
+    
     <div className="bg-[#111111]">
    
    <HeaderText backHead='Contact' frontHeadSimple='Get In' frontHeadColor='Touch' />
@@ -106,6 +110,8 @@ const ContactUs: React.FC = () => {
         </div>
       </div>
     </div>
+    </>
+
   );
 };
 

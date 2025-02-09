@@ -4,7 +4,7 @@ import { Icon } from "@iconify/react";
 import { colors } from "@/constant/data";
 import Image from "next/image";
 import { useDispatch } from "react-redux";
-import { setColor } from "@/store/slices/colorSlice/colorSlice";
+import { setColor } from "@/store/slices/colorSlice";
 import DefaultImage from '@/public/assets/img/defult.jpeg'
 
 const Setting: React.FC = () => {

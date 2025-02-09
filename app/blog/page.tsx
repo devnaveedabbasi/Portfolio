@@ -1,5 +1,6 @@
 import BlogCard from '@/component/blogCard'
 import HeaderText from '@/component/headerText'
+import MobileNavigation from '@/component/partials/navigation/mobileNavigation'
 import { blogData } from '@/constant/data'
 import React from 'react'
 
@@ -8,6 +9,8 @@ export default function Page() {
    
   return (
     <>
+            <MobileNavigation navHeadFirst='My' NavHeadSec='Blogs' />
+
     <div>
        <HeaderText backHead='Posts' frontHeadSimple='My' frontHeadColor='Blog' />
     </div>

@@ -10,6 +10,7 @@ import { educations, experiences, skills } from "@/constant/data";
 import SkillsProgressLoader from "@/component/skillsProgressLoader";
 import { Icon } from "@iconify/react";
 import HeaderText from "@/component/headerText";
+import MobileNavigation from "@/component/partials/navigation/mobileNavigation";
 
 export default function Page() {
  
@@ -49,6 +50,9 @@ export default function Page() {
     alert("S");
   };
   return (
+    <>
+                <MobileNavigation navHeadFirst='About' NavHeadSec='Us' />
+    
     <div className="h-full w-full bg-[#111111]">
 
       <div className="md:flex hidden h-[210px]  justify-center items-center ml-5">
@@ -56,24 +60,24 @@ export default function Page() {
       </div>
 
       {/* Mobile */}
-      <div className="flex w-full items-center justify-center md:hidden">
+      
+
+      <section className="mb-5 mt-20 flex h-fit w-full items-center justify-center">
+        <div className="grid h-full w-[83%] !-ml-10 grid-cols-1 lg:grid-cols-2">
+          <div className="">
+            <h1 className="font-Poppins  md:ml-0 ml-4 text-[26px] font-semibold uppercase leading-[31.2px] tracking-wide text-white">
+              Persnol Infos{" "}
+            </h1>
+            <div className="flex w-full justify-center md:hidden">
         <Image
           src={ProfileImage || DefaultImage }
           width={740}
           height={100}
           alt="Profile"
-          className="z-10 mt-20 h-[250px] w-[250px] rounded-full border-4 border-[#252525] object-cover drop-shadow"
+          className="z-10 mt-2 h-[250px] w-[250px] rounded-full border-4 border-[#252525] object-cover drop-shadow"
         />
       </div>
-
-      <section className="mb-5 flex h-fit w-full items-center justify-center">
-        <div className="grid h-full w-[83%] !-ml-10 grid-cols-1 lg:grid-cols-2">
-          <div className="">
-            <h1 className="font-Poppins text-[26px] font-semibold uppercase leading-[31.2px] tracking-wide text-white">
-              Persnol Infos{" "}
-            </h1>
-
-            <div className="mt-3 grid h-full w-full grid-cols-2">
+            <div className="mt-3 grid h-full w-full grid-cols-2  md:ml-0 ml-4 mb-8">
               <div className="flex flex-col col-span-1">
                 {parsedInfo
                   .slice(0, 5)
@@ -82,7 +86,7 @@ export default function Page() {
                     const value: string | string[] = item[key];
 
                     return (
-                      <div key={index} className="py-2">
+                      <div key={index} className="flex  md:flex-row flex-col py-2">
                         <span className="text-[13px]  text-gray-300 md:text-[16px]">{`${key} :`}</span>{" "}
                         <span className="text-[13px] font-medium capitalize text-white md:text-[15px]">
                           {Array.isArray(value) ? value.join(", ") : value}
@@ -108,7 +112,7 @@ export default function Page() {
                     const value: string | string[] = item[key];
 
                     return (
-                      <div key={index} className="py-2 flex flex-nowrap">
+                      <div key={index} className="py-2 flex  md:flex-row flex-col flex-nowrap">
                         <span className="text-[13px] capitalize  text-gray-300 md:text-[16px]">{`${key} :`}</span>{" "}
                         <span className="text-[13px] font-medium text-nowrap  text-white md:text-[15px]">
                           {Array.isArray(value) ? value.join(", ") : value}
@@ -117,7 +121,9 @@ export default function Page() {
                     );
                   })}
               </div>
+
             </div>
+
           </div>
 
           <div className="mb-6 grid grid-cols-2 gap-4">
@@ -258,5 +264,7 @@ export default function Page() {
         </div>
       </section>
     </div>
+    </>
+
   );
 }

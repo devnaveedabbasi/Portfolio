@@ -112,7 +112,8 @@ export default function Page() {
           </div>
           {/* Introduction */}
           <div className="mb-4 mt-4 flex w-[100%] flex-col items-center justify-center">
-            <h1 className="mb-2 flex items-center gap-3 text-center font-PoppinsHeading text-[38px] font-bold uppercase leading-[48px] text-[#F1B317]">
+            <h1 className="mb-2 flex items-center gap-3 text-center font-PoppinsHeading text-[38px] font-bold uppercase leading-[48px]"
+            style={{color:selectedColor}}>
               I&apos;m Naveed Hassan
             </h1>
             <h2 className="mb-4 text-center font-PoppinsHeading text-[38px] font-bold uppercase leading-[48px] text-white">

@@ -4,7 +4,10 @@ import React from "react";
 import SimpleBar from "simplebar-react";
 import { Icon } from "@iconify/react";
 import { menuIcons } from "@/constant/data";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
+import Link from "next/link";
+import { useSelector } from "react-redux";
+import { RootState } from "@/store";
 
 type SidebarProps = {
   isOpen: boolean;
@@ -12,7 +15,11 @@ type SidebarProps = {
 };
 
 const Sidebar: React.FC<SidebarProps> = ({ isOpen, closeSidebar }) => {
-  const router = useRouter(); 
+  const pathname = usePathname();
+  
+  const selectedColor = useSelector(
+    (state: RootState) => state.color.selectedColor,
+  );
   return (
     <div>
       <div
@@ -34,24 +41,50 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, closeSidebar }) => {
           </div>
 
           {menuIcons.map((menu, idx) => (
-            <div
-            onClick={() => router.push(menu.link)}
-              key={idx}
-              className="group relative mb-5 flex cursor-pointer items-center gap-4 px-3 py-3 pb-2 text-start md:w-[80%] lg:w-full"
-            >
-              
-              <div className="rounded-full p-3 transition-all duration-300 group-hover:bg-[#ffb400]">
-                <Icon
-                  icon={menu.icon}
-                  className="font-Poppins text-[21px] font-medium leading-[41.6px] text-white group-hover:text-white"
-                />
-              </div>
-              <h4 className="relative z-10 font-Poppins text-[21px] font-medium leading-[41.6px] text-white duration-300 group-hover:text-[#ffb400]">
-                {menu.name}
-              </h4>
-
-              <span className="bg-primary absolute bottom-0 left-0 h-[3px] w-[13%] transition-all duration-700 group-hover:w-full"></span>
-            </div>
+           <Link
+           href={menu.link}
+           key={idx}
+           className="group relative mb-5 flex cursor-pointer items-center gap-4 px-3 py-3 pb-2 text-start md:w-[80%] lg:w-full"
+         >
+           <div
+             className="rounded-full p-3 transition-all duration-300"
+             style={{
+               backgroundColor: pathname === menu.link ? selectedColor : "#212529",
+             }}
+           >
+             <Icon
+               icon={menu.icon}
+               className="font-Poppins text-[21px] font-medium leading-[41.6px] text-white"
+             />
+           </div>
+         
+           <h4
+             className="relative z-10 font-Poppins text-[21px] font-medium leading-[41.6px] text-white duration-300"
+             style={{
+               color: pathname === menu.link ? selectedColor : "white",
+             }}
+           >
+             {menu.name}
+           </h4>
+         
+           {/* Hover Effect for Underline */}
+           <span
+             className="absolute bottom-0 left-0 h-[3px] w-[13%] transition-all duration-700 group-hover:w-full"
+             style={{
+               backgroundColor: selectedColor,
+             }}
+           ></span>
+         
+           {/* Hover Effect Using an Overlay */}
+           {/* <div
+             className="absolute inset-0 rounded-full opacity-0 transition-all duration-300 group-hover:opacity-100"
+             style={{
+               backgroundColor: selectedColor,
+               zIndex: -1,
+             }}
+           ></div> */}
+         </Link>
+         
           ))}
         </SimpleBar>
       </div>
