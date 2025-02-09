@@ -5,7 +5,7 @@ import Setting from "@/component/partials/setting";
 import Image from "next/image";
 // import ProfileImage from "@/public/assets/img/profile.jpg";
 import DefaultImage from '@/public/assets/img/defult.jpeg'
-import ProfileImage from "@/public/assets/img/w.jpg";
+import ProfileImage from "@/public/assets/img/Me.jpg";
 import Button from "@/component/button";
 import Sidebar from "@/component/partials/sideBarNav";
 import { useSelector } from "react-redux";
