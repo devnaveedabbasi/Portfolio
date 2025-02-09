@@ -108,6 +108,7 @@ import Image from 'next/image';
 import ProjectModal from '@/component/ProjectModal';
 import DefaultImage from '@/public/assets/img/defult.jpeg'
 import { Portfolio, PortfolioData } from '@/constant/data';
+import MobileNavigation from '@/component/partials/navigations/mobileNavigation';
 
 export default function Page() {
  
@@ -131,8 +132,10 @@ export default function Page() {
 
   return (
     <>
+                        <MobileNavigation navHeadFirst='My' NavHeadSec='Works' />
+    
       <div>
-        <HeaderText backHead='Work' frontHeadSimple='My' frontHeadColor='Portfolio' />
+        <HeaderText backHead='MyWorks' frontHeadSimple='My' frontHeadColor='Portfolio' />
       </div>
 
       <div className="w-[80%] mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-4">

@@ -16,7 +16,7 @@ export default function HeaderText(props:Props) {
   return (
     <div className={`h-[160px] flex flex-col items-center justify-center p-8 mb-10 md:mt-0 mt-20`}>
         <div className="relative top-0">
-          <h1 className="abt -z-10 select-none text-center font-PoppinsHeading md:text-[120px] text-[65px] font-bold leading-[0.4] tracking-[10px]">
+          <h1 className="abt -z-10 select-none text-center font-PoppinsHeading md:text-[90px] text-[65px] font-bold leading-[0.4] tracking-[10px]">
             {props.backHead}
           </h1>
         </div>
