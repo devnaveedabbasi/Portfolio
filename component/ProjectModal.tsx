@@ -22,7 +22,9 @@ export default function ProjectModal({
 }: ProjectModalProps) {
   if (!isOpen || !project) return null;
   const handleOutsideClick = (): void => {
-    const confirmClose = window.confirm("Are you sure you want to close the modal?");
+    const confirmClose = window.confirm(
+      "Are you sure you want to close the modal?",
+    );
     if (confirmClose) {
       onClose();
     }
@@ -32,8 +34,14 @@ export default function ProjectModal({
     e.stopPropagation();
   };
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-70 p-6" onClick={handleOutsideClick}>
-      <div className="relative w-[100%] max-w-sm rounded-lg bg-[#252525] p-6 text-white md:max-w-2xl" onClick={stopPropagation}>
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-70 p-4"
+      onClick={handleOutsideClick}
+    >
+      <div
+        className="relative w-[100%] max-w-sm rounded-lg bg-[#252525] p-6 text-white md:max-w-2xl"
+        onClick={stopPropagation}
+      >
         {/* Close Button */}
         <button
           onClick={onClose}
@@ -54,26 +62,31 @@ export default function ProjectModal({
               className="text-white"
               width={20}
             />
-            <p className="flex gap-1 text-[14px] text-white">
+            <p className="flex flex-wrap gap-1 text-[14px] text-white">
               Project: <strong>{project.name}</strong>
             </p>
           </div>
-          <div className="mr-10 flex items-center gap-2 md:justify-self-center">
+          <div className="mr-10 flex items-center gap-2 ">
             <Icon icon="mdi:user-outline" className="text-white" width={20} />
             <p className="flex gap-1 text-[14px] text-white">
-              Client: <strong>Naveed</strong>
+              Client: <strong>Practice</strong>
             </p>
           </div>
-          <div className="flex items-center gap-2">
+          <div className="flex items-start gap-2 md:items-start">
             <Icon icon="gridicons:code" className="text-white" width={20} />
-            <p className="flex gap-1 text-[14px] text-white">
-            Technologies: <strong>{project.Technologies}</strong>
+            <p className="flex flex-wrap gap-1 text-[14px] text-white">
+              Technologies:
+              <strong className="flex gap-2">
+                {project.Technologies.split(",")
+                  .map((tech) => tech.trim())
+                  .join(", ")}
+              </strong>
             </p>
           </div>
-          <div className="flex items-center gap-2 md:justify-self-end">
+          <div className="flex items-start gap-2 ">
             <Icon icon="quill:link-out" className="text-white" width={20} />
-            <p className="flex gap-1 text-[14px] text-white">
-              Preview:
+            <p className="flex flex-wrap gap-1 text-[14px] text-white">
+              Details:
               <Link
                 href={project.link}
                 target="_blank"
@@ -87,10 +100,13 @@ export default function ProjectModal({
 
         {/* Video */}
         <div className="mt-4">
-        <iframe src={project.ProjectVedio} width="640" height="350" allow="autoplay" ></iframe>
+          <iframe
+            src={project.ProjectVedio}
+            allow="autoplay"
+            className="h-[300px] w-full object-cover"
+          ></iframe>
           {/* <video
             src='https://drive.google.com/file/d/1r7-1U-PKkPp-r3T3zg_G9DQ9lQiV16OS/view'
-            className="h-full w-full object-cover"
             controls
           ></video> */}
         </div>

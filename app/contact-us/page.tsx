@@ -4,24 +4,28 @@ import HeaderText from "@/component/headerText";
 import MobileNavigation from "@/component/partials/navigations/mobileNavigation";
 import { RootState } from "@/store";
 import { Icon } from "@iconify/react";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 import React from "react";
 import { useSelector } from "react-redux";
 
 const ContactUs: React.FC = () => {
+  const router=useRouter()
   const selectedColor = useSelector(
     (state: RootState) => state.color.selectedColor,
   );
 
   interface Icons {
     icon: string;
+    link:string
   }
-
   const SocialIcons: Icons[] = [
-    { icon: "ri:facebook-fill" },
-    { icon: "mdi:whatsapp" },
-    { icon: "ri:instagram-line" },
-    { icon: "ri:linkedin-fill" },
+    { icon: "ri:linkedin-fill", link: "https://www.linkedin.com/in/naveed-abbasi" },
+    { icon: "mdi:whatsapp", link: "https://wa.me/03111309060" },
+    { icon: "ri:instagram-line", link: "https://www.instagram.com/naveed_abbasi316/" },
+    { icon: "ri:facebook-fill", link: "https://www.linkedin.com/in/naveed-abbasi" }, 
   ];
+  
 
   return (
     <>
@@ -65,20 +69,24 @@ const ContactUs: React.FC = () => {
               </div>
             </div>
             <div className="mt-4 flex gap-4">
-              {SocialIcons.map((icon, idx) => (
-                <div
-                  key={idx}
-                  className="cursor-pointer rounded-full bg-[#252525] p-2 transition duration-200"
-                  onMouseEnter={(e: React.MouseEvent<HTMLDivElement>) => {
-                    e.currentTarget.style.backgroundColor = selectedColor;
-                  }}
-                  onMouseLeave={(e: React.MouseEvent<HTMLDivElement>) => {
-                    e.currentTarget.style.backgroundColor = "#252525";
-                  }}
-                >
-                  <Icon icon={icon.icon} className="text-2xl text-white" />
-                </div>
-              ))}
+            {SocialIcons.map((icon, idx) => (
+  <a 
+    href={icon.link} 
+    target="_blank" 
+    rel="noopener noreferrer"
+    key={idx}
+    className="cursor-pointer rounded-full bg-[#252525] p-2 transition duration-200"
+    onMouseEnter={(e) => {
+      e.currentTarget.style.backgroundColor = selectedColor;
+    }}
+    onMouseLeave={(e) => {
+      e.currentTarget.style.backgroundColor = "#252525";
+    }}
+  >
+    <Icon icon={icon.icon} className="text-2xl text-white" />
+  </a>
+))}
+
             </div>
           </div>
 

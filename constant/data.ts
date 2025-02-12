@@ -159,57 +159,115 @@ export const blogData: Blogs[] = [
   },
 ];
 
-
-
-
-
-
-import BgRemoveBanner from '@/public/assets/img/ProjectsImage/bg-remove.png';
-import EcomBanner from '@/public/assets/img/ProjectsImage/ecom-banner.png';
-import SoicalMediaBanner from '@/public/assets/img/ProjectsImage/soical-media.png';
-import FigmaToHtmlBanner from '@/public/assets/img/ProjectsImage/Figma-to-Html.png';
-
+import BgRemoveBanner from "@/public/assets/img/ProjectsImage/bg-remove.png";
+import EcomBanner from "@/public/assets/img/ProjectsImage/ecom-banner.png";
+import SoicalMediaBanner from "@/public/assets/img/ProjectsImage/soical-media.png";
+import JobEvent from "@/public/assets/img/ProjectsImage/job&Event.png";
+import Medium from "@/public/assets/img/ProjectsImage/medium.png";
+import ITDeveloper from "@/public/assets/img/ProjectsImage/It-developer.png";
+import Weather from "@/public/assets/img/ProjectsImage/weather.png";
+import TicTacToe from "@/public/assets/img/ProjectsImage/tictactoe.png";
+import CMS from "@/public/assets/img/ProjectsImage/cms.png";
+import FigmaToHtmlBanner from "@/public/assets/img/ProjectsImage/Figma-to-Html.png";
 
 export interface Portfolio {
   cardImage: string | StaticImageData;
   ProjectVedio: string;
   name: string;
   link: string;
-  linkPreview:string,
+  linkPreview: string;
   Technologies: string;
 }
 
 export const PortfolioData: Portfolio[] = [
   {
-    cardImage: BgRemoveBanner,
-    ProjectVedio: 'https://drive.google.com/file/d/1kTia_WsfvDrN2Nrg4FMsRaNq6sIZciKf/preview',  // Corrected video path
-    name: 'Bg-Remove',
-    link: 'https://bg-remove-murex.vercel.app/',
-    linkPreview: 'www.bg-remove.com',  
-    Technologies: 'React & Tailwind CSS',
-  },
-  {
     cardImage: SoicalMediaBanner,
-    ProjectVedio: 'https://drive.google.com/file/d/1r7-1U-PKkPp-r3T3zg_G9DQ9lQiV16OS/preview',
-    name: 'Social Media App',
-    link: 'https://social-media-wine-eight.vercel.app/',
-    linkPreview: 'www.social-media.com',
-    Technologies: 'React & Tailwind CSS',
+    ProjectVedio:
+      "https://drive.google.com/file/d/17wwy2qWsm1ZgcKU6GSci_BsQ6qsIRett/preview",
+    name: "Social Media App",
+    link: "https://social-media-wine-eight.vercel.app/",
+    linkPreview: "www.linkedin/social-media.com",
+    Technologies: "React & Reducx-Toolkit Tailwind CSS",
   },
   {
     cardImage: EcomBanner,
-    ProjectVedio: 'https://drive.google.com/file/d/1r7-1U-PKkPp-r3T3zg_G9DQ9lQiV16OS/preview', 
-    name: 'Ecommerce Web App',
-    link: 'https://ecommercewebapp12.netlify.app/',
-    linkPreview: 'www.social-media.com',
-    Technologies: 'React,ContextApi,TailwindCSS',
+    ProjectVedio:
+      "https://drive.google.com/file/d/1r7-1U-PKkPp-r3T3zg_G9DQ9lQiV16OS/preview",
+    name: "Ecommerce Web App",
+    link: "https://www.linkedin.com/posts/naveed-abbasi_webdevelopment-reactjs-fullstack-activity-7292500402158108672-45Pj?utm_source=share&utm_medium=member_desktop",
+    linkPreview: "www.linkedin/ecommerce.com",
+    Technologies: "React,ContextApi,TailwindCSS",
+  },
+  {
+    cardImage: BgRemoveBanner,
+    ProjectVedio:
+      "https://drive.google.com/file/d/1kTia_WsfvDrN2Nrg4FMsRaNq6sIZciKf/preview", // Corrected video path
+    name: "Bg-Remove",
+    link: "https://www.linkedin.com/posts/naveed-abbasi_webdevelopment-tailwindcss-backgroundremoval-activity-7248614484779356160-SRIW?utm_source=share&utm_medium=member_desktop",
+    linkPreview: "www.linkedin/bg-remove.com",
+    Technologies: "React & Tailwind CSS",
+  },
+  {
+    cardImage: JobEvent,
+    ProjectVedio:
+      "https://drive.google.com/file/d/1tUp0dtJ30CQvVIsaIKtRX-07fQAX_lyg/preview",
+    name: "Job&Event Manegment System",
+    link: "https://www.linkedin.com/posts/naveed-abbasi_jobportal-eventmanagement-reactjs-activity-7241347404250140673-Hhau?utm_source=share&utm_medium=member_desktop",
+    linkPreview: "www.linkedin/job-event.com",
+    Technologies: "React & firebase,CSS",
+  },
+  {
+    cardImage: Medium,
+    ProjectVedio:
+      "https://drive.google.com/file/d/1cGkIj4xn5NF-23Bm2PjSU344TyECI48X/preview",
+    name: "Medium Blog Website",
+    link: "https://www.linkedin.com/posts/naveed-abbasi_jobportal-eventmanagement-reactjs-activity-7241347404250140673-Hhau?utm_source=share&utm_medium=member_desktop",
+    linkPreview: "www.linkedin/medium.com",
+    Technologies: "React & TailwindCSS",
+  },
+  {
+    cardImage: Weather,
+    ProjectVedio:
+      "https://drive.google.com/file/d/1WPx_Zu-typVdzu_FsoKQTPl6COYx0h1f/preview",
+    name: "Weather App",
+    link: "https://www.linkedin.com/posts/naveed-abbasi_reactjs-webdevelopment-weatherapp-activity-7235013460634333185-QnGR?utm_source=share&utm_medium=member_desktop",
+    linkPreview: "www.linkedin/weather.com",
+    Technologies: "Reactjs,CSS",
+  },
+  {
+    cardImage: ITDeveloper,
+    ProjectVedio:
+      "https://drive.google.com/file/d/15OnezBYMrvn28E6lth0kxTkkLJdIXT4F/preview",
+    name: "IT Developers",
+    link: "https://www.linkedin.com/posts/naveed-abbasi_frontenddeveloper-frontend-webdeveloper-activity-7192238968938119168--VYN?utm_source=share&utm_medium=member_desktop",
+    linkPreview: "www.linkedin/it-developers.com",
+    Technologies: "HTML,CSS,js,Gsap",
+  },
+  {
+    cardImage: CMS,
+    ProjectVedio:
+      "https://drive.google.com/file/d/1RPdhJ8-OIDlVWvclvT08DlFV0I-vcDM1/preview",
+    name: "Complain Manegment System",
+    link: "https://www.linkedin.com/posts/naveed-abbasi_frontenddeveloper-frontend-backend-activity-7190815187623407616-_uoK?utm_source=share&utm_medium=member_desktop",
+    linkPreview: "www.linkedin/cms.com",
+    Technologies: "HTML,CSS,JS,Firebase",
+  },
+  {
+    cardImage: TicTacToe,
+    ProjectVedio:
+      "https://drive.google.com/file/d/1S_OqFSg5bMdYC4VluzgkTJs96sQ-jozO/preview",
+    name: "TicTacToe Game",
+    link: "https://www.linkedin.com/posts/naveed-abbasi_frontend-webdeveloper-developer-activity-7196224511984205824-bfqf?utm_source=share&utm_medium=member_desktop",
+    linkPreview: "www.linkedin/tictactoe.com",
+    Technologies: "Reactjs,CSS",
   },
   {
     cardImage: FigmaToHtmlBanner,
-    ProjectVedio: 'https://drive.google.com/file/d/18iNBdmPcQ5OtV1ELgc3htOKH9GSVml3o/preview', 
-    name: 'Ecommerce Web App',
-    link: 'https://ecommercewebapp12.netlify.app/',
-    linkPreview: 'www.social-media.com',
-    Technologies: 'React,ContextApi,TailwindCSS',
+    ProjectVedio:
+      "https://drive.google.com/file/d/18iNBdmPcQ5OtV1ELgc3htOKH9GSVml3o/preview",
+    name: "Figma to Html",
+    link: "https://www.linkedin.com/posts/naveed-abbasi_reactjs-css-webdevelopment-activity-7246069331892072449-afUw?utm_source=share&utm_medium=member_desktop",
+    linkPreview: "www/linkedin/figma-form.com",
+    Technologies: "Html,CSS",
   },
 ];
