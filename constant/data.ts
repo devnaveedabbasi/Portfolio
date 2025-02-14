@@ -52,12 +52,12 @@ interface Skill {
 export const skills: Skill[] = [
   { skill: "HTML", percentage: 89 },
   { skill: "CSS", percentage: 70 },
-  { skill: "JavaScript", percentage: 66 },
-  { skill: "React", percentage: 95 },
-  { skill: "Angular", percentage: 50 },
-  { skill: "PHP", percentage: 65 },
-  { skill: "WordPress", percentage: 45 },
-  { skill: "jQuery", percentage: 60 },
+  { skill: "JavaScript", percentage: 75 },
+  { skill: "TypeScript", percentage: 70 },
+  { skill: "Reactjs", percentage: 85 },
+  { skill: "Nextjs", percentage: 60 },  
+  { skill: "Firebase", percentage: 55 },
+  { skill: "Sanity", percentage: 55 },
 ];
 
 interface Experience {
