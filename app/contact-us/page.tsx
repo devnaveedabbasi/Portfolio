@@ -4,13 +4,11 @@ import HeaderText from "@/component/headerText";
 import MobileNavigation from "@/component/partials/navigations/mobileNavigation";
 import { RootState } from "@/store";
 import { Icon } from "@iconify/react";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React from "react";
 import { useSelector } from "react-redux";
 
 const ContactUs: React.FC = () => {
-  const router=useRouter()
   const selectedColor = useSelector(
     (state: RootState) => state.color.selectedColor,
   );
