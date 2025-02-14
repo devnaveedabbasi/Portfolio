@@ -4,7 +4,6 @@ import HeaderText from "@/component/headerText";
 import MobileNavigation from "@/component/partials/navigations/mobileNavigation";
 import { RootState } from "@/store";
 import { Icon } from "@iconify/react";
-import { useRouter } from "next/navigation";
 import React from "react";
 import { useSelector } from "react-redux";
 

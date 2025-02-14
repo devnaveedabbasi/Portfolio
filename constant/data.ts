@@ -185,7 +185,7 @@ export const PortfolioData: Portfolio[] = [
     ProjectVedio:
       "https://drive.google.com/file/d/17wwy2qWsm1ZgcKU6GSci_BsQ6qsIRett/preview",
     name: "Social Media App",
-    link: "https://social-media-wine-eight.vercel.app/",
+    link: "https://www.linkedin.com/posts/naveed-abbasi_just-finished-a-social-media-website-clone-activity-7296118246720573440-gwJw?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEsXc8QBqFRNJp6_tfcJoH2liTm-xvkthAc",
     linkPreview: "www.linkedin/social-media.com",
     Technologies: "React & Reducx-Toolkit Tailwind CSS",
   },
