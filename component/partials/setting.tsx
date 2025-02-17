@@ -64,6 +64,7 @@ const Setting: React.FC = () => {
                   alt={color.color}
                   width={2000}
                   height={2000}
+                  priority
                   className="w-[30px] cursor-pointer"
                 />
               </div>

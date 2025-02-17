@@ -73,6 +73,7 @@ export default function Page() {
           src={ProfileImage || DefaultImage }
           width={740}
           height={100}
+          priority
           alt="Profile"
           className="z-10 mt-2 h-[250px] w-[250px] rounded-full border-4 border-[#252525] object-cover drop-shadow"
         />

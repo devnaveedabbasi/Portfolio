@@ -40,6 +40,7 @@ const router=useRouter()
                 src={ProfileImage || DefaultImage}
                 width={740}
                 height={100}
+                priority
                 alt="Profile"
                 className="h-full w-full rounded-2xl object-cover drop-shadow"
               />
@@ -107,6 +108,7 @@ const router=useRouter()
               src={ProfileImage || DefaultImage}
               width={740}
               height={100}
+              priority
               alt="Profile"
               className="h-[280px] w-[280px] rounded-full border-4 border-[#252525] object-cover drop-shadow"
             />

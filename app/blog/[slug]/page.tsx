@@ -80,6 +80,7 @@ const BlogDetail = () => {
         <Image
           src={blog.img}
           alt={blog.title}
+          priority
           className="mb-4 h-80 w-full object-cover"
         />
 

@@ -1,31 +1,40 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { Suspense, lazy } from "react";
 import Navigations from "./partials/navigations/navigations";
-import Setting from "@/component/partials/setting";
-import ChatBot from "@/component/partials/chatbot/page";
-import Animation from "@/component/partials/animation";
+import Loading from "./partials/loading";
+
+// Lazy load components
+const LazyAnimation = lazy(() => import("@/component/partials/animation"));
+const LazySetting = lazy(() => import("@/component/partials/setting"));
+const LazyChatBot = lazy(() => import("@/component/partials/chatbot/page"));
 
 interface LayoutProps {
   children: React.ReactNode;
 }
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
-
   return (
     <div>
-      <>
-        <Animation />
-        <Setting />
-        <main>{children}</main>
+      <Suspense fallback={<Loading />}>
+        <LazyAnimation />
+      </Suspense>
 
-        <div className="hidden md:flex">
-          <Navigations />
-        </div>
-        <ChatBot />
-      </>
+      <Suspense fallback={null}>
+        <LazySetting />
+      </Suspense>
+
+      <main>{children}</main>
+
+      <div className="hidden md:flex">
+        <Navigations />
+      </div>
+
+      <Suspense fallback={null}>
+        <LazyChatBot />
+      </Suspense>
     </div>
   );
 };
 
-export default Layout;
+export default React.memo(Layout);

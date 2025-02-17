@@ -29,6 +29,7 @@ const BlogCard = ({ img, title, dis }: Blogs) => {
           alt={title}
           width={500}
           height={300}
+          priority
           className="object-cover transition-all group-hover:relative group-hover:z-10 group-hover:scale-125"
         />
       </div>
