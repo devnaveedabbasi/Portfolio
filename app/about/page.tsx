@@ -22,13 +22,12 @@ export default function Page() {
     { firstName: "Naveed" },
     { lastName: "Abbasi" },
     { Age: "18 Years" },
-    { Nationality: "Tunisian" },
+    { Nationality: "Pakistan" },
     { Freelance: "Available" },
     { Address: "Sarfaraz Society Hyderabad" },
     { phone: "+92 311 1309060" },
     { Email: "naveedabbasi8651@gmail.com" },
-    { Skype: "steve.milner" },
-    { languages: ["English","Urdu"] },
+      { languages: ["English","Urdu"] },
   ]);
 
   // Define type for the parsed JSON data
@@ -47,7 +46,7 @@ export default function Page() {
     { years: 53, exper: "awards won" },
   ];
   const downloandNow = () => {
-    alert("S");
+    alert("Cv In Pending");
   };
   return (
     <>
