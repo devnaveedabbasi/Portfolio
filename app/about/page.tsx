@@ -45,9 +45,16 @@ export default function Page() {
     { years: 81, exper: "Happy customers" },
     { years: 53, exper: "awards won" },
   ];
-  const downloandNow = () => {
-    alert("Cv In Pending");
+  const downloadNow = () => {
+    const link = document.createElement('a');
+    link.href = '/assets/pdf/cv.pdf'; 
+    link.download = 'cv.pdf'; 
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    
   };
+  
   return (
     <>
                 <MobileNavigation navHeadFirst='About' NavHeadSec='Us' />
@@ -98,7 +105,7 @@ export default function Page() {
                 <div className="mt-12 w-[90%] md:mt-12">
                   <Button
                     text="Download CV"
-                    oNClick={downloandNow}
+                    oNClick={downloadNow}
                     icon="ri:download-fill"
                   />
                 </div>

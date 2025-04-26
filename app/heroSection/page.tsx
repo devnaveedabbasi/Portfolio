@@ -4,7 +4,7 @@ import { Icon } from "@iconify/react";
 import Setting from "@/component/partials/setting";
 import Image from "next/image";
 // import ProfileImage from "@/public/assets/img/profile.jpg";
-import DefaultImage from '@/public/assets/img/defult.jpeg'
+import DefaultImage from "@/public/assets/img/defult.jpeg";
 import ProfileImage from "@/public/assets/img/Me.jpg";
 import Button from "@/component/button";
 import Sidebar from "@/component/partials/sideBarNav";
@@ -16,7 +16,7 @@ export default function Page() {
     (state: RootState) => state.color.selectedColor,
   );
   const [isMenuBarOpen, setIsMenuBarOpen] = useState<boolean>(false);
-const router=useRouter()
+  const router = useRouter();
   const handleMenuToogle = (): void => {
     setIsMenuBarOpen((prevState) => !prevState);
   };
@@ -60,19 +60,25 @@ const router=useRouter()
                 className={`block h-[6px] w-[32px]`}
                 style={{ backgroundColor: selectedColor }}
               ></span>{" "}
-              I&apos;m Naveed Hassan
+              I&apos;m Naveed Abbasi
             </h1>
             <h2 className="mb-4 ml-11 font-PoppinsHeading text-[51px] font-bold uppercase leading-[62px]">
-              Web Developer
+              Web Developer{" "}
             </h2>
             <p className="font-Open_Sans text-[16px] font-medium leading-[35px] text-white">
-              I&apos;m a Tunisian-based web designer & front-end developer focused on
-              crafting clean & user-friendly experiences. I am passionate about
-              building excellent software that improves the lives of those
-              around me.
+              I’m a Frontend Developer skilled in React.js, Next.js, JavaScript,
+              and TypeScript. I build fast, responsive websites using Tailwind
+              CSS, Custom CSS, and Firebase. Experienced in converting Figma
+              designs to React apps and integrating REST APIs. Currently
+              learning MongoDB, Express, and Node.js to grow as a Full Stack
+              Developer.
             </p>
             <div className="mt-4">
-              <Button text="More about Me"  icon="mynaui:arrow-right-solid" oNClick={()=>router.push("/about")}/>
+              <Button
+                text="More about Me"
+                icon="mynaui:arrow-right-solid"
+                oNClick={() => router.push("/about")}
+              />
             </div>
           </div>
 
@@ -103,7 +109,7 @@ const router=useRouter()
         <div className="mx-auto mb-4 mt-10 h-full w-[80%]">
           {/* Profile */}
           <Setting />
-          <div className="flex w-full mt-10 justify-center">
+          <div className="mt-10 flex w-full justify-center">
             <Image
               src={ProfileImage || DefaultImage}
               width={740}
@@ -114,22 +120,32 @@ const router=useRouter()
             />
           </div>
           {/* Introduction */}
-          <div className="mb-4 mt-4 flex w-[100%] flex-col items-center justify-center">
-            <h1 className="mb-2 flex items-center gap-3 text-center font-PoppinsHeading text-[38px] font-bold uppercase leading-[48px]"
-            style={{color:selectedColor}}>
-              I&apos;m Naveed Hassan
+          <div className="mb-4 mt-4 flex w-[100%] flex-col">
+            <h1
+              className="mb-2 flex items-center gap-3 font-PoppinsHeading text-[38px] font-bold uppercase leading-[48px]"
+              style={{ color: selectedColor }}
+            >
+              I&apos;m Naveed Abbasi
             </h1>
-            <h2 className="mb-4 text-center font-PoppinsHeading text-[38px] font-bold uppercase leading-[48px] text-white">
+            <h2 className="mb-4 font-PoppinsHeading text-[38px] font-bold uppercase leading-[48px] text-white">
               Web Developer
             </h2>
-            <p className="mx-auto w-[80%] text-center font-Open_Sans text-[15px] font-medium leading-[30px] text-white">
-              I&apos;m a Tunisian-based web designer & front-end developer focused on
-              crafting clean & user-friendly experiences. I am passionate about
-              building excellent software that improves the lives of those
-              around me.
+            <p className="font-Open_Sans text-[13px] font-medium leading-[30px] text-white">
+              I am a Frontend Developer skilled in React.js, Next.js,
+              JavaScript, and TypeScript. I use Tailwind CSS, Custom CSS, and
+              Firebase for building fast and responsive websites. I have strong
+              experience in converting Figma designs into React applications and
+              integrating RESTful APIs for dynamic functionality. Currently, I
+              am learning MongoDB, Express, and Node.js to enhance my full-stack
+              development skills. I am passionate about exploring new
+              technologies and improving my expertise.
             </p>
             <div className="mt-6">
-              <Button text="More about Me" icon="mynaui:arrow-right-solid" oNClick={()=>router.push("/about")}/>
+              <Button
+                text="More about Me"
+                icon="mynaui:arrow-right-solid"
+                oNClick={() => router.push("/about")}
+              />
             </div>
           </div>{" "}
         </div>

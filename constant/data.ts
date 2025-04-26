@@ -54,11 +54,12 @@ export const skills: Skill[] = [
   { skill: "CSS", percentage: 70 },
   { skill: "JavaScript", percentage: 75 },
   { skill: "TypeScript", percentage: 70 },
-  { skill: "Reactjs", percentage: 85 },
-  { skill: "Nextjs", percentage: 60 },  
+  { skill: "React.js", percentage: 85 },
+  { skill: "Next.js", percentage: 60 },
+  { skill: "RESTful API", percentage: 60 },
   { skill: "Firebase", percentage: 55 },
-  { skill: "Sanity", percentage: 55 },
 ];
+
 
 interface Experience {
   date: string;
@@ -169,6 +170,7 @@ import Weather from "@/public/assets/img/ProjectsImage/weather.png";
 import TicTacToe from "@/public/assets/img/ProjectsImage/tictactoe.png";
 import CMS from "@/public/assets/img/ProjectsImage/cms.png";
 import FigmaToHtmlBanner from "@/public/assets/img/ProjectsImage/Figma-to-Html.png";
+import Gemini from '@/public/assets/img/ProjectsImage/gemini.png'
 
 export interface Portfolio {
   cardImage: string | StaticImageData;
@@ -180,6 +182,14 @@ export interface Portfolio {
 }
 
 export const PortfolioData: Portfolio[] = [
+  {
+    cardImage: Gemini,
+    ProjectVedio: "https://drive.google.com/file/d/1-OVdz4or9SseK1Gi7dNIXhXJv1HEgtJZ/preview",
+    name: "Gemini",
+    link: "https://www.linkedin.com/posts/naveed-abbasi_nextjs-typescript-geminiapi-activity-7300613102188793856-9lnZ?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEsXc8QBqFRNJp6_tfcJoH2liTm-xvkthAc",
+    linkPreview: "www.linkedin/gemini.com",
+    Technologies: "Nextjs,TypeScript & Tailwind CSS",
+  },
   {
     cardImage: SoicalMediaBanner,
     ProjectVedio:
