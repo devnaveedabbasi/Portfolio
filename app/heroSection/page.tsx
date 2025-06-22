@@ -53,7 +53,7 @@ export default function Page() {
           {/* Introduction */}
           <div className="mb-8 w-[90%]">
             <h1
-              className="mb-2 flex items-center gap-3 font-PoppinsHeading text-[51px] font-bold uppercase leading-[62px]"
+              className="mb-2 flex items-center gap-3 font-PoppinsHeading text-[45px] font-bold uppercase leading-[62px]"
               style={{ color: selectedColor }}
             >
               <span
@@ -62,16 +62,16 @@ export default function Page() {
               ></span>{" "}
               I&apos;m Naveed Abbasi
             </h1>
-            <h2 className="mb-4 ml-11 font-PoppinsHeading text-[51px] font-bold uppercase leading-[62px]">
-              Web Developer{" "}
+            <h2 className="mb-4 ml-11 font-PoppinsHeading text-[43px] font-bold uppercase leading-[42px]">
+              MernStack Developer{" "}
             </h2>
-            <p className="font-Open_Sans text-[16px] font-medium leading-[35px] text-white">
-              I’m a Frontend Developer skilled in React.js, Next.js, JavaScript,
-              and TypeScript. I build fast, responsive websites using Tailwind
-              CSS, Custom CSS, and Firebase. Experienced in converting Figma
-              designs to React apps and integrating REST APIs. Currently
-              learning MongoDB, Express, and Node.js to grow as a Full Stack
-              Developer.
+            <p className="mt-6 text-[16px] font-medium leading-[32px] text-white">
+              I build modern, responsive, and scalable web applications using
+              MongoDB, Express.js, React.js, and Node.js. With strong skills in
+              React,TypeScript and Tailwind CSS I turn Figma designs into fully
+              functional, user-friendly websites that perform flawlessly across
+              all devices. Let’s collaborate and bring your ideas to life with
+              clean code and smart solutions! 🚀
             </p>
             <div className="mt-4">
               <Button
@@ -122,23 +122,21 @@ export default function Page() {
           {/* Introduction */}
           <div className="mb-4 mt-4 flex w-[100%] flex-col">
             <h1
-              className="mb-2 flex items-center gap-3 font-PoppinsHeading text-[38px] font-bold uppercase leading-[48px]"
+              className="font- mb-2 flex items-center gap-3 text-[38px] font-bold uppercase leading-[48px]"
               style={{ color: selectedColor }}
             >
               I&apos;m Naveed Abbasi
             </h1>
-            <h2 className="mb-4 font-PoppinsHeading text-[38px] font-bold uppercase leading-[48px] text-white">
-              Web Developer
+            <h2 className="fo mb-4 text-[38px] font-bold uppercase leading-[48px] text-white">
+              MernStack Developer
             </h2>
-            <p className="font-Open_Sans text-[13px] font-medium leading-[30px] text-white">
-              I am a Frontend Developer skilled in React.js, Next.js,
-              JavaScript, and TypeScript. I use Tailwind CSS, Custom CSS, and
-              Firebase for building fast and responsive websites. I have strong
-              experience in converting Figma designs into React applications and
-              integrating RESTful APIs for dynamic functionality. Currently, I
-              am learning MongoDB, Express, and Node.js to enhance my full-stack
-              development skills. I am passionate about exploring new
-              technologies and improving my expertise.
+            <p className="text-[13px] font-medium leading-[30px] text-white">
+              I build modern, responsive, and scalable web applications using
+              MongoDB, Express.js, React.js, and Node.js. With strong skills in
+              React,TypeScript and Tailwind CSS I turn Figma designs into fully
+              functional, user-friendly websites that perform flawlessly across
+              all devices. Let’s collaborate and bring your ideas to life with
+              clean code and smart solutions! 🚀
             </p>
             <div className="mt-6">
               <Button

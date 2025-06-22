@@ -54,12 +54,11 @@ export const skills: Skill[] = [
   { skill: "CSS", percentage: 70 },
   { skill: "JavaScript", percentage: 75 },
   { skill: "TypeScript", percentage: 70 },
+  { skill: "Nodejs", percentage: 85 },
   { skill: "React.js", percentage: 85 },
   { skill: "Next.js", percentage: 60 },
-  { skill: "RESTful API", percentage: 60 },
   { skill: "Firebase", percentage: 55 },
 ];
-
 
 interface Experience {
   date: string;
@@ -170,7 +169,8 @@ import Weather from "@/public/assets/img/ProjectsImage/weather.png";
 import TicTacToe from "@/public/assets/img/ProjectsImage/tictactoe.png";
 import CMS from "@/public/assets/img/ProjectsImage/cms.png";
 import FigmaToHtmlBanner from "@/public/assets/img/ProjectsImage/Figma-to-Html.png";
-import Gemini from '@/public/assets/img/ProjectsImage/gemini.png'
+import Gemini from "@/public/assets/img/ProjectsImage/gemini.png";
+import ChatApp from "@/public/assets/img/ProjectsImage/chat-app.png";
 
 export interface Portfolio {
   cardImage: string | StaticImageData;
@@ -183,8 +183,19 @@ export interface Portfolio {
 
 export const PortfolioData: Portfolio[] = [
   {
+    cardImage: ChatApp,
+    ProjectVedio:
+      "https://drive.google.com/file/d/1Wlp7RuyCZk95q8ZachM7V7a6q7alqKzc/preview",
+    name: "ChatApp",
+    link: "https://www.linkedin.com/posts/naveed-abbasi_mernstack-frontend-backend-activity-7342513674307166208-vB_2?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEsXc8QBqFRNJp6_tfcJoH2liTm-xvkthAc",
+    linkPreview: "www.linkedin/chatapp.com",
+    Technologies:
+      "MongoDb,Reactjs,Nodejs,Expressjs,Socket.io,zustand,Tailwind CSS",
+  },
+  {
     cardImage: Gemini,
-    ProjectVedio: "https://drive.google.com/file/d/1-OVdz4or9SseK1Gi7dNIXhXJv1HEgtJZ/preview",
+    ProjectVedio:
+      "https://drive.google.com/file/d/1-OVdz4or9SseK1Gi7dNIXhXJv1HEgtJZ/preview",
     name: "Gemini",
     link: "https://www.linkedin.com/posts/naveed-abbasi_nextjs-typescript-geminiapi-activity-7300613102188793856-9lnZ?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEsXc8QBqFRNJp6_tfcJoH2liTm-xvkthAc",
     linkPreview: "www.linkedin/gemini.com",
