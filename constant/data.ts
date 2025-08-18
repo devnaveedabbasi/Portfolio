@@ -54,10 +54,10 @@ export const skills: Skill[] = [
   { skill: "CSS", percentage: 70 },
   { skill: "JavaScript", percentage: 75 },
   { skill: "TypeScript", percentage: 70 },
-  { skill: "Nodejs", percentage: 85 },
+  { skill: "Firebase", percentage: 55 },
   { skill: "React.js", percentage: 85 },
   { skill: "Next.js", percentage: 60 },
-  { skill: "Firebase", percentage: 55 },
+  { skill: "Nodejs", percentage: 85 },
 ];
 
 interface Experience {
@@ -91,8 +91,8 @@ export const experiences: Experience[] = [
   },
   {
     date: "2024",
-    title: "Frontend Developer (Internship)",
-    company: "YoungDev",
+    title: "Frontend Developer",
+    company: "YoungDevIntern",
     description:
       "Completed a 1-month remote internship as a Frontend Developer, working on static and interactive websites using HTML, CSS, and JavaScript.",
   },
@@ -180,6 +180,7 @@ import CMS from "@/public/assets/img/ProjectsImage/cms.png";
 import FigmaToHtmlBanner from "@/public/assets/img/ProjectsImage/Figma-to-Html.png";
 import Gemini from "@/public/assets/img/ProjectsImage/gemini.png";
 import ChatApp from "@/public/assets/img/ProjectsImage/chat-app.png";
+import BookStore from "@/public/assets/img/ProjectsImage/BookStore.png";
 
 export interface Portfolio {
   cardImage: string | StaticImageData;
@@ -191,6 +192,16 @@ export interface Portfolio {
 }
 
 export const PortfolioData: Portfolio[] = [
+  {
+    cardImage: BookStore,
+    ProjectVedio:
+      "  https://drive.google.com/file/d/1eJrYklpdFvJKis7j--dzfXJRXChJOsSF/preview",
+    name: "BookStore",
+    link: "https://www.linkedin.com/posts/naveed-abbasi_mernstack-frontend-backend-activity-7342513674307166208-vB_2?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEsXc8QBqFRNJp6_tfcJoH2liTm-xvkthAc",
+    linkPreview: "www.linkedin/bookstore.com",
+    Technologies:
+      "MongoDb,Reactjs,Nodejs,Expressjs,Socket.io,Redux,Tailwind CSS",
+  },
   {
     cardImage: ChatApp,
     ProjectVedio:
@@ -273,31 +284,31 @@ export const PortfolioData: Portfolio[] = [
     linkPreview: "www.linkedin/it-developers.com",
     Technologies: "HTML,CSS,js,Gsap",
   },
-  {
-    cardImage: CMS,
-    ProjectVedio:
-      "https://drive.google.com/file/d/1RPdhJ8-OIDlVWvclvT08DlFV0I-vcDM1/preview",
-    name: "Complain Manegment System",
-    link: "https://www.linkedin.com/posts/naveed-abbasi_frontenddeveloper-frontend-backend-activity-7190815187623407616-_uoK?utm_source=share&utm_medium=member_desktop",
-    linkPreview: "www.linkedin/cms.com",
-    Technologies: "HTML,CSS,JS,Firebase",
-  },
-  {
-    cardImage: TicTacToe,
-    ProjectVedio:
-      "https://drive.google.com/file/d/1S_OqFSg5bMdYC4VluzgkTJs96sQ-jozO/preview",
-    name: "TicTacToe Game",
-    link: "https://www.linkedin.com/posts/naveed-abbasi_frontend-webdeveloper-developer-activity-7196224511984205824-bfqf?utm_source=share&utm_medium=member_desktop",
-    linkPreview: "www.linkedin/tictactoe.com",
-    Technologies: "Reactjs,CSS",
-  },
-  {
-    cardImage: FigmaToHtmlBanner,
-    ProjectVedio:
-      "https://drive.google.com/file/d/18iNBdmPcQ5OtV1ELgc3htOKH9GSVml3o/preview",
-    name: "Figma to Html",
-    link: "https://www.linkedin.com/posts/naveed-abbasi_reactjs-css-webdevelopment-activity-7246069331892072449-afUw?utm_source=share&utm_medium=member_desktop",
-    linkPreview: "www/linkedin/figma-form.com",
-    Technologies: "Html,CSS",
-  },
+  // {
+  //   cardImage: CMS,
+  //   ProjectVedio:
+  //     "https://drive.google.com/file/d/1RPdhJ8-OIDlVWvclvT08DlFV0I-vcDM1/preview",
+  //   name: "Complain Manegment System",
+  //   link: "https://www.linkedin.com/posts/naveed-abbasi_frontenddeveloper-frontend-backend-activity-7190815187623407616-_uoK?utm_source=share&utm_medium=member_desktop",
+  //   linkPreview: "www.linkedin/cms.com",
+  //   Technologies: "HTML,CSS,JS,Firebase",
+  // },
+  // {
+  //   cardImage: TicTacToe,
+  //   ProjectVedio:
+  //     "https://drive.google.com/file/d/1S_OqFSg5bMdYC4VluzgkTJs96sQ-jozO/preview",
+  //   name: "TicTacToe Game",
+  //   link: "https://www.linkedin.com/posts/naveed-abbasi_frontend-webdeveloper-developer-activity-7196224511984205824-bfqf?utm_source=share&utm_medium=member_desktop",
+  //   linkPreview: "www.linkedin/tictactoe.com",
+  //   Technologies: "Reactjs,CSS",
+  // },
+  // {
+  //   cardImage: FigmaToHtmlBanner,
+  //   ProjectVedio:
+  //     "https://drive.google.com/file/d/18iNBdmPcQ5OtV1ELgc3htOKH9GSVml3o/preview",
+  //   name: "Figma to Html",
+  //   link: "https://www.linkedin.com/posts/naveed-abbasi_reactjs-css-webdevelopment-activity-7246069331892072449-afUw?utm_source=share&utm_medium=member_desktop",
+  //   linkPreview: "www/linkedin/figma-form.com",
+  //   Technologies: "Html,CSS",
+  // },
 ];

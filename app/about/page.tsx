@@ -38,10 +38,10 @@ export default function Page() {
     exper: string;
   }
   const ExperinceData: ExperinceDefineType[] = [
-    { years: 6, exper: "years of experience" },
-    { years: 43, exper: "completed  projects" },
+    { years: 6, exper: "Moths of experience" },
+    { years: 43, exper: "Completed  projects" },
     { years: 21, exper: "Happy customers" },
-    { years: 13, exper: "awards won" },
+    { years: 13, exper: "Awards won" },
   ];
   const downloadNow = () => {
     const link = document.createElement("a");
@@ -240,7 +240,7 @@ export default function Page() {
                         style={{ backgroundColor: selectedColor }}
                       >
                         <Icon
-                          icon="tdesign:education-filled"
+                          icon="hugeicons:permanent-job"
                           width={20}
                           height={20}
                         />
