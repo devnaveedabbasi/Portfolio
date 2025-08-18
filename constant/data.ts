@@ -76,16 +76,25 @@ interface Education {
 
 export const experiences: Experience[] = [
   {
+    date: "2025",
+    title: "MERN Stack Developer",
+    company: "Verior",
+    description:
+      "Completed a 2-month full-time, paid onsite internship as a MERN Stack Developer. Worked on real-world projects using React.js, Node.js, Express.js, and MongoDB.",
+  },
+  {
     date: "2024 - 2025",
-    title: "Frontend developer",
+    title: "Frontend Developer",
     company: "Digital Elliptical",
-    description: " 3 months full-time onsite as a Frontend Developer (ReactJS)",
+    description:
+      "Completed a3-month full-time onsite role as a Frontend Developer, focusing on building responsive web applications with React.js, Tailwind CSS, and modern UI/UX practices.",
   },
   {
     date: "2024",
-    title: "Frontend Developer",
+    title: "Frontend Developer (Internship)",
     company: "YoungDev",
-    description: "1 month remote as a Frontend Developer (HTML, CSS, JS).",
+    description:
+      "Completed a 1-month remote internship as a Frontend Developer, working on static and interactive websites using HTML, CSS, and JavaScript.",
   },
 ];
 
