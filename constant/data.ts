@@ -197,7 +197,7 @@ export const PortfolioData: Portfolio[] = [
     ProjectVedio:
       "  https://drive.google.com/file/d/1eJrYklpdFvJKis7j--dzfXJRXChJOsSF/preview",
     name: "BookStore",
-    link: "https://www.linkedin.com/posts/naveed-abbasi_mernstack-frontend-backend-activity-7342513674307166208-vB_2?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEsXc8QBqFRNJp6_tfcJoH2liTm-xvkthAc",
+    link: "https://www.linkedin.com/posts/naveed-abbasi_reactjs-fullstackdeveloper-nodejs-activity-7363232307782021120-1HWU?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEsXc8QBqFRNJp6_tfcJoH2liTm-xvkthAc",
     linkPreview: "www.linkedin/bookstore.com",
     Technologies:
       "MongoDb,Reactjs,Nodejs,Expressjs,Socket.io,Redux,Tailwind CSS",
