@@ -100,6 +100,13 @@ export const experiences: Experience[] = [
 
 export const educations: Education[] = [
   {
+    date: "2025 - Present",
+    title: "BS Software Engineering",
+    institution: "Virtual University of Pakistan",
+    description:
+      "Pursuing my first year with a strong focus on core software engineering fundamentals.",
+  },
+  {
     date: "2023-2024",
     title: "Web & Mobile App Development",
     institution: "SMIT Hyderabad",
@@ -111,19 +118,6 @@ export const educations: Education[] = [
     title: "Memorization of Quran",
     institution: "Madrasa Tajweed-ul-Quran",
     description: "Successfully completed Hifz-e-Quran with a focus on Tajweed.",
-  },
-  {
-    date: "2012-2022",
-    title: "Matriculation",
-    institution: "Himayat-ul-Islam High School",
-    description: "Completed Matriculation with a strong academic foundation.",
-  },
-  {
-    date: "2022-2024",
-    title: "Intermediate",
-    institution: "Hidayat-ullah College",
-    description:
-      "Pursuing Intermediate with a focus on core academic subjects.",
   },
 ];
 
