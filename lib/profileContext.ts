@@ -4,7 +4,7 @@ import path from "path";
 async function safeRead(filePath: string) {
   try {
     return await fs.readFile(filePath, "utf8");
-  } catch (e) {
+  } catch {
     return "";
   }
 }

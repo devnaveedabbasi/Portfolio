@@ -17,7 +17,7 @@ interface Blog {
   description: string;
   content: string;
   images: string[];
-  createdAt: any;
+  createdAt: { toDate?: () => Date } | null;
   author: string;
   category: string;
   slug: string;
@@ -37,7 +37,7 @@ export default function BlogPage() {
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
   const [currentPage, setCurrentPage] = useState(1);
   const [categories, setCategories] = useState<string[]>([]);
-  
+
   const blogsPerPage = 6;
 
   useEffect(() => {
@@ -58,10 +58,10 @@ export default function BlogPage() {
         } as Blog);
       });
       setBlogs(blogsData);
-      
+
       // Extract unique categories
       const uniqueCategories = Array.from(
-        new Set(blogsData.map((blog) => blog.category))
+        new Set(blogsData.map((blog) => blog.category)),
       );
       setCategories(uniqueCategories);
       setLoading(false);
@@ -73,11 +73,11 @@ export default function BlogPage() {
   // Filter and paginate blogs
   useEffect(() => {
     let filtered = blogs;
-    
+
     if (selectedCategory !== "All") {
       filtered = blogs.filter((blog) => blog.category === selectedCategory);
     }
-    
+
     setFilteredBlogs(filtered);
     setCurrentPage(1); // Reset to first page when category changes
   }, [blogs, selectedCategory]);
@@ -140,14 +140,17 @@ export default function BlogPage() {
                 onClick={() => setSelectedCategory("All")}
                 className="whitespace-nowrap rounded-full px-4 py-2 text-sm font-medium transition"
                 style={{
-                  backgroundColor: selectedCategory === "All" ? selectedColor : "#1f2937",
+                  backgroundColor:
+                    selectedCategory === "All" ? selectedColor : "#1f2937",
                   color: selectedCategory === "All" ? "white" : selectedColor,
                 }}
               >
                 All ({blogs.length})
               </button>
               {categories.map((category) => {
-                const count = blogs.filter((blog) => blog.category === category).length;
+                const count = blogs.filter(
+                  (blog) => blog.category === category,
+                ).length;
                 return (
                   <button
                     key={category}
@@ -155,7 +158,9 @@ export default function BlogPage() {
                     className="whitespace-nowrap rounded-full px-4 py-2 text-sm font-medium transition"
                     style={{
                       backgroundColor:
-                        selectedCategory === category ? selectedColor : `${selectedColor}20`,
+                        selectedCategory === category
+                          ? selectedColor
+                          : `${selectedColor}20`,
                       color: selectedColor,
                     }}
                   >
@@ -191,106 +196,106 @@ export default function BlogPage() {
             <>
               <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
                 {displayedBlogs.map((blog) => (
-                <Link
-                  key={blog.id}
-                  href={`/blog/${blog.slug}`}
-                  className="group block"
-                >
-                  <article className="group h-full overflow-hidden rounded-2xl bg-gray-900 shadow-lg transition-all duration-300 hover:scale-105 hover:bg-gray-800 hover:shadow-2xl">
-                    {/* Image */}
-                    <div className="relative h-48 overflow-hidden">
-                      <Image
-                        src={
-                          blog.images && blog.images.length > 0
-                            ? blog.images[0]
-                            : DefaultImage
-                        }
-                        alt={blog.title}
-                        fill
-                        className="object-cover transition duration-500 group-hover:scale-110"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-70"></div>
+                  <Link
+                    key={blog.id}
+                    href={`/blog/${blog.slug}`}
+                    className="group block"
+                  >
+                    <article className="group h-full overflow-hidden rounded-2xl bg-gray-900 shadow-lg transition-all duration-300 hover:scale-105 hover:bg-gray-800 hover:shadow-2xl">
+                      {/* Image */}
+                      <div className="relative h-48 overflow-hidden">
+                        <Image
+                          src={
+                            blog.images && blog.images.length > 0
+                              ? blog.images[0]
+                              : DefaultImage
+                          }
+                          alt={blog.title}
+                          fill
+                          className="object-cover transition duration-500 group-hover:scale-110"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-70"></div>
 
-                      {/* Category Badge */}
-                      <div className="absolute left-4 top-4">
-                        <span
-                          className="rounded-full px-3 py-1 text-xs font-semibold"
-                          style={{
-                            backgroundColor: `${selectedColor}30`,
-                            color: selectedColor,
-                          }}
-                        >
-                          {blog.category}
-                        </span>
-                      </div>
-
-                      {/* Read Time */}
-                      <div className="absolute right-4 top-4 rounded-full bg-black/50 px-2 py-1 text-xs text-white">
-                        {Math.ceil(blog.content.split(/\s+/).length / 200)} min
-                        read
-                      </div>
-                    </div>
-
-                    {/* Content */}
-                    <div className="p-6">
-                      <h3 className="mb-3 line-clamp-2 text-xl font-bold text-white group-hover:text-gray-200">
-                        {blog.title}
-                      </h3>
-
-                      <p className="mb-4 line-clamp-3 text-sm text-gray-400">
-                        {blog.description}
-                      </p>
-
-                      {/* Tags */}
-                      {blog.tags && blog.tags.length > 0 && (
-                        <div className="mb-4 flex flex-wrap gap-1">
-                          {blog.tags.slice(0, 3).map((tag, index) => (
-                            <span
-                              key={index}
-                              className="rounded-full bg-gray-800 px-2 py-1 text-xs text-gray-300"
-                            >
-                              #{tag}
-                            </span>
-                          ))}
-                          {blog.tags.length > 3 && (
-                            <span className="rounded-full bg-gray-800 px-2 py-1 text-xs text-gray-300">
-                              +{blog.tags.length - 3}
-                            </span>
-                          )}
+                        {/* Category Badge */}
+                        <div className="absolute left-4 top-4">
+                          <span
+                            className="rounded-full px-3 py-1 text-xs font-semibold"
+                            style={{
+                              backgroundColor: `${selectedColor}30`,
+                              color: selectedColor,
+                            }}
+                          >
+                            {blog.category}
+                          </span>
                         </div>
-                      )}
 
-                      {/* Footer */}
-                      <div className="flex items-center justify-between border-t border-gray-700 pt-4">
-                        <div className="flex items-center gap-3">
-                          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gray-700 text-xs font-semibold text-white">
-                            {blog.author.charAt(0)}
+                        {/* Read Time */}
+                        <div className="absolute right-4 top-4 rounded-full bg-black/50 px-2 py-1 text-xs text-white">
+                          {Math.ceil(blog.content.split(/\s+/).length / 200)}{" "}
+                          min read
+                        </div>
+                      </div>
+
+                      {/* Content */}
+                      <div className="p-6">
+                        <h3 className="mb-3 line-clamp-2 text-xl font-bold text-white group-hover:text-gray-200">
+                          {blog.title}
+                        </h3>
+
+                        <p className="mb-4 line-clamp-3 text-sm text-gray-400">
+                          {blog.description}
+                        </p>
+
+                        {/* Tags */}
+                        {blog.tags && blog.tags.length > 0 && (
+                          <div className="mb-4 flex flex-wrap gap-1">
+                            {blog.tags.slice(0, 3).map((tag, index) => (
+                              <span
+                                key={index}
+                                className="rounded-full bg-gray-800 px-2 py-1 text-xs text-gray-300"
+                              >
+                                #{tag}
+                              </span>
+                            ))}
+                            {blog.tags.length > 3 && (
+                              <span className="rounded-full bg-gray-800 px-2 py-1 text-xs text-gray-300">
+                                +{blog.tags.length - 3}
+                              </span>
+                            )}
                           </div>
-                          <div>
-                            <p className="text-sm font-medium text-white">
-                              {blog.author}
-                            </p>
-                            <p className="text-xs text-gray-400">
-                              {blog.createdAt
-                                ?.toDate?.()
-                                .toLocaleDateString("en-US", {
-                                  year: "numeric",
-                                  month: "short",
-                                  day: "numeric",
-                                })}
-                            </p>
+                        )}
+
+                        {/* Footer */}
+                        <div className="flex items-center justify-between border-t border-gray-700 pt-4">
+                          <div className="flex items-center gap-3">
+                            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gray-700 text-xs font-semibold text-white">
+                              {blog.author.charAt(0)}
+                            </div>
+                            <div>
+                              <p className="text-sm font-medium text-white">
+                                {blog.author}
+                              </p>
+                              <p className="text-xs text-gray-400">
+                                {blog.createdAt
+                                  ?.toDate?.()
+                                  .toLocaleDateString("en-US", {
+                                    year: "numeric",
+                                    month: "short",
+                                    day: "numeric",
+                                  })}
+                              </p>
+                            </div>
+                          </div>
+
+                          <div className="flex items-center gap-2 text-gray-400 transition group-hover:text-white">
+                            <span className="text-sm">Read more</span>
+                            <Icon icon="mdi:arrow-right" width={16} />
                           </div>
                         </div>
-
-                        <div className="flex items-center gap-2 text-gray-400 transition group-hover:text-white">
-                          <span className="text-sm">Read more</span>
-                          <Icon icon="mdi:arrow-right" width={16} />
-                        </div>
                       </div>
-                    </div>
-                  </article>
-                </Link>
-              ))}
+                    </article>
+                  </Link>
+                ))}
               </div>
 
               {/* Pagination */}
@@ -301,7 +306,7 @@ export default function BlogPage() {
                       setCurrentPage((prev) => Math.max(1, prev - 1))
                     }
                     disabled={currentPage === 1}
-                    className="flex items-center gap-1 rounded-lg bg-gray-800 px-4 py-2 text-gray-300 transition disabled:opacity-50 hover:bg-gray-700"
+                    className="flex items-center gap-1 rounded-lg bg-gray-800 px-4 py-2 text-gray-300 transition hover:bg-gray-700 disabled:opacity-50"
                   >
                     <Icon icon="mdi:chevron-left" width={20} />
                     Previous
@@ -316,16 +321,13 @@ export default function BlogPage() {
                           className="h-10 w-10 rounded-lg transition"
                           style={{
                             backgroundColor:
-                              currentPage === page
-                                ? selectedColor
-                                : "#1f2937",
-                            color:
-                              currentPage === page ? "white" : "#9ca3af",
+                              currentPage === page ? selectedColor : "#1f2937",
+                            color: currentPage === page ? "white" : "#9ca3af",
                           }}
                         >
                           {page}
                         </button>
-                      )
+                      ),
                     )}
                   </div>
 
@@ -334,7 +336,7 @@ export default function BlogPage() {
                       setCurrentPage((prev) => Math.min(totalPages, prev + 1))
                     }
                     disabled={currentPage === totalPages}
-                    className="flex items-center gap-1 rounded-lg bg-gray-800 px-4 py-2 text-gray-300 transition disabled:opacity-50 hover:bg-gray-700"
+                    className="flex items-center gap-1 rounded-lg bg-gray-800 px-4 py-2 text-gray-300 transition hover:bg-gray-700 disabled:opacity-50"
                   >
                     Next
                     <Icon icon="mdi:chevron-right" width={20} />

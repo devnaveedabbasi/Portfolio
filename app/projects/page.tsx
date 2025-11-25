@@ -231,7 +231,7 @@ export default function Page() {
                 Ready to collaborate?
               </h3>
               <p className="mb-4 text-sm text-gray-300 md:text-base">
-                Let's build something amazing together
+                Let&apos;s build something amazing together
               </p>
               <button
                 onClick={() => router.push("/contact-us")}

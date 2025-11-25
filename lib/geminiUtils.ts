@@ -47,7 +47,8 @@ async function fetchBlogImages(
 
     if (response.data.results && response.data.results.length > 0) {
       return response.data.results.map(
-        (photo: any) => photo.urls.regular || photo.urls.small,
+        (photo: { urls: { regular?: string; small?: string } }) =>
+          photo.urls.regular || photo.urls.small,
       );
     }
 

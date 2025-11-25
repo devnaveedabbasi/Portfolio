@@ -1,14 +1,7 @@
 import { Metadata } from "next";
 import React from "react";
 import { db } from "@/lib/firebase";
-import {
-  collection,
-  query,
-  where,
-  getDocs,
-  orderBy,
-  limit,
-} from "firebase/firestore";
+import { collection, query, where, getDocs, limit } from "firebase/firestore";
 import Image from "next/image";
 import { Icon } from "@iconify/react";
 import HeaderText from "@/component/headerText";
@@ -30,7 +23,7 @@ interface BlogPost {
   seoTitle?: string;
   seoDescription?: string;
   seoKeywords?: string;
-  createdAt: any;
+  createdAt: { toDate?: () => Date } | null;
 }
 
 // Fetch blog by slug with better error handling
@@ -107,9 +100,10 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
-  const blog = await getBlogBySlug(params.slug);
+  const { slug } = await params;
+  const blog = await getBlogBySlug(slug);
 
   if (!blog) {
     return {
@@ -149,9 +143,10 @@ export async function generateMetadata({
 export default async function BlogSlugPage({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
-  const blog = await getBlogBySlug(params.slug);
+  const { slug } = await params;
+  const blog = await getBlogBySlug(slug);
 
   if (!blog) {
     return (
@@ -173,8 +168,8 @@ export default async function BlogSlugPage({
               Blog Not Found
             </h2>
             <p className="mb-6 text-gray-400">
-              The blog post "{params.slug}" doesn't exist or may have been
-              moved.
+              The blog post &quot;{slug}&quot; doesn&apos;t exist or may have
+              been moved.
             </p>
             <Link
               href="/blog"
@@ -190,7 +185,7 @@ export default async function BlogSlugPage({
   }
 
   // Format date safely
-  const formatDate = (timestamp: any) => {
+  const formatDate = (timestamp: { toDate?: () => Date } | null) => {
     if (!timestamp) return "Unknown date";
     try {
       return (
@@ -200,7 +195,7 @@ export default async function BlogSlugPage({
           day: "numeric",
         }) || "Invalid date"
       );
-    } catch (error) {
+    } catch {
       return "Invalid date";
     }
   };

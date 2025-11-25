@@ -1,4 +1,6 @@
 "use client";
+export const dynamic = "force-dynamic";
+
 import React, { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { db, storage } from "@/lib/firebase";
@@ -32,7 +34,7 @@ interface Contact {
   email: string;
   subject: string;
   message: string;
-  createdAt: any;
+  createdAt: { toDate?: () => Date } | null;
 }
 
 interface Blog {
@@ -41,7 +43,7 @@ interface Blog {
   description: string;
   content: string;
   images: string[];
-  createdAt: any;
+  createdAt: { toDate?: () => Date } | null;
   author: string;
   category: string;
   slug: string;
@@ -149,10 +151,12 @@ export default function AdminPanel() {
         "Blog generated with AI including images! You can edit it before publishing.",
       );
 
-      // Scroll to form
-      document
-        .getElementById("blog-form")
-        ?.scrollIntoView({ behavior: "smooth" });
+      // Scroll to form (client-side only)
+      if (typeof document !== "undefined") {
+        document
+          .getElementById("blog-form")
+          ?.scrollIntoView({ behavior: "smooth" });
+      }
     } catch (error) {
       console.error("Error generating blog:", error);
       toast.error(
@@ -181,10 +185,12 @@ export default function AdminPanel() {
     setImagePreviews(blog.images || []);
     setEditingBlogId(blog.id);
 
-    // Scroll to form
-    document
-      .getElementById("blog-form")
-      ?.scrollIntoView({ behavior: "smooth" });
+    // Scroll to form (client-side only)
+    if (typeof document !== "undefined") {
+      document
+        .getElementById("blog-form")
+        ?.scrollIntoView({ behavior: "smooth" });
+    }
   };
 
   // Tag management functions

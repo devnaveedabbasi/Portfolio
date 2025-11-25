@@ -1,5 +1,4 @@
 "use client";
-import Button from "@/component/button";
 import HeaderText from "@/component/headerText";
 import MobileNavigation from "@/component/partials/navigations/mobileNavigation";
 import { RootState } from "@/store";
