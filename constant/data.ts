@@ -8,7 +8,7 @@ interface MenuIcon {
 export const menuIcons: MenuIcon[] = [
   { icon: "solar:home-outline", name: "Home", link: "/" },
   { icon: "iconamoon:profile-duotone", name: "About Us", link: "/about" },
-  { icon: "dashicons:portfolio", name: "Portfolio", link: "/portfolio" },
+  { icon: "dashicons:portfolio", name: "Projects", link: "/projects" },
   { icon: "mdi:contact-outline", name: "Contact", link: "/contact-us" },
   { icon: "mdi:blog", name: "Blog", link: "/blog" },
 ];
