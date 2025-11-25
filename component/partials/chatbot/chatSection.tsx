@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Icon } from "@iconify/react"; // Iconify import
+import React, { useRef, useEffect, useState } from "react";
+import { Icon } from "@iconify/react";
 import { useSelector } from "react-redux";
 import { RootState } from "@/store";
 
@@ -14,188 +14,207 @@ const ChatSection: React.FC = () => {
   );
   const [chatbotOpen, setChatbotOpen] = useState<boolean>(true);
   const [messages, setMessages] = useState<Message[]>([
-    { sender: "bot", text: "Hello! How can I assist you today?" },
+    {
+      sender: "bot",
+      text: "Hi! I'm Naveed's AI assistant. Ask me anything about his projects, skills, experience, or background.",
+    },
   ]);
-  const [questionIndex, setQuestionIndex] = useState<number>(0); // Track the current set of questions
-  const [faqsExhausted, setFaqsExhausted] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(false);
+  const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  const faqs: Record<string, string> = {
-    "What's your name?": "I am your friendly ChatBot, here to help!",
-    "What do you do?": "I am a web developer, and I create amazing websites!",
-    "How can I contact you?": "You can contact me through the contact form on my website.",
-    "What technologies do you use?": "I work with React, JavaScript, HTML, CSS, Tailwind CSS, and more!",
-  };
+  // Auto-scroll to bottom on new messages
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
 
-  const sendMessage = (message: string): void => {
+  const sendMessage = async (message: string): Promise<void> => {
+    if (!message.trim()) return;
+
     // Add user message
-    setMessages((prevMessages) => [
-      ...prevMessages,
-      { sender: "user", text: message },
-    ]);
+    setMessages((prev) => [...prev, { sender: "user", text: message }]);
+    setLoading(true);
 
-    // Check if it's a known question and provide the answer
-    if (faqs[message]) {
-      setTimeout(() => {
-        setMessages((prevMessages) => [
-          ...prevMessages,
-          { sender: "bot", text: faqs[message] },
-        ]);
-        setQuestionIndex((prevIndex) => {
-          const newIndex = prevIndex + 1;
-          if (newIndex >= questionList.length) {
-            setFaqsExhausted(true); // Set FAQs as exhausted
-          }
-          return newIndex;
-        });
-      }, 1000);
-    } else {
-      setTimeout(() => {
-        setMessages((prevMessages) => [
-          ...prevMessages,
-          { sender: "bot", text: "Sorry, I don't understand that question." },
-        ]);
-      }, 1000);
+    try {
+      const res = await fetch("/api/geminiChat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ question: message }),
+      });
+
+      const data = await res.json();
+      const answer =
+        data?.answer ||
+        data?.text ||
+        "Sorry, I couldn't process that. Please try again.";
+
+      // Add bot response
+      setMessages((prev) => [...prev, { sender: "bot", text: answer }]);
+
+      // Check if user asked about contact and offer contact details
+      const contactKeywords = [
+        "contact",
+        "reach",
+        "email",
+        "phone",
+        "whatsapp",
+        "linkedin",
+        "message",
+        "number",
+      ];
+      if (contactKeywords.some((kw) => message.toLowerCase().includes(kw))) {
+        setTimeout(() => {
+          setMessages((prev) => [
+            ...prev,
+            {
+              sender: "bot",
+              text: "Here's how you can reach me:\n\n📧 Email: naveedabbasi8651@gmail.com\n📱 Phone: +92 311 1309060\n💬 WhatsApp: https://wa.me/923111309060\n🔗 LinkedIn: https://www.linkedin.com/in/naveed-abbasi",
+            },
+          ]);
+        }, 500);
+      }
+    } catch (err) {
+      console.error("Chat API error:", err);
+      setMessages((prev) => [
+        ...prev,
+        {
+          sender: "bot",
+          text: "Sorry, something went wrong. Please try again.",
+        },
+      ]);
+    } finally {
+      setLoading(false);
     }
   };
 
-  const questionList = [
-    "What's your name?",
-    "What do you do?",
-    "How can I contact you?",
-    "What technologies do you use?",
-  ];
+  const handleSend = (value: string) => {
+    sendMessage(value);
+  };
 
   return (
-    <>
-      <div className="w-full h-full p-6">
-
-        {chatbotOpen && (
-          <div className="z-30 fixed md:mb-20 mb-0 md:top-4 top-14 md:right-20 right-0   h-[310px] sm:h-[300px] lg:w-[30vw] md:w-[50vw]  w-[100%] rounded-md bg-[#111111] shadow-md">
-            <div
-              style={{ backgroundColor: selectedColor }}
-              className="flex h-[60px] w-full items-center justify-between rounded-lg">
-              {/* Chatbot Header */}
-              <div className="flex w-[50%] items-center justify-center gap-3">
-                <Icon icon="mdi:robot" width={30} className="text-black" />
-                <h2 className="text-[20px]">AI ChatBot</h2>
-              </div>
-              {/* Close Button */}
-              <div
-                className="mr-4 cursor-pointer"
-                onClick={() => setChatbotOpen(false)}
-              >
-                <Icon icon="mdi:close" width={30} className="text-black" />
-              </div>
+    <div className="h-full w-full p-4 md:p-6">
+      {chatbotOpen && (
+        <div className="fixed bottom-0 right-0 z-30 flex h-[90vh] w-full flex-col rounded-lg bg-[#111111] shadow-xl sm:bottom-4 sm:right-4 sm:h-[500px] sm:w-96 md:bottom-6 md:right-6 md:w-[400px]">
+          {/* Header */}
+          <div
+            style={{ backgroundColor: selectedColor }}
+            className="flex items-center justify-between rounded-t-lg px-4 py-3 text-black"
+          >
+            <div className="flex items-center gap-2">
+              <Icon icon="mdi:robot-happy" width={24} />
+              <h2 className="text-lg font-semibold">AI Assistant</h2>
             </div>
+            <button
+              onClick={() => setChatbotOpen(false)}
+              className="rounded p-1 transition hover:bg-black/20"
+              aria-label="Close chat"
+            >
+              <Icon icon="mdi:close" width={22} />
+            </button>
+          </div>
 
-            {/* Chat Messages */}
-            <div className="flex h-full flex-col overflow-y-auto bg-[#111111] p-4">
-              {messages.map((msg, index) => (
+          {/* Messages Container */}
+          <div className="flex-1 space-y-3 overflow-y-auto bg-[#111111] p-4">
+            {messages.map((msg, index) => (
+              <div
+                key={index}
+                className={`flex ${
+                  msg.sender === "user" ? "justify-end" : "justify-start"
+                }`}
+              >
                 <div
-                  key={index}
-                  className={`mb-2 flex ${msg.sender === "user" ? "justify-end" : "justify-start"
-                    }`}
+                  className={`flex max-w-xs items-start gap-2 rounded-lg px-3 py-2 ${
+                    msg.sender === "user"
+                      ? "rounded-br-none bg-blue-600 text-white"
+                      : "rounded-bl-none bg-gray-700 text-gray-100"
+                  }`}
                 >
-                  <div
-                    className={`flex items-center gap-2 p-2 rounded-md ${msg.sender === "user"
-                      ? "bg-blue-500 text-white"
-                      : "bg-gray-700 text-white"
-                      }`}
-                  >
+                  {msg.sender === "bot" && (
                     <Icon
-                      icon={
-                        msg.sender === "user" ? "mdi:account" : "mdi:robot"
-                      }
-                      width={20}
-                      className="text-white"
+                      icon="mdi:robot-happy"
+                      width={18}
+                      className="mt-1 flex-shrink-0"
                     />
-                    <span>{msg.text}</span>
+                  )}
+                  <div className="break-words text-sm leading-relaxed">
+                    {msg.text.split("\n").map((line, idx) => (
+                      <div key={idx}>
+                        {line.startsWith("http") ? (
+                          <a
+                            href={line.trim()}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="font-semibold underline hover:opacity-80"
+                          >
+                            {line.includes("wa.me")
+                              ? "💬 WhatsApp"
+                              : line.includes("linkedin")
+                                ? "🔗 LinkedIn"
+                                : line.includes("instagram")
+                                  ? "📷 Instagram"
+                                  : line}
+                          </a>
+                        ) : (
+                          line
+                        )}
+                      </div>
+                    ))}
                   </div>
                 </div>
-              ))}
-            </div>
-
-            {/* FAQ Buttons */}
-            {!faqsExhausted && (
-              <div className="flex flex-col gap-2 justify-end bg-[#111111] items-end p-4">
-                {questionList
-                  .slice(questionIndex, questionIndex + 3)
-                  .map((question, index) => (
-                    <button
-                      key={index}
-                      onClick={() => sendMessage(question)}
-                      className=" px-2 p-1 w-[70%]  rounded-md text-black flex justify-start  items-center gap-2"
-                      style={{ backgroundColor: selectedColor }}
-
-                    >
-                      <Icon icon="mdi:send" width={20} />
-                      {question}
-                    </button>
-                  ))}
+              </div>
+            ))}
+            {loading && (
+              <div className="flex justify-start">
+                <div className="flex items-center gap-2 rounded-lg rounded-bl-none bg-gray-700 px-3 py-2 text-gray-100">
+                  <Icon
+                    icon="mdi:robot-happy"
+                    width={18}
+                    className="flex-shrink-0"
+                  />
+                  <span className="text-sm">Thinking...</span>
+                </div>
               </div>
             )}
+            <div ref={messagesEndRef} />
+          </div>
 
-            {/* Links Section */}
-            {faqsExhausted && (
-              <div className="flex flex-col gap-2 p-4 bg-[#222222]">
-                <p className="text-white">
-                  For more queries, feel free to reach out:
-                </p>
-                <a
-                  href="https://wa.me/03111309060"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-blue-400 underline"
-                >
-                  WhatsApp Me
-                </a>
-                <a
-                  href="https://www.linkedin.com/in/naveed-abbasi/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-blue-400 underline"
-                >
-                  Connect on LinkedIn
-                </a>
-              </div>
-            )}
-
-            {/* Message Input */}
-            <div className="flex items-center p-4  bg-[#222222] rounded-b-md gap-4">
+          {/* Input Area */}
+          <div className="rounded-b-lg border-t border-gray-700 bg-[#111111] p-3">
+            <div className="flex items-center gap-2">
               <input
                 type="text"
-                placeholder="Type your question..."
-                className=" rounded-md p-2 w-full bg-[#333333] text-white"
+                placeholder="Ask me anything..."
+                className="flex-1 rounded-md bg-[#222222] px-3 py-2 text-sm text-white placeholder-gray-500 transition focus:outline-none focus:ring-2 focus:ring-opacity-50"
+                style={{ "--tw-ring-color": selectedColor } as any}
                 onKeyDown={(e) => {
-                  const target = e.target as HTMLInputElement; // Typecast the target as HTMLInputElement
-                  if (e.key === "Enter" && target.value.trim()) {
-                    sendMessage(target.value);
-                    target.value = ""; // Clear input after sending
+                  const input = e.target as HTMLInputElement;
+                  if (e.key === "Enter" && !loading) {
+                    handleSend(input.value);
+                    input.value = "";
                   }
                 }}
               />
               <button
                 onClick={() => {
-                  const inputField = document.querySelector(
-                    'input[type="text"]'
+                  const input = document.querySelector(
+                    'input[type="text"]',
                   ) as HTMLInputElement;
-                  if (inputField.value.trim()) {
-                    sendMessage(inputField.value);
-                    inputField.value = "";
+                  if (input?.value.trim() && !loading) {
+                    handleSend(input.value);
+                    input.value = "";
                   }
                 }}
-                className="md:ml-2 p-2 rounded-md  text-black"
+                disabled={loading}
+                className="rounded-md p-2 text-white transition hover:opacity-80 disabled:opacity-50"
                 style={{ backgroundColor: selectedColor }}
-
+                aria-label="Send message"
               >
-                <Icon icon="mdi:send" width={25} />
+                <Icon icon="mdi:send" width={18} />
               </button>
             </div>
           </div>
-        )}
-      </div>
-
-    </>
+        </div>
+      )}
+    </div>
   );
 };
 

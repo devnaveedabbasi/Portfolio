@@ -66,12 +66,15 @@ export default function Page() {
               MernStack Developer{" "}
             </h2>
             <p className="mt-6 text-[16px] font-medium leading-[32px] text-white">
-              I build modern, responsive, and scalable web applications using
-              MongoDB, Express.js, React.js, and Node.js. With strong skills in
-              React,TypeScript and Tailwind CSS I turn Figma designs into fully
-              functional, user-friendly websites that perform flawlessly across
-              all devices. Let’s collaborate and bring your ideas to life with
-              clean code and smart solutions! 🚀
+              I am a Full Stack Developer specializing in MERN (MongoDB,
+              Express.js, React.js, Node.js). I build modern, responsive, and
+              scalable web applications with a focus on both frontend and
+              backend. Skilled in React, TypeScript, Tailwind CSS, and Node.js,
+              I integrate REST APIs, authentication systems, and dynamic
+              features to deliver fully functional, user-friendly websites. I
+              turn Figma designs into clean, maintainable code that performs
+              flawlessly across all devices. Let’s collaborate to bring your
+              ideas to life with smart, efficient solutions.
             </p>
             <div className="mt-4">
               <Button
@@ -131,12 +134,15 @@ export default function Page() {
               MernStack Developer
             </h2>
             <p className="text-[13px] font-medium leading-[30px] text-white">
-              I build modern, responsive, and scalable web applications using
-              MongoDB, Express.js, React.js, and Node.js. With strong skills in
-              React,TypeScript and Tailwind CSS I turn Figma designs into fully
-              functional, user-friendly websites that perform flawlessly across
-              all devices. Let’s collaborate and bring your ideas to life with
-              clean code and smart solutions! 🚀
+              I am a Full Stack Developer specializing in MERN (MongoDB,
+              Express.js, React.js, Node.js). I build modern, responsive, and
+              scalable web applications with a focus on both frontend and
+              backend. Skilled in React, TypeScript, Tailwind CSS, and Node.js,
+              I integrate REST APIs, authentication systems, and dynamic
+              features to deliver fully functional, user-friendly websites. I
+              turn Figma designs into clean, maintainable code that performs
+              flawlessly across all devices. Let’s collaborate to bring your
+              ideas to life with smart, efficient solutions.
             </p>
             <div className="mt-6">
               <Button

@@ -3,6 +3,7 @@
 import React, { Suspense, lazy } from "react";
 import Navigations from "./partials/navigations/navigations";
 import Loading from "./partials/loading";
+import { Toaster } from "react-hot-toast";
 
 // Lazy load components
 const LazyAnimation = lazy(() => import("@/component/partials/animation"));
@@ -24,6 +25,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         <LazySetting />
       </Suspense>
 
+      <Toaster />
       <main>{children}</main>
 
       <div className="hidden md:flex">
