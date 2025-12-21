@@ -2,7 +2,7 @@
 import Button from "@/component/button";
 import Image from "next/image";
 import React from "react";
-import ProfileImage from "@/public/assets/img/Me.jpg";
+import ProfileImage from "@/public/assets/img/Me.png";
 import DefaultImage from "@/public/assets/img/defult.jpeg";
 import { useSelector } from "react-redux";
 import { RootState } from "@/store";
