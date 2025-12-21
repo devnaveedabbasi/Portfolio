@@ -18,9 +18,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Naveed Abbasi | Naveed Hassan | MERN Stack Developer",
+  title: "Naveed Abbasi | FullStack Developer | MERN Stack Developer",
   description:
-    "Official portfolio of Naveed Abbasi (also known as Naveed Hassan) - MERN Stack Developer, React.js & Next.js Specialist. Explore my projects, skills, and experience in full-stack web development.",
+    "Official portfolio of Naveed Abbasi - FullStack Developer, React.js & Next.js Specialist. Explore my projects, skills, and experience in full-stack web development.",
   keywords: [
     "Naveed",
     "Naveed Abbasi",

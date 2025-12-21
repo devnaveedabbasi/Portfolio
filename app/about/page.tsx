@@ -38,9 +38,9 @@ export default function Page() {
     exper: string;
   }
   const ExperinceData: ExperinceDefineType[] = [
-    { years: 6, exper: "Moths of experience" },
+    { years: 1, exper: "Year of experience" },
     { years: 43, exper: "Completed  projects" },
-    { years: 21, exper: "Happy customers" },
+    { years: 16, exper: "Happy customers" },
     { years: 13, exper: "Awards won" },
   ];
   const downloadNow = () => {

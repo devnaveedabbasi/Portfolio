@@ -78,7 +78,7 @@ export const experiences: Experience[] = [
   {
     date: "2025 - Present",
     title: "Freelance MERN Stack Developer",
-    company: "Self-Employed",
+    company: "linkdin",
     description:
       "Working with clients to build MERN-based web applications, including responsive UIs and essential backend features.",
   },
