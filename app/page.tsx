@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     siteName: "Naveed Abbasi Portfolio",
     images: [
       {
-        url: "https://naveedabbasi.vercel.app/assets/img/Me.jpg", // 👈 public folder ka direct path
+        url: "https://naveedabbasi.vercel.app/assets/img/Me.png", // 👈 public folder ka direct path
         width: 1200,
         height: 630,
         alt: "Naveed Abbasi Portfolio Image",
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     title: "Naveed Abbasi - MERN Stack Developer",
     description:
       "MERN Stack Developer portfolio using MongoDB, Express.js, React.js, and Node.js with clean UI and responsive design.",
-    images: ["https://naveedabbasi.vercel.app/assets/img/Me.jpg"],
+    images: ["https://naveedabbasi.vercel.app/assets/img/Me.png"],
   },
 };
 

@@ -1,8 +1,38 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<!-- <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://naveedabbasi.vercel.app/</loc>
     <lastmod>2025-07-16</lastmod>
     <priority>1.00</priority>
+  </url>
+</urlset> -->
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+
+  <url>
+    <loc>https://naveedabbasi.vercel.app</loc>
+
+    <image:image>
+      <image:loc>
+        https://naveedabbasi.vercel.app/assets/img/Naveed_Abbasi.png
+      </image:loc>
+      <image:title>Naveed Abbasi Full Stack Developer</image:title>
+    </image:image>
+
+    <image:image>
+      <image:loc>
+        https://naveedabbasi.vercel.app/assets/img/Naveed_Abbasi.png
+      </image:loc>
+      <image:title>Naveed Abbasi LinkedIn Profile</image:title>
+    </image:image>
+
+    <image:image>
+      <image:loc>
+        https://naveedabbasi.vercel.app/assets/img/consultation.png
+      </image:loc>
+      <image:title>Free Consultation with Naveed Abbasi</image:title>
+    </image:image>
+
   </url>
 </urlset>

@@ -5,7 +5,7 @@ import Setting from "@/component/partials/setting";
 import Image from "next/image";
 // import ProfileImage from "@/public/assets/img/profile.jpg";
 import DefaultImage from "@/public/assets/img/defult.jpeg";
-import ProfileImage from "@/public/assets/img/Me.jpg";
+import ProfileImage from "@/public/assets/img/Me.png";
 import Button from "@/component/button";
 import Sidebar from "@/component/partials/sideBarNav";
 import { useSelector } from "react-redux";
@@ -63,7 +63,7 @@ export default function Page() {
               I&apos;m Naveed Abbasi
             </h1>
             <h2 className="mb-4 ml-11 font-PoppinsHeading text-[43px] font-bold uppercase leading-[42px]">
-              MernStack Developer{" "}
+              FullStack Developer{" "}
             </h2>
             <p className="mt-6 text-[16px] font-medium leading-[32px] text-white">
               I am a Full Stack Developer specializing in MERN (MongoDB,
@@ -131,7 +131,7 @@ export default function Page() {
               I&apos;m Naveed Abbasi
             </h1>
             <h2 className="fo mb-4 text-[38px] font-bold uppercase leading-[48px] text-white">
-              MernStack Developer
+              FullStack Developer
             </h2>
             <p className="text-[13px] font-medium leading-[30px] text-white">
               I am a Full Stack Developer specializing in MERN (MongoDB,
