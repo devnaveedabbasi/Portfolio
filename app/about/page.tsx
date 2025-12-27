@@ -39,9 +39,9 @@ export default function Page() {
   }
   const ExperinceData: ExperinceDefineType[] = [
     { years: 1, exper: "Year of experience" },
-    { years: 43, exper: "Completed  projects" },
-    { years: 16, exper: "Happy customers" },
-    { years: 13, exper: "Awards won" },
+    { years: 18, exper: "Completed  projects" },
+    { years: 12, exper: "Happy customers" },
+    { years: 10, exper: "Awards won" },
   ];
   const downloadNow = () => {
     const link = document.createElement("a");
@@ -95,7 +95,7 @@ export default function Page() {
                           key={index}
                           className="flex flex-col py-2 md:flex-row"
                         >
-                          <span className="text-[13px] text-gray-300 md:text-[16px]">{`${key} :`}</span>{" "}
+                          <span className="text-[13px] text-gray-300 md:text-[16px]">{`${key}:`}</span>{" "}
                           <span className="text-[13px] font-medium capitalize text-white md:text-[15px]">
                             {Array.isArray(value) ? value.join(", ") : value}
                           </span>
