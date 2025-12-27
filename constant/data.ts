@@ -201,6 +201,44 @@ export interface Portfolio {
 
 export const PortfolioData: Portfolio[] = [
   {
+  cardImage: "/assets/img/Projects/Cozet/hero.png",
+  ProjectVedio:
+    "https://drive.google.com/file/d/1yhj3d1XX8DwBUKhPigbKneUNQEYnizpz/preview",
+  name: "Cozet Solution Digital Agency Website",
+  shortDescription:
+    "A modern static digital agency website built with React and Tailwind CSS.",
+  description:
+    "Cozet Solution is a React-based static digital agency website designed to showcase professional services, portfolio projects, client testimonials, and team members. The website focuses on clean UI, smooth animations, and performance optimization. It is ideal for digital agencies or personal portfolios, providing a strong online presence without backend complexity.",
+  link: "https://www.linkedin.com/in/naveed-abbasi/",
+  liveUrl: "https://cozech-solution.vercel.app/",
+  projectType: "Frontend",
+  timeline: "2 Days",
+  features: [
+    "Modern and responsive digital agency UI",
+    "Services showcase with clean layouts",
+    "Portfolio section with project highlights",
+    "Client testimonials and FAQ section",
+    "Team members and statistics display",
+    "Smooth animations using Framer Motion",
+    "Reusable and scalable React components",
+    "Optimized for performance and SEO",
+  ],
+  challenges: [
+    "Optimizing large media assets for better performance",
+    "Improving Lighthouse performance scores",
+    "Managing animations without impacting page speed",
+    "Ensuring responsive design across all devices",
+    "Maintaining clean and scalable component structure",
+  ],
+  Technologies:
+    "React JS, Vite, Tailwind CSS, Framer Motion, Lucide Icons, JavaScript, HTML5, CSS3",
+  // galleryImages: [
+  //   "/assets/img/Projects/Cozet/hero.png",
+  //   "/assets/img/Projects/Cozet/1.png",  
+  // ],
+}
+,
+  {
     cardImage: "/assets/img/Projects/BookStore/BookStore.png",
     ProjectVedio:
       "https://drive.google.com/file/d/1eJrYklpdFvJKis7j--dzfXJRXChJOsSF/preview",

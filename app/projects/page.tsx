@@ -88,16 +88,16 @@ export default function Page() {
     };
   }, []);
 
-  const getProjectTypeColor = (type: string) => {
-    switch (type) {
-      case "freelance":
-        return "bg-orange-500/20 text-orange-300 border-orange-500";
-      case "client":
-        return "bg-blue-500/20 text-blue-300 border-blue-500";
-      default:
-        return "bg-green-500/20 text-green-300 border-green-500";
-    }
-  };
+  // const getProjectTypeColor = (type: string) => {
+  //   switch (type) {
+  //     case "freelance":
+  //       return "bg-orange-500/20 text-orange-300 border-orange-500";
+  //     case "client":
+  //       return "bg-blue-500/20 text-blue-300 border-blue-500";
+  //     default:
+  //       return "bg-green-200 text-green-900 border-green-500";
+  //   }
+  // };
 
   return (
     <>
@@ -142,13 +142,13 @@ export default function Page() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
 
                   {/* Project Type Badge */}
-                  <div className="absolute left-3 top-3 z-10">
+                  {/* <div className="absolute left-3 top-3 z-10">
                     <span
                       className={`rounded-full border px-2 py-1 text-xs font-bold uppercase ${getProjectTypeColor(data.projectType)}`}
                     >
                       {data.projectType}
                     </span>
-                  </div>
+                  </div> */}
 
                   {/* View Project Button */}
                   <div className="absolute right-3 top-3 z-10 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
