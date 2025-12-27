@@ -56,7 +56,7 @@ export default function Page() {
     <>
       <MobileNavigation navHeadFirst="About" NavHeadSec="Us" />
 
-      <div className="h-full w-full bg-[#111111]">
+      <div className="h-full w-full bg-black">
         <div className="ml-5 hidden h-[210px] items-center justify-center md:flex">
           <HeaderText
             backHead="RESUME"
@@ -65,9 +65,8 @@ export default function Page() {
           />
         </div>
 
-        {/* Mobile */}
 
-        <section className="mb-5 mt-20 flex h-fit w-full items-center justify-center">
+        <section className="mb-5 mt-20  flex h-fit w-full items-center justify-center">
           <div className="!-ml-10 grid h-full w-[83%] grid-cols-1 lg:grid-cols-2">
             <div className="">
               <h1 className="ml-4 font-Poppins text-[26px] font-semibold uppercase leading-[31.2px] tracking-wide text-white md:ml-0">
@@ -164,8 +163,8 @@ export default function Page() {
         </section>
 
         {/* Skills */}
-        <section className="h-full w-full">
-          <div className="min-h-screen p-2 md:p-10">
+        <section className="h- w-full  bg-[#111111]  ">
+          <div className=" md:p-10">
             <h1 className="mb-10 text-center text-3xl font-bold text-[#ffffff]">
               Skills Progress
             </h1>
@@ -181,94 +180,113 @@ export default function Page() {
           </div>
         </section>
 
-        {/* Education */}
+        {/* Education  & Experieme*/}
 
-        <section>
-          <div className="mx-auto w-[80%] px-5 py-10 text-white">
-            <h1 className="mb-8 text-center text-[26px] font-bold leading-[31.2px]">
-              EDUCATION & EXPERIENCE
-            </h1>
-            <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-              <div>
-                {educations.map((edu, index) => (
-                  <div
-                    key={index}
-                    className="relative mb-6 flex h-fit items-start overflow-hidden"
-                  >
-                    <div className="relative top-1 mr-4 text-3xl">
-                      <div
-                        className="rounded-full p-2"
-                        style={{ backgroundColor: selectedColor }}
-                      >
-                        <Icon
-                          icon="tdesign:education-filled"
-                          width={20}
-                          height={20}
-                        />
-                      </div>
-                      <div className="absolute left-1/2 top-9 h-[120px] w-[1px] bg-gray-800 md:h-[80px]"></div>
-                    </div>
-                    <div className="mt-2">
-                      <span className="rounded-full bg-[#212121] px-3 py-1 font-Poppins text-[12px] text-gray-200">
-                        {edu.date}
-                      </span>
-                      <div className="mt-4">
-                        <h2 className="mt-2 text-[18px] font-medium leading-[21.6px]">
-                          {edu.title}{" "}
-                          <span className="text-white opacity-[0.8]">
-                            – {edu.institution}
-                          </span>
-                        </h2>
-                        <p className="mt-1 font-Open_Sans text-[14px] font-medium leading-[22.4px] text-gray-300">
-                          {edu.description}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              <div>
-                {experiences.map((exp, index) => (
-                  <div
-                    key={index}
-                    className="relative mb-10 flex h-fit items-start overflow-hidden"
-                  >
-                    <div className="text-1xl relative top-1 mr-4">
-                      <div
-                        className="rounded-full p-2"
-                        style={{ backgroundColor: selectedColor }}
-                      >
-                        <Icon
-                          icon="hugeicons:permanent-job"
-                          width={20}
-                          height={20}
-                        />
-                      </div>
-                      <div className="absolute left-1/2 top-9 h-[120px] w-[1px] bg-gray-800 md:h-[80px]"></div>
-                    </div>
-                    <div className="mt-2">
-                      <span className="mb-4 rounded-full bg-[#212121] px-2 py-2 font-Poppins text-[12px] text-gray-200">
-                        {exp.date}
-                      </span>
-                      <div className="mt-4">
-                        <h2 className="mt-2 text-[18px] font-medium leading-[21.6px]">
-                          {exp.title}{" "}
-                          <span className="text-white opacity-[0.8]">
-                            – {exp.company}
-                          </span>
-                        </h2>
-                        <p className="mt-1 font-Open_Sans text-[14px] font-medium leading-[22.4px] text-gray-300">
-                          {exp.description}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
+       <section className="bg-black py-10 px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-6xl">
+        <h1 className="mb-8 sm:mb-12 text-center text-2xl sm:text-3xl lg:text-4xl font-bold text-white">
+          EDUCATION & EXPERIENCE
+        </h1>
+        
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+        {/* Education Section */}
+<div>
+  <h2 className="text-xl sm:text-2xl font-semibold text-white mb-6 lg:hidden">
+    Education
+  </h2>
+  <div className="relative">
+    {/* Single vertical line for all education items */}
+    <div className="absolute left-[18px] top-0 bottom-0 w-[2px] bg-gray-800 z-0"></div>
+    
+    {educations.map((edu, index) => (
+      <div
+        key={index}
+        className="relative mb-8 sm:mb-10 flex items-start"
+      >
+        <div className="relative mr-4 flex-shrink-0 z-10">
+          <div
+            className="rounded-full p-2"
+            style={{ backgroundColor: selectedColor }}
+          >
+            <Icon
+              icon="tdesign:education-filled"
+              width={20}
+              height={20}
+              className="text-white"
+            />
           </div>
-        </section>
+        </div>
+        
+        <div className="flex-1 pt-1">
+          <span className="inline-block rounded-full bg-[#212121] px-3 py-1 text-xs sm:text-sm text-gray-200 mb-3">
+            {edu.date}
+          </span>
+          <h3 className="text-base sm:text-lg font-medium text-white leading-relaxed">
+            {edu.title}{" "}
+            <span className="text-gray-400 block sm:inline mt-1 sm:mt-0">
+              – {edu.institution}
+            </span>
+          </h3>
+          <p className="mt-2 text-sm sm:text-base text-gray-300 leading-relaxed">
+            {edu.description}
+          </p>
+        </div>
+      </div>
+    ))}
+  </div>
+</div>
+
+          {/* Experience Section */}
+         <div>
+  <h2 className="text-xl sm:text-2xl font-semibold text-white mb-6 lg:hidden">
+    Experience
+  </h2>
+  <div className="relative">
+    {/* Main vertical line */}
+    <div className="absolute left-[18px] top-0 bottom-0 w-[2px] bg-gray-800 z-0"></div>
+    
+    {experiences.map((exp, index) => (
+      <div
+        key={index}
+        className="relative flex items-start mb-8 sm:mb-10"
+      >
+        {/* Icon container */}
+        <div className="relative z-10 mr-4 flex-shrink-0">
+          <div
+            className="rounded-full p-2"
+            style={{ backgroundColor: selectedColor }}
+          >
+            <Icon
+              icon="hugeicons:permanent-job"
+              width={20}
+              height={20}
+              className="text-white"
+            />
+          </div>
+        </div>
+        
+        {/* Content */}
+        <div className="flex-1 pt-1">
+          <span className="inline-block rounded-full bg-[#212121] px-3 py-1 text-xs sm:text-sm text-gray-200 mb-3">
+            {exp.date}
+          </span>
+          <h3 className="text-base sm:text-lg font-medium text-white leading-relaxed">
+            {exp.title}{" "}
+            <span className="text-gray-400 block sm:inline mt-1 sm:mt-0">
+              – {exp.company}
+            </span>
+          </h3>
+          <p className="mt-2 text-sm sm:text-base text-gray-300 leading-relaxed">
+            {exp.description}
+          </p>
+        </div>
+      </div>
+    ))}
+  </div>
+</div>
+        </div>
+      </div>
+    </section>
       </div>
     </>
   );

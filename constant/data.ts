@@ -54,9 +54,9 @@ export const skills: Skill[] = [
   { skill: "CSS", percentage: 70 },
   { skill: "JavaScript", percentage: 75 },
   { skill: "TypeScript", percentage: 70 },
-  { skill: "Firebase", percentage: 55 },
+  { skill: "Firebase", percentage: 75 },
   { skill: "React.js", percentage: 85 },
-  { skill: "Next.js", percentage: 60 },
+  { skill: "Next.js", percentage: 80 },
   { skill: "Nodejs", percentage: 85 },
 ];
 
@@ -77,31 +77,31 @@ interface Education {
 export const experiences: Experience[] = [
   {
     date: "2025 - Present",
-    title: "Freelance MERN Stack Developer",
-    company: "linkdin",
+    title: "Full Stack Developer (Freelance)",
+    company: "Linkdin",
     description:
-      "Working with clients to build MERN-based web applications, including responsive UIs and essential backend features.",
+      "Freelance MERN Stack developer handling frontend and backend to deliver complete web applications for various client requirements.", // 23 words
   },
   {
     date: "2025",
-    title: "MERN Stack Developer",
+    title: "Full Stack Developer",
     company: "Verior",
     description:
-      "Completed a 2-month full-time, paid onsite internship as a MERN Stack Developer. Worked on real-world projects using React.js, Node.js, Express.js, and MongoDB.",
+      "Developed full-stack projects using Node.js, React.js, Next.js with backend APIs, REST/FastAPI integration, Figma to Next.js conversion, Firebase, and client collaboration.", // 24 words
   },
   {
     date: "2024 - 2025",
-    title: "Frontend Developer",
+    title: "React Developer",
     company: "Digital Elliptical",
     description:
-      "Completed a3-month full-time onsite role as a Frontend Developer, focusing on building responsive web applications with React.js, Tailwind CSS, and modern UI/UX practices.",
+      "Three-month onsite React Developer focusing on responsive web applications using React.js, Tailwind CSS, and modern UI/UX design practices.", // 22 words
   },
   {
     date: "2024",
     title: "Frontend Developer",
     company: "YoungDevIntern",
     description:
-      "Completed a 1-month remote internship as a Frontend Developer, working on static and interactive websites using HTML, CSS, and JavaScript.",
+      "One-month remote internship as Frontend Developer working on static and interactive websites using HTML, CSS, and JavaScript technologies.", // 21 words
   },
 ];
 
@@ -111,20 +111,20 @@ export const educations: Education[] = [
     title: "BS Software Engineering",
     institution: "Virtual University of Pakistan",
     description:
-      "Pursuing my first year with a strong focus on core software engineering fundamentals.",
+      "Pursuing first year with strong focus on core software engineering fundamentals and programming principles currently.", // 20 words
   },
   {
     date: "2023-2024",
     title: "Web & Mobile App Development",
     institution: "SMIT Hyderabad",
     description:
-      "Completed a comprehensive course in web and mobile app development.",
+      "Completed comprehensive course in web and mobile app development covering various programming technologies and frameworks.", // 21 words
   },
   {
     date: "2017-2021",
     title: "Memorization of Quran",
     institution: "Madrasa Tajweed-ul-Quran",
-    description: "Successfully completed Hifz-e-Quran with a focus on Tajweed.",
+    description: "Successfully completed Hifz-e-Quran with dedicated focus on Tajweed rules and proper recitation techniques.", // 20 words
   },
 ];
 
