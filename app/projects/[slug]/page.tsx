@@ -225,7 +225,7 @@ export default function ProjectDetailPage() {
               <div className="space-y-3">
                 {/* LinkedIn Post Link */}
                 <a
-                  href={project.link}
+                  href={!project.link ? "https://www.linkedin.com/in/naveed-abbasi/" : project.link}
                   target="_blank"
                   rel="noreferrer"
                   className="flex w-full items-center gap-2 rounded-lg bg-blue-600 px-4 py-3 font-semibold transition-all hover:bg-blue-700 hover:shadow-lg"

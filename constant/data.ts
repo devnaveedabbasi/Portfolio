@@ -201,6 +201,61 @@ export interface Portfolio {
 
 export const PortfolioData: Portfolio[] = [
   {
+  cardImage: "/assets/img/projects/Alex/hero.png",
+  ProjectVedio: "https://drive.google.com/file/d/1EwMzX8tFNR224HQIqzzmZvrBNGBR0Ccy/preview",
+
+  name: "Alex Sezun",
+  link: "/projects/alex", // Added missing link property
+
+  shortDescription:
+    "A premium personal marketing website built to showcase expertise in growth marketing, content strategy, and conversion-focused systems.",
+
+  description:
+    "A high-end static marketing website developed using React.js, TypeScript, and Tailwind CSS. The site is designed to position a marketing expert as a premium brand, featuring smooth scroll navigation, animated sections using AOS and Framer Motion, and a performance-optimized architecture. The website highlights services, expertise, testimonials, and contact funnels with a strong focus on conversions and storytelling.",
+
+  liveUrl: "https://alex-tan.vercel.app/",
+  projectType: "Frontend",
+  timeline: "5–7 days",
+
+  features: [
+    // UI / UX
+    "Premium dark UI with brand-focused design",
+    "Fully responsive layout for all devices",
+    "Smooth scrolling navigation",
+
+    // Animations
+    "Scroll-based animations using AOS",
+    "Micro-interactions with Framer Motion",
+    "Animated stats and progress bars",
+
+    // Performance
+    "Static site for fast load times",
+    "Optimized Tailwind CSS utility usage",
+
+    // Branding
+    "Custom typography using Google Fonts",
+    "Gradient-based brand highlights",
+  ],
+
+  challenges: [
+    "Balancing premium animations with smooth performance",
+    "Preventing scroll jank with multiple animation libraries",
+    "Ensuring consistent design across all sections",
+    "Optimizing AOS and Framer Motion together",
+  ],
+
+  Technologies:
+  "React.js,  TypeScript, Tailwind CSS, Framer Motion , AOS , Lucide Icons, Vercel (Deployment)",
+  galleryImages: [
+    "/assets/img/projects/Alex/hero.png",
+    "/assets/img/projects/Alex/1.png",
+    "/assets/img/projects/Alex/2.png",
+    "/assets/img/projects/Alex/3.png",
+    "/assets/img/projects/Alex/4.png",
+    "/assets/img/projects/Alex/5.png",
+  ],
+},
+  {
   cardImage: "/assets/img/Projects/Cozet/hero.png",
   ProjectVedio:
     "https://drive.google.com/file/d/1yhj3d1XX8DwBUKhPigbKneUNQEYnizpz/preview",
@@ -225,17 +280,23 @@ export const PortfolioData: Portfolio[] = [
   ],
   challenges: [
     "Optimizing large media assets for better performance",
-    "Improving Lighthouse performance scores",
     "Managing animations without impacting page speed",
     "Ensuring responsive design across all devices",
     "Maintaining clean and scalable component structure",
   ],
   Technologies:
     "React JS, Vite, Tailwind CSS, Framer Motion, Lucide Icons, JavaScript, HTML5, CSS3",
-  // galleryImages: [
-  //   "/assets/img/Projects/Cozet/hero.png",
-  //   "/assets/img/Projects/Cozet/1.png",  
-  // ],
+    galleryImages: [
+      "/assets/img/Projects/Cozet/hero.png",
+      "/assets/img/Projects/Cozet/1.png",  
+      "/assets/img/Projects/Cozet/2.png",  
+      "/assets/img/Projects/Cozet/3.png",  
+      "/assets/img/Projects/Cozet/4.png",  
+      "/assets/img/Projects/Cozet/5.png",  
+      "/assets/img/Projects/Cozet/6.png",
+      "/assets/img/Projects/Cozet/7.png",  
+
+  ],
 }
 ,
   {
