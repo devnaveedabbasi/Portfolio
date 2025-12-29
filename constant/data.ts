@@ -201,7 +201,7 @@ export interface Portfolio {
 
 export const PortfolioData: Portfolio[] = [
   {
-  cardImage: "/assets/img/projects/Alex/hero.png",
+  cardImage: "/assets/img/projects/Alex/heroAlex.png",
   ProjectVedio: "https://drive.google.com/file/d/1EwMzX8tFNR224HQIqzzmZvrBNGBR0Ccy/preview",
 
   name: "Alex Sezun",
@@ -249,12 +249,10 @@ export const PortfolioData: Portfolio[] = [
     galleryImages: [
       "/assets/img/Projects/Alex/heroAlex.png",
       "/assets/img/Projects/Alex/1.png",  
-      "/assets/img/Projects/Cozet/2.png",  
-      "/assets/img/Projects/Cozet/3.png",  
-      "/assets/img/Projects/Cozet/4.png",  
-      "/assets/img/Projects/Cozet/5.png",  
-      "/assets/img/Projects/Cozet/6.png",
-      "/assets/img/Projects/Cozet/7.png",  
+      "/assets/img/Projects/Alex/2.png",  
+      "/assets/img/Projects/Alex/3.png",  
+      "/assets/img/Projects/Alex/4.png",  
+      "/assets/img/Projects/Alex/5.png",  
 
   ],
   // galleryImages: [
