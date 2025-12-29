@@ -247,7 +247,7 @@ export const PortfolioData: Portfolio[] = [
   Technologies:
   "React.js,  TypeScript, Tailwind CSS, Framer Motion , AOS , Lucide Icons, Vercel (Deployment)",
   galleryImages: [
-    "/assets/img/projects/Alex/hero.png",
+    "/assets/img/projects/Alex/heroAlex.png",
     "/assets/img/projects/Alex/1.png",
     "/assets/img/projects/Alex/2.png",
     "/assets/img/projects/Alex/3.png",
