@@ -6,6 +6,7 @@ import "quill/dist/quill.snow.css";
 import StoreProvider from "@/app/storeProvider";
 import Layout from "@/component/layout";
 import SeoImageLinks from "@/component/SeoImageLInks";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -103,7 +104,10 @@ export default function RootLayout({
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         >
-          <Layout>{children}</Layout>
+          <Layout>
+            {children}   
+                 <SpeedInsights />
+</Layout>
           {/* 🔥 Hidden SEO Image Links (NO UI) */}
           <SeoImageLinks />
 
