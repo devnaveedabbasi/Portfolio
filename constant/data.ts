@@ -246,14 +246,25 @@ export const PortfolioData: Portfolio[] = [
 
   Technologies:
   "React.js,  TypeScript, Tailwind CSS, Framer Motion , AOS , Lucide Icons, Vercel (Deployment)",
-  galleryImages: [
-    "/assets/img/projects/Alex/heroAlex.png",
-    "/assets/img/projects/Alex/1.png",
-    "/assets/img/projects/Alex/2.png",
-    "/assets/img/projects/Alex/3.png",
-    "/assets/img/projects/Alex/4.png",
-    "/assets/img/projects/Alex/5.png",
+    galleryImages: [
+      "/assets/img/Projects/Cozet/hero.png",
+      "/assets/img/Projects/Cozet/1.png",  
+      "/assets/img/Projects/Cozet/2.png",  
+      "/assets/img/Projects/Cozet/3.png",  
+      "/assets/img/Projects/Cozet/4.png",  
+      "/assets/img/Projects/Cozet/5.png",  
+      "/assets/img/Projects/Cozet/6.png",
+      "/assets/img/Projects/Cozet/7.png",  
+
   ],
+  // galleryImages: [
+  //   "/assets/img/projects/Alex/heroAlex.png",
+  //   "/assets/img/projects/Alex/1.png",
+  //   "/assets/img/projects/Alex/2.png",
+  //   "/assets/img/projects/Alex/3.png",
+  //   "/assets/img/projects/Alex/4.png",
+  //   "/assets/img/projects/Alex/5.png",
+  // ],
 },
   {
   cardImage: "/assets/img/Projects/Cozet/hero.png",
