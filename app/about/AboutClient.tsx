@@ -38,19 +38,19 @@ export default function AboutClient({
   // Skills data - aap isko constant/data.ts se bhi import kar sakte ho
   const skills = {
     frontend: [
-      "HTML5", "CSS3", "JavaScript", "TypeScript", "React.js", "Next.js", 
-      "Tailwind CSS", "Bootstrap", "Material-UI", "Framer Motion", "GSAP","Chakra UI","Redux Toolkit","Zustand"
+      "HTML5", "CSS3", "JavaScript", "TypeScript", "React.js", "Next.js",
+      "Tailwind CSS", "Bootstrap", "Material-UI", "Framer Motion", "GSAP", "Chakra UI", "Redux Toolkit", "Zustand"
     ],
     backend: [
-      "Node.js", "Express.js", "MongoDB", "MySQL", "Firebase","Supabase", "REST APIs","Fast Api",
-      "JWT Authentication", "Socket.io","Ai Integration"
+      "Node.js", "Express.js", "MongoDB", "MySQL", "Firebase", "Supabase", "REST APIs", "Fast Api",
+      "JWT Authentication", "Socket.io", "Ai Integration"
     ],
     tools: [
       "Git", "GitHub", "VS Code", "Figma", "Postman", "Vercel", "Netlify",
       "Cloudflare", "NPM/Yarn", "ESLint", "Prettier"
     ],
     languages: [
-      "JavaScript","TypeScript" ,"Python",, "C++", 
+      "JavaScript", "TypeScript", "Python", , "C++",
     ]
   };
 
@@ -92,7 +92,7 @@ export default function AboutClient({
                   <h2 className="mb-6 font-Poppins text-2xl font-semibold uppercase leading-[31.2px] tracking-wide text-white md:text-[26px]">
                     Personal Information
                   </h2>
-                  
+
                   <div className="mb-8 flex flex-col items-center md:flex-row md:items-start md:gap-6">
                     {/* Profile Image for Mobile */}
                     <div className="mb-6 flex w-full justify-center md:hidden">
@@ -101,6 +101,8 @@ export default function AboutClient({
                           src="/assets/img/Me.png"
                           fill
                           priority
+                          fetchPriority="high"
+
                           alt="Naveed Abbasi Profile"
                           className="rounded-full border-4 border-[#252525] object-cover"
                         />
@@ -121,8 +123,8 @@ export default function AboutClient({
                               key={index}
                               className="flex  items-start text-wrap gap-3 rounded-lg border border-[#252525] bg-[#111111] p-3"
                             >
-                              <Icon 
-                                icon={icon} 
+                              <Icon
+                                icon={icon}
                                 width={20}
                                 className="mt-0.5 flex-shrink-0"
                                 style={{ color: selectedColor }}
@@ -163,6 +165,8 @@ export default function AboutClient({
                         src="/assets/img/Me.png"
                         fill
                         priority
+                        fetchPriority="high"
+
                         alt="Naveed Abbasi Profile"
                         className="rounded-full border-4 border-[#252525] object-cover"
                       />
@@ -173,7 +177,7 @@ export default function AboutClient({
                   <h2 className="mb-6 font-Poppins text-2xl font-semibold uppercase leading-[31.2px] tracking-wide text-white md:text-[26px]">
                     Professional Highlightss
                   </h2>
-                  
+
                   <div className="grid grid-cols-2 gap-4">
                     {experienceData.map((val, idx) => (
                       <div
@@ -220,13 +224,13 @@ export default function AboutClient({
               {/* Frontend Skills */}
               <div className="rounded-xl border border-[#252525] bg-black p-6">
                 <div className="mb-6 flex items-center gap-3">
-                  <div 
+                  <div
                     className="flex h-10 w-10 items-center justify-center rounded-lg"
                     style={{ backgroundColor: selectedColor + '20' }}
                   >
-                    <Icon 
-                      icon="mdi:monitor" 
-                      width={20} 
+                    <Icon
+                      icon="mdi:monitor"
+                      width={20}
                       style={{ color: selectedColor }}
                     />
                   </div>
@@ -247,13 +251,13 @@ export default function AboutClient({
               {/* Backend Skills */}
               <div className="rounded-xl border border-[#252525] bg-black p-6">
                 <div className="mb-6 flex items-center gap-3">
-                  <div 
+                  <div
                     className="flex h-10 w-10 items-center justify-center rounded-lg"
                     style={{ backgroundColor: selectedColor + '20' }}
                   >
-                    <Icon 
-                      icon="mdi:server" 
-                      width={20} 
+                    <Icon
+                      icon="mdi:server"
+                      width={20}
                       style={{ color: selectedColor }}
                     />
                   </div>
@@ -274,13 +278,13 @@ export default function AboutClient({
               {/* Tools & Technologies */}
               <div className="rounded-xl border border-[#252525] bg-black p-6">
                 <div className="mb-6 flex items-center gap-3">
-                  <div 
+                  <div
                     className="flex h-10 w-10 items-center justify-center rounded-lg"
                     style={{ backgroundColor: selectedColor + '20' }}
                   >
-                    <Icon 
-                      icon="mdi:tools" 
-                      width={20} 
+                    <Icon
+                      icon="mdi:tools"
+                      width={20}
                       style={{ color: selectedColor }}
                     />
                   </div>
@@ -301,13 +305,13 @@ export default function AboutClient({
               {/* Programming Languages */}
               <div className="rounded-xl border border-[#252525] bg-black p-6">
                 <div className="mb-6 flex items-center gap-3">
-                  <div 
+                  <div
                     className="flex h-10 w-10 items-center justify-center rounded-lg"
                     style={{ backgroundColor: selectedColor + '20' }}
                   >
-                    <Icon 
-                      icon="mdi:code-braces" 
-                      width={20} 
+                    <Icon
+                      icon="mdi:code-braces"
+                      width={20}
                       style={{ color: selectedColor }}
                     />
                   </div>
