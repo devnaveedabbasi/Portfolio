@@ -29,15 +29,17 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, closeSidebar }) => {
       >
         <SimpleBar onClick={closeSidebar} style={{ maxHeight: "100%" }}>
           <div className="flex w-[100%] items-center justify-end py-4">
-            <button
-              onClick={closeSidebar}
-              className="mr-6 cursor-pointer text-[30px] text-white"
-            >
-              <Icon
-                icon="akar-icons:cross"
-                className="text-1xl cursor-pointer"
-              />
-            </button>
+        <button
+  onClick={closeSidebar}
+  className="mr-6 cursor-pointer text-[30px] text-white"
+  aria-label="Close sidebar"
+>
+  <Icon
+    icon="akar-icons:cross"
+    className="text-1xl cursor-pointer"
+  />
+</button>
+
           </div>
 
           {menuIcons.map((menu, idx) => (

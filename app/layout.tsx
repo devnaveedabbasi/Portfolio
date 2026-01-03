@@ -7,16 +7,7 @@ import StoreProvider from "@/app/storeProvider";
 import Layout from "@/component/layout";
 import SeoImageLinks from "@/component/SeoImageLInks";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import { shouldShowSpeedInsights } from "@/utlis/environment";
 
 export const metadata: Metadata = {
   title: "Naveed Abbasi | FullStack Developer | MERN Stack Developer",
@@ -100,6 +91,10 @@ export default function RootLayout({
     <StoreProvider>
       <html lang="en">
         <head>
+            <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Portfolio of Naveed Abbasi" />
+
+    
           {/* ✅ Google Site Verification Tag */}
           <meta
             name="google-site-verification"
@@ -123,7 +118,8 @@ export default function RootLayout({
         
           <Layout>
             {children}
-            <SpeedInsights />
+            {/* ✅ Load SpeedInsights only in production */}
+            {shouldShowSpeedInsights() && <SpeedInsights />}
           </Layout>
           <SeoImageLinks />
 

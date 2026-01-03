@@ -32,22 +32,14 @@ export default function Loader() {
 
   const loaderContent = useMemo(
     () => (
-      <div className="fixed inset-0 z-50 flex items-center justify-center bg-black overflow-hidden">
-        <div
-          className="layer layer-1"
-          style={{ backgroundColor: selectedColor || "#111111" }}
-        ></div>
-        <div className="layer layer-2" style={{ backgroundColor: "#333333" }}></div>
-        <div
-          className="layer layer-3"
-          style={{ backgroundColor: selectedColor || "#111111" }}
-        ></div>
-        <div className="layer layer-4" style={{ backgroundColor: "#555555" }}></div>
-        <div
-          className="layer layer-5"
-          style={{ backgroundColor: selectedColor || "#111111" }}
-        ></div>
-      </div>
+    <div className="fixed inset-0 z-50 flex items-center justify-center overflow-hidden">
+  <div className="layer layer-1" style={{ backgroundColor: selectedColor || "#111111" }} />
+  <div className="layer layer-2" style={{ backgroundColor: "#333333" }} />
+  <div className="layer layer-3" style={{ backgroundColor: "#555555" }} />
+  <div className="layer layer-4" style={{ backgroundColor: "#777777" }} />
+  <div className="layer layer-5" style={{ backgroundColor: "#999999" }} />
+</div>
+
     ),
     [selectedColor]
   );
