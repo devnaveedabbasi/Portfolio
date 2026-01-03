@@ -208,7 +208,7 @@ const ContactClient: React.FC<ContactClientProps> = ({ socialIcons }) => {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full rounded-full bg-gradient-to-r px-8 py-3 font-semibold text-white transition-all duration-300 hover:scale-105 disabled:opacity-50"
+                className="w-full rounded-full !mb-10 bg-gradient-to-r px-8 py-3 font-semibold text-white transition-all duration-300 hover:scale-105 disabled:opacity-50"
                 style={{
                   backgroundImage: `linear-gradient(135deg, ${selectedColor}, ${selectedColor}CC)`,
                 }}

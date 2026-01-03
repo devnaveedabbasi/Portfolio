@@ -136,7 +136,7 @@ export default function ProjectsClient({ portfolioData }: ProjectsClientProps) {
       <MobileNavigation navHeadFirst="My" NavHeadSec="Works" />
 
       {/* Simple Header Section */}
-      <div className="ml-5 hidden h-[180px] items-center justify-center bg-black md:flex">
+      <div className=" hidden h-[180px] items-center justify-center bg-black md:flex">
         <HeaderText
           backHead="Portfolio"
           frontHeadSimple="My Creative"
@@ -145,7 +145,7 @@ export default function ProjectsClient({ portfolioData }: ProjectsClientProps) {
       </div>
 
       {/* Fixed Portfolio Grid */}
-      <div className="min-h-screen bg-black py-6 md:py-8">
+      <div className="min-h-screen md:mt-0 mt-16 bg-black py-6 md:py-8">
         <div
           ref={containerRef}
           className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8"
@@ -177,7 +177,7 @@ export default function ProjectsClient({ portfolioData }: ProjectsClientProps) {
                       loading={imagePriority ? "eager" : "lazy"}
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
-                      quality={idx < 4 ? 85 : 75} // Reduce quality for later images
+                      // quality={idx < 4 ? 85 : 75} // Reduce quality for later images
                       placeholder="blur"
                       blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjMTExMTExIi8+PC9zdmc+"
                     />

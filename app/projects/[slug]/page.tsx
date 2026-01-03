@@ -579,7 +579,7 @@ export default function ProjectDetailPage() {
             height={400}
             priority
             fetchPriority="high"
-            className="h-96 w-full object-cover"
+            className="h-auto w-full md:object-cover object-fit"
           />
         </div>
 
