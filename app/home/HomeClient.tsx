@@ -1,25 +1,29 @@
+// app/HomeClient.tsx - CLIENT COMPONENT
 "use client";
+
 import React, { useState } from "react";
 import { Icon } from "@iconify/react";
 import Setting from "@/component/partials/setting";
 import Image from "next/image";
-
 import Button from "@/component/button";
 import Sidebar from "@/component/partials/sideBarNav";
 import { useSelector } from "react-redux";
 import { RootState } from "@/store";
 import { useRouter } from "next/navigation";
-export default function Page() {
+
+export default function HomeClient() {
   const selectedColor = useSelector(
     (state: RootState) => state.color.selectedColor,
   );
   const [isMenuBarOpen, setIsMenuBarOpen] = useState<boolean>(false);
   const router = useRouter();
+  
   const handleMenuToogle = (): void => {
     setIsMenuBarOpen((prevState) => !prevState);
   };
 
   const hanldeClose = (): void => setIsMenuBarOpen(false);
+  
   return (
     <>
       <div className="hidden h-screen w-full bg-[#111111] lg:flex">
@@ -40,8 +44,7 @@ export default function Page() {
                 height={100}
                 priority
                 alt="Profile"
-                  fetchPriority="high"             // ✅ hints browser to fetch ASAP
-
+                fetchPriority="high"
                 className="h-full w-full rounded-2xl object-cover drop-shadow"
               />
             </div>
@@ -73,7 +76,7 @@ export default function Page() {
               I integrate REST APIs, authentication systems, and dynamic
               features to deliver fully functional, user-friendly websites. I
               turn Figma designs into clean, maintainable code that performs
-              flawlessly across all devices. Let’s collaborate to bring your
+              flawlessly across all devices. Let&apos;s collaborate to bring your
               ideas to life with smart, efficient solutions.
             </p>
             <div className="mt-4">
@@ -84,8 +87,6 @@ export default function Page() {
               />
             </div>
           </div>
-
-          {/* <Navigations /> */}
         </div>
       </div>
 
@@ -114,13 +115,12 @@ export default function Page() {
           <Setting />
           <div className="mt-10 flex w-full justify-center">
             <Image
-                src="/assets/img/Me.webp"
+              src="/assets/img/Me.webp"
               width={280}
-  height={280}
+              height={280}
               priority
               alt="Profile"
-                fetchPriority="high"             // ✅ hints browser to fetch ASAP
-
+              fetchPriority="high"
               className="h-[280px] w-[280px] rounded-full border-4 border-[#252525] object-cover drop-shadow"
             />
           </div>
@@ -143,7 +143,7 @@ export default function Page() {
               I integrate REST APIs, authentication systems, and dynamic
               features to deliver fully functional, user-friendly websites. I
               turn Figma designs into clean, maintainable code that performs
-              flawlessly across all devices. Let’s collaborate to bring your
+              flawlessly across all devices. Let&apos;s collaborate to bring your
               ideas to life with smart, efficient solutions.
             </p>
             <div className="mt-6">

@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import HeroSection from "@/app/heroSection/page";
+import HeroSection from "@/app/home/page";
 
 export const metadata: Metadata = {
   title: "Naveed Abbasi - MERN Stack Developer",

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Open_Sans, Poppins } from "next/font/google";
+import {  Open_Sans, Poppins } from "next/font/google";
 import "./globals.css";
 import "./blog-styles.css";
 import "quill/dist/quill.snow.css";

@@ -34,7 +34,7 @@ export default function SeoImageLinks() {
         rel="noopener noreferrer"
       >
         <Image
-          src="/assets/img/get-free-consultation.png"
+          src="/assets/img/consultation.png"
           alt="Get Free Consultation with Naveed Abbasi"
           width={1200}
           height={630}
