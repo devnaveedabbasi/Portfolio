@@ -1,6 +1,6 @@
 // app/about/page.tsx - SERVER COMPONENT
 import AboutClient from './AboutClient';
-import { educations, experiences, skills } from "@/constant/data";
+import { educations, experiences } from "@/constant/data";
 
 export default function AboutPage() {
   // Server side par data fetch kar sakte ho
@@ -30,7 +30,6 @@ export default function AboutPage() {
       experienceData={ExperinceData}
       educations={educations}
       experiences={experiences}
-      skills={skills}
     />
   );
 }
