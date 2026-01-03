@@ -33,7 +33,7 @@ interface ProjectsClientProps {
 export default function ProjectsClient({ portfolioData }: ProjectsClientProps) {
   const router = useRouter();
   const containerRef = useRef<HTMLDivElement>(null);
-  const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
+  const cardsRef = useRef<(any | null)[]>([]);
   const [isClient, setIsClient] = useState(false);
   const selectedColor = useSelector(
     (state: RootState) => state.color.selectedColor,
