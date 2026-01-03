@@ -1,7 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+/* 
 @font-face {
   font-family: Poppins;
   src: url(../public/assets/fonts/Poppins/Poppins-Regular.ttf);
@@ -15,13 +15,17 @@
 @font-face {
   font-family: Open_Sans;
   src: url(../public/assets/fonts/Open_Sans/OpenSans-VariableFont_wdth\,wght.ttf);
-}
+} */
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: Poppins;
+}
+body {
+  font-family: var(--font-poppins), system-ui, sans-serif;
+  font-display: swap; /* Next.js already handles this */
 }
 .drop-shadow {
   filter: drop-shadow(5px 6px 14px #000000);
@@ -67,7 +71,7 @@ body {
   left: 50%;
 }
 
-@keyframes slideDown {
+/* @keyframes slideDown {
   0% {
     top: -100%;
   }
@@ -114,7 +118,36 @@ body {
   background-color: #999999;
   z-index: 1;
   animation-delay: 0.8s;
+} */
+
+
+
+.layer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  transform: translateY(-100%); /* start off-screen */
+  animation: slideDown 1s cubic-bezier(0.6, 0.05, 0.4, 1) forwards;
 }
+
+@keyframes slideDown {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* Layer colors and z-index stay the same */
+.layer-1 { background-color: #111111; z-index: 5; animation-delay: 0s; }
+.layer-2 { background-color: #333333; z-index: 4; animation-delay: 0.2s; }
+.layer-3 { background-color: #555555; z-index: 3; animation-delay: 0.4s; }
+.layer-4 { background-color: #777777; z-index: 2; animation-delay: 0.6s; }
+.layer-5 { background-color: #999999; z-index: 1; animation-delay: 0.8s; }
+
 
 
 .abt {

@@ -2,8 +2,7 @@
 import Button from "@/component/button";
 import Image from "next/image";
 import React from "react";
-import ProfileImage from "@/public/assets/img/Me.png";
-import DefaultImage from "@/public/assets/img/defult.jpeg";
+
 import { useSelector } from "react-redux";
 import { RootState } from "@/store";
 import { educations, experiences, skills } from "@/constant/data";
@@ -74,11 +73,13 @@ export default function Page() {
               </h1>
               <div className="flex w-full justify-center md:hidden">
                 <Image
-                  src={ProfileImage || DefaultImage}
+  src="/assets/img/Me.png"
                   width={740}
                   height={100}
                   priority
                   alt="Profile"
+                    fetchPriority="high"             // ✅ hints browser to fetch ASAP
+
                   className="z-10 mt-2 h-[250px] w-[250px] rounded-full border-4 border-[#252525] object-cover drop-shadow"
                 />
               </div>

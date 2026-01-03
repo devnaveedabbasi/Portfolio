@@ -3,9 +3,7 @@ import React, { useState } from "react";
 import { Icon } from "@iconify/react";
 import Setting from "@/component/partials/setting";
 import Image from "next/image";
-// import ProfileImage from "@/public/assets/img/profile.jpg";
-import DefaultImage from "@/public/assets/img/defult.jpeg";
-import ProfileImage from "@/public/assets/img/Me.png";
+
 import Button from "@/component/button";
 import Sidebar from "@/component/partials/sideBarNav";
 import { useSelector } from "react-redux";
@@ -37,11 +35,13 @@ export default function Page() {
           <div className="absolute !h-[100%] w-[100%] p-12">
             <div className="ml-4 h-full w-full rounded-2xl">
               <Image
-                src={ProfileImage || DefaultImage}
+                src="/assets/img/Me.webp"
                 width={740}
                 height={100}
                 priority
                 alt="Profile"
+                  fetchPriority="high"             // ✅ hints browser to fetch ASAP
+
                 className="h-full w-full rounded-2xl object-cover drop-shadow"
               />
             </div>
@@ -114,11 +114,13 @@ export default function Page() {
           <Setting />
           <div className="mt-10 flex w-full justify-center">
             <Image
-              src={ProfileImage || DefaultImage}
-              width={740}
-              height={100}
+                src="/assets/img/Me.webp"
+              width={280}
+  height={280}
               priority
               alt="Profile"
+                fetchPriority="high"             // ✅ hints browser to fetch ASAP
+
               className="h-[280px] w-[280px] rounded-full border-4 border-[#252525] object-cover drop-shadow"
             />
           </div>

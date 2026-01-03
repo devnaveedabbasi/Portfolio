@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function SeoImageLinks() {
   return (
     <div
@@ -16,9 +18,12 @@ export default function SeoImageLinks() {
         target="_blank"
         rel="noopener noreferrer"
       >
-        <img
+        <Image
           src="/assets/img/Naveed_Abbasi.png"
           alt="Naveed Abbasi LinkedIn Profile Full Stack Developer"
+          width={1200}
+          height={630}
+          priority={false} // don't block LCP
         />
       </a>
 
@@ -28,17 +33,23 @@ export default function SeoImageLinks() {
         target="_blank"
         rel="noopener noreferrer"
       >
-        <img
+        <Image
           src="/assets/img/get-free-consultation.png"
           alt="Get Free Consultation with Naveed Abbasi"
+          width={1200}
+          height={630}
+          priority={false}
         />
       </a>
 
       {/* Portfolio */}
       <a href="https://naveedabbasi.vercel.app/">
-        <img
+        <Image
           src="/assets/img/portfolio.png"
           alt="View Portfolio of Naveed Abbasi Full Stack Developer"
+          width={1200}
+          height={630}
+          priority={false}
         />
       </a>
     </div>

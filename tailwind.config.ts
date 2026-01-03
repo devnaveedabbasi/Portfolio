@@ -13,10 +13,16 @@ export default {
         foreground: "var(--foreground)",
       },
       fontFamily: {
-        Poppins: ['Poppins', 'sans-serif'], 
-        PoppinsHeading: ['PoppinsHeading', 'sans-serif'], 
-        Open_Sans: ['Open_Sans', 'sans-serif'],
-      },
+  Poppins: ['Poppins', 'sans-serif'],
+  PoppinsHeading: ['Poppins', 'sans-serif'],
+  Open_Sans: ['Open Sans', 'sans-serif'],
+},
+
+      // fontFamily: {
+      //   Poppins: ['Poppins', 'sans-serif'], 
+      //   PoppinsHeading: ['PoppinsHeading', 'sans-serif'], 
+      //   Open_Sans: ['Open_Sans', 'sans-serif'],
+      // },
     },
   },
   plugins: [],

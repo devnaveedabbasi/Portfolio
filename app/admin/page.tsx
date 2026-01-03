@@ -788,6 +788,8 @@ export default function AdminPanel() {
                             className="group relative h-32 overflow-hidden rounded-lg"
                           >
                             <Image
+                             width={300}
+                             height={200}
                               src={preview}
                               alt={`Preview ${index + 1}`}
                               fill
@@ -894,6 +896,8 @@ export default function AdminPanel() {
                             }
                             alt={blog.title}
                             fill
+                            width={400}
+                            height={450}
                             className="object-cover"
                           />
                           {blog.images && blog.images.length > 1 && (

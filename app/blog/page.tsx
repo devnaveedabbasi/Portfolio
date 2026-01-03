@@ -205,6 +205,8 @@ export default function BlogPage() {
                       {/* Image */}
                       <div className="relative h-48 overflow-hidden">
                         <Image
+                        width={400}
+                        height={400}
                           src={
                             blog.images && blog.images.length > 0
                               ? blog.images[0]

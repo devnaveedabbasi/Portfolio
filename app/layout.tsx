@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Open_Sans, Poppins } from "next/font/google";
 import "./globals.css";
 import "./blog-styles.css";
 import "quill/dist/quill.snow.css";
@@ -76,6 +76,21 @@ export const metadata: Metadata = {
   },
 };
 
+
+export const poppins = Poppins({
+  weight: ['400', '600'],
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-poppins',   // ✅ add this
+});
+
+export const openSans = Open_Sans({
+  weight: ['400'],
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-open-sans', // ✅ add this
+});
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -102,13 +117,14 @@ export default function RootLayout({
           <meta name="robots" content="index, follow" />
         </head>
         <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-        >
+        className={`${poppins.variable} ${openSans.variable} antialiased`}>
+
+         {/* className={`${geistSans.variable} ${geistMono.variable} antialiased`} */}
+        
           <Layout>
-            {children}   
-                 <SpeedInsights />
-</Layout>
-          {/* 🔥 Hidden SEO Image Links (NO UI) */}
+            {children}
+            <SpeedInsights />
+          </Layout>
           <SeoImageLinks />
 
           {/* 🔥 Person Schema */}
