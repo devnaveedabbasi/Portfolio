@@ -8,15 +8,16 @@ export default function ContactPage() {
       icon: "ri:linkedin-fill",
       link: "https://www.linkedin.com/in/naveed-abbasi",
     },
+    {
+      icon: "ri:github-fill",
+      link: "https://github.com/devnaveedabbasi",
+    },
     { icon: "mdi:whatsapp", link: "https://wa.me/03111309060" },
     {
       icon: "ri:instagram-line",
       link: "https://www.instagram.com/naveed_abbasi316/",
     },
-    {
-      icon: "ri:facebook-fill",
-      link: "https://www.linkedin.com/in/naveed-abbasi",
-    },
+  
   ];
 
   return <ContactClient socialIcons={SocialIcons} />;
