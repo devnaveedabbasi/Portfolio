@@ -273,7 +273,7 @@ export default function ProjectsClient({ portfolioData }: ProjectsClientProps) {
                 Let&apos;s build something amazing together
               </p>
               <button
-                onClick={() => router.push("/contact")}
+                onClick={() => router.push("/contact-us")}
                 style={{ backgroundColor: selectedColor }}
                 className="rounded-lg px-6 py-2.5 text-sm font-semibold text-white transition-transform duration-200 hover:scale-[1.02] md:px-7 md:py-2.5 md:text-base"
                 aria-label="Get in touch for collaboration"

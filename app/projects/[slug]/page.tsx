@@ -800,7 +800,7 @@ export default function ProjectDetailPage() {
                 View All Projects
               </Link>
               <Link
-                href="/contact"
+                href="/contact-us"
                 className="rounded-lg border border-gray-600 px-6 py-3 font-semibold transition-all hover:border-gray-400 hover:bg-gray-800 hover:scale-105"
               >
                 Contact Me
