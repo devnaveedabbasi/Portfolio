@@ -19,7 +19,6 @@ export interface GeneratedBlog {
   imageUrls: string[];
 }
 
-// Fetch images from Unsplash based on blog topic
 async function fetchBlogImages(
   topic: string,
   count: number = 3,
