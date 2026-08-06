@@ -83,10 +83,10 @@ interface Education {
 export const experiences: Experience[] = [
   {
     date: "2025 - Present",
-    title: "Full Stack Developer (Freelance)",
-    company: "Linkdin",
+    title: "Full Stack Developer",
+    company: "Tribicx",
     description:
-      "Freelance MERN Stack developer handling frontend and backend to deliver complete web applications for various client requirements.", // 23 words
+      "Developing Full Stack applications handling both frontend and backend to deliver complete web solutions for various client needs.", // 23 words
   },
   {
     date: "2025",
