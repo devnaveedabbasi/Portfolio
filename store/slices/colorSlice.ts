@@ -7,7 +7,7 @@ interface ColorState {
 }
 
 const initialState: ColorState = {
-  selectedColor: '#F1B317', // Default color
+  selectedColor: '#006D9C', // Default color
 };
 
 const colorSlice = createSlice({

@@ -27,21 +27,27 @@ import { StaticImageData } from "next/image";
 
 interface colorIcons {
   color: string;
-  icon: StaticImageData;
+  icon?: StaticImageData;
   isColor: boolean;
 }
 
 export const colors: colorIcons[] = [
-  { color: "#F1B317", icon: Yellow, isColor: true },
-  { color: "#6957AF", icon: Purple, isColor: false },
-  { color: "#4169E1", icon: Blue, isColor: false },
-  { color: "#8A2BE2", icon: blueviolet, isColor: false },
-  { color: "#E96091", icon: Magenta, isColor: false },
-  { color: "#9ACD32", icon: Yellowgreen, isColor: false },
-  { color: "#DAA520", icon: Goldenrod, isColor: false },
-  { color: "#72B626", icon: Green, isColor: false },
-  { color: "#E7592A", icon: Orange, isColor: false },
-  { color: "#E62E2D", icon: Red, isColor: false },
+  { color: "#006D9C", isColor: true },// blue 
+  { color: "#218785", isColor: true },// blue 
+  { color: "#3B82F6", isColor: true }, // Electric Blue
+  { color: "#06B6D4", isColor: true }, // Cyan
+  { color: "#036A93", isColor: true }, // Deep Blue/Teal (User requested)
+  { color: "#6085A7", isColor: true }, // 
+  { color: "#7C3AED", isColor: true }, // Modern Violet
+
+  { color: "#EC4899", isColor: true }, // Vibrant Pink
+  { color: "#10B981", isColor: true }, // Emerald Green
+  { color: "#F59E0B", isColor: true }, // Amber Yellow
+  { color: "#F97316", isColor: true }, // Orange
+  { color: "#EF4444", isColor: true }, // Red
+  { color: "#84CC16", isColor: true }, // Lime Green
+  { color: "#9ACD32", isColor: true },// Yellow Green
+  { color: "#8B008B", isColor: true },// Purple 
 ];
 
 // Skills
@@ -201,113 +207,113 @@ export interface Portfolio {
 
 export const PortfolioData: Portfolio[] = [
   {
-  cardImage: "/assets/img/Projects/Alex/heroAlex.png",
-  ProjectVedio: "https://drive.google.com/file/d/1EwMzX8tFNR224HQIqzzmZvrBNGBR0Ccy/preview",
+    cardImage: "/assets/img/Projects/Alex/heroAlex.png",
+    ProjectVedio: "https://drive.google.com/file/d/1EwMzX8tFNR224HQIqzzmZvrBNGBR0Ccy/preview",
 
-  name: "Alex Sezun",
-  link: "/projects/alex", // Added missing link property
+    name: "Alex Sezun",
+    link: "/projects/alex", // Added missing link property
 
-  shortDescription:
-    "A premium personal marketing website built to showcase expertise in growth marketing, content strategy, and conversion-focused systems.",
+    shortDescription:
+      "A premium personal marketing website built to showcase expertise in growth marketing, content strategy, and conversion-focused systems.",
 
-  description:
-    "A high-end static marketing website developed using React.js, TypeScript, and Tailwind CSS. The site is designed to position a marketing expert as a premium brand, featuring smooth scroll navigation, animated sections using AOS and Framer Motion, and a performance-optimized architecture. The website highlights services, expertise, testimonials, and contact funnels with a strong focus on conversions and storytelling.",
+    description:
+      "A high-end static marketing website developed using React.js, TypeScript, and Tailwind CSS. The site is designed to position a marketing expert as a premium brand, featuring smooth scroll navigation, animated sections using AOS and Framer Motion, and a performance-optimized architecture. The website highlights services, expertise, testimonials, and contact funnels with a strong focus on conversions and storytelling.",
 
-  liveUrl: "https://alex-tan.vercel.app/",
-  projectType: "Frontend",
-  timeline: "5–7 days",
+    liveUrl: "https://alex-tan.vercel.app/",
+    projectType: "Frontend",
+    timeline: "5–7 days",
 
-  features: [
-    // UI / UX
-    "Premium dark UI with brand-focused design",
-    "Fully responsive layout for all devices",
-    "Smooth scrolling navigation",
+    features: [
+      // UI / UX
+      "Premium dark UI with brand-focused design",
+      "Fully responsive layout for all devices",
+      "Smooth scrolling navigation",
 
-    // Animations
-    "Scroll-based animations using AOS",
-    "Micro-interactions with Framer Motion",
-    "Animated stats and progress bars",
+      // Animations
+      "Scroll-based animations using AOS",
+      "Micro-interactions with Framer Motion",
+      "Animated stats and progress bars",
 
-    // Performance
-    "Static site for fast load times",
-    "Optimized Tailwind CSS utility usage",
+      // Performance
+      "Static site for fast load times",
+      "Optimized Tailwind CSS utility usage",
 
-    // Branding
-    "Custom typography using Google Fonts",
-    "Gradient-based brand highlights",
-  ],
+      // Branding
+      "Custom typography using Google Fonts",
+      "Gradient-based brand highlights",
+    ],
 
-  challenges: [
-    "Balancing premium animations with smooth performance",
-    "Preventing scroll jank with multiple animation libraries",
-    "Ensuring consistent design across all sections",
-    "Optimizing AOS and Framer Motion together",
-  ],
+    challenges: [
+      "Balancing premium animations with smooth performance",
+      "Preventing scroll jank with multiple animation libraries",
+      "Ensuring consistent design across all sections",
+      "Optimizing AOS and Framer Motion together",
+    ],
 
-  Technologies:
-  "React.js,  TypeScript, Tailwind CSS, Framer Motion , AOS , Lucide Icons, Vercel (Deployment)",
+    Technologies:
+      "React.js,  TypeScript, Tailwind CSS, Framer Motion , AOS , Lucide Icons, Vercel (Deployment)",
     galleryImages: [
       "/assets/img/Projects/Alex/heroAlex.png",
-      "/assets/img/Projects/Alex/1.png",  
-      "/assets/img/Projects/Alex/2.png",  
-      "/assets/img/Projects/Alex/3.png",  
-      "/assets/img/Projects/Alex/4.png",  
-      "/assets/img/Projects/Alex/5.png",  
+      "/assets/img/Projects/Alex/1.png",
+      "/assets/img/Projects/Alex/2.png",
+      "/assets/img/Projects/Alex/3.png",
+      "/assets/img/Projects/Alex/4.png",
+      "/assets/img/Projects/Alex/5.png",
 
-  ],
-  // galleryImages: [
-  //   "/assets/img/projects/Alex/heroAlex.png",
-  //   "/assets/img/projects/Alex/1.png",
-  //   "/assets/img/projects/Alex/2.png",
-  //   "/assets/img/projects/Alex/3.png",
-  //   "/assets/img/projects/Alex/4.png",
-  //   "/assets/img/projects/Alex/5.png",
-  // ],
-},
+    ],
+    // galleryImages: [
+    //   "/assets/img/projects/Alex/heroAlex.png",
+    //   "/assets/img/projects/Alex/1.png",
+    //   "/assets/img/projects/Alex/2.png",
+    //   "/assets/img/projects/Alex/3.png",
+    //   "/assets/img/projects/Alex/4.png",
+    //   "/assets/img/projects/Alex/5.png",
+    // ],
+  },
   {
-  cardImage: "/assets/img/Projects/Cozet/hero.png",
-  ProjectVedio:
-    "https://drive.google.com/file/d/1yhj3d1XX8DwBUKhPigbKneUNQEYnizpz/preview",
-  name: "Cozet Solution Digital Agency Website",
-  shortDescription:
-    "A modern static digital agency website built with React and Tailwind CSS.",
-  description:
-    "Cozet Solution is a React-based static digital agency website designed to showcase professional services, portfolio projects, client testimonials, and team members. The website focuses on clean UI, smooth animations, and performance optimization. It is ideal for digital agencies or personal portfolios, providing a strong online presence without backend complexity.",
-  link: "https://www.linkedin.com/in/naveed-abbasi/",
-  liveUrl: "https://cozech-solution.vercel.app/",
-  projectType: "Frontend",
-  timeline: "2 Days",
-  features: [
-    "Modern and responsive digital agency UI",
-    "Services showcase with clean layouts",
-    "Portfolio section with project highlights",
-    "Client testimonials and FAQ section",
-    "Team members and statistics display",
-    "Smooth animations using Framer Motion",
-    "Reusable and scalable React components",
-    "Optimized for performance and SEO",
-  ],
-  challenges: [
-    "Optimizing large media assets for better performance",
-    "Managing animations without impacting page speed",
-    "Ensuring responsive design across all devices",
-    "Maintaining clean and scalable component structure",
-  ],
-  Technologies:
-    "React JS, Vite, Tailwind CSS, Framer Motion, Lucide Icons, JavaScript, HTML5, CSS3",
+    cardImage: "/assets/img/Projects/Cozet/hero.png",
+    ProjectVedio:
+      "https://drive.google.com/file/d/1yhj3d1XX8DwBUKhPigbKneUNQEYnizpz/preview",
+    name: "Cozet Solution Digital Agency Website",
+    shortDescription:
+      "A modern static digital agency website built with React and Tailwind CSS.",
+    description:
+      "Cozet Solution is a React-based static digital agency website designed to showcase professional services, portfolio projects, client testimonials, and team members. The website focuses on clean UI, smooth animations, and performance optimization. It is ideal for digital agencies or personal portfolios, providing a strong online presence without backend complexity.",
+    link: "https://www.linkedin.com/in/naveed-abbasi/",
+    liveUrl: "https://cozech-solution.vercel.app/",
+    projectType: "Frontend",
+    timeline: "2 Days",
+    features: [
+      "Modern and responsive digital agency UI",
+      "Services showcase with clean layouts",
+      "Portfolio section with project highlights",
+      "Client testimonials and FAQ section",
+      "Team members and statistics display",
+      "Smooth animations using Framer Motion",
+      "Reusable and scalable React components",
+      "Optimized for performance and SEO",
+    ],
+    challenges: [
+      "Optimizing large media assets for better performance",
+      "Managing animations without impacting page speed",
+      "Ensuring responsive design across all devices",
+      "Maintaining clean and scalable component structure",
+    ],
+    Technologies:
+      "React JS, Vite, Tailwind CSS, Framer Motion, Lucide Icons, JavaScript, HTML5, CSS3",
     galleryImages: [
       "/assets/img/Projects/Cozet/hero.png",
-      "/assets/img/Projects/Cozet/1.png",  
-      "/assets/img/Projects/Cozet/2.png",  
-      "/assets/img/Projects/Cozet/3.png",  
-      "/assets/img/Projects/Cozet/4.png",  
-      "/assets/img/Projects/Cozet/5.png",  
+      "/assets/img/Projects/Cozet/1.png",
+      "/assets/img/Projects/Cozet/2.png",
+      "/assets/img/Projects/Cozet/3.png",
+      "/assets/img/Projects/Cozet/4.png",
+      "/assets/img/Projects/Cozet/5.png",
       "/assets/img/Projects/Cozet/6.png",
-      "/assets/img/Projects/Cozet/7.png",  
+      "/assets/img/Projects/Cozet/7.png",
 
-  ],
-}
-,
+    ],
+  }
+  ,
   {
     cardImage: "/assets/img/Projects/BookStore/BookStore.png",
     ProjectVedio:

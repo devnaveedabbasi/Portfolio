@@ -9,6 +9,7 @@ import { RootState } from "@/store";
 import { Icon } from "@iconify/react";
 import HeaderText from "@/component/headerText";
 import MobileNavigation from "@/component/partials/navigations/mobileNavigation";
+import Terminal from "@/component/terminal";
 
 // Lazy load GSAP
 let gsap: any = null;
@@ -41,7 +42,7 @@ export default function AboutClient({
     (state: RootState) => state.color.selectedColor,
   );
   const [isClient, setIsClient] = useState(false);
-  
+
   // Refs for animations
   const headerRef = useRef<HTMLDivElement>(null);
   const personalInfoRef = useRef<HTMLDivElement>(null);
@@ -51,7 +52,7 @@ export default function AboutClient({
   const experienceRef = useRef<HTMLDivElement>(null);
   const profileImageRef = useRef<HTMLDivElement>(null);
   const desktopProfileImageRef = useRef<HTMLDivElement>(null);
-  
+
   // Arrays for multiple refs
   const personalCardsRef = useRef<(HTMLDivElement | null)[]>([]);
   const statCardsRef = useRef<(HTMLDivElement | null)[]>([]);
@@ -72,20 +73,20 @@ export default function AboutClient({
   const skills = {
     frontend: [
       "HTML5", "CSS3", "JavaScript", "TypeScript", "React.js", "Next.js",
-      "Tailwind CSS", "Bootstrap", "Material-UI", "Framer Motion", "GSAP", 
+      "Tailwind CSS", "Bootstrap", "Material-UI", "Framer Motion", "GSAP",
       "Chakra UI", "Redux Toolkit", "Zustand"
     ],
     backend: [
-      "Node.js", "Express.js", "MongoDB", "MySQL", "Firebase", "Supabase", 
+      "Node.js", "Express.js", "MongoDB", "PostgreSQL", "Firebase", "Supabase",
       "REST APIs", "Fast Api", "JWT Authentication", "Socket.io", "AI Integration"
     ],
     tools: [
-      "Git", "GitHub", "VS Code", "Figma", "Postman", "Vercel", "Netlify",
+      "Git", "GitHub", "VS Code", "Figma", "Postman", "Vercel", "Netlify", "AWS", "Prisma",
       "Cloudflare", "NPM/Yarn", "ESLint", "Prettier"
     ],
-    languages: [
-      "JavaScript", "TypeScript", "Python", "C++"
-    ]
+    // languages: [
+    //   "JavaScript", "TypeScript", "Python", "C++",
+    // ]
   };
 
   // Professional icons for personal info
@@ -153,10 +154,10 @@ export default function AboutClient({
           gsap.fromTo(
             card,
             { opacity: 0, y: 20 },
-            { 
-              opacity: 1, 
-              y: 0, 
-              duration: 0.5, 
+            {
+              opacity: 1,
+              y: 0,
+              duration: 0.5,
               delay: 0.1 + (index * 0.05),
               ease: "power2.out"
             }
@@ -170,10 +171,10 @@ export default function AboutClient({
           gsap.fromTo(
             card,
             { opacity: 0, scale: 0.8 },
-            { 
-              opacity: 1, 
-              scale: 1, 
-              duration: 0.6, 
+            {
+              opacity: 1,
+              scale: 1,
+              duration: 0.6,
               delay: 0.2 + (index * 0.1),
               ease: "elastic.out(1, 0.5)"
             }
@@ -183,12 +184,12 @@ export default function AboutClient({
           const numberElement = card.querySelector('span:first-child');
           const plusElement = card.querySelector('span:last-child');
           const years = experienceData[index]?.years || 0;
-          
+
           if (numberElement) {
             gsap.fromTo(
               numberElement,
               { innerText: 0 },
-              { 
+              {
                 innerText: years,
                 duration: 1.5,
                 delay: 0.3 + (index * 0.1),
@@ -202,9 +203,9 @@ export default function AboutClient({
             gsap.fromTo(
               plusElement,
               { opacity: 0, scale: 0 },
-              { 
-                opacity: 1, 
-                scale: 1, 
+              {
+                opacity: 1,
+                scale: 1,
                 duration: 0.5,
                 delay: 0.5 + (index * 0.1),
                 ease: "back.out(1.7)"
@@ -235,7 +236,7 @@ export default function AboutClient({
       if (skillsRef.current) {
         gsap.fromTo(
           skillsRef.current,
-          { 
+          {
             scrollTrigger: {
               trigger: skillsRef.current,
               start: "top 80%",
@@ -244,7 +245,7 @@ export default function AboutClient({
             opacity: 0,
             y: 50
           },
-          { 
+          {
             opacity: 1,
             y: 0,
             duration: 0.8
@@ -257,7 +258,7 @@ export default function AboutClient({
         if (category) {
           gsap.fromTo(
             category,
-            { 
+            {
               scrollTrigger: {
                 trigger: category,
                 start: "top 85%",
@@ -266,7 +267,7 @@ export default function AboutClient({
               opacity: 0,
               x: index % 2 === 0 ? -30 : 30
             },
-            { 
+            {
               opacity: 1,
               x: 0,
               duration: 0.6,
@@ -282,9 +283,9 @@ export default function AboutClient({
           gsap.fromTo(
             tag,
             { opacity: 0, scale: 0 },
-            { 
-              opacity: 1, 
-              scale: 1, 
+            {
+              opacity: 1,
+              scale: 1,
               duration: 0.3,
               delay: 0.5 + (index * 0.03),
               ease: "back.out(1.7)"
@@ -297,7 +298,7 @@ export default function AboutClient({
       if (educationRef.current && experienceRef.current) {
         gsap.fromTo(
           [educationRef.current, experienceRef.current],
-          { 
+          {
             scrollTrigger: {
               trigger: educationRef.current,
               start: "top 75%",
@@ -306,7 +307,7 @@ export default function AboutClient({
             opacity: 0,
             y: 40
           },
-          { 
+          {
             opacity: 1,
             y: 0,
             duration: 0.7,
@@ -320,7 +321,7 @@ export default function AboutClient({
         if (item) {
           gsap.fromTo(
             item,
-            { 
+            {
               scrollTrigger: {
                 trigger: item,
                 start: "top 90%",
@@ -329,7 +330,7 @@ export default function AboutClient({
               opacity: 0,
               x: -20
             },
-            { 
+            {
               opacity: 1,
               x: 0,
               duration: 0.5,
@@ -373,7 +374,7 @@ export default function AboutClient({
               ease: "power2.out"
             });
           };
-          
+
           const onMouseLeave = () => {
             gsap.to(tag, {
               scale: 1,
@@ -423,6 +424,25 @@ export default function AboutClient({
     if (el) timelineItemsRef.current.push(el);
   };
 
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const card = e.currentTarget;
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    const xc = rect.width / 2;
+    const yc = rect.height / 2;
+    const rotateX = -(y - yc) / 8;
+    const rotateY = (x - xc) / 8;
+
+    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.03, 1.03, 1.03)`;
+  };
+
+  const handleMouseLeave = (e: React.MouseEvent<HTMLDivElement>) => {
+    const card = e.currentTarget;
+    card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+  };
+
   return (
     <>
       <MobileNavigation navHeadFirst="About" NavHeadSec="Us" />
@@ -454,111 +474,98 @@ export default function AboutClient({
                     <div ref={profileImageRef} className="mb-6 flex w-full justify-center md:hidden">
                       <div className="relative h-64 w-64">
                         <Image
-                          src="/assets/img/Me.png"
+                          src="/assets/img/meee2.png"
                           fill
                           priority
                           fetchPriority="high"
                           alt="Naveed Abbasi Profile"
-                          className="rounded-full border-4 border-[#252525] object-cover"
+                          className="rounded-full border-4 object-cover"
+                          style={{ borderColor: selectedColor }}
                         />
                         <div className="absolute inset-0 rounded-full border-2 border-white/10"></div>
                       </div>
                     </div>
 
-                    {/* Personal Info Grid */}
-                    <div className="w-full">
-                      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                        {personalInfo.map((item: any, index: number) => {
-                          const key: string = Object.keys(item)[0];
-                          const value: string | string[] = item[key];
-                          const icon = infoIcons[key as keyof typeof infoIcons] || "mdi:information";
-
-                          return (
-                            <div
-                              key={index}
-                              ref={(el) => setPersonalCardRef(el, index)}
-                              className="flex items-start text-wrap gap-3 rounded-lg border border-[#252525] bg-[#111111] p-3"
-                            >
-                              <Icon
-                                icon={icon}
-                                width={20}
-                                className="mt-0.5 flex-shrink-0"
-                                style={{ color: selectedColor }}
-                              />
-                              <div className="flex-1 flex-wrap">
-                                <p className="mb-1 text-xs uppercase text-wrap tracking-wider text-gray-400">
-                                  {key}
-                                </p>
-                                <p className="text-sm font-medium !text-wrap text-white">
-                                  {Array.isArray(value) ? value.join(", ") : value}
-                                </p>
-                              </div>
-                            </div>
-                          );
-                        })}
-                      </div>
+                    {/* macOS Terminal CLI Component */}
+                    <div className="w-full mt-4 md:mt-0">
+                      <Terminal personalInfo={personalInfo} selectedColor={selectedColor} onDownloadCV={downloadNow} />
                     </div>
-                  </div>
-
-                  {/* Download CV Button */}
-                  <div className="flex justify-center">
-                    <Button
-                      text="Download CV"
-                      oNClick={downloadNow}
-                      icon="ri:download-fill"
-                    />
                   </div>
                 </div>
               </div>
 
               {/* Experience Stats Card */}
               <div ref={statsRef} className="order-1 lg:order-2 md:mt-0 mt-16">
-                <div className="h-full rounded-xl border border-[#252525] bg-black p-2 md:p-8">
-                  {/* Profile Image for Desktop */}
-                  <div ref={desktopProfileImageRef} className="mb-8 hidden md:flex md:justify-center">
-                    <div className="relative h-72 w-72">
-                      <Image
-                        src="/assets/img/Me.png"
-                        fill
-                        priority
-                        fetchPriority="high"
-                        alt="Naveed Abbasi Profile"
-                        className="rounded-full border-4 border-[#252525] object-cover"
-                      />
-                      <div className="absolute inset-0 rounded-full border-2 border-white/10"></div>
-                    </div>
-                  </div>
+                <div className="group relative h-full overflow-hidden rounded-2xl border border-[#252525] bg-gradient-to-b from-[#0d0d0d] to-black p-6 md:p-8">
+                  {/* ambient glow */}
+                  <div
+                    className="pointer-events-none absolute -top-24 left-1/2 h-56 w-[85%] -translate-x-1/2 rounded-full opacity-20 blur-3xl transition-opacity duration-500 group-hover:opacity-35"
+                    style={{ backgroundColor: selectedColor }}
+                  />
 
-                  <h2 className="mb-6 font-Poppins text-2xl font-semibold uppercase leading-[31.2px] tracking-wide text-white md:text-[26px]">
-                    Professional Highlights
-                  </h2>
-
-                  <div className="grid grid-cols-2 gap-4">
-                    {experienceData.map((val, idx) => (
+                  <div className="relative flex flex-col items-center text-center">
+                    {/* Profile image with hover effect */}
+                    <div className="relative mb-6 h-56 w-56 md:h-64 md:w-64">
+                      {/* rotating dashed ring */}
                       <div
-                        key={idx}
-                        ref={(el) => setStatCardRef(el, idx)}
-                        className="flex h-32 flex-col items-center justify-center rounded-lg border-2 border-[#252525] bg-[#111111] p-4 text-center md:h-36"
-                      >
-                        <div className="mb-2 flex items-center">
+                        className="absolute -inset-3 rounded-full border border-dashed opacity-40 transition-transform duration-[6s] ease-linear group-hover:rotate-180"
+                        style={{ borderColor: selectedColor }}
+                      />
+                      {/* glow ring */}
+                      <div
+                        className="absolute -inset-1 rounded-full opacity-0 blur-xl transition-opacity duration-500 group-hover:opacity-40"
+                        style={{ backgroundColor: selectedColor }}
+                      />
+
+                      <div className="relative h-full w-full overflow-hidden rounded-full border-4" style={{ borderColor: selectedColor }}>
+                        <Image
+                          src="/assets/img/meee2.png"
+                          fill
+                          priority
+                          fetchPriority="high"
+                          alt="Naveed Abbasi"
+                          className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+                        />
+                        {/* dark overlay that fades on hover, revealing a caption */}
+                        <div className="absolute inset-0 flex items-end justify-center  opacity-0 transition-opacity duration-500 group-hover:opacity-100">
                           <span
-                            className="font-Open_Sans text-[32px] font-bold md:text-[40px] lg:text-[45px]"
-                            style={{ color: selectedColor }}
+                            className="mb-4 rounded-full px-4 py-1.5 text-xs font-semibold uppercase tracking-wide text-white"
+                            style={{ backgroundColor: selectedColor }}
                           >
-                            {val.years}
-                          </span>
-                          <span
-                            className="text-[28px] md:text-[36px] lg:text-[40px]"
-                            style={{ color: selectedColor }}
-                          >
-                            +
+                            Let&apos;s build something
                           </span>
                         </div>
-                        <p className="font-Open_Sans text-xs font-normal uppercase text-white md:text-sm">
-                          {val.exper}
-                        </p>
                       </div>
-                    ))}
+                    </div>
+
+                    {/* Name + role */}
+                    <h2 className="font-Poppins text-2xl font-semibold uppercase tracking-wide text-white md:text-[26px]">
+                      Naveed Abbasi
+                    </h2>
+                    <p
+                      className="mb-4 mt-1 font-Open_Sans text-sm font-medium uppercase tracking-wider"
+                      style={{ color: selectedColor }}
+                    >
+                      Full Stack Developer
+                    </p>
+
+                    {/* Short bio */}
+                    <p className="max-w-xs font-Open_Sans text-sm font-light leading-[1.7] text-stone-300/90">
+                      I build fast, scalable web apps with clean code and thoughtful design turning ideas into products people actually enjoy using.
+                    </p>
+
+                    {/* Quick info pills */}
+                    <div className="mt-6 flex flex-wrap items-center justify-center gap-2">
+                      {["React", "Next.js", "Node.js", "TypeScript"].map((tech) => (
+                        <span
+                          key={tech}
+                          className="rounded-full border px-3 py-1 text-[11px] font-medium text-stone-200 transition-colors duration-300 hover:text-white"
+                          style={{ borderColor: `${selectedColor}55` }}
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -576,13 +583,16 @@ export default function AboutClient({
               </p>
             </div>
 
-            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
               {/* Frontend Skills */}
-              <div 
+              <div
                 ref={(el) => setSkillCategoryRef(el, 0)}
-                className="rounded-xl border border-[#252525] bg-black p-6"
+                onMouseMove={handleMouseMove}
+                onMouseLeave={handleMouseLeave}
+                className="rounded-xl border border-[#252525] bg-black p-6 cursor-default"
+                style={{ transformStyle: "preserve-3d", transition: "transform 0.1s ease-out" }}
               >
-                <div className="mb-6 flex items-center gap-3">
+                <div className="mb-6 flex items-center gap-3" style={{ transform: "translateZ(30px)" }}>
                   <div
                     className="flex h-10 w-10 items-center justify-center rounded-lg"
                     style={{ backgroundColor: selectedColor + '20' }}
@@ -595,12 +605,12 @@ export default function AboutClient({
                   </div>
                   <h3 className="text-lg font-semibold text-white">Frontend</h3>
                 </div>
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-2" style={{ transform: "translateZ(20px)" }}>
                   {skills.frontend.map((skill, index) => (
                     <span
                       key={index}
                       ref={addSkillTagRef}
-                      className="rounded-lg border border-[#252525] bg-[#111111] px-3 py-1.5 text-sm text-gray-300"
+                      className="rounded-lg border border-[#252525] bg-[#111111] px-3 py-1.5 text-sm text-gray-300 transition-colors duration-200 hover:border-gray-500"
                     >
                       {skill}
                     </span>
@@ -609,11 +619,14 @@ export default function AboutClient({
               </div>
 
               {/* Backend Skills */}
-              <div 
+              <div
                 ref={(el) => setSkillCategoryRef(el, 1)}
-                className="rounded-xl border border-[#252525] bg-black p-6"
+                onMouseMove={handleMouseMove}
+                onMouseLeave={handleMouseLeave}
+                className="rounded-xl border border-[#252525] bg-black p-6 cursor-default"
+                style={{ transformStyle: "preserve-3d", transition: "transform 0.1s ease-out" }}
               >
-                <div className="mb-6 flex items-center gap-3">
+                <div className="mb-6 flex items-center gap-3" style={{ transform: "translateZ(30px)" }}>
                   <div
                     className="flex h-10 w-10 items-center justify-center rounded-lg"
                     style={{ backgroundColor: selectedColor + '20' }}
@@ -626,12 +639,12 @@ export default function AboutClient({
                   </div>
                   <h3 className="text-lg font-semibold text-white">Backend</h3>
                 </div>
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-2" style={{ transform: "translateZ(20px)" }}>
                   {skills.backend.map((skill, index) => (
                     <span
                       key={index}
                       ref={addSkillTagRef}
-                      className="rounded-lg border border-[#252525] bg-[#111111] px-3 py-1.5 text-sm text-gray-300"
+                      className="rounded-lg border border-[#252525] bg-[#111111] px-3 py-1.5 text-sm text-gray-300 transition-colors duration-200 hover:border-gray-500"
                     >
                       {skill}
                     </span>
@@ -640,11 +653,14 @@ export default function AboutClient({
               </div>
 
               {/* Tools & Technologies */}
-              <div 
+              <div
                 ref={(el) => setSkillCategoryRef(el, 2)}
-                className="rounded-xl border border-[#252525] bg-black p-6"
+                onMouseMove={handleMouseMove}
+                onMouseLeave={handleMouseLeave}
+                className="rounded-xl border border-[#252525] bg-black p-6 cursor-default"
+                style={{ transformStyle: "preserve-3d", transition: "transform 0.1s ease-out" }}
               >
-                <div className="mb-6 flex items-center gap-3">
+                <div className="mb-6 flex items-center gap-3" style={{ transform: "translateZ(30px)" }}>
                   <div
                     className="flex h-10 w-10 items-center justify-center rounded-lg"
                     style={{ backgroundColor: selectedColor + '20' }}
@@ -657,12 +673,12 @@ export default function AboutClient({
                   </div>
                   <h3 className="text-lg font-semibold text-white">Tools</h3>
                 </div>
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-2" style={{ transform: "translateZ(20px)" }}>
                   {skills.tools.map((skill, index) => (
                     <span
                       key={index}
                       ref={addSkillTagRef}
-                      className="rounded-lg border border-[#252525] bg-[#111111] px-3 py-1.5 text-sm text-gray-300"
+                      className="rounded-lg border border-[#252525] bg-[#111111] px-3 py-1.5 text-sm text-gray-300 transition-colors duration-200 hover:border-gray-500"
                     >
                       {skill}
                     </span>
@@ -671,11 +687,14 @@ export default function AboutClient({
               </div>
 
               {/* Programming Languages */}
-              <div 
+              {/* <div
                 ref={(el) => setSkillCategoryRef(el, 3)}
-                className="rounded-xl border border-[#252525] bg-black p-6"
+                onMouseMove={handleMouseMove}
+                onMouseLeave={handleMouseLeave}
+                className="rounded-xl border border-[#252525] bg-black p-6 cursor-default"
+                style={{ transformStyle: "preserve-3d", transition: "transform 0.1s ease-out" }}
               >
-                <div className="mb-6 flex items-center gap-3">
+                <div className="mb-6 flex items-center gap-3" style={{ transform: "translateZ(30px)" }}>
                   <div
                     className="flex h-10 w-10 items-center justify-center rounded-lg"
                     style={{ backgroundColor: selectedColor + '20' }}
@@ -688,18 +707,18 @@ export default function AboutClient({
                   </div>
                   <h3 className="text-lg font-semibold text-white">Languages</h3>
                 </div>
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-2" style={{ transform: "translateZ(20px)" }}>
                   {skills.languages.map((skill, index) => (
                     <span
                       key={index}
                       ref={addSkillTagRef}
-                      className="rounded-lg border border-[#252525] bg-[#111111] px-3 py-1.5 text-sm text-gray-300"
+                      className="rounded-lg border border-[#252525] bg-[#111111] px-3 py-1.5 text-sm text-gray-300 transition-colors duration-200 hover:border-gray-500"
                     >
                       {skill}
                     </span>
                   ))}
                 </div>
-              </div>
+              </div> */}
             </div>
           </section>
 
