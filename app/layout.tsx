@@ -10,12 +10,23 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { shouldShowSpeedInsights } from "@/utlis/environment";
 
 export const metadata: Metadata = {
-  title: "Naveed Abbasi | FullStack Developer | MERN Stack Developer",
+  metadataBase: new URL("https://naveedabbasi.vercel.app"),
+  title: "Naveed Abbasi | Web Developer | devnaveedabbasi",
   description:
-    "Official portfolio of Naveed Abbasi - FullStack Developer, React.js & Next.js Specialist. Explore my projects, skills, and experience in full-stack web development.",
+    "Official portfolio of Naveed Abbasi, also known as devnaveedabbasi — a Full Stack Developer specializing in React.js, Next.js, Node.js, and MERN stack development.",
   keywords: [
     "Naveed",
     "Naveed Abbasi",
+    "devnaveedabbasi",
+    "devnaveedabbasi portfolio",
+    "Naveed Abbasi developer",
+    "Naveed Abbasi web developer",
+    "Naveed Abbasi full stack web developer",
+    "developer",
+    "web developer",
+    "full stack web developer",
+    "frontend developer",
+    "backend developer",
     "Dev Naveed",
     "Dev Naveed Abbasi",
     "Naveed Hassan",
@@ -36,10 +47,15 @@ export const metadata: Metadata = {
   authors: [{ name: "Naveed Abbasi" }, { name: "Naveed Hassan" }],
   creator: "Naveed Abbasi",
   publisher: "Naveed Abbasi",
+  applicationName: "Naveed Abbasi Portfolio",
+  category: "technology",
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
-    title: "Naveed Abbasi | Full Stack Developer | MERN Stack",
+    title: "Naveed Abbasi | Web Developer | devnaveedabbasi",
     description:
-      "Portfolio of Naveed Abbasi - Full Stack Developer specializing in React, Next.js, Node.js, and MongoDB.",
+      "Official portfolio of Naveed Abbasi (devnaveedabbasi), a Full Stack Developer specializing in React, Next.js, Node.js, and MongoDB.",
     url: "https://naveedabbasi.vercel.app/",
     siteName: "Naveed Abbasi Portfolio",
     images: [
@@ -55,7 +71,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Naveed Abbasi | Full Stack Developer | MERN Stack",
+    title: "Naveed Abbasi | Web Developer | Full Stack Developer",
     description:
       "Hire Naveed Abbasi — Full Stack Developer & Software Engineer.",
     creator: "@naveedabbasi",
@@ -92,7 +108,7 @@ export default function RootLayout({
       <html lang="en">
         <head>
             <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Portfolio of Naveed Abbasi" />
+  <meta name="description" content="Official portfolio of Naveed Abbasi, also known as devnaveedabbasi." />
 
     
           {/* ✅ Google Site Verification Tag */}
@@ -100,14 +116,14 @@ export default function RootLayout({
             name="google-site-verification"
             content="GLRNA_RX2DGYY9zeHaVbOA8BV2TGzG2eUQ37qLffT"
           />
-          <meta name="author" content="Naveed Abbasi, Naveed Hassan" />
+          <meta name="author" content="Naveed Abbasi (devnaveedabbasi)" />
           <meta
             name="keywords"
-            content="Naveed, Naveed Abbasi, Naveed Hassan, Dev Naveed, Naveed Abbasi Portfolio, MERN Stack Developer, React Developer, Next.js Developer, Full Stack Developer"
+            content="Naveed Abbasi, devnaveedabbasi, Naveed Abbasi developer, Naveed Abbasi web developer, developer, web developer, full stack web developer, frontend developer, backend developer, MERN Stack Developer, React Developer, Next.js Developer"
           />
           <meta
             name="description"
-            content="Portfolio of Naveed Abbasi - Full Stack Developer specializing in React, Next.js, Node.js & MongoDB."
+            content="Official portfolio of Naveed Abbasi (devnaveedabbasi) - Full Stack Developer specializing in React, Next.js, Node.js & MongoDB."
           />
           <meta name="robots" content="index, follow" />
         </head>
@@ -132,6 +148,7 @@ export default function RootLayout({
                 "@type": "Person",
                 name: "Naveed Abbasi",
                 alternateName: [
+                  "devnaveedabbasi",
                   "Naveed",
                   "Naveed Hassan",
                   "Naveed Abbasi",
@@ -147,13 +164,16 @@ export default function RootLayout({
                 ],
                 jobTitle: [
                   "Full Stack Developer",
+                  "Full Stack Web Developer",
+                  "Web Developer",
+                  "Frontend Developer",
+                  "Backend Developer",
                   "ReactJs Developer",
                   "Nodejs Developer",
                   "JavaScript Developer",
                   "TypeScript Developer",
                   "MERN Stack Developer",
                   "Software Engineer",
-                  "Web Developer",
                 ],
                 sameAs: [
                   "https://www.linkedin.com/in/naveed-abbasi",
@@ -168,6 +188,22 @@ export default function RootLayout({
                   "REST APIs",
                   "Web Development",
                 ],
+              }),
+            }}
+          />
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              name: "Naveed Abbasi Portfolio",
+              alternateName: "devnaveedabbasi",
+              url: "https://naveedabbasi.vercel.app",
+              publisher: {
+                "@type": "Person",
+                name: "Naveed Abbasi",
+              },
               }),
             }}
           />

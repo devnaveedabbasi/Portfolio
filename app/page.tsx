@@ -2,15 +2,15 @@ import { Metadata } from "next";
 import HeroSection from "@/app/home/page";
 
 export const metadata: Metadata = {
-  title: "Naveed Abbasi - Full Stack Developer | MERN Stack Expert",
-  description: "Full Stack Developer specializing in MERN stack development. I craft high-performance web applications with MongoDB, Express.js, React.js, and Node.js. Passionate about clean code, modern UI/UX, and scalable solutions.",
+  title: "Naveed Abbasi | Web Developer | devnaveedabbasi",
+  description: "Explore the portfolio of Naveed Abbasi, also known as devnaveedabbasi — a Full Stack Web Developer creating fast, modern, and scalable websites with React, Next.js, Node.js, and MongoDB.",
   robots: "index, follow",
   icons: {
     icon: "/favicon.ico",
   },
   openGraph: {
-    title: "Naveed Abbasi - Full Stack Developer | MERN Stack Expert",
-    description: "Experienced Full Stack Developer from Kotri, Sindh. Building cutting-edge web applications with MERN stack, Next.js, and TypeScript. Transforming ideas into responsive, scalable digital experiences.",
+    title: "Naveed Abbasi | Web Developer | devnaveedabbasi",
+    description: "Explore the work of Naveed Abbasi (devnaveedabbasi), a Full Stack Web Developer specializing in modern websites and web applications built with React, Next.js, Node.js, and MongoDB.",
     url: "https://naveedabbasi.vercel.app",
     siteName: "Naveed Abbasi Portfolio",
     images: [
@@ -32,6 +32,16 @@ export const metadata: Metadata = {
   },
   keywords: [
     "Naveed Abbasi",
+    "devnaveedabbasi",
+    "devnaveedabbasi portfolio",
+    "Naveed Abbasi portfolio",
+    "Naveed Abbasi developer",
+    "Naveed Abbasi web developer",
+    "developer",
+    "web developer",
+    "full stack web developer",
+    "frontend developer",
+    "backend developer",
     "Full Stack Developer",
     "MERN Stack Developer",
     "MongoDB",
