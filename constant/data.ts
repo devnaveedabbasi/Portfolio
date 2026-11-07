@@ -454,68 +454,69 @@ export const PortfolioData: Portfolio[] = [
     ],
   },
 
-  {
-    cardImage: Gemini,
-    ProjectVedio:
-      "https://drive.google.com/file/d/1-OVdz4or9SseK1Gi7dNIXhXJv1HEgtJZ/preview",
-    name: "Gemini",
-    shortDescription: "Next.js + TypeScript integration with Gemini API.",
-    description:
-      "A Next.js application showcasing TypeScript best practices and integration with Google's Gemini API for AI-powered content generation and analysis.",
-    link: "https://www.linkedin.com/posts/naveed-abbasi_nextjs-typescript-geminiapi-activity-7300613102188793856-9lnZ?utm_source=share&utm_medium=member_desktop",
-    projectType: "Frontend",
-    timeline: "2 days",
-    features: [
-      "Gemini API integration",
-      "Server-side rendering with Next.js",
-      "TypeScript type safety",
-      "Real-time streaming responses",
-      "Beautiful UI with Tailwind CSS",
-      "Error handling and fallbacks",
-    ],
-    challenges: [
-      "Working with external APIs",
-      "Handling streaming responses",
-      "Type safety with complex data structures",
-    ],
-    Technologies: "Nextjs,TypeScript,Tailwind CSS,Gemini API",
-  },
-  {
-    cardImage: SoicalMediaBanner,
-    ProjectVedio:
-      "https://drive.google.com/file/d/17wwy2qWsm1ZgcKU6GSci_BsQ6qsIRett/preview",
-    name: "Social Media App",
-    shortDescription: "Social media clone with posting and interactions.",
-    description:
-      "A comprehensive social media platform featuring user profiles, posts, likes, comments, and follower systems. Built to demonstrate advanced state management and UI patterns.",
-    link: "https://www.linkedin.com/posts/naveed-abbasi_just-finished-a-social-media-website-clone-activity-7296118246720573440-gwJw?utm_source=share&utm_medium=member_desktop",
-    projectType: "Frontend",
-    timeline: "1 week",
-    features: [
-      "User authentication and profiles",
-      "Create, edit, delete posts",
-      "Like and comment system",
-      "Follow/unfollow functionality",
-      "Feed with infinite scroll",
-      "Search and filters",
-    ],
-    challenges: [
-      "Complex state management",
-      "Performance optimization for large feeds",
-      "Real-time updates",
-    ],
-    Technologies: "React,Redux-Toolkit,Tailwind CSS,Firebase",
-    // galleryImages: [
-    //   "https://images.unsplash.com/photo-1460925895917-aeb19be489c7?w=600&h=400&fit=crop",
-    //   "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop",
-    //   "https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop",
-    //   "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=600&h=400&fit=crop",
-    //   "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=600&h=400&fit=crop",
-    //   "https://images.unsplash.com/photo-1460925895917-aeb19be489c7?w=600&h=400&fit=crop",
-    //   "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop",
-    //   "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=600&h=400&fit=crop",
-    // ],
-  },
+  // {
+  //   cardImage: Gemini,
+  //   ProjectVedio:
+  //     "https://drive.google.com/file/d/1-OVdz4or9SseK1Gi7dNIXhXJv1HEgtJZ/preview",
+  //   name: "Gemini",
+  //   shortDescription: "Next.js + TypeScript integration with Gemini API.",
+  //   description:
+  //     "A Next.js application showcasing TypeScript best practices and integration with Google's Gemini API for AI-powered content generation and analysis.",
+  //   link: "https://www.linkedin.com/posts/naveed-abbasi_nextjs-typescript-geminiapi-activity-7300613102188793856-9lnZ?utm_source=share&utm_medium=member_desktop",
+  //   projectType: "Frontend",
+  //   timeline: "2 days",
+  //   features: [
+  //     "Gemini API integration",
+  //     "Server-side rendering with Next.js",
+  //     "TypeScript type safety",
+  //     "Real-time streaming responses",
+  //     "Beautiful UI with Tailwind CSS",
+  //     "Error handling and fallbacks",
+  //   ],
+  //   challenges: [
+  //     "Working with external APIs",
+  //     "Handling streaming responses",
+  //     "Type safety with complex data structures",
+  //   ],
+  //   Technologies: "Nextjs,TypeScript,Tailwind CSS,Gemini API",
+  // },
+  // {
+  //   // https://drive.google.com/file/d/17wwy2qWsm1ZgcKU6GSci_BsQ6qsIRett/preview
+  //   cardImage: SoicalMediaBanner,
+  //   ProjectVedio:
+  //     "",
+  //   name: "Social Media App",
+  //   shortDescription: "Social media clone with posting and interactions.",
+  //   description:
+  //     "A comprehensive social media platform featuring user profiles, posts, likes, comments, and follower systems. Built to demonstrate advanced state management and UI patterns.",
+  //   link: "https://www.linkedin.com/posts/naveed-abbasi_just-finished-a-social-media-website-clone-activity-7296118246720573440-gwJw?utm_source=share&utm_medium=member_desktop",
+  //   projectType: "Frontend",
+  //   timeline: "1 week",
+  //   features: [
+  //     "User authentication and profiles",
+  //     "Create, edit, delete posts",
+  //     "Like and comment system",
+  //     "Follow/unfollow functionality",
+  //     "Feed with infinite scroll",
+  //     "Search and filters",
+  //   ],
+  //   challenges: [
+  //     "Complex state management",
+  //     "Performance optimization for large feeds",
+  //     "Real-time updates",
+  //   ],
+  //   Technologies: "React,Redux-Toolkit,Tailwind CSS,Firebase",
+  //   // galleryImages: [
+  //   //   "https://images.unsplash.com/photo-1460925895917-aeb19be489c7?w=600&h=400&fit=crop",
+  //   //   "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop",
+  //   //   "https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop",
+  //   //   "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=600&h=400&fit=crop",
+  //   //   "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=600&h=400&fit=crop",
+  //   //   "https://images.unsplash.com/photo-1460925895917-aeb19be489c7?w=600&h=400&fit=crop",
+  //   //   "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop",
+  //   //   "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=600&h=400&fit=crop",
+  //   // ],
+  // },
   {
     cardImage: BgRemoveBanner,
     ProjectVedio:
@@ -540,48 +541,48 @@ export const PortfolioData: Portfolio[] = [
     ],
     Technologies: "React,Tailwind CSS",
   },
-  {
-    cardImage: JobEvent,
-    ProjectVedio:
-      "https://drive.google.com/file/d/1tUp0dtJ30CQvVIsaIKtRX-07fQAX_lyg/preview",
+  // {
+  //   cardImage: JobEvent,
+  //   ProjectVedio:
+  //     "https://drive.google.com/file/d/1tUp0dtJ30CQvVIsaIKtRX-07fQAX_lyg/preview",
 
-    name: "Job and Event Management System",
-    shortDescription:
-      "A complete job and event management system built for a hackathon with separate admin and user panels.",
+  //   name: "Job and Event Management System",
+  //   shortDescription:
+  //     "A complete job and event management system built for a hackathon with separate admin and user panels.",
 
-    description:
-      "A fully functional Job & Event Management System developed for a hackathon challenge. It includes separate Admin and User panels, allowing job posting, event creation, user applications, event participation, and detailed data management. Built using React JS and Firebase with authentication, database, and storage. React Bootstrap, Material UI, Formik, Yup, and Chart.js were used to enhance UI, validation, and analytics.",
+  //   description:
+  //     "A fully functional Job & Event Management System developed for a hackathon challenge. It includes separate Admin and User panels, allowing job posting, event creation, user applications, event participation, and detailed data management. Built using React JS and Firebase with authentication, database, and storage. React Bootstrap, Material UI, Formik, Yup, and Chart.js were used to enhance UI, validation, and analytics.",
 
-    link: "https://www.linkedin.com/posts/naveed-abbasi_jobportal-eventmanagement-reactjs-activity-7241347404250140673-Hhau?utm_source=share&utm_medium=member_desktop",
+  //   link: "https://www.linkedin.com/posts/naveed-abbasi_jobportal-eventmanagement-reactjs-activity-7241347404250140673-Hhau?utm_source=share&utm_medium=member_desktop",
 
-    projectType: "FullStack",
-    timeline: "1 day",
+  //   projectType: "FullStack",
+  //   timeline: "1 day",
 
-    features: [
-      // Admin Panel
-      "Add, view, and delete jobs",
-      "View users who applied for jobs",
-      "Add events",
-      "View event participants",
-      "Delete events",
+  //   features: [
+  //     // Admin Panel
+  //     "Add, view, and delete jobs",
+  //     "View users who applied for jobs",
+  //     "Add events",
+  //     "View event participants",
+  //     "Delete events",
 
-      // User Panel
-      "View all jobs",
-      "Filter jobs",
-      "Apply for jobs",
-      "View all events",
-      "Join events",
-    ],
+  //     // User Panel
+  //     "View all jobs",
+  //     "Filter jobs",
+  //     "Apply for jobs",
+  //     "View all events",
+  //     "Join events",
+  //   ],
 
-    challenges: [
-      "Managing separate Admin and User flows",
-      "Handling Firestore data structure for jobs and events",
-      "Ensuring fast and smooth UI within a 1-day hackathon deadline",
-    ],
+  //   challenges: [
+  //     "Managing separate Admin and User flows",
+  //     "Handling Firestore data structure for jobs and events",
+  //     "Ensuring fast and smooth UI within a 1-day hackathon deadline",
+  //   ],
 
-    Technologies:
-      "React JS, Firebase Firestore, Firebase Auth, Firebase Storage, CSS, React Bootstrap, Material UI, Formik, Yup, Chart.js, React Router, React Toastify",
-  },
+  //   Technologies:
+  //     "React JS, Firebase Firestore, Firebase Auth, Firebase Storage, CSS, React Bootstrap, Material UI, Formik, Yup, Chart.js, React Router, React Toastify",
+  // },
 
   {
     cardImage: Medium,
