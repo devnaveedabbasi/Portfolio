@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     siteName: "Naveed Abbasi Portfolio",
     images: [
       {
-        url: "https://naveedabbasi.vercel.app/assets/img/Me.png",
+        url: "https://naveedabbasi.vercel.app/assets/img/meee2.png",
         width: 1200,
         height: 630,
         alt: "Naveed Abbasi - Full Stack Developer Portfolio",
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Naveed Abbasi - Full Stack Developer",
     description: "MERN Stack Developer crafting modern, responsive web applications. Expertise in MongoDB, Express, React, Node.js, Next.js & TypeScript. Let's build something amazing together!",
-    images: ["https://naveedabbasi.vercel.app/assets/img/Me.png"],
+    images: ["https://naveedabbasi.vercel.app/assets/img/meee2.png"],
   },
   keywords: [
     "Naveed Abbasi",

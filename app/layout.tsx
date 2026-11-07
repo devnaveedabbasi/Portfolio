@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     siteName: "Naveed Abbasi Portfolio",
     images: [
       {
-        url: "https://naveedabbasi.vercel.app/assets/img/Me.png",
+        url: "https://naveedabbasi.vercel.app/assets/img/meee2.png",
         width: 1200,
         height: 630,
         alt: "Naveed Abbasi Portfolio Preview",
@@ -140,7 +140,7 @@ export default function RootLayout({
                 url: "https://naveedabbasi.vercel.app",
                 image: [
                   "https://naveedabbasi.vercel.app/assets/img/NaveedAbbasi.png",
-                  "https://naveedabbasi.vercel.app/assets/img/Me.png",
+                  "https://naveedabbasi.vercel.app/assets/img/meee2.png",
                   "https://naveedabbasi.vercel.app/assets/img/NaveedAbbasi.png",
                   "https://naveedabbasi.vercel.app/assets/img/consultation.png",
                   "https://naveedabbasi.vercel.app/assets/img/portfolio.png",
