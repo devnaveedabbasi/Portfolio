@@ -2,7 +2,6 @@
 "use client";
 
 import HeaderText from "@/component/headerText";
-import MobileNavigation from "@/component/partials/navigations/mobileNavigation";
 import { RootState } from "@/store";
 import { Icon } from "@iconify/react";
 import React, { useState } from "react";
@@ -87,9 +86,12 @@ const ContactClient: React.FC<ContactClientProps> = ({ socialIcons }) => {
 
   return (
     <>
-      <MobileNavigation navHeadFirst="Contact" NavHeadSec="Us" />
-
-      <div className="bg-[#111111]">
+      <div
+        className="bg-[#111111]"
+        style={{
+          backgroundImage: `radial-gradient(circle at 50% 0%, ${selectedColor}55 0%, ${selectedColor}1c 32%, transparent 72%)`,
+        }}
+      >
         <HeaderText
           backHead="Contact"
           frontHeadSimple="Get In"

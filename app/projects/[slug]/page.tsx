@@ -525,6 +525,10 @@ export default function ProjectDetailPage() {
   }
 
   const techStack = project.Technologies.split(",").map((tech) => tech.trim());
+  const projectVideo = project.ProjectVedio?.trim();
+  const hasProjectVideo = Boolean(
+    projectVideo && /^https?:\/\//i.test(projectVideo),
+  );
 
   // Helper functions for refs
   const addTechRef = (el: HTMLSpanElement | null) => {
@@ -569,63 +573,95 @@ export default function ProjectDetailPage() {
         </div>
       </div>
 
-      <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 sm:py-12 lg:px-8">
         {/* Hero Image */}
-        <div ref={heroImageRef} className="mb-12 overflow-hidden rounded-2xl shadow-2xl">
+        <div
+          ref={heroImageRef}
+          className="group relative mb-10 overflow-hidden rounded-2xl border border-gray-800 bg-gray-900 shadow-2xl sm:mb-12"
+        >
           <Image
-            src={project.cardImage || DefaultImage}
+            src={project.galleryImages?.[0] || DefaultImage}
             alt={project.name}
             width={1200}
             height={400}
             priority
             fetchPriority="high"
-            className="h-auto w-full md:object-cover object-fit"
+            className="h-auto max-h-[34rem] w-full object-cover transition-transform duration-700 group-hover:scale-[1.01]"
           />
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+          <div className="absolute bottom-4 left-4 flex items-center gap-2 sm:bottom-6 sm:left-6">
+            <span
+              className="rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wider text-black"
+              style={{ backgroundColor: selectedColor }}
+            >
+              {project.projectType}
+            </span>
+            <span className="rounded-full border border-white/20 bg-black/50 px-3 py-1 text-xs text-gray-200 backdrop-blur-sm">
+              {project.timeline}
+            </span>
+          </div>
         </div>
 
-        <div className="grid grid-cols-1 gap-12 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-10 lg:grid-cols-3 lg:gap-12">
           {/* Main Content */}
           <div className="space-y-8 lg:col-span-2">
             {/* Title & Description */}
-            <div ref={descriptionRef} className="rounded-lg border border-gray-700 bg-gradient-to-br from-gray-900 to-gray-800 p-6">
-              <div className="mb-4 flex items-center gap-3">
+            <div
+              ref={descriptionRef}
+              className="rounded-2xl border border-gray-800 bg-gradient-to-br from-gray-900 to-gray-800 p-6 shadow-xl sm:p-8"
+            >
+              <div className="mb-4 flex items-start gap-3">
                 <h2
                   ref={titleRef}
-                  className="text-4xl font-bold"
+                  className="text-3xl font-bold leading-tight sm:text-4xl"
                   style={{ color: selectedColor }}
                 >
                   {project.name}
                 </h2>
               </div>
-              <p className="text-xl text-gray-300">
+              <p className="text-lg leading-relaxed text-gray-200 sm:text-xl">
                 {project.shortDescription}
               </p>
-              <p className="mt-4 leading-relaxed text-gray-400">
+              <p className="mt-5 leading-7 text-gray-400">
                 {project.description}
               </p>
             </div>
 
             {/* Project Preview */}
-            <div ref={videoRef}>
-              <h3 className="mb-4 text-2xl font-bold text-gray-300">
-                Project Preview
-              </h3>
-              <div className="relative overflow-hidden rounded-xl bg-gray-900 shadow-xl">
-                <div className="aspect-video w-full">
-                  <iframe
-                    src={project.ProjectVedio}
-                    allow="autoplay"
-                    loading="lazy"
-                    className="h-full w-full"
-                    title={`${project.name} Preview`}
-                  ></iframe>
+            {hasProjectVideo && (
+              <div ref={videoRef}>
+                <div className="mb-4 flex items-center gap-3">
+                  <span
+                    className="flex h-10 w-10 items-center justify-center rounded-xl"
+                    style={{ backgroundColor: `${selectedColor}22`, color: selectedColor }}
+                  >
+                    <Icon icon="mdi:play-circle-outline" width={24} />
+                  </span>
+                  <div>
+                    <h3 className="text-2xl font-bold text-gray-200">
+                      Project Preview
+                    </h3>
+                    <p className="text-sm text-gray-500">A closer look at the finished experience</p>
+                  </div>
+                </div>
+                <div className="relative overflow-hidden rounded-2xl border border-gray-800 bg-gray-900 p-1 shadow-xl">
+                  <div className="aspect-video w-full overflow-hidden rounded-xl">
+                    <iframe
+                      src={projectVideo}
+                      allow="autoplay; fullscreen"
+                      allowFullScreen
+                      loading="lazy"
+                      className="h-full w-full"
+                      title={`${project.name} Preview`}
+                    />
+                  </div>
                 </div>
               </div>
-            </div>
+            )}
           </div>
 
           {/* Sidebar */}
-          <div ref={sidebarRef} className="space-y-6">
+          <div ref={sidebarRef} className="space-y-6 lg:sticky lg:top-24 lg:self-start">
             {/* Timeline */}
             <div 
               ref={(el) => setSidebarCardRef(el, 0)}

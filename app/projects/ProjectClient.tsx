@@ -7,7 +7,6 @@ import HeaderText from "@/component/headerText";
 import Image from "next/image";
 import DefaultImage from "@/public/assets/img/defult.jpeg";
 import { Portfolio } from "@/constant/data";
-import MobileNavigation from "@/component/partials/navigations/mobileNavigation";
 import { Icon } from "@iconify/react";
 import { useSelector } from "react-redux";
 import { RootState } from "@/store";
@@ -133,10 +132,13 @@ export default function ProjectsClient({ portfolioData }: ProjectsClientProps) {
 
   return (
     <>
-      <MobileNavigation navHeadFirst="My" NavHeadSec="Works" />
-
       {/* Simple Header Section */}
-      <div className=" hidden h-[180px] items-center justify-center bg-black md:flex">
+      <div
+        className="hidden h-[180px] items-center justify-center bg-[#111111] md:flex"
+        style={{
+          backgroundImage: `radial-gradient(circle at 50% 0%, ${selectedColor}55 0%, ${selectedColor}1c 34%, transparent 72%)`,
+        }}
+      >
         <HeaderText
           backHead="Portfolio"
           frontHeadSimple="My Creative"
@@ -145,7 +147,12 @@ export default function ProjectsClient({ portfolioData }: ProjectsClientProps) {
       </div>
 
       {/* Fixed Portfolio Grid */}
-      <div className="min-h-screen md:mt-0 mt-16 bg-black py-6 md:py-8">
+      <div
+        className="min-h-screen md:mt-0 mt-16 bg-[#111111] py-6 md:py-8"
+        style={{
+          backgroundImage: `radial-gradient(circle at 50% 0%, ${selectedColor}45 0%, ${selectedColor}16 30%, transparent 68%)`,
+        }}
+      >
         <div
           ref={containerRef}
           className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8"

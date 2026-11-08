@@ -6,11 +6,11 @@ interface MenuIcon {
 
 // Menu Icons Array
 export const menuIcons: MenuIcon[] = [
-  { icon: "solar:home-outline", name: "Home", link: "/" },
-  { icon: "iconamoon:profile-duotone", name: "About Us", link: "/about" },
-  { icon: "dashicons:portfolio", name: "Projects", link: "/projects" },
-  { icon: "mdi:contact-outline", name: "Contact", link: "/contact-us" },
-  { icon: "mdi:blog", name: "Blog", link: "/blog" },
+  { icon: "solar:home-outline", name: "Home", link: "#home" },
+  { icon: "iconamoon:profile-duotone", name: "About Us", link: "#about" },
+  { icon: "dashicons:portfolio", name: "Projects", link: "#projects" },
+  { icon: "mdi:contact-outline", name: "Contact", link: "#contact" },
+  { icon: "mdi:blog", name: "Blog", link: "#blog" },
 ];
 
 import Purple from "@/public/assets/img/colors/purple.webp";
@@ -190,7 +190,7 @@ import BookStore from "@/public/assets/img/ProjectsImage/BookStore.png";
 
 export interface Portfolio {
   cardImage: string | StaticImageData;
-  ProjectVedio: string;
+  ProjectVedio?: string;
   name: string;
   link: string;
   shortDescription?: string;
@@ -207,8 +207,7 @@ export interface Portfolio {
 
 export const PortfolioData: Portfolio[] = [
   {
-    cardImage: "/assets/img/Projects/Alex/heroAlex.png",
-    ProjectVedio: "https://drive.google.com/file/d/1EwMzX8tFNR224HQIqzzmZvrBNGBR0Ccy/preview",
+    cardImage: "/assets/img/Projects/Alex/10.jpg",
 
     name: "Alex Sezun",
     link: "/projects/alex", // Added missing link property
@@ -249,16 +248,16 @@ export const PortfolioData: Portfolio[] = [
       "Ensuring consistent design across all sections",
       "Optimizing AOS and Framer Motion together",
     ],
-
+    // detail
     Technologies:
       "React.js,  TypeScript, Tailwind CSS, Framer Motion , AOS , Lucide Icons, Vercel (Deployment)",
     galleryImages: [
-      "/assets/img/Projects/Alex/heroAlex.png",
-      "/assets/img/Projects/Alex/1.png",
-      "/assets/img/Projects/Alex/2.png",
-      "/assets/img/Projects/Alex/3.png",
-      "/assets/img/Projects/Alex/4.png",
-      "/assets/img/Projects/Alex/5.png",
+      // "/assets/img/Projects/Alex/10.jpg",
+      "/assets/img/Projects/Alex/11.jpg",
+      "/assets/img/Projects/Alex/15.jpg",
+      "/assets/img/Projects/Alex/14.jpg",
+      // "/assets/img/Projects/Alex/13.jpg",
+      // "/assets/img/Projects/Alex/12.jpg",
 
     ],
     // galleryImages: [

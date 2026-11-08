@@ -99,12 +99,12 @@ export default function Hero() {
   return (
     <section
       ref={container}
-      className="relative min-h-screen w-full overflow-hidden bg-[#0a0a0a] text-stone-100"
+      className="relative z-0 min-h-[100svh] w-full shrink-0 isolate overflow-hidden bg-[#111111] text-stone-100 md:h-screen md:min-h-0"
     >
       {/* GradientBackground — Centered */}
       <div
         className="pointer-events-none absolute inset-0 z-0 overflow-hidden"
-        style={{ backgroundColor: "#0a0a0a" }}
+        style={{ backgroundColor: "#111111" }}
       >
         {/* Mobile background (precise centered glow circle behind portrait) */}
         <div
@@ -117,7 +117,7 @@ export default function Hero() {
         <div
           className="absolute inset-0 w-full h-full scale-[1.05] hidden md:block"
           style={{
-            backgroundImage: `radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0) 52%, rgba(0, 0, 0, 0.048) 100%), radial-gradient(circle at 50% 50%, #ffffff 0%, ${color} 16.17%, ${color}66 46.2%, #0a0a0a 77%)`,
+            backgroundImage: `radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0) 52%, rgba(0, 0, 0, 0.048) 100%), radial-gradient(circle at 50% 50%, #ffffff 0%, ${color} 16.17%, ${color}66 46.2%, #111111 77%)`,
           }}
         />
       </div>
@@ -145,7 +145,7 @@ export default function Hero() {
       </div>
 
       {/* ═══════════ Hero content ═══════════ */}
-      <main className="relative z-10 mx-auto w-full max-w-7xl px-4 sm:px-6 md:px-12 min-h-screen md:h-screen flex flex-col justify-center items-center md:block py-12 md:py-0 gap-6 sm:gap-8">
+      <main className="relative z-10 mx-auto flex min-h-[100svh] w-full max-w-7xl flex-col items-center justify-center gap-6 px-4 py-12 sm:gap-8 sm:px-6 md:block md:h-screen md:min-h-0 md:px-12 md:py-0">
 
         {/* ── Big name — centered ── */}
         <div className="pointer-events-none w-full text-center z-[5] mt-6 md:mt-0 md:absolute md:inset-x-0 md:top-[10%]">

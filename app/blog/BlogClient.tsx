@@ -7,7 +7,6 @@ import { collection, query, orderBy, onSnapshot } from "firebase/firestore";
 import Image from "next/image";
 import { Icon } from "@iconify/react";
 import HeaderText from "@/component/headerText";
-import MobileNavigation from "@/component/partials/navigations/mobileNavigation";
 import { RootState } from "@/store";
 import { useSelector } from "react-redux";
 import DefaultImage from "@/public/assets/img/defult.jpeg";
@@ -106,8 +105,12 @@ export default function BlogClient() {
 
   return (
     <>
-      <MobileNavigation navHeadFirst="My" NavHeadSec="Blogs" />
-      <div className="min-h-screen bg-[#111111]">
+      <div
+        className="min-h-screen bg-[#111111]"
+        style={{
+          backgroundImage: `radial-gradient(circle at 50% 0%, ${selectedColor}55 0%, ${selectedColor}1c 30%, transparent 70%)`,
+        }}
+      >
         <HeaderText
           backHead="Posts"
           frontHeadSimple="My"
@@ -207,8 +210,6 @@ export default function BlogClient() {
                       {/* Image */}
                       <div className="relative h-48 overflow-hidden">
                         <Image
-                          width={400}
-                          height={400}
                           src={
                             blog.images && blog.images.length > 0
                               ? blog.images[0]
