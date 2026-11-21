@@ -195,22 +195,22 @@ export interface Portfolio {
   link: string;
   shortDescription?: string;
   description?: string;
-  Technologies: string;
+  Technologies?: string;
   projectType: "Frontend" | "FullStack";
   liveUrl?: string;
   clientName?: string;
-  timeline: string;
-  features: string[];
-  challenges: string[];
+  timeline?: string;
+  features?: string[];
+  challenges?: string[];
   galleryImages?: string[]; // Optional gallery images (6-10 placeholder images)
 }
 
 export const PortfolioData: Portfolio[] = [
   {
-    cardImage: "/assets/img/Projects/Alex/10.jpg",
+    cardImage: "/assets/img/Projects/Alex/14.jpg",
 
     name: "Alex Sezun",
-    link: "/projects/alex", // Added missing link property
+    link: "/projects/alex-sezun",
 
     shortDescription:
       "A premium personal marketing website built to showcase expertise in growth marketing, content strategy, and conversion-focused systems.",
@@ -252,13 +252,10 @@ export const PortfolioData: Portfolio[] = [
     Technologies:
       "React.js,  TypeScript, Tailwind CSS, Framer Motion , AOS , Lucide Icons, Vercel (Deployment)",
     galleryImages: [
-      // "/assets/img/Projects/Alex/10.jpg",
-      "/assets/img/Projects/Alex/11.jpg",
-      "/assets/img/Projects/Alex/15.jpg",
       "/assets/img/Projects/Alex/14.jpg",
-      // "/assets/img/Projects/Alex/13.jpg",
-      // "/assets/img/Projects/Alex/12.jpg",
-
+      "/assets/img/Projects/Alex/15.jpg",
+      "/assets/img/Projects/Alex/11.jpg",
+      "/assets/img/Projects/Alex/Gemini_Generated_Image_1kx8dm1kx8dm1kx8.jpg",
     ],
     // galleryImages: [
     //   "/assets/img/projects/Alex/heroAlex.png",
