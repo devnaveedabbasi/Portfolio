@@ -89,56 +89,64 @@ const ContactClient: React.FC<ContactClientProps> = ({ socialIcons }) => {
     <>
       <MobileNavigation navHeadFirst="Contact" NavHeadSec="Us" />
 
-      <div className="bg-[#111111]">
+      <div className="min-h-screen bg-[#111111]">
         <HeaderText
           backHead="Contact"
           frontHeadSimple="Get In"
           frontHeadColor="Touch"
         />
 
-        <div className="flex w-full justify-center">
-          <div className="mt-8 flex h-full w-[86%] flex-col items-center justify-center gap-4 text-white md:flex-row">
-            <div className="w-full space-y-4 md:w-[35%]">
-              <h1 className="font-Poppins text-3xl font-bold">
+        <div className="flex w-full justify-center pb-8">
+          <div className="flex h-full w-[calc(100%-32px)] max-w-6xl flex-col items-center justify-center gap-8 text-white sm:w-[86%] md:flex-row md:gap-6 lg:gap-12">
+            <div className="w-full space-y-5 md:w-[35%] md:self-start">
+              <h1 className="font-Poppins text-2xl font-bold sm:text-3xl">
                 DON&apos;T BE SHY!
               </h1>
-              <p className="font-Open_Sans text-[15px] text-white">
+              <p className="font-Open_Sans text-sm leading-6 text-white sm:text-[15px]">
                 Feel free to get in touch with me. I am always open to
                 discussing new projects, creative ideas, or opportunities to be
                 part of your visions.
               </p>
-              <div className="space-y-2">
-                <div className="flex items-center gap-2">
+              <div className="space-y-3">
+                <a
+                  href="mailto:naveedabbasi8651@gmail.com"
+                  className="flex min-w-0 items-center gap-3"
+                >
                   <Icon
                     icon="mdi:contact"
                     color={selectedColor}
-                    width={40}
-                    height={40}
+                    width={36}
+                    height={36}
+                    className="shrink-0"
                   />
-                  <span className="font-Open_Sans text-[15px] font-medium">
+                  <span className="min-w-0 break-all font-Open_Sans text-sm font-medium sm:text-[15px]">
                     naveedabbasi8651@gmail.com
                   </span>
-                </div>
-                <div className="flex items-center gap-2">
+                </a>
+                <a
+                  href="tel:+923111309060"
+                  className="flex items-center gap-3"
+                >
                   <Icon
                     icon="material-symbols:mail-sharp"
                     color={selectedColor}
-                    width={40}
-                    height={40}
+                    width={36}
+                    height={36}
+                    className="shrink-0"
                   />
-                  <span className="font-Open_Sans text-[15px] font-medium">
+                  <span className="font-Open_Sans text-sm font-medium sm:text-[15px]">
                     +92 311 1309060
                   </span>
-                </div>
+                </a>
               </div>
-              <div className="mt-4 flex gap-4">
+              <div className="mt-5 flex flex-wrap gap-3">
                 {socialIcons.map((icon, idx) => (
                   <a
                     href={icon.link}
                     target="_blank"
                     rel="noopener noreferrer"
                     key={idx}
-                    className="cursor-pointer rounded-full bg-[#252525] p-2 transition duration-200"
+                    className="flex h-11 w-11 shrink-0 items-center justify-center cursor-pointer rounded-full bg-[#252525] p-2 transition duration-200"
                     onMouseEnter={(e) => {
                       e.currentTarget.style.backgroundColor = selectedColor;
                     }}
@@ -154,9 +162,9 @@ const ContactClient: React.FC<ContactClientProps> = ({ socialIcons }) => {
 
             <form
               onSubmit={handleSubmit}
-              className="mt-8 w-full space-y-4 md:mt-0 md:w-[60%]"
+              className="w-full space-y-4 md:w-[60%]"
             >
-              <div className="flex flex-col gap-4 md:flex-row">
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
                 <input
                   type="text"
                   name="name"
