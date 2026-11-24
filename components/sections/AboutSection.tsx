@@ -68,7 +68,7 @@ export function AboutSection() {
               {/* Floating Info Overlays */}
               <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8 text-white">
                 <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 backdrop-blur-md px-3.5 py-1 text-xs font-semibold text-white mb-3">
-                  <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
+                  <span className="h-2 w-2 rounded-full bg-white animate-pulse" />
                   <span>Available for projects</span>
                 </div>
                 <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white">

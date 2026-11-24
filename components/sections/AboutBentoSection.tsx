@@ -56,7 +56,7 @@ function ScoreDial({
 
 export function AboutBentoSection() {
   return (
-    <section id="bento-about" className="mx-auto max-w-7xl px-6 py-20 sm:py-28">
+    <section id="bento-about" className="mx-auto max-w-7xl px-6 pt-16 sm:pt-24 pb-8 sm:pb-12">
       {/* Centered Section Header — Matching Figma Exactly */}
       <div className="mx-auto max-w-3xl text-center">
         <div className="inline-block">

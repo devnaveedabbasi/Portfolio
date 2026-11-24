@@ -5,6 +5,7 @@ import { AboutBentoSection } from "@/components/sections/AboutBentoSection";
 import { TickerRibbon } from "@/components/sections/TickerRibbon";
 import { StackSection } from "@/components/sections/StackSection";
 import { ExperienceSection } from "@/components/sections/ExperienceSection";
+import { CertificationsSection } from "@/components/sections/CertificationsSection";
 import { ProjectsSection } from "@/components/sections/ProjectsSection";
 import { FaqContactSection } from "@/components/sections/FaqContactSection";
 import { Footer } from "@/components/layout/Footer";
@@ -19,8 +20,9 @@ export default function Home() {
         <AboutSection />
         <TickerRibbon />
         <StackSection />
-        <ExperienceSection />
         <ProjectsSection />
+        <CertificationsSection />
+        <ExperienceSection />
         <FaqContactSection />
       </main>
       <Footer />

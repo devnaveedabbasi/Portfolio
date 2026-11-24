@@ -1,87 +1,313 @@
-import { projectsData } from "@/constant/data";
-import { SectionHeader } from "@/components/ui/SectionHeader";
-import { Card, CardContent, CardFooter } from "@/components/ui/Card";
-import { Badge } from "@/components/ui/Badge";
-import { Button } from "@/components/ui/Button";
+"use client";
+
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+export interface ProjectItem {
+  id: string;
+  title: string;
+  subtitle: string;
+  category: string;
+  year: string;
+  description: string;
+  image?: string; // Path to real image if provided (e.g., "/assets/projects/aurelia.png")
+  recommendedSize: string;
+  accentColor: string;
+  link: string;
+}
+
+// 4 Featured Projects matching reference image layout
+const col1Projects: ProjectItem[] = [
+  {
+    id: "aurelia",
+    title: "Aurelia",
+    subtitle: "Skincare & Brand Identity",
+    category: "Branding",
+    year: "©2025",
+    description:
+      "A full identity system — logo, type, color, and voice — built to make the brand feel timeless and unmistakable.",
+    recommendedSize: "800 × 600 px (4:3)",
+    accentColor: "#E0A96D",
+    link: "https://github.com/devnaveedabbasi",
+  },
+  {
+    id: "lumen",
+    title: "Lumen Studio",
+    subtitle: "Interactive Portfolio Engine",
+    category: "Web Design",
+    year: "©2025",
+    description:
+      "A responsive marketing site designed to build trust, tell the story, and drive conversions.",
+    recommendedSize: "800 × 600 px (4:3)",
+    accentColor: "#E8461D",
+    link: "https://github.com/devnaveedabbasi",
+  },
+];
+
+const col2Projects: ProjectItem[] = [
+  {
+    id: "northwind",
+    title: "Northwind",
+    subtitle: "Accessible Component System",
+    category: "UI/UX Design",
+    year: "©2025",
+    description:
+      "An end-to-end product experience that turns complex flows into something clear, fast, and human.",
+    recommendedSize: "800 × 600 px (4:3)",
+    accentColor: "#2563EB",
+    link: "https://github.com/devnaveedabbasi",
+  },
+  {
+    id: "chronos",
+    title: "Chronos Health & IoT",
+    subtitle: "Smart Telemetry Hub",
+    category: "Product Design",
+    year: "©2025",
+    description:
+      "Telemetry monitoring application tracking real-time health intervals, device metrics, and automated progress analytics.",
+    recommendedSize: "800 × 600 px (4:3)",
+    accentColor: "#8A38F5",
+    link: "https://github.com/devnaveedabbasi",
+  },
+];
+
+// Reusable Project Card with Mirelle-style Curtain Unveil & Parallax Scale
+function ProjectCard({ project }: { project: ProjectItem }) {
+  return (
+    <div className="project-card group flex flex-col">
+      {/* 
+        Mirelle-Style Curtain Reveal Frame:
+        - Outer box acts as the clipping curtain mask
+        - Inner media scales from 1.25 -> 1.0 with scroll scrub
+      */}
+      <div className="project-curtain-mask relative w-full aspect-[4/3] rounded-3xl bg-[#121215] border border-neutral-800/80 p-2 sm:p-2.5 shadow-2xl overflow-hidden transition-colors duration-500 group-hover:border-neutral-700">
+        <div className="relative w-full h-full overflow-hidden rounded-2xl bg-[#16161b]">
+          {/* Inner Media Element with GSAP Parallax Scrub & Hover Scale */}
+          <div className="project-inner-media relative w-full h-full will-change-transform transition-transform duration-700 ease-out group-hover:scale-105">
+            {project.image ? (
+              <img
+                src={project.image}
+                alt={project.title}
+                className="h-full w-full object-cover rounded-2xl"
+              />
+            ) : (
+              /* Architectural Image Placeholder with Clean Camera & Dimension Tag */
+              <div className="relative flex h-full w-full flex-col items-center justify-center rounded-2xl border-2 border-dashed border-neutral-800/80 bg-[#141418] p-6 text-center transition-all duration-300 group-hover:border-neutral-700 group-hover:bg-[#18181f]">
+                {/* L-bracket corner marks */}
+                <div className="absolute top-3 left-3 h-3 w-3 border-t-2 border-l-2 border-neutral-700 group-hover:border-neutral-500 transition-colors" />
+                <div className="absolute top-3 right-3 h-3 w-3 border-t-2 border-r-2 border-neutral-700 group-hover:border-neutral-500 transition-colors" />
+                <div className="absolute bottom-3 left-3 h-3 w-3 border-b-2 border-l-2 border-neutral-700 group-hover:border-neutral-500 transition-colors" />
+                <div className="absolute bottom-3 right-3 h-3 w-3 border-b-2 border-r-2 border-neutral-700 group-hover:border-neutral-500 transition-colors" />
+
+                {/* Central Media / Image Icon */}
+                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-neutral-800/90 text-neutral-400 shadow-md transition-all duration-300 group-hover:scale-110 group-hover:bg-white group-hover:text-black">
+                  <svg
+                    className="h-7 w-7"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.8"
+                  >
+                    <rect width="18" height="18" x="3" y="3" rx="2" ry="2" />
+                    <circle cx="9" cy="9" r="2" />
+                    <path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21" />
+                  </svg>
+                </div>
+
+                {/* Prominent Exact Dimension Badge */}
+                <div className="mt-4 inline-flex items-center gap-2 rounded-xl bg-white text-black px-4 py-1.5 shadow-lg transition-transform group-hover:scale-105">
+                  <span className="h-2 w-2 rounded-full bg-neutral-800 animate-pulse" />
+                  <span className="font-mono text-xs font-black tracking-wider">
+                    {project.recommendedSize}
+                  </span>
+                </div>
+
+                {/* Label */}
+                <span className="mt-2 text-xs font-bold text-neutral-300 tracking-wide">
+                  {project.title} Screenshot
+                </span>
+                <span className="text-[11px] text-neutral-500 font-medium">
+                  Drop image asset here
+                </span>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      {/* Metadata Info Below Card */}
+      <div className="mt-6 sm:mt-8 flex flex-col text-white">
+        {/* Category & Year */}
+        <div className="flex items-center justify-between text-xs font-medium text-neutral-400">
+          <span>{project.category}</span>
+          <span>{project.year}</span>
+        </div>
+
+        {/* Project Title */}
+        <h4 className="mt-2 text-2xl sm:text-3xl font-extrabold tracking-tight text-white group-hover:text-neutral-200 transition-colors">
+          {project.title}
+        </h4>
+
+        {/* Description */}
+        <p className="mt-2.5 text-sm sm:text-base leading-relaxed text-neutral-400 max-w-lg">
+          {project.description}
+        </p>
+
+        {/* Action Pill Button */}
+        <div className="mt-5">
+          <a
+            href={project.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-full border border-neutral-800 bg-transparent px-4 py-1.5 text-xs font-semibold text-neutral-300 transition-all duration-300 hover:border-white hover:text-white hover:bg-neutral-900"
+          >
+            <span>→ View All Work</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export function ProjectsSection() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const col1Ref = useRef<HTMLDivElement>(null);
+  const col2Ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    const ctx = gsap.context(() => {
+      // 1. Mirelle-Style Curtain Reveal (Clip-Path & Vertical Glide)
+      const curtainMasks = gsap.utils.toArray<HTMLElement>(".project-curtain-mask");
+      curtainMasks.forEach((mask) => {
+        gsap.fromTo(
+          mask,
+          {
+            clipPath: "inset(0% 0% 55% 0% round 24px)",
+            y: 60,
+            opacity: 0.4,
+          },
+          {
+            clipPath: "inset(0% 0% 0% 0% round 24px)",
+            y: 0,
+            opacity: 1,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: mask,
+              start: "top 92%",
+              end: "top 45%",
+              scrub: 1.1,
+            },
+          }
+        );
+      });
+
+      // 2. Mirelle-Style Inner Media Parallax Scrub (Scale 1.22 -> 1.0 & Y-Drift)
+      const innerMedias = gsap.utils.toArray<HTMLElement>(".project-inner-media");
+      innerMedias.forEach((media) => {
+        gsap.fromTo(
+          media,
+          {
+            scale: 1.22,
+            yPercent: -8,
+          },
+          {
+            scale: 1.0,
+            yPercent: 6,
+            ease: "none",
+            scrollTrigger: {
+              trigger: media.parentElement,
+              start: "top bottom",
+              end: "bottom top",
+              scrub: 1.2,
+            },
+          }
+        );
+      });
+
+      // 3. Staggered Column 2 Differential Parallax for Desktop
+      const mm = gsap.matchMedia();
+      mm.add("(min-width: 768px)", () => {
+        if (!col2Ref.current || !sectionRef.current) return;
+
+        gsap.to(col2Ref.current, {
+          y: -110,
+          ease: "none",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: 1.4,
+          },
+        });
+      });
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section id="works" className="border-t border-[var(--border-subtle)] bg-[var(--bg-card-subtle)] py-24 sm:py-32">
-      <div className="mx-auto max-w-7xl px-6">
-        <SectionHeader
-          pillText="SELECTED WORK"
-          title="Featured Projects & Architectures"
-          description="A curated selection of web applications, cloud systems, and open-source packages engineered for scale."
-        />
+    <section
+      ref={sectionRef}
+      id="works"
+      className="relative bg-black text-white py-24 sm:py-36 px-6 sm:px-10 lg:px-16 overflow-hidden border-t border-neutral-900"
+    >
+      <div className="mx-auto max-w-7xl">
+        {/* ================= Header Row ================= */}
+        <div className="flex flex-col md:flex-row md:items-start justify-between gap-8 pb-16 sm:pb-24 border-b border-neutral-900">
+          <div>
+            {/* Minimal [portfolio] label */}
+            <span className="text-xs sm:text-sm font-mono uppercase tracking-widest text-neutral-400">
+              [portfolio]
+            </span>
 
-        {/* 2x2 Projects Grid */}
-        <div className="mt-16 grid grid-cols-1 gap-8 md:grid-cols-2">
-          {projectsData.map((project) => (
-            <Card key={project.id} className="group flex flex-col justify-between overflow-hidden">
-              <CardContent className="p-6 sm:p-8">
-                {/* Visual Preview Box */}
-                <div className="relative flex flex-col justify-between rounded-2xl bg-black p-8 text-white min-h-[220px] sm:min-h-[260px] overflow-hidden transition-transform group-hover:scale-[1.01]">
-                  <div className="flex items-center justify-between">
-                    <span className="text-[11px] font-bold tracking-widest text-neutral-400 uppercase">
-                      ✦ {project.badge}
-                    </span>
-                    <span className="h-2 w-2 rounded-full bg-white/40" />
-                  </div>
+            {/* Massive Bold Heading */}
+            <h2 className="mt-4 text-4xl sm:text-6xl md:text-7xl font-black tracking-tight text-white leading-[1.06]">
+              Projects Built with <br />
+              <span>Obsession.</span>
+            </h2>
+          </div>
 
-                  <div className="my-auto py-6">
-                    <div className="text-2xl font-black tracking-tight text-white sm:text-3xl">
-                      {project.headline}
-                    </div>
-                    <div className="mt-2 text-xs font-medium text-neutral-400 sm:text-sm">
-                      {project.subtext}
-                    </div>
-                  </div>
+          {/* Top Right Grid Marks & View All Work Pill Button */}
+          <div className="flex items-center gap-8 self-start md:self-auto">
+            {/* Grid Plus Marks */}
+            <div className="hidden lg:flex items-center gap-12 text-neutral-600 font-mono text-sm select-none">
+              <span>+</span>
+              <span>+</span>
+            </div>
 
-                  <div className="flex items-center gap-2">
-                    <div className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
-                    <span className="text-[10px] font-mono tracking-wider text-neutral-400 uppercase">
-                      PRODUCTION SYSTEM
-                    </span>
-                  </div>
-                </div>
+            {/* Pill CTA Button */}
+            <a
+              href="https://github.com/devnaveedabbasi"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center gap-2.5 rounded-full bg-white text-black px-6 py-3 text-xs sm:text-sm font-bold tracking-tight shadow-md hover:bg-neutral-200 hover:scale-105 transition-all duration-300"
+            >
+              <span>↗ View All Work</span>
+            </a>
+          </div>
+        </div>
 
-                {/* Metadata */}
-                <div className="mt-8">
-                  <div className="text-xs font-bold uppercase tracking-wider text-[var(--text-muted)]">
-                    [ {project.tag} ]
-                  </div>
-                  <h3 className="mt-2 text-xl font-bold tracking-tight text-[var(--text-primary)] sm:text-2xl">
-                    {project.title} — {project.subtitle}
-                  </h3>
-                  <p className="mt-3 text-sm leading-relaxed text-[var(--text-secondary)]">
-                    {project.description}
-                  </p>
-                </div>
-              </CardContent>
+        {/* ================= Staggered 2-Column Parallax Grid ================= */}
+        <div className="mt-16 sm:mt-24 grid grid-cols-1 md:grid-cols-2 gap-14 sm:gap-18 lg:gap-24">
+          {/* ================= COLUMN 1 (Left Column) ================= */}
+          <div ref={col1Ref} className="flex flex-col gap-18 sm:gap-24">
+            {col1Projects.map((project) => (
+              <ProjectCard key={project.id} project={project} />
+            ))}
+          </div>
 
-              {/* Footer row with tech tags and link */}
-              <CardFooter className="flex-wrap gap-4">
-                <div className="flex flex-wrap items-center gap-2">
-                  {project.tech.map((t) => (
-                    <Badge key={t} variant="outline" className="text-[11px] py-0.5 px-2.5">
-                      {t}
-                    </Badge>
-                  ))}
-                </div>
-
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  href={project.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-bold underline underline-offset-4"
-                >
-                  View Details ↗
-                </Button>
-              </CardFooter>
-            </Card>
-          ))}
+          {/* ================= COLUMN 2 (Right Column — Staggered & Offset Down) ================= */}
+          <div
+            ref={col2Ref}
+            className="flex flex-col gap-18 sm:gap-24 md:mt-32 lg:mt-40"
+          >
+            {col2Projects.map((project) => (
+              <ProjectCard key={project.id} project={project} />
+            ))}
+          </div>
         </div>
       </div>
     </section>

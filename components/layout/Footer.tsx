@@ -103,7 +103,7 @@ export function Footer() {
               <div className="font-semibold text-white">{personalInfo.location}</div>
               <div className="text-neutral-400">{personalInfo.timezone} · Worldwide</div>
               <div className="mt-3 inline-flex items-center gap-2 rounded-full border border-[var(--footer-border)] bg-neutral-900 px-3 py-1 text-xs text-neutral-300">
-                <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
+                <span className="h-1.5 w-1.5 rounded-full bg-neutral-400" />
                 <span>{personalInfo.availability}</span>
               </div>
             </div>

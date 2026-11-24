@@ -89,10 +89,10 @@ export function TickerRibbon() {
   return (
     <div
       ref={containerRef}
-      className="relative my-14 sm:my-22 w-full overflow-hidden py-6 sm:py-10 select-none pointer-events-none space-y-4 sm:space-y-6"
+      className="relative my-12 sm:my-16 w-full overflow-hidden py-4 select-none pointer-events-none space-y-3 sm:space-y-4"
     >
       {/* Ribbon 1: Tilted Left (-2.2deg), Scrolls to the LEFT */}
-      <div className="w-[140vw] -ml-[20vw] -rotate-2 sm:-rotate-[2.2deg] transform-gpu bg-black text-white py-4 sm:py-4.5 shadow-[0_16px_36px_rgba(0,0,0,0.5)] border-y border-neutral-800">
+      <div className="w-[140vw] -ml-[20vw] -rotate-2 sm:-rotate-[2.2deg] transform-gpu bg-black text-white py-3.5 sm:py-4 shadow-sm border-y border-neutral-900">
         <div
           ref={track1Ref}
           className="flex items-center gap-8 sm:gap-12 whitespace-nowrap will-change-transform text-xs sm:text-sm font-extrabold uppercase tracking-widest text-neutral-100"
@@ -109,7 +109,7 @@ export function TickerRibbon() {
       </div>
 
       {/* Ribbon 2: Tilted Counter-Angle (+1.6deg), Scrolls to the RIGHT */}
-      <div className="w-[140vw] -ml-[20vw] rotate-1 sm:rotate-[1.6deg] transform-gpu bg-[#0d0d10] text-neutral-200 py-4 sm:py-4.5 shadow-[0_16px_36px_rgba(0,0,0,0.45)] border-y border-neutral-800">
+      <div className="w-[140vw] -ml-[20vw] rotate-1 sm:rotate-[1.6deg] transform-gpu bg-black text-neutral-100 py-3.5 sm:py-4 shadow-sm border-y border-neutral-900">
         <div
           ref={track2Ref}
           className="flex items-center gap-8 sm:gap-12 whitespace-nowrap will-change-transform text-xs sm:text-sm font-extrabold uppercase tracking-widest text-neutral-200"

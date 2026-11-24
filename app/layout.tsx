@@ -5,6 +5,7 @@ import { personalInfo } from "@/constant/data";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { shouldShowSpeedInsights } from "@/utlis/environment";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
+import { SmoothScrollProvider } from "@/components/providers/SmoothScrollProvider";
 import { SmoothCursor } from "@/components/ui/SmoothCursor";
 
 const inter = Inter({
@@ -139,9 +140,11 @@ export default function RootLayout({
       </head>
       <body className={`${inter.variable} font-sans bg-[var(--bg-page)] text-[var(--text-primary)] antialiased transition-colors duration-200`}>
         <ThemeProvider>
-          <SmoothCursor />
-          {children}
-          {shouldShowSpeedInsights() && <SpeedInsights />}
+          <SmoothScrollProvider>
+            <SmoothCursor />
+            {children}
+            {shouldShowSpeedInsights() && <SpeedInsights />}
+          </SmoothScrollProvider>
         </ThemeProvider>
       </body>
     </html>
