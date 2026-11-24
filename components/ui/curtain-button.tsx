@@ -5,10 +5,18 @@ import { motion, AnimatePresence, type HTMLMotionProps } from 'motion/react';
 import { Loader2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
-interface CurtainButtonProps
+export interface CurtainButtonProps
   extends Omit<HTMLMotionProps<'button'>, 'children'> {
   /** The label text to display within the button. */
   text: string;
+  /** Optional icon to display before the animated text */
+  icon?: React.ReactNode;
+  /** Optional href to navigate on click */
+  href?: string;
+  /** Link target (e.g. '_blank') */
+  target?: string;
+  /** Link rel attribute */
+  rel?: string;
   /** If true, displays a spinner and disables interaction. */
   isLoading?: boolean;
   /** If true, visually greys out the button and prevents interaction. */
@@ -27,6 +35,10 @@ const CurtainButton = React.forwardRef<HTMLButtonElement, CurtainButtonProps>(
   (
     {
       text,
+      icon,
+      href,
+      target,
+      rel,
       isLoading = false,
       isDisabled = false,
       variant = 'default',
@@ -47,7 +59,7 @@ const CurtainButton = React.forwardRef<HTMLButtonElement, CurtainButtonProps>(
 
     const variantStyles = {
       default: {
-        button: 'bg-primary border border-primary text-primary-foreground',
+        button: 'bg-primary border border-primary text-primary-foreground shadow-sm hover:shadow-md',
         curtain: 'bg-primary-foreground',
         textInitial: 'text-primary-foreground',
         textHover: 'text-primary',
@@ -61,10 +73,10 @@ const CurtainButton = React.forwardRef<HTMLButtonElement, CurtainButtonProps>(
       },
       outline: {
         button:
-          'bg-background border border-input text-primary hover:border-primary',
-        curtain: 'bg-primary',
-        textInitial: 'text-primary',
-        textHover: 'text-primary-foreground',
+          'bg-background border border-input text-foreground hover:border-foreground/50 shadow-sm',
+        curtain: 'bg-foreground',
+        textInitial: 'text-foreground',
+        textHover: 'text-background',
       },
       ghost: {
         button: 'bg-transparent border border-transparent text-foreground',
@@ -75,10 +87,10 @@ const CurtainButton = React.forwardRef<HTMLButtonElement, CurtainButtonProps>(
     };
 
     const sizeStyles = {
-      default: 'h-10 px-4 py-2',
-      sm: 'h-9 rounded-md px-3',
-      lg: 'h-11 rounded-md px-8',
-      icon: 'h-10 w-10',
+      default: 'h-10 px-5 py-2 text-sm',
+      sm: 'h-9 px-4 py-1.5 text-xs',
+      lg: 'h-12 px-7 py-3 text-sm md:text-base font-semibold',
+      icon: 'h-10 w-10 p-0',
     };
 
     const currentStyle = variantStyles[variant];
@@ -88,6 +100,13 @@ const CurtainButton = React.forwardRef<HTMLButtonElement, CurtainButtonProps>(
         e.preventDefault();
         return;
       }
+      if (href) {
+        if (target === '_blank') {
+          window.open(href, '_blank', rel || 'noopener noreferrer');
+        } else {
+          window.location.href = href;
+        }
+      }
       onClick?.(e);
     };
 
@@ -96,7 +115,7 @@ const CurtainButton = React.forwardRef<HTMLButtonElement, CurtainButtonProps>(
         ref={ref}
         className={cn(
           'relative overflow-hidden rounded-full font-medium ring-offset-background transition-colors',
-          'inline-flex items-center justify-center whitespace-nowrap text-sm cursor-pointer',
+          'inline-flex items-center justify-center whitespace-nowrap cursor-pointer select-none',
           'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
           (isDisabled || isLoading) && 'pointer-events-none opacity-50',
           currentStyle.button,
@@ -112,6 +131,7 @@ const CurtainButton = React.forwardRef<HTMLButtonElement, CurtainButtonProps>(
         disabled={isDisabled || isLoading}
         {...props}
       >
+        {/* Animated Curtain Background */}
         <motion.div
           className={cn('absolute inset-0 z-0', currentStyle.curtain)}
           initial={{ y: '100%' }}
@@ -119,11 +139,11 @@ const CurtainButton = React.forwardRef<HTMLButtonElement, CurtainButtonProps>(
           transition={transition}
         />
 
-        <AnimatePresence mode='popLayout'>
+        <AnimatePresence mode="popLayout">
           {isLoading && (
             <motion.div
-              key='loader'
-              className='absolute inset-0 z-20 flex items-center justify-center'
+              key="loader"
+              className="absolute inset-0 z-20 flex items-center justify-center"
               initial={{ y: '100%' }}
               animate={{ y: 0 }}
               exit={{ y: '-100%' }}
@@ -139,18 +159,26 @@ const CurtainButton = React.forwardRef<HTMLButtonElement, CurtainButtonProps>(
           )}
         </AnimatePresence>
 
+        {/* Optional Icon */}
+        {icon && (
+          <span className="relative z-10 mr-2.5 flex items-center justify-center shrink-0">
+            {icon}
+          </span>
+        )}
+
+        {/* Sliding Text Label */}
         <motion.div
-          className='relative z-10 flex h-5 flex-col items-center justify-start overflow-hidden'
+          className="relative z-10 flex h-5 flex-col items-center justify-start overflow-hidden"
           animate={
             isLoading ? { y: '-150%', opacity: 0 } : { y: 0, opacity: 1 }
           }
           transition={transition}
         >
-          {/* Hidden text ensures the button retains width while actual text is absolute/animating */}
-          <span className='invisible whitespace-nowrap opacity-0'>{text}</span>
+          {/* Hidden text ensures the button retains natural width while actual text is absolute/animating */}
+          <span className="invisible whitespace-nowrap opacity-0">{text}</span>
 
           <motion.div
-            className='absolute left-0 right-0 top-0 flex flex-col text-center'
+            className="absolute left-0 right-0 top-0 flex flex-col text-center"
             animate={isHovered ? { y: '-50%' } : { y: 0 }}
             transition={transition}
           >
@@ -168,7 +196,7 @@ const CurtainButton = React.forwardRef<HTMLButtonElement, CurtainButtonProps>(
                 'flex h-5 items-center justify-center whitespace-nowrap',
                 currentStyle.textHover
               )}
-              aria-hidden='true'
+              aria-hidden="true"
             >
               {text}
             </span>

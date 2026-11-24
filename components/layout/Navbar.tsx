@@ -1,29 +1,69 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
-import { personalInfo, navLinks, socialLinks } from "@/constant/data";
+import Image from "next/image";
+import { personalInfo, navLinks } from "@/constant/data";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
-import { Button } from "@/components/ui/Button";
+import { CurtainButton } from "@/components/ui/curtain-button";
 
 export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 30);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-[var(--border-subtle)] bg-[var(--bg-nav)] backdrop-blur-md transition-all">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-        {/* Brand / Logo */}
-        <Link href="/" className="flex items-center gap-3 group">
-          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[var(--btn-primary-bg)] text-[var(--btn-primary-text)] font-bold text-sm tracking-tight transition-transform group-hover:scale-105 shadow-sm">
-            NA
+    <header
+      className={`sticky top-0 z-50 w-full transition-all duration-300 ease-in-out ${
+        isScrolled
+          ? "pt-3 sm:pt-4 px-4 sm:px-8 bg-transparent pointer-events-none"
+          : "pt-0 px-0 bg-white dark:bg-[#09090b] border-b border-[var(--border-subtle)]"
+      }`}
+    >
+      <div
+        className={`mx-auto flex items-center justify-between pointer-events-auto transition-all duration-300 ease-in-out ${
+          isScrolled
+            ? "max-w-4xl sm:max-w-5xl rounded-full border border-[var(--border-default)] bg-white dark:bg-[#121215] shadow-[0_12px_36px_rgba(0,0,0,0.12)] dark:shadow-[0_12px_36px_rgba(0,0,0,0.6)] px-4 sm:px-6 py-2 sm:py-2.5"
+            : "max-w-7xl px-6 py-4"
+        }`}
+      >
+        {/* Brand / Wordmark with Avatar Image */}
+        <Link href="/" className="flex items-center gap-2.5 sm:gap-3 group">
+          <div
+            className={`relative shrink-0 items-center justify-center overflow-hidden rounded-full border border-[var(--border-subtle)] bg-[var(--bg-muted)] transition-all duration-300 group-hover:scale-105 shadow-sm ${
+              isScrolled ? "h-8 w-8 sm:h-9 sm:w-9" : "h-10 w-10"
+            }`}
+          >
+            <Image
+              src="/assets/img/NaveedAbbasi.jpg"
+              alt={personalInfo.name}
+              width={40}
+              height={40}
+              priority
+              className="h-full w-full object-cover object-top"
+            />
           </div>
-          <span className="font-bold text-lg tracking-tight text-[var(--text-primary)]">
+          <span
+            className={`font-bold tracking-tight text-[var(--text-primary)] transition-all duration-300 ${
+              isScrolled ? "text-base sm:text-lg" : "text-lg"
+            }`}
+          >
             {personalInfo.wordmark}
           </span>
         </Link>
 
         {/* Desktop Nav Links */}
-        <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-[var(--text-secondary)]">
+        <nav className="hidden md:flex items-center gap-7 lg:gap-8 text-sm font-medium text-[var(--text-secondary)]">
           {navLinks.map((link) => (
             <Link
               key={link.name}
@@ -36,26 +76,17 @@ export function Navbar() {
         </nav>
 
         {/* Action Buttons & Theme Switcher */}
-        <div className="hidden md:flex items-center gap-3">
-          {/* {socialLinks.map((social) => (
-            <Button
-              key={social.name}
-              variant="outline"
-              size="sm"
-              href={social.href}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {social.label}
-            </Button>
-          ))} */}
-
+        <div className="hidden md:flex items-center gap-2.5 sm:gap-3">
           {/* Theme Toggle Sun/Moon */}
           <ThemeToggle />
 
-          <Button variant="primary" size="sm" href="#contact">
-            Get in touch ↗
-          </Button>
+          {/* Curtain Button */}
+          <CurtainButton
+            text="Get in touch ↗"
+            size="sm"
+            variant="default"
+            href="#contact"
+          />
         </div>
 
         {/* Mobile Actions: ThemeToggle + Hamburger */}
@@ -73,36 +104,35 @@ export function Navbar() {
 
       {/* Mobile Menu Dropdown */}
       {mobileMenuOpen && (
-        <div className="border-b border-[var(--border-subtle)] bg-[var(--bg-card)] px-6 py-6 md:hidden">
+        <div
+          className={`pointer-events-auto transition-all duration-300 ${
+            isScrolled
+              ? "max-w-4xl mx-auto mt-2 rounded-2xl border border-[var(--border-default)] bg-white dark:bg-[#121215] shadow-xl px-6 py-6 md:hidden"
+              : "border-b border-[var(--border-subtle)] bg-white dark:bg-[#09090b] px-6 py-6 md:hidden"
+          }`}
+        >
           <nav className="flex flex-col gap-4 text-base font-medium text-[var(--text-primary)]">
             {navLinks.map((link) => (
               <Link
                 key={link.name}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="py-1 hover:font-bold"
+                className="transition-colors hover:text-[var(--text-primary)]"
               >
                 {link.name}
               </Link>
             ))}
-          </nav>
-
-          <div className="mt-6 flex flex-col gap-3 pt-6 border-t border-[var(--border-subtle)]">
-            <div className="flex items-center justify-between py-2 text-sm text-[var(--text-secondary)]">
-              <span>Theme Mode</span>
-              <ThemeToggle />
+            <div className="pt-2">
+              <CurtainButton
+                text="Get in touch ↗"
+                size="default"
+                variant="default"
+                href="#contact"
+                onClick={() => setMobileMenuOpen(false)}
+                className="w-full"
+              />
             </div>
-
-            <Button
-              variant="primary"
-              size="md"
-              href="#contact"
-              onClick={() => setMobileMenuOpen(false)}
-              className="w-full"
-            >
-              Get in touch ↗
-            </Button>
-          </div>
+          </nav>
         </div>
       )}
     </header>

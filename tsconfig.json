@@ -33,9 +33,6 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "component/chatBotIcon",
-    "store/storeProvider/page.js",
-    "app/storeProvider.js",
     ".next/dev/types/**/*.ts"
   ],
   "exclude": [

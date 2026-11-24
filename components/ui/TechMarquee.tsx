@@ -7,6 +7,39 @@ export interface TechBrand {
 
 export const defaultTechBrands: TechBrand[] = [
   {
+    name: "Taskgen",
+    icon: (
+      <svg className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M10.5 4a1.5 1.5 0 0 1 3 0v6.5H20a1.5 1.5 0 0 1 0 3h-6.5V20a1.5 1.5 0 0 1-3 0v-6.5H4a1.5 1.5 0 0 1 0-3h6.5V4z" />
+      </svg>
+    ),
+  },
+  {
+    name: "Trackly",
+    icon: (
+      <svg className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M14 2L5 13.5h6L9.5 22 19 10.5h-6.5L14 2z" />
+      </svg>
+    ),
+  },
+  {
+    name: "Finte",
+    icon: (
+      <svg className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M21 3C11.5 3.5 4 11 4 20.5 13.5 20 21 12.5 21 3z" />
+      </svg>
+    ),
+  },
+  {
+    name: "Proofly",
+    icon: (
+      <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
+        <circle cx="12" cy="12" r="9.5" />
+        <path d="M2.5 12h19M12 2.5a14 14 0 0 1 0 19M12 2.5a14 14 0 0 0 0 19" />
+      </svg>
+    ),
+  },
+  {
     name: "Next.js",
     icon: (
       <svg className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
@@ -69,44 +102,10 @@ export const defaultTechBrands: TechBrand[] = [
     ),
   },
   {
-    name: "AWS Cloud",
-    icon: (
-      <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-        <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z" />
-      </svg>
-    ),
-  },
-  {
     name: "Tailwind CSS",
     icon: (
       <svg className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
         <path d="M12.001 4.8c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624C13.666 10.618 15.027 12 18.001 12c3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C16.336 6.182 14.975 4.8 12.001 4.8zm-6 7.2c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624 1.177 1.194 2.538 2.576 5.512 2.576 3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C10.335 13.382 8.974 12 6.001 12z" />
-      </svg>
-    ),
-  },
-  {
-    name: "Redis",
-    icon: (
-      <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
-      </svg>
-    ),
-  },
-  {
-    name: "Prisma",
-    icon: (
-      <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-        <polygon points="12 2 22 8.5 18 22 6 22 2 8.5 12 2" />
-        <polygon points="12 6 18 10 16 19 8 19 6 10 12 6" />
-      </svg>
-    ),
-  },
-  {
-    name: "GraphQL",
-    icon: (
-      <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-        <polygon points="12 2 21 7 21 17 12 22 3 17 3 7 12 2" />
-        <circle cx="12" cy="12" r="2" fill="currentColor" />
       </svg>
     ),
   },
@@ -129,23 +128,23 @@ export function TechMarquee({
   brands = defaultTechBrands,
   className = "",
 }: TechMarqueeProps) {
-  // Multiply items to ensure continuous infinite scrolling across all resolutions
+  // Multiply items to ensure continuous infinite scrolling
   const fullTrack = [...brands, ...brands, ...brands];
 
   return (
     <div
-      className={`relative w-full max-w-2xl sm:max-w-3xl md:max-w-4xl mx-auto overflow-hidden py-4 select-none ${className}`}
+      className={`relative w-full max-w-2xl sm:max-w-3xl md:max-w-4xl mx-auto overflow-hidden py-3 select-none ${className}`}
     >
       {/* Left Soft Fade Mask */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute left-0 top-0 bottom-0 z-10 w-16 sm:w-28 bg-gradient-to-r from-[var(--bg-page)] to-transparent"
+        className="pointer-events-none absolute left-0 top-0 bottom-0 z-10 w-20 sm:w-28 bg-gradient-to-r from-[var(--bg-page)] to-transparent"
       />
 
       {/* Right Soft Fade Mask */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute right-0 top-0 bottom-0 z-10 w-16 sm:w-28 bg-gradient-to-l from-[var(--bg-page)] to-transparent"
+        className="pointer-events-none absolute right-0 top-0 bottom-0 z-10 w-20 sm:w-28 bg-gradient-to-l from-[var(--bg-page)] to-transparent"
       />
 
       {/* Scrolling Logomarks Track */}

@@ -1,214 +1,163 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-/* 
-@font-face {
-  font-family: Poppins;
-  src: url(../public/assets/fonts/Poppins/Poppins-Regular.ttf);
+
+/* CSS Variables for Light & Dark Theme */
+:root {
+  /* Backgrounds */
+  --bg-page: #ffffff;
+  --bg-card: #ffffff;
+  --bg-card-subtle: #f9f9f9;
+  --bg-nav: #ffffff;
+  --bg-muted: #f4f4f5;
+  --bg-inverted: #000000;
+
+  /* Foregrounds & Typography */
+  --text-primary: #000000;
+  --text-secondary: #52525b;
+  --text-muted: #71717a;
+  --text-inverted: #ffffff;
+
+  /* Borders & Lines */
+  --border-subtle: #e4e4e7;
+  --border-default: #d4d4d8;
+  --border-strong: #000000;
+
+  /* Buttons */
+  --btn-primary-bg: #000000;
+  --btn-primary-text: #ffffff;
+  --btn-primary-hover: #27272a;
+
+  --btn-secondary-bg: #ffffff;
+  --btn-secondary-text: #000000;
+  --btn-secondary-border: #d4d4d8;
+  --btn-secondary-hover: #f4f4f5;
+
+  /* Accent & Status */
+  --accent-green: #10b981;
+  --accent-badge-bg: #ffffff;
+  --accent-badge-border: #d4d4d8;
+  --accent-badge-text: #09090b;
+
+  /* Marquee Ribbon */
+  --ribbon-bg: #000000;
+  --ribbon-text: #ffffff;
+  --ribbon-border: #18181b;
+
+  /* Footer */
+  --footer-bg: #000000;
+  --footer-text: #ffffff;
+  --footer-muted: #a1a1aa;
+  --footer-border: #27272a;
+  --footer-watermark: #111113;
 }
 
-@font-face {
-  font-family: PoppinsHeading;
-  src: url(../public/assets/fonts/Poppins/Poppins-SemiBold.ttf);
+.dark,
+[data-theme="dark"],
+html.dark {
+  /* Backgrounds */
+  --bg-page: #09090b;
+  --bg-card: #121215;
+  --bg-card-subtle: #18181b;
+  --bg-nav: #09090b;
+  --bg-muted: #27272a;
+  --bg-inverted: #18181b;
+
+  /* Foregrounds & Typography */
+  --text-primary: #fafafa;
+  --text-secondary: #a1a1aa;
+  --text-muted: #71717a;
+  --text-inverted: #ffffff;
+
+  /* Borders & Lines */
+  --border-subtle: #27272a;
+  --border-default: #3f3f46;
+  --border-strong: #fafafa;
+
+  /* Buttons */
+  --btn-primary-bg: #fafafa;
+  --btn-primary-text: #09090b;
+  --btn-primary-hover: #e4e4e7;
+
+  --btn-secondary-bg: #121215;
+  --btn-secondary-text: #fafafa;
+  --btn-secondary-border: #3f3f46;
+  --btn-secondary-hover: #27272a;
+
+  /* Accent & Status */
+  --accent-green: #34d399;
+  --accent-badge-bg: #18181b;
+  --accent-badge-border: #27272a;
+  --accent-badge-text: #fafafa;
+
+  /* Marquee Ribbon */
+  --ribbon-bg: #121215;
+  --ribbon-text: #fafafa;
+  --ribbon-border: #27272a;
+
+  /* Footer */
+  --footer-bg: #050507;
+  --footer-text: #fafafa;
+  --footer-muted: #71717a;
+  --footer-border: #1f1f23;
+  --footer-watermark: #121215;
 }
 
-@font-face {
-  font-family: Open_Sans;
-  src: url(../public/assets/fonts/Open_Sans/OpenSans-VariableFont_wdth\,wght.ttf);
-} */
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: Poppins;
+html {
+  scroll-behavior: smooth;
+  background-color: var(--bg-page);
+  color: var(--text-primary);
 }
+
 body {
-  font-family: var(--font-poppins), system-ui, sans-serif;
-  font-display: swap; /* Next.js already handles this */
-}
-.drop-shadow {
-  filter: drop-shadow(5px 6px 14px #000000);
+  background-color: var(--bg-page);
+  color: var(--text-primary);
+  font-family: var(--font-inter), "Inter", system-ui, -apple-system, sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-/* Infinite Rotate Animation */
-@keyframes spin-slow {
+::selection {
+  background-color: var(--text-primary);
+  color: var(--bg-page);
+}
+
+/* Custom minimal scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-page);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-default);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-primary);
+}
+
+/* Continuous Marquee Animation */
+@keyframes marquee {
   0% {
-    transform: rotate(0deg);
+    transform: translateX(0%);
   }
   100% {
-    transform: rotate(360deg);
+    transform: translateX(-50%);
   }
 }
 
-.animate-spin-slow {
-  animation: spin-slow 3s linear infinite;
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 25s linear infinite;
 }
 
-body {
-  background: #111111 !important;
-}
-.buttons {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  right: 10px;
-  bottom: 10px;
-  z-index: -1;
-}
-.buttons button {
-  border: none;
-  background: rgba(0, 0, 0, 0.02);
-  border-radius: 5px;
-  cursor: pointer;
-}
-.buttons button:hover {
-  background: rgba(0, 0, 0, 0.04);
-}
-.buttons #top {
-  position: absolute;
-  top: 0%;
-  left: 50%;
-}
-
-/* @keyframes slideDown {
-  0% {
-    top: -100%;
-  }
-  100% {
-    top: 100%;
-  }
-}
-
-.layer {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: -100%;
-  left: 0;
-  animation: slideDown 1s cubic-bezier(0.6, 0.05, 0.4, 1) forwards;
-}
-
-/* Different colors for each layer */
-/* .layer-1 {
-  background-color: #111111;
-  z-index: 5;
-  animation-delay: 0s;
-}
-
-.layer-2 {
-  background-color: #333333;
-  z-index: 4;
-  animation-delay: 0.2s;
-}
-
-.layer-3 {
-  background-color: #555555;
-  z-index: 3;
-  animation-delay: 0.4s;
-}
-
-.layer-4 {
-  background-color: #777777;
-  z-index: 2;
-  animation-delay: 0.6s;
-}
-
-.layer-5 {
-  background-color: #999999;
-  z-index: 1;
-  animation-delay: 0.8s;
-}  */
-
-
-/* Second */
-/* 
-.layer {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  transform: translateY(-100%); 
-  animation: slideDown 1s cubic-bezier(0.6, 0.05, 0.4, 1) forwards;
-}
-
-@keyframes slideDown {
-  0% {
-    transform: translateY(-100%);
-  }
-  100% {
-    transform: translateY(0);
-  }
-}
-
-.layer-1 { background-color: #111111; z-index: 5; animation-delay: 0s; }
-.layer-2 { background-color: #333333; z-index: 4; animation-delay: 0.2s; }
-.layer-3 { background-color: #555555; z-index: 3; animation-delay: 0.4s; }
-.layer-4 { background-color: #777777; z-index: 2; animation-delay: 0.6s; }
-.layer-5 { background-color: #999999; z-index: 1; animation-delay: 0.8s; }
- */
-
-
-
- /* Third */
-
-.layer-1 { animation-delay: 0s; z-index: 5; }
-.layer-2 { animation-delay: 0.2s; z-index: 4; }
-.layer-3 { animation-delay: 0.4s; z-index: 3; }
-.layer-4 { animation-delay: 0.6s; z-index: 2; }
-.layer-5 { animation-delay: 0.8s; z-index: 1; }
-
-.layer-1,
-.layer-2,
-.layer-3,
-.layer-4,
-.layer-5 {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  transform: translateY(-100%);
-  animation: slideDown 1s cubic-bezier(0.6, 0.05, 0.4, 1) forwards;
-}
-
-@keyframes slideDown {
-  0% { transform: translateY(-100%); }
-  100% { transform: translateY(0); }
-}
-
-
-
-
-.abt {
-  color: rgba(255, 255, 255, 0.07);
-}
-
-
-
-
-
-.loader {
-  width: 60px;
-  aspect-ratio: 1;
-  border: 15px solid #ddd;
-  border-radius: 50%;
-  position: relative;
-  transform: rotate(45deg);
-}
-.loader::before {
-  content: "";
-  position: absolute;
-  inset: -15px;
-  border-radius: 50%;
-  border: 15px solid #514b82;
-  animation: l18 2s infinite linear;
-}
-@keyframes l18 {
-    0%   {clip-path:polygon(50% 50%,0 0,0    0,0    0   ,0    0   ,0    0   )}
-    25%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 0   ,100% 0   ,100% 0   )}
-    50%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,100% 100%,100% 100%)}
-    75%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,0    100%,0    100%)}
-    100% {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,0    100%,0    0   )}
+.animate-marquee:hover {
+  animation-play-state: paused;
 }

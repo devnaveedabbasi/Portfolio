@@ -1,14 +1,17 @@
 import * as React from "react";
+import { cn } from "@/lib/utils";
 
 export interface BadgeProps extends React.HTMLAttributes<HTMLDivElement> {
   variant?: "default" | "status" | "outline";
   dot?: boolean;
+  dotColor?: "black" | "green" | "primary";
 }
 
 export function Badge({
   className = "",
   variant = "default",
   dot = false,
+  dotColor = "black",
   children,
   ...props
 }: BadgeProps) {
@@ -24,12 +27,24 @@ export function Badge({
       "bg-transparent text-[var(--text-secondary)] border border-[var(--border-subtle)] hover:border-[var(--text-primary)]",
   };
 
+  const isGreen = dotColor === "green";
+
   return (
-    <div className={`${baseStyles} ${variantStyles[variant]} ${className}`} {...props}>
+    <div className={cn(baseStyles, variantStyles[variant], className)} {...props}>
       {dot && (
-        <span className="relative flex h-2 w-2">
-          <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[var(--accent-green)] opacity-75"></span>
-          <span className="relative inline-flex h-2 w-2 rounded-full bg-[var(--accent-green)]"></span>
+        <span className="relative flex h-2 w-2 items-center justify-center shrink-0">
+          <span
+            className={cn(
+              "absolute inline-flex h-full w-full rounded-full opacity-30 animate-ping",
+              isGreen ? "bg-[var(--accent-green)]" : "bg-[var(--text-primary)]"
+            )}
+          />
+          <span
+            className={cn(
+              "relative inline-flex h-2 w-2 rounded-full",
+              isGreen ? "bg-[var(--accent-green)]" : "bg-[var(--text-primary)]"
+            )}
+          />
         </span>
       )}
       {children}
