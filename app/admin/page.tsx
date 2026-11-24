@@ -373,6 +373,7 @@ export default function AdminPanel() {
     }
   };
 
+
   const handleDeleteBlog = async (id: string) => {
     if (confirm("Are you sure you want to delete this blog?")) {
       try {
@@ -788,8 +789,8 @@ export default function AdminPanel() {
                             className="group relative h-32 overflow-hidden rounded-lg"
                           >
                             <Image
-                             width={300}
-                             height={200}
+                              width={300}
+                              height={200}
                               src={preview}
                               alt={`Preview ${index + 1}`}
                               fill

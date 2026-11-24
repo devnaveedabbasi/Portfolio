@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 120" width="60" height="45">
+  <g fill="#2496ed">
+    <rect x="52" y="22" width="16" height="14" rx="2"/>
+    <rect x="72" y="22" width="16" height="14" rx="2"/>
+    <rect x="92" y="22" width="16" height="14" rx="2"/>
+    <rect x="32" y="40" width="16" height="14" rx="2"/>
+    <rect x="52" y="40" width="16" height="14" rx="2"/>
+    <rect x="72" y="40" width="16" height="14" rx="2"/>
+    <rect x="92" y="40" width="16" height="14" rx="2"/>
+    <rect x="112" y="40" width="16" height="14" rx="2"/>
+    <path d="M148 56c-3.5 0-6.8 1.4-9.2 3.8-5.3-3.6-12.4-5.8-20.2-5.8H12c-4.4 0-8 3.6-8 8 0 24.3 19.7 44 44 44h56c24.3 0 44-19.7 44-44 0-2.1-.2-4.1-.5-6z"/>
+  </g>
+  <text x="32" y="116" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="700" fill="#2496ed">docker</text>
+</svg>

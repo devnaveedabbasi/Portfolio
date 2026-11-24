@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 80" width="70" height="35">
+  <text x="15" y="46" font-family="system-ui, -apple-system, sans-serif" font-size="44" font-weight="800" fill="#232f3e">aws</text>
+  <path d="M22 58c28 14 68 14 96-4" stroke="#ff9900" stroke-width="6" fill="none" stroke-linecap="round"/>
+  <polygon points="122,51 114,64 126,62" fill="#ff9900"/>
+</svg>
