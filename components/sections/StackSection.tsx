@@ -1,10 +1,106 @@
 "use client";
 
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Badge } from "@/components/ui/Badge";
 
 export function StackSection() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const headerRef = useRef<HTMLDivElement>(null);
+  const cardsRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    if (!sectionRef.current) return;
+
+    const ctx = gsap.context(() => {
+      // Header subtle lift and fade
+      if (headerRef.current) {
+        gsap.fromTo(
+          headerRef.current,
+          { opacity: 0, y: 35 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: sectionRef.current,
+              start: "top 85%",
+            },
+          }
+        );
+      }
+
+      // 3 Architecture Cards Entrance: Card 1 from Left, Card 2 from Center, Card 3 from Right
+      const card1 = cardsRef.current?.querySelector(".stack-card-1");
+      const card2 = cardsRef.current?.querySelector(".stack-card-2");
+      const card3 = cardsRef.current?.querySelector(".stack-card-3");
+
+      if (card1 && card2 && card3) {
+        gsap.fromTo(
+          card1,
+          { opacity: 0, x: -50, y: 20 },
+          {
+            opacity: 1,
+            x: 0,
+            y: 0,
+            duration: 0.85,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: cardsRef.current,
+              start: "top 80%",
+            },
+          }
+        );
+
+        gsap.fromTo(
+          card2,
+          { opacity: 0, y: 50, scale: 0.96 },
+          {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            duration: 0.85,
+            ease: "power3.out",
+            delay: 0.08,
+            scrollTrigger: {
+              trigger: cardsRef.current,
+              start: "top 80%",
+            },
+          }
+        );
+
+        gsap.fromTo(
+          card3,
+          { opacity: 0, x: 50, y: 20 },
+          {
+            opacity: 1,
+            x: 0,
+            y: 0,
+            duration: 0.85,
+            ease: "power3.out",
+            delay: 0.16,
+            scrollTrigger: {
+              trigger: cardsRef.current,
+              start: "top 80%",
+            },
+          }
+        );
+      }
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section id="stack" className="relative mx-auto max-w-7xl px-6 pt-16 sm:pt-24 pb-24 sm:pb-32 overflow-hidden">
+    <section
+      ref={sectionRef}
+      id="stack"
+      className="relative mx-auto max-w-7xl px-6 pt-16 sm:pt-24 pb-24 sm:pb-32 overflow-hidden"
+    >
       {/* Soft Ambient Subtle Glow */}
       <div
         aria-hidden="true"
@@ -14,7 +110,7 @@ export function StackSection() {
       </div>
 
       {/* Centered Section Header */}
-      <div className="mx-auto max-w-3xl text-center">
+      <div ref={headerRef} className="mx-auto max-w-3xl text-center">
         <div className="inline-block">
           <Badge variant="status" className="px-4 py-1.5 text-xs font-semibold">
             My Stack
@@ -83,9 +179,9 @@ export function StackSection() {
         </svg>
 
         {/* 3 Cards Grid — Expanded & Taller */}
-        <div className="grid grid-cols-1 gap-8 lg:gap-10 md:grid-cols-3 items-stretch">
+        <div ref={cardsRef} className="grid grid-cols-1 gap-8 lg:gap-10 md:grid-cols-3 items-stretch">
           {/* ================= Card 1: Frontend ================= */}
-          <div className="group relative flex flex-col justify-between rounded-3xl border border-[var(--border-subtle)] bg-white dark:bg-[#121215] p-8 sm:p-10 shadow-[0_25px_60px_rgba(0,0,0,0.07)] dark:shadow-[0_25px_60px_rgba(0,0,0,0.55)] transition-all duration-300 hover:shadow-2xl md:-rotate-1 hover:rotate-0 min-h-[560px]">
+          <div className="stack-card-1 group relative flex flex-col justify-between rounded-3xl border border-[var(--border-subtle)] bg-white dark:bg-[#121215] p-8 sm:p-10 shadow-[0_25px_60px_rgba(0,0,0,0.07)] dark:shadow-[0_25px_60px_rgba(0,0,0,0.55)] transition-all duration-300 hover:shadow-2xl md:-rotate-1 hover:rotate-0 min-h-[560px]">
             <div>
               {/* Header: Number & Title */}
               <div className="flex items-center justify-between">
@@ -193,7 +289,7 @@ export function StackSection() {
           </div>
 
           {/* ================= Card 2: Backend ================= */}
-          <div className="group relative flex flex-col justify-between rounded-3xl border border-[var(--border-subtle)] bg-white dark:bg-[#121215] p-8 sm:p-10 shadow-[0_25px_60px_rgba(0,0,0,0.07)] dark:shadow-[0_25px_60px_rgba(0,0,0,0.55)] transition-all duration-300 hover:shadow-2xl md:rotate-1 hover:rotate-0 min-h-[560px]">
+          <div className="stack-card-2 group relative flex flex-col justify-between rounded-3xl border border-[var(--border-subtle)] bg-white dark:bg-[#121215] p-8 sm:p-10 shadow-[0_25px_60px_rgba(0,0,0,0.07)] dark:shadow-[0_25px_60px_rgba(0,0,0,0.55)] transition-all duration-300 hover:shadow-2xl md:rotate-1 hover:rotate-0 min-h-[560px]">
             <div>
               {/* Header: Number & Title */}
               <div className="flex items-center justify-between">
@@ -307,7 +403,7 @@ export function StackSection() {
           </div>
 
           {/* ================= Card 3: DevOps & Tools ================= */}
-          <div className="group relative flex flex-col justify-between rounded-3xl border border-[var(--border-subtle)] bg-white dark:bg-[#121215] p-8 sm:p-10 shadow-[0_25px_60px_rgba(0,0,0,0.07)] dark:shadow-[0_25px_60px_rgba(0,0,0,0.55)] transition-all duration-300 hover:shadow-2xl md:-rotate-0.5 hover:rotate-0 min-h-[560px]">
+          <div className="stack-card-3 group relative flex flex-col justify-between rounded-3xl border border-[var(--border-subtle)] bg-white dark:bg-[#121215] p-8 sm:p-10 shadow-[0_25px_60px_rgba(0,0,0,0.07)] dark:shadow-[0_25px_60px_rgba(0,0,0,0.55)] transition-all duration-300 hover:shadow-2xl md:-rotate-0.5 hover:rotate-0 min-h-[560px]">
             <div>
               {/* Header: Number & Title */}
               <div className="flex items-center justify-between">

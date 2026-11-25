@@ -187,6 +187,105 @@ export const educations: Education[] = [
   },
 ];
 
+export interface CertificateItem {
+  id: string;
+  title: string;
+  issuer: string;
+  image: string;
+  highlighted?: boolean;
+}
+
+export const certificatesData: CertificateItem[] = [
+  {
+    id: "cert-nextjs",
+    title: "Next.js App Router & Architecture",
+    issuer: "Modern Web Engineering",
+    image: "/assets/img/certification/next-js-v4-1.png",
+  },
+  {
+    id: "cert-ai-fullstack",
+    title: "AI-Powered Full Stack Development",
+    issuer: "Metaschool AI Engineering",
+    image: "/assets/img/certification/Certificate-AI-Powered-Full-Stack-Development-and-Methods-to-Monetize-Naveed-1.png",
+    highlighted: true,
+  },
+  {
+    id: "cert-docker",
+    title: "Docker for Developers",
+    issuer: "Cloud Containerization & DevOps",
+    image: "/assets/img/certification/Docker for Developers-1.png",
+  },
+  {
+    id: "cert-verior",
+    title: "Full Stack Developer Experience",
+    issuer: "Verior Technology",
+    image: "/assets/img/certification/Veiror-FullStack.png",
+  },
+  {
+    id: "cert-typescript",
+    title: "TypeScript for AI Applications",
+    issuer: "Modern Type-Safe Architecture",
+    image: "/assets/img/certification/typescript-ai-1.png",
+  },
+  {
+    id: "cert-datascience",
+    title: "Data Science & Analytics",
+    issuer: "HP LIFE Technical Academy",
+    image: "/assets/img/certification/Data Science  Analytics-1.png",
+  },
+  {
+    id: "cert-react-internship",
+    title: "React Developer Internship",
+    issuer: "Digital Elliptical",
+    image: "/assets/img/certification/React-InterShip-DE.jpg",
+    highlighted: true,
+  },
+  {
+    id: "cert-smit",
+    title: "Diploma in MEAN Stack Development",
+    issuer: "Alison Academy",
+    image: "/assets/img/certification/Course Completion Record - Naveed Abbasi (1)-1.png",
+  },
+  {
+    id: "cert-cpp",
+    title: "C++ Essentials 1",
+    issuer: "Cisco & Virtual University",
+    image: "/assets/img/certification/C--_Essentials_1_certificate_bc250404099nha-vu-edu-pk_e490b21a-075b-40e3-b356-059927a3e712-1.png",
+  },
+  {
+    id: "cert-strategic-ai",
+    title: "Strategic Planning in the AI Age",
+    issuer: "HP LIFE / Artificial Intelligence",
+    image: "/assets/img/certification/Strategic Planning in the AI Age-1.png",
+  },
+  {
+    id: "cert-dstp",
+    title: "DigiSkills Technical Program",
+    issuer: "DigiSkills & Ignite Pakistan",
+    image: "/assets/img/certification/DSTP_Certificate_ HEZWB9EMK-1.png",
+  },
+];
+
+// Row 1 Certificates (Marquee Moving LEFT)
+export const row1Certificates: CertificateItem[] = [
+  certificatesData[0], // Next.js
+  certificatesData[1], // AI-Powered Full Stack
+  certificatesData[2], // Docker for Developers
+  certificatesData[3], // Verior Full Stack
+  certificatesData[4], // TypeScript AI
+  certificatesData[5], // Data Science & Analytics
+];
+
+// Row 2 Certificates (Marquee Moving RIGHT)
+export const row2Certificates: CertificateItem[] = [
+  certificatesData[6], // React Internship DE
+  certificatesData[7], // SMIT Course Completion
+  certificatesData[8], // C++ Essentials
+  certificatesData[9], // Strategic Planning in AI
+  certificatesData[10], // DSTP DigiSkills
+  certificatesData[1], // AI Full Stack (balanced 6 items per row)
+];
+
 export interface Project {
   id: string;
   title: string;

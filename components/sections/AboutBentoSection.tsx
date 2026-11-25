@@ -1,6 +1,9 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import Image from "next/image";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Badge } from "@/components/ui/Badge";
 
 // Score Dial Component for Lighthouse stats
@@ -55,10 +58,66 @@ function ScoreDial({
 }
 
 export function AboutBentoSection() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const headerRef = useRef<HTMLDivElement>(null);
+  const gridRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    if (!sectionRef.current) return;
+
+    const ctx = gsap.context(() => {
+      // Header subtle lift and fade
+      if (headerRef.current) {
+        gsap.fromTo(
+          headerRef.current,
+          { opacity: 0, y: 35 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: sectionRef.current,
+              start: "top 85%",
+            },
+          }
+        );
+      }
+
+      // Bento cards staggered entrance on scroll
+      const cards = gridRef.current?.querySelectorAll(".bento-card");
+      if (cards && cards.length > 0) {
+        gsap.fromTo(
+          cards,
+          { opacity: 0, y: 40 },
+          {
+            opacity: 1,
+            y: 0,
+            stagger: 0.1,
+            duration: 0.8,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: gridRef.current,
+              start: "top 82%",
+            },
+          }
+        );
+      }
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section id="bento-about" className="mx-auto max-w-7xl px-6 pt-16 sm:pt-24 pb-8 sm:pb-12">
+    <section
+      ref={sectionRef}
+      id="bento-about"
+      className="mx-auto max-w-7xl px-6 pt-16 sm:pt-24 pb-8 sm:pb-12 overflow-hidden"
+    >
       {/* Centered Section Header — Matching Figma Exactly */}
-      <div className="mx-auto max-w-3xl text-center">
+      <div ref={headerRef} className="mx-auto max-w-3xl text-center">
         <div className="inline-block">
           <Badge variant="status" className="px-4 py-1.5 text-xs font-semibold">
             About me
@@ -77,11 +136,14 @@ export function AboutBentoSection() {
       </div>
 
       {/* Bento Grid Container */}
-      <div className="mt-14 sm:mt-18 grid grid-cols-1 gap-6 lg:grid-cols-12">
+      <div
+        ref={gridRef}
+        className="mt-14 sm:mt-18 grid grid-cols-1 gap-6 lg:grid-cols-12"
+      >
         {/* ================= Row 1 ================= */}
 
         {/* Card 1: Profile & Bio (Left, 7 Cols) */}
-        <div className="lg:col-span-7 flex flex-col justify-between rounded-3xl border border-[var(--border-subtle)] bg-[var(--bg-card)] p-6 sm:p-9 shadow-sm hover:shadow-md transition-shadow">
+        <div className="bento-card lg:col-span-7 flex flex-col justify-between rounded-3xl border border-[var(--border-subtle)] bg-[var(--bg-card)] p-6 sm:p-9 shadow-sm hover:shadow-md transition-all duration-300">
           <div>
             {/* Header: Avatar Circle + Badges */}
             <div className="flex flex-wrap items-center gap-3 sm:gap-4 text-xs sm:text-sm font-semibold text-[var(--text-secondary)]">
@@ -119,7 +181,7 @@ export function AboutBentoSection() {
         </div>
 
         {/* Card 2: How I Work (Right, 5 Cols) */}
-        <div className="lg:col-span-5 flex flex-col justify-between rounded-3xl border border-[var(--border-subtle)] bg-[var(--bg-card)] p-6 sm:p-8 shadow-sm hover:shadow-md transition-shadow">
+        <div className="bento-card lg:col-span-5 flex flex-col justify-between rounded-3xl border border-[var(--border-subtle)] bg-[var(--bg-card)] p-6 sm:p-8 shadow-sm hover:shadow-md transition-all duration-300">
           {/* Stacked Pills */}
           <div className="space-y-2.5">
             <div className="flex items-center gap-3 rounded-full border border-[var(--border-subtle)] bg-[var(--bg-card-subtle)] px-4 py-2 text-xs sm:text-sm font-medium text-[var(--text-primary)]">
@@ -157,7 +219,7 @@ export function AboutBentoSection() {
         {/* ================= Row 2 ================= */}
 
         {/* Card 3: Tools I Use Daily (Left, 4 Cols) */}
-        <div className="lg:col-span-4 flex flex-col justify-between rounded-3xl border border-[var(--border-subtle)] bg-[var(--bg-card)] p-6 sm:p-8 shadow-sm hover:shadow-md transition-shadow">
+        <div className="bento-card lg:col-span-4 flex flex-col justify-between rounded-3xl border border-[var(--border-subtle)] bg-[var(--bg-card)] p-6 sm:p-8 shadow-sm hover:shadow-md transition-all duration-300">
           {/* Tool Chips Grid */}
           <div className="space-y-2.5">
             <div className="flex flex-wrap items-center gap-2">
@@ -209,7 +271,7 @@ export function AboutBentoSection() {
         </div>
 
         {/* Card 4: What I Stand For (Middle, 4 Cols) */}
-        <div className="lg:col-span-4 flex flex-col justify-between rounded-3xl border border-[var(--border-subtle)] bg-[var(--bg-card)] p-6 sm:p-8 shadow-sm hover:shadow-md transition-shadow">
+        <div className="bento-card lg:col-span-4 flex flex-col justify-between rounded-3xl border border-[var(--border-subtle)] bg-[var(--bg-card)] p-6 sm:p-8 shadow-sm hover:shadow-md transition-all duration-300">
           {/* Principles Stack */}
           <div className="space-y-2.5">
             <div className="flex items-center gap-3 rounded-full border border-[var(--border-subtle)] bg-[var(--bg-card-subtle)] px-4 py-2.5 text-xs sm:text-sm font-medium text-[var(--text-primary)]">
@@ -240,7 +302,7 @@ export function AboutBentoSection() {
         </div>
 
         {/* Card 5: SEO Ready & Fast Performance (Right, 4 Cols) */}
-        <div className="lg:col-span-4 flex flex-col justify-between rounded-3xl border border-[var(--border-subtle)] bg-[var(--bg-card)] p-6 sm:p-8 shadow-sm hover:shadow-md transition-shadow">
+        <div className="bento-card lg:col-span-4 flex flex-col justify-between rounded-3xl border border-[var(--border-subtle)] bg-[var(--bg-card)] p-6 sm:p-8 shadow-sm hover:shadow-md transition-all duration-300">
           {/* Top Info */}
           <div>
             <h3 className="font-bold text-base sm:text-lg text-[var(--text-primary)]">

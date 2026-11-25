@@ -14,24 +14,23 @@ export function SmoothScrollProvider({ children }: { children: React.ReactNode }
 
     gsap.registerPlugin(ScrollTrigger);
 
-    // Initialize high-performance Lenis smooth inertia scrolling
+    // Initialize high-performance Lenis with buttery-smooth 0.08 lerp
     const lenis = new Lenis({
-      duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      orientation: "vertical",
-      gestureOrientation: "vertical",
+      lerp: 0.08,
       smoothWheel: true,
-      wheelMultiplier: 1,
-      touchMultiplier: 1.5,
-      infinite: false,
+      wheelMultiplier: 0.9,
+      touchMultiplier: 1.2,
+      autoResize: true,
     });
 
     lenisRef.current = lenis;
 
     // Sync Lenis scroll with GSAP ScrollTrigger updates
-    lenis.on("scroll", ScrollTrigger.update);
+    lenis.on("scroll", () => {
+      ScrollTrigger.update();
+    });
 
-    // Tie Lenis animation frame directly into GSAP's central 120fps ticker
+    // Centralize animation frame ticks directly through GSAP's 120fps ticker
     const updateTicker = (time: number) => {
       lenis.raf(time * 1000);
     };
