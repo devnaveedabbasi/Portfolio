@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { CurtainButton } from "@/components/ui/curtain-button";
 
 export interface ProjectItem {
   id: string;
@@ -154,16 +155,16 @@ function ProjectCard({ project }: { project: ProjectItem }) {
           {project.description}
         </p>
 
-        {/* Action Pill Button */}
+        {/* Action Pill Button with Curtain Effect */}
         <div className="mt-5">
-          <a
+          <CurtainButton
+            text="View Project"
+            variant="outline"
+            size="sm"
             href={project.link}
             target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-full border border-neutral-800 bg-transparent px-4 py-1.5 text-xs font-semibold text-neutral-300 transition-all duration-300 hover:border-white hover:text-white hover:bg-neutral-900"
-          >
-            <span>→ View All Work</span>
-          </a>
+            icon={<span className="text-xs">↗</span>}
+          />
         </div>
       </div>
     </div>
@@ -278,15 +279,15 @@ export function ProjectsSection() {
               <span>+</span>
             </div>
 
-            {/* Pill CTA Button */}
-            <a
+            {/* Pill CTA Button with Curtain Effect */}
+            <CurtainButton
+              text="View All Work"
+              variant="default"
+              size="lg"
               href="https://github.com/devnaveedabbasi"
               target="_blank"
-              rel="noopener noreferrer"
-              className="group inline-flex items-center gap-2.5 rounded-full bg-white text-black px-6 py-3 text-xs sm:text-sm font-bold tracking-tight shadow-md hover:bg-neutral-200 hover:scale-105 transition-all duration-300"
-            >
-              <span>↗ View All Work</span>
-            </a>
+              icon={<span className="text-base font-bold">↗</span>}
+            />
           </div>
         </div>
 

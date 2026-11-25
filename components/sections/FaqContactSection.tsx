@@ -5,7 +5,8 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { personalInfo, faqData } from "@/constant/data";
 import { Badge } from "@/components/ui/Badge";
-import { Button } from "@/components/ui/Button";
+import { CurtainButton } from "@/components/ui/curtain-button";
+import { GoogleMeetIcon, MailIcon } from "@/components/ui/Icons";
 import { Accordion } from "@/components/ui/Accordion";
 
 export function FaqContactSection() {
@@ -103,31 +104,24 @@ export function FaqContactSection() {
             dedicated technical partner, I&apos;m always open to discussing new opportunities.
           </p>
 
-          {/* Action Cards */}
-          <div className="mt-10 space-y-5">
-            <Button
-              variant="primary"
-              size="lg"
-              href={`mailto:${personalInfo.email}`}
-              className="w-full justify-between px-7 py-4 shadow-sm transition-transform duration-200 hover:scale-[1.01]"
-              icon={<span>✉</span>}
-              iconPosition="left"
-            >
-              <span>{personalInfo.email}</span>
-            </Button>
-
-            <Button
-              variant="secondary"
+          {/* Action Dual Curtain Buttons */}
+          <div className="mt-9 flex flex-wrap items-center gap-4">
+            <CurtainButton
+              text="Schedule a Call ↗"
+              variant="default"
               size="lg"
               href={personalInfo.bookingUrl}
               target="_blank"
-              rel="noopener noreferrer"
-              className="w-full justify-between px-7 py-4 transition-transform duration-200 hover:scale-[1.01]"
-              icon={<span>📹</span>}
-              iconPosition="left"
-            >
-              <span>Schedule a 15-min call</span>
-            </Button>
+              icon={<GoogleMeetIcon />}
+            />
+
+            <CurtainButton
+              text="Send an Email ↗"
+              variant="outline"
+              size="lg"
+              href={`mailto:${personalInfo.email}`}
+              icon={<MailIcon />}
+            />
           </div>
 
           <div className="mt-7 flex items-center gap-2.5 text-xs sm:text-sm font-semibold text-[var(--text-muted)]">

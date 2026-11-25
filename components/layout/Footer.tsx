@@ -1,5 +1,6 @@
 import { personalInfo, navLinks, socialLinks } from "@/constant/data";
-import { Button } from "@/components/ui/Button";
+import { CurtainButton } from "@/components/ui/curtain-button";
+import { GoogleMeetIcon, MailIcon } from "@/components/ui/Icons";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
 
 export function Footer() {
@@ -19,26 +20,22 @@ export function Footer() {
           </p>
 
           <div className="mt-8 flex flex-wrap items-center gap-4">
-            <Button
-              variant="secondary"
-              size="md"
-              href={`mailto:${personalInfo.email}`}
-              icon={<span>✉</span>}
-            >
-              {personalInfo.email}
-            </Button>
-
-            <Button
-              variant="outline"
-              size="md"
+            <CurtainButton
+              text="Schedule a Call ↗"
+              variant="default"
+              size="lg"
               href={personalInfo.bookingUrl}
               target="_blank"
-              rel="noopener noreferrer"
-              icon={<span>📹</span>}
-              className="text-white border-neutral-700 hover:border-white hover:bg-neutral-900"
-            >
-              Book a 15-min call ↗
-            </Button>
+              icon={<GoogleMeetIcon />}
+            />
+
+            <CurtainButton
+              text="Send an Email ↗"
+              variant="outline"
+              size="lg"
+              href={`mailto:${personalInfo.email}`}
+              icon={<MailIcon />}
+            />
 
             <ThemeToggle className="ml-2 border-neutral-700 text-white bg-neutral-900 hover:border-white hover:bg-neutral-800" />
           </div>
