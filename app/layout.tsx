@@ -7,6 +7,7 @@ import { shouldShowSpeedInsights } from "@/utlis/environment";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import { SmoothScrollProvider } from "@/components/providers/SmoothScrollProvider";
 import { SmoothCursor } from "@/components/ui/SmoothCursor";
+import { Chatbot } from "@/components/ui/Chatbot";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -149,6 +150,7 @@ export default function RootLayout({
           <SmoothScrollProvider>
             <SmoothCursor />
             {children}
+            <Chatbot />
             {shouldShowSpeedInsights() && <SpeedInsights />}
           </SmoothScrollProvider>
         </ThemeProvider>

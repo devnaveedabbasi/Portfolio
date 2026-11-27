@@ -1,80 +1,18 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import Link from "next/link";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { CurtainButton } from "@/components/ui/curtain-button";
+import { projectsData, Project } from "@/constant/data";
 
-export interface ProjectItem {
-  id: string;
-  title: string;
-  subtitle: string;
-  category: string;
-  year: string;
-  description: string;
-  image?: string; // Path to real image if provided (e.g., "/assets/projects/aurelia.png")
-  recommendedSize: string;
-  accentColor: string;
-  link: string;
-}
-
-// 4 Featured Projects matching reference image layout
-const col1Projects: ProjectItem[] = [
-  {
-    id: "aurelia",
-    title: "Aurelia",
-    subtitle: "Skincare & Brand Identity",
-    category: "Branding",
-    year: "©2025",
-    description:
-      "A full identity system — logo, type, color, and voice — built to make the brand feel timeless and unmistakable.",
-    recommendedSize: "800 × 600 px (4:3)",
-    accentColor: "#E0A96D",
-    link: "https://github.com/devnaveedabbasi",
-  },
-  {
-    id: "lumen",
-    title: "Lumen Studio",
-    subtitle: "Interactive Portfolio Engine",
-    category: "Web Design",
-    year: "©2025",
-    description:
-      "A responsive marketing site designed to build trust, tell the story, and drive conversions.",
-    recommendedSize: "800 × 600 px (4:3)",
-    accentColor: "#E8461D",
-    link: "https://github.com/devnaveedabbasi",
-  },
-];
-
-const col2Projects: ProjectItem[] = [
-  {
-    id: "northwind",
-    title: "Northwind",
-    subtitle: "Accessible Component System",
-    category: "UI/UX Design",
-    year: "©2025",
-    description:
-      "An end-to-end product experience that turns complex flows into something clear, fast, and human.",
-    recommendedSize: "800 × 600 px (4:3)",
-    accentColor: "#2563EB",
-    link: "https://github.com/devnaveedabbasi",
-  },
-  {
-    id: "chronos",
-    title: "Chronos Health & IoT",
-    subtitle: "Smart Telemetry Hub",
-    category: "Product Design",
-    year: "©2025",
-    description:
-      "Telemetry monitoring application tracking real-time health intervals, device metrics, and automated progress analytics.",
-    recommendedSize: "800 × 600 px (4:3)",
-    accentColor: "#8A38F5",
-    link: "https://github.com/devnaveedabbasi",
-  },
-];
+// 4 Featured Projects for the Homepage Staggered Grid
+const col1Projects = [projectsData[0], projectsData[3]]; // Aurelia, Lumen
+const col2Projects = [projectsData[1], projectsData[4]]; // IlmCode, Chronos
 
 // Reusable Project Card with Mirelle-style Curtain Unveil & Parallax Scale
-function ProjectCard({ project }: { project: ProjectItem }) {
+function ProjectCard({ project }: { project: Project }) {
   return (
     <div className="project-card group flex flex-col">
       {/* 
@@ -82,18 +20,12 @@ function ProjectCard({ project }: { project: ProjectItem }) {
         - Outer box acts as the clipping curtain mask
         - Inner media scales from 1.25 -> 1.0 with scroll scrub
       */}
-      <div className="project-curtain-mask relative w-full aspect-[4/3] rounded-3xl bg-[#121215] border border-neutral-800/80 p-2 sm:p-2.5 shadow-2xl overflow-hidden transition-colors duration-500 group-hover:border-neutral-700">
-        <div className="relative w-full h-full overflow-hidden rounded-2xl bg-[#16161b]">
-          {/* Inner Media Element with GSAP Parallax Scrub & Hover Scale */}
-          <div className="project-inner-media relative w-full h-full will-change-transform transition-transform duration-700 ease-out group-hover:scale-105">
-            {project.image ? (
-              <img
-                src={project.image}
-                alt={project.title}
-                className="h-full w-full object-cover rounded-2xl"
-              />
-            ) : (
-              /* Architectural Image Placeholder with Clean Camera & Dimension Tag */
+      <Link href={`/projects/${project.id}`} className="block overflow-hidden rounded-3xl">
+        <div className="project-curtain-mask relative w-full aspect-[4/3] rounded-3xl bg-[#121215] border border-neutral-800/80 p-2 sm:p-2.5 shadow-2xl overflow-hidden transition-colors duration-500 group-hover:border-neutral-700">
+          <div className="relative w-full h-full overflow-hidden rounded-2xl bg-[#16161b]">
+            {/* Inner Media Element with GSAP Parallax Scrub & Hover Scale */}
+            <div className="project-inner-media relative w-full h-full will-change-transform transition-transform duration-700 ease-out group-hover:scale-105">
+              {/* Architectural Image Placeholder with Clean Camera & Dimension Tag */}
               <div className="relative flex h-full w-full flex-col items-center justify-center rounded-2xl border-2 border-dashed border-neutral-800/80 bg-[#141418] p-6 text-center transition-all duration-300 group-hover:border-neutral-700 group-hover:bg-[#18181f]">
                 {/* L-bracket corner marks */}
                 <div className="absolute top-3 left-3 h-3 w-3 border-t-2 border-l-2 border-neutral-700 group-hover:border-neutral-500 transition-colors" />
@@ -126,16 +58,16 @@ function ProjectCard({ project }: { project: ProjectItem }) {
 
                 {/* Label */}
                 <span className="mt-2 text-xs font-bold text-neutral-300 tracking-wide">
-                  {project.title} Screenshot
+                  {project.title} Preview
                 </span>
                 <span className="text-[11px] text-neutral-500 font-medium">
-                  Drop image asset here
+                  Click to view full case study
                 </span>
               </div>
-            )}
+            </div>
           </div>
         </div>
-      </div>
+      </Link>
 
       {/* Metadata Info Below Card */}
       <div className="mt-6 sm:mt-8 flex flex-col text-white">
@@ -146,9 +78,11 @@ function ProjectCard({ project }: { project: ProjectItem }) {
         </div>
 
         {/* Project Title */}
-        <h4 className="mt-2 text-2xl sm:text-3xl font-extrabold tracking-tight text-white group-hover:text-neutral-200 transition-colors">
-          {project.title}
-        </h4>
+        <Link href={`/projects/${project.id}`} className="group/title">
+          <h4 className="mt-2 text-2xl sm:text-3xl font-extrabold tracking-tight text-white group-hover/title:text-neutral-300 transition-colors">
+            {project.title}
+          </h4>
+        </Link>
 
         {/* Description */}
         <p className="mt-2.5 text-sm sm:text-base leading-relaxed text-neutral-400 max-w-lg">
@@ -158,12 +92,10 @@ function ProjectCard({ project }: { project: ProjectItem }) {
         {/* Action Pill Button with Curtain Effect */}
         <div className="mt-5">
           <CurtainButton
-            text="View Project"
+            text="View Case Study ↗"
             variant="outline"
             size="sm"
-            href={project.link}
-            target="_blank"
-            icon={<span className="text-xs">↗</span>}
+            href={`/projects/${project.id}`}
           />
         </div>
       </div>
@@ -284,8 +216,7 @@ export function ProjectsSection() {
               text="View All Work"
               variant="default"
               size="lg"
-              href="https://github.com/devnaveedabbasi"
-              target="_blank"
+              href="/projects"
               icon={<span className="text-base font-bold">↗</span>}
             />
           </div>

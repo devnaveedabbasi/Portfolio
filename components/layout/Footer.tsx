@@ -122,8 +122,8 @@ export function Footer() {
         </div>
 
         {/* Giant Monogram Typography Watermark */}
-        <div className="mt-20 select-none border-t border-[var(--footer-border)] pt-10 text-center">
-          <div className="text-[12vw] font-black tracking-tighter leading-none text-[var(--footer-watermark)] transition-colors">
+        <div className="mt-20 select-none border-t border-[var(--footer-border)] pt-10 text-center overflow-hidden">
+          <div className="text-[12.5vw] font-black tracking-tighter leading-none text-[var(--footer-watermark)] hover:text-white/25 transition-colors duration-300 select-none cursor-default">
             NAVEED ABBASI
           </div>
         </div>

@@ -58,7 +58,7 @@ body {
   --footer-text: #ffffff;
   --footer-muted: #a1a1aa;
   --footer-border: #27272a;
-  --footer-watermark: #111113;
+  --footer-watermark: rgba(255, 255, 255, 0.12);
 }
 
 .dark,
@@ -66,50 +66,50 @@ body {
 html.dark {
   /* Backgrounds */
   --bg-page: #09090b;
-  --bg-card: #121215;
-  --bg-card-subtle: #18181b;
+  --bg-card: #121216;
+  --bg-card-subtle: #19191e;
   --bg-nav: #09090b;
-  --bg-muted: #27272a;
+  --bg-muted: #222228;
   --bg-inverted: #18181b;
 
   /* Foregrounds & Typography */
-  --text-primary: #fafafa;
+  --text-primary: #ffffff;
   --text-secondary: #a1a1aa;
   --text-muted: #71717a;
   --text-inverted: #ffffff;
 
   /* Borders & Lines */
-  --border-subtle: #27272a;
-  --border-default: #3f3f46;
-  --border-strong: #fafafa;
+  --border-subtle: #27272f;
+  --border-default: #3a3a44;
+  --border-strong: #ffffff;
 
   /* Buttons */
-  --btn-primary-bg: #fafafa;
+  --btn-primary-bg: #ffffff;
   --btn-primary-text: #09090b;
   --btn-primary-hover: #e4e4e7;
 
-  --btn-secondary-bg: #121215;
-  --btn-secondary-text: #fafafa;
-  --btn-secondary-border: #3f3f46;
-  --btn-secondary-hover: #27272a;
+  --btn-secondary-bg: #121216;
+  --btn-secondary-text: #ffffff;
+  --btn-secondary-border: #3a3a44;
+  --btn-secondary-hover: #222228;
 
   /* Accent & Status */
   --accent-green: #34d399;
-  --accent-badge-bg: #18181b;
-  --accent-badge-border: #27272a;
-  --accent-badge-text: #fafafa;
+  --accent-badge-bg: #18181d;
+  --accent-badge-border: #282832;
+  --accent-badge-text: #ffffff;
 
   /* Marquee Ribbon */
-  --ribbon-bg: #121215;
-  --ribbon-text: #fafafa;
-  --ribbon-border: #27272a;
+  --ribbon-bg: #121216;
+  --ribbon-text: #ffffff;
+  --ribbon-border: #282832;
 
   /* Footer */
   --footer-bg: #050507;
-  --footer-text: #fafafa;
-  --footer-muted: #71717a;
-  --footer-border: #1f1f23;
-  --footer-watermark: #121215;
+  --footer-text: #ffffff;
+  --footer-muted: #82828e;
+  --footer-border: #1f1f26;
+  --footer-watermark: rgba(255, 255, 255, 0.15);
 }
 
 html {
