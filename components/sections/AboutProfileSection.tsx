@@ -1,12 +1,12 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText } from "gsap/SplitText";
 import { personalInfo, socialLinks } from "@/constant/data";
 import { CurtainButton } from "@/components/ui/curtain-button";
+import { ColorFillPhoto } from "@/components/ui/ColorFillPhoto";
 
 const FACTS = [
   { label: "Based in", value: personalInfo.location },
@@ -84,15 +84,7 @@ export function AboutProfileSection() {
     >
       <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:items-center lg:gap-20">
         <div className="lg:col-span-5">
-          <div className="relative mx-auto aspect-[4/5] w-full max-w-[420px] overflow-hidden rounded-3xl border border-[var(--border-subtle)] shadow-card">
-            <Image
-              src="/assets/img/NaveedAbbasi.jpg"
-              alt={personalInfo.name}
-              fill
-              sizes="(max-width: 1024px) 100vw, 420px"
-              className="object-cover object-top"
-            />
-          </div>
+          <ColorFillPhoto />
         </div>
 
         <div className="lg:col-span-7">
