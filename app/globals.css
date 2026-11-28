@@ -200,6 +200,21 @@ html.dark .band {
     animation: line-rise 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
   }
 
+  /* Hero: letters tumble in one after another, the rest follows */
+  .hero-char-in {
+    animation: hero-char-in 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .hero-lift {
+    transition:
+      transform 0.25s ease-out,
+      color 0.25s ease-out;
+  }
+
+  .hero-rise {
+    animation: hero-rise 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
   /* Page headline */
   .display-1 {
     font-size: clamp(2.5rem, 1.15rem + 5vw, 4.75rem);
@@ -270,6 +285,20 @@ html.dark .band {
   }
 }
 
+@keyframes hero-char-in {
+  from {
+    opacity: 0;
+    transform: translateY(0.7em) rotate(14deg);
+  }
+}
+
+@keyframes hero-rise {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+}
+
 @keyframes line-rise {
   from {
     transform: translateY(115%);
@@ -311,7 +340,9 @@ html.dark .band {
   .animate-ping,
   .animate-pulse,
   .animate-bounce,
-  .line-reveal > span {
+  .line-reveal > span,
+  .hero-char-in,
+  .hero-rise {
     animation: none;
   }
 }

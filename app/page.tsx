@@ -1,5 +1,5 @@
 import { Navbar } from "@/components/layout/Navbar";
-import { HeroSection } from "@/components/sections/HeroSection";
+import { HeroTypeSection } from "@/components/sections/HeroTypeSection";
 import { AboutProfileSection } from "@/components/sections/AboutProfileSection";
 import { AboutBentoSection } from "@/components/sections/AboutBentoSection";
 import { TickerRibbon } from "@/components/sections/TickerRibbon";
@@ -15,7 +15,7 @@ export default function Home() {
     <div className="flex min-h-screen flex-col bg-[var(--bg-page)] text-[var(--text-primary)] transition-colors duration-200">
       <Navbar />
       <main className="flex-1">
-        <HeroSection />
+        <HeroTypeSection />
         <AboutProfileSection />
         <AboutBentoSection />
         <TickerRibbon />
