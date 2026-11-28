@@ -89,18 +89,23 @@ export function TickerRibbon() {
   return (
     <div
       ref={containerRef}
-      className="relative my-12 sm:my-16 w-full overflow-hidden py-4 select-none pointer-events-none space-y-3 sm:space-y-4"
+      className="relative my-12 sm:my-16 w-full overflow-x-clip select-none pointer-events-none h-[calc(17.2vw+4.5rem)] [--cross-y:calc(8.6vw+2.25rem)] md:h-[calc(9.2vw+5rem)] md:[--cross-y:calc(4.6vw+2.5rem)] lg:h-[calc(7vw+5rem)] lg:[--cross-y:calc(3.5vw+2.5rem)]"
     >
-      {/* Ribbon 1: Tilted Left (-2.2deg), Scrolls to the LEFT */}
-      <div className="w-[140vw] -ml-[20vw] -rotate-2 sm:-rotate-[2.2deg] transform-gpu bg-black text-white py-3.5 sm:py-4 shadow-sm border-y border-neutral-900">
+      {/*
+        An even X: both ribbons rotate around the middle of the screen (the ribbon starts
+        at -20vw, so that is 70vw inside it) by equal and opposite angles, which leaves the
+        same gap on both sides. Narrow screens need steeper angles to keep that gap.
+      */}
+      {/* Dark ribbon (in front): top left to bottom right, scrolls to the RIGHT */}
+      <div className="absolute left-[-20vw] top-[var(--cross-y)] z-10 w-[140vw] -translate-y-1/2 origin-[70vw_50%] rotate-[9.75deg] md:rotate-[5.2deg] lg:rotate-[4deg] transform-gpu bg-[var(--ribbon-bg)] text-neutral-100 py-3.5 sm:py-4 shadow-sm border-y border-neutral-900">
         <div
-          ref={track1Ref}
-          className="flex items-center gap-8 sm:gap-12 whitespace-nowrap will-change-transform text-xs sm:text-sm font-extrabold uppercase tracking-widest text-neutral-100"
+          ref={track2Ref}
+          className="flex items-center gap-8 sm:gap-12 whitespace-nowrap will-change-transform font-display text-sm sm:text-base font-bold uppercase tracking-wide text-neutral-200"
         >
-          {fullTrack1.map((text, idx) => (
+          {fullTrack2.map((text, idx) => (
             <div key={idx} className="flex items-center gap-8 sm:gap-12 shrink-0">
-              <span className="tracking-[0.18em]">{text}</span>
-              <span className="text-neutral-500 font-bold text-base leading-none">
+              <span className="tracking-[0.1em]">{text}</span>
+              <span className="text-white/55 font-bold text-base leading-none">
                 •
               </span>
             </div>
@@ -108,16 +113,16 @@ export function TickerRibbon() {
         </div>
       </div>
 
-      {/* Ribbon 2: Tilted Counter-Angle (+1.6deg), Scrolls to the RIGHT */}
-      <div className="w-[140vw] -ml-[20vw] rotate-1 sm:rotate-[1.6deg] transform-gpu bg-black text-neutral-100 py-3.5 sm:py-4 shadow-sm border-y border-neutral-900">
+      {/* Blue ribbon (behind): bottom left to upper right, scrolls to the LEFT */}
+      <div className="absolute left-[-20vw] top-[var(--cross-y)] w-[140vw] -translate-y-1/2 origin-[70vw_50%] -rotate-[9.75deg] md:-rotate-[5.2deg] lg:-rotate-[4deg] transform-gpu bg-[var(--ribbon-accent)] text-white py-3.5 sm:py-4 shadow-sm border-y border-white/10">
         <div
-          ref={track2Ref}
-          className="flex items-center gap-8 sm:gap-12 whitespace-nowrap will-change-transform text-xs sm:text-sm font-extrabold uppercase tracking-widest text-neutral-200"
+          ref={track1Ref}
+          className="flex items-center gap-8 sm:gap-12 whitespace-nowrap will-change-transform font-display text-sm sm:text-base font-bold uppercase tracking-wide text-white"
         >
-          {fullTrack2.map((text, idx) => (
+          {fullTrack1.map((text, idx) => (
             <div key={idx} className="flex items-center gap-8 sm:gap-12 shrink-0">
-              <span className="tracking-[0.18em]">{text}</span>
-              <span className="text-neutral-500 font-bold text-base leading-none">
+              <span className="tracking-[0.1em]">{text}</span>
+              <span className="text-white/55 font-bold text-base leading-none">
                 •
               </span>
             </div>

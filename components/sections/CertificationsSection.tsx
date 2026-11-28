@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Badge } from "@/components/ui/Badge";
 import {
   CertificateItem,
   row1Certificates,
@@ -20,9 +19,9 @@ function CertificateCard({
       onClick={() => onSelect(item)}
       className={`group relative flex w-[280px] sm:w-[340px] md:w-[380px] shrink-0 rounded-xl sm:rounded-2xl border ${
         item.highlighted
-          ? "border-black dark:border-white shadow-[0_10px_30px_rgba(0,0,0,0.12)] dark:shadow-[0_10px_30px_rgba(255,255,255,0.15)] ring-2 ring-black/20 dark:ring-white/30"
-          : "border-[var(--border-subtle)] shadow-[0_6px_20px_rgba(0,0,0,0.04)] dark:shadow-[0_6px_20px_rgba(0,0,0,0.35)]"
-      } bg-white dark:bg-[#121215] p-2 sm:p-2.5 transition-all duration-300 ease-out hover:scale-[1.04] hover:-translate-y-1.5 hover:z-30 hover:shadow-[0_20px_45px_rgba(0,0,0,0.18)] dark:hover:shadow-[0_20px_45px_rgba(0,0,0,0.6)] hover:border-black dark:hover:border-white select-none overflow-hidden cursor-pointer`}
+          ? "border-brand/60 shadow-card ring-2 ring-brand/15"
+          : "border-[var(--border-subtle)] shadow-card"
+      } bg-[var(--bg-card)] p-2 sm:p-2.5 transition-all duration-300 ease-out hover:scale-[1.04] hover:-translate-y-1.5 hover:z-30 hover:shadow-lift hover:border-brand select-none overflow-hidden cursor-pointer`}
       role="button"
       tabIndex={0}
       onKeyDown={(e) => {
@@ -32,8 +31,6 @@ function CertificateCard({
         }
       }}
     >
-      {/* Dynamic Light Sweep Glint Effect on Card Hover */}
-      <div className="pointer-events-none absolute inset-0 z-20 -translate-x-[120%] group-hover:translate-x-[120%] transition-transform duration-1000 ease-out bg-gradient-to-r from-transparent via-white/30 dark:via-white/15 to-transparent" />
 
       <div className="relative flex h-[180px] sm:h-[220px] md:h-[245px] w-full overflow-hidden rounded-lg sm:rounded-xl bg-neutral-100 dark:bg-neutral-900 border border-neutral-200/60 dark:border-neutral-800">
         {item.image ? (
@@ -42,6 +39,8 @@ function CertificateCard({
               src={encodeURI(item.image)}
               alt={item.title || "Certificate Preview"}
               className="h-full w-full object-cover rounded-lg sm:rounded-xl transition-transform duration-500 ease-out group-hover:scale-105"
+              width={380}
+              height={245}
               loading="lazy"
             />
 
@@ -50,9 +49,9 @@ function CertificateCard({
               <span className="text-xs sm:text-sm font-extrabold text-white truncate drop-shadow-md">
                 {item.title}
               </span>
-              <div className="mt-0.5 flex items-center justify-between text-[11px] font-medium text-neutral-300">
+              <div className="mt-0.5 flex items-center justify-between text-xs font-medium text-neutral-300">
                 <span className="truncate">{item.issuer}</span>
-                <span className="shrink-0 font-mono text-[10px] text-white/90 bg-white/20 px-1.5 py-0.5 rounded ml-2">
+                <span className="shrink-0 tabular-nums text-[11px] text-white/90 bg-white/20 px-1.5 py-0.5 rounded ml-2">
                   View ↗
                 </span>
               </div>
@@ -60,7 +59,7 @@ function CertificateCard({
           </>
         ) : (
           <div className="relative flex h-full w-full flex-col items-center justify-center rounded-lg sm:rounded-xl border-2 border-dashed border-neutral-300/80 dark:border-neutral-800 bg-neutral-50/70 dark:bg-neutral-900/50 p-4 text-center">
-            <span className="font-mono text-xs font-black tracking-wider text-neutral-700 dark:text-neutral-300">
+            <span className="tabular-nums text-xs font-black tracking-wider text-neutral-700 dark:text-neutral-300">
               Certificate Image
             </span>
           </div>
@@ -103,20 +102,13 @@ export function CertificationsSection() {
     >
       {/* Centered Section Header */}
       <div className="mx-auto max-w-4xl px-6 text-center">
-        <div className="inline-block">
-          <Badge variant="status" className="px-4 py-1.5 text-xs font-semibold">
-            ✦ CERTIFICATIONS
-          </Badge>
-        </div>
 
-        <h2 className="mt-4 text-3xl font-extrabold tracking-tight text-[var(--text-primary)] sm:text-4xl md:text-5xl leading-[1.15]">
-          Verified Expertise & <br />
-          <span>Professional Credentials.</span>
+        <h2 className="display-2 text-[var(--text-primary)]">
+          Certifications
         </h2>
 
         <p className="mt-3 text-sm sm:text-base leading-relaxed text-[var(--text-secondary)]">
-          Industry-recognized certifications, verified technical accreditations, and
-          software engineering specializations. Click any certificate to preview.
+          Click any certificate to preview it.
         </p>
       </div>
 
@@ -127,7 +119,7 @@ export function CertificationsSection() {
         <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-16 sm:w-36 md:w-56 bg-gradient-to-l from-[var(--bg-page)] via-[var(--bg-page)]/80 to-transparent z-20" />
 
         {/* ================= Row 1: Marquee Moving LEFT ================= */}
-        <div className="flex w-max animate-marquee-left gap-4 sm:gap-5 py-2.5">
+        <div className="flex w-max animate-marquee-left gap-[var(--marquee-gap)] py-2.5 [--marquee-gap:1rem] sm:[--marquee-gap:1.25rem]">
           {fullRow1.map((item, idx) => (
             <CertificateCard
               key={`cert-row1-${item.id}-${idx}`}
@@ -138,7 +130,7 @@ export function CertificationsSection() {
         </div>
 
         {/* ================= Row 2: Marquee Moving RIGHT ================= */}
-        <div className="flex w-max animate-marquee-right gap-4 sm:gap-5 py-2.5 mt-2 sm:mt-3">
+        <div className="flex w-max animate-marquee-right gap-[var(--marquee-gap)] py-2.5 mt-2 sm:mt-3 [--marquee-gap:1rem] sm:[--marquee-gap:1.25rem]">
           {fullRow2.map((item, idx) => (
             <CertificateCard
               key={`cert-row2-${item.id}-${idx}`}
@@ -152,11 +144,11 @@ export function CertificationsSection() {
       {/* ================= Lightbox Modal for Full View ================= */}
       {selectedCert && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-10 bg-black/85 backdrop-blur-md animate-fade-in"
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-10 overscroll-contain bg-black/85 backdrop-blur-md animate-fade-in"
           onClick={() => setSelectedCert(null)}
         >
           <div
-            className="relative max-w-4xl w-full bg-white dark:bg-[#121215] border border-neutral-300 dark:border-neutral-700 rounded-2xl p-4 sm:p-6 shadow-2xl overflow-hidden"
+            className="relative max-w-4xl w-full bg-[var(--bg-card)] border border-neutral-300 dark:border-neutral-700 rounded-2xl p-4 sm:p-6 shadow-2xl overflow-hidden"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Header with Title and Close Button */}

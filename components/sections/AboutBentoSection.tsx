@@ -2,13 +2,24 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Badge } from "@/components/ui/Badge";
-
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger);
-}
+import {
+  Check,
+  Cloud,
+  Container,
+  Database,
+  Eye,
+  FileCode2,
+  Frame,
+  GitBranch,
+  Handshake,
+  NotebookText,
+  Package,
+  Palette,
+  PenTool,
+  Search,
+  Target,
+  Triangle,
+} from "lucide-react";
 
 // ================= Animated Score Dial (Bulletproof with rAF & Observer) =================
 function ScoreDial({
@@ -91,17 +102,17 @@ function ScoreDial({
             strokeDasharray={circumference}
             strokeDashoffset={strokeOffset}
             strokeLinecap="round"
-            className="text-[var(--text-primary)] transition-[stroke-dashoffset] duration-1000 ease-out"
+            className="text-brand transition-[stroke-dashoffset] duration-1000 ease-out"
             fill="transparent"
           />
         </svg>
 
-        <span className="absolute font-semibold text-sm sm:text-base tracking-tight text-[var(--text-primary)]">
+        <span className="absolute font-semibold tabular-nums text-sm sm:text-base tracking-tight text-[var(--text-primary)]">
           {count}%
         </span>
       </div>
 
-      <span className="mt-2 text-[10px] sm:text-xs font-semibold uppercase tracking-wider text-[var(--text-muted)]">
+      <span className="mt-2 text-[11px] sm:text-xs font-semibold text-[var(--text-muted)]">
         {label}
       </span>
     </div>
@@ -110,73 +121,16 @@ function ScoreDial({
 
 // ================= Main Bento Section =================
 export function AboutBentoSection() {
-  const sectionRef = useRef<HTMLElement>(null);
-  const headerRef = useRef<HTMLDivElement>(null);
-  const gridRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (!sectionRef.current) return;
-
-    const ctx = gsap.context(() => {
-      // Header subtle lift and fade
-      if (headerRef.current) {
-        gsap.fromTo(
-          headerRef.current,
-          { opacity: 0, y: 30 },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.8,
-            ease: "power3.out",
-            clearProps: "transform",
-            scrollTrigger: {
-              trigger: sectionRef.current,
-              start: "top 85%",
-            },
-          }
-        );
-      }
-
-      // Bento cards staggered entrance on scroll
-      const cards = gridRef.current?.querySelectorAll(".bento-card");
-      if (cards && cards.length > 0) {
-        gsap.fromTo(
-          cards,
-          { opacity: 0, y: 35 },
-          {
-            opacity: 1,
-            y: 0,
-            stagger: 0.1,
-            duration: 0.8,
-            ease: "power3.out",
-            clearProps: "transform",
-            scrollTrigger: {
-              trigger: gridRef.current,
-              start: "top 82%",
-            },
-          }
-        );
-      }
-    }, sectionRef);
-
-    return () => ctx.revert();
-  }, []);
 
   return (
     <section
-      ref={sectionRef}
       id="bento-about"
       className="mx-auto max-w-7xl px-6 pt-16 sm:pt-24 pb-10 sm:pb-14 overflow-hidden"
     >
       {/* Centered Section Header — Balanced, refined typography */}
-      <div ref={headerRef} className="mx-auto max-w-3xl text-center">
-        <div className="inline-block">
-          <Badge variant="status" className="px-4 py-1.5 text-xs font-semibold">
-            About me
-          </Badge>
-        </div>
+      <div className="mx-auto max-w-3xl text-center">
 
-        <h2 className="mt-5 text-3xl font-bold tracking-tight text-[var(--text-primary)] sm:text-4xl md:text-5xl leading-[1.15]">
+        <h2 className="display-2 text-[var(--text-primary)]">
           The engineer <br />
           <span>behind the work.</span>
         </h2>
@@ -189,15 +143,12 @@ export function AboutBentoSection() {
 
       {/* Bento Grid Container */}
       <div
-        ref={gridRef}
         className="mt-12 sm:mt-16 grid grid-cols-1 gap-6 lg:grid-cols-12"
       >
         {/* ================= Row 1 ================= */}
 
         {/* Card 1: Profile & Bio (Left, 7 Cols) */}
-        <div className="bento-card group relative lg:col-span-7 flex flex-col justify-between rounded-3xl border border-[var(--border-subtle)] bg-[var(--bg-card)] p-6 sm:p-9 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1 overflow-hidden">
-          {/* Subtle light sweep */}
-          <div className="pointer-events-none absolute inset-0 -translate-x-[120%] group-hover:translate-x-[120%] transition-transform duration-1000 ease-out bg-gradient-to-r from-transparent via-white/10 dark:via-white/5 to-transparent" />
+        <div className="bento-card group relative lg:col-span-7 flex flex-col justify-between rounded-3xl border border-[var(--border-subtle)] bg-[var(--bg-card)] p-6 sm:p-9 shadow-card hover:shadow-lift transition-all duration-300 hover:-translate-y-1 overflow-hidden">
 
           <div>
             {/* Header: Avatar Circle + Badges */}
@@ -236,23 +187,21 @@ export function AboutBentoSection() {
         </div>
 
         {/* Card 2: How I Work (Right, 5 Cols) */}
-        <div className="bento-card group relative lg:col-span-5 flex flex-col justify-between rounded-3xl border border-[var(--border-subtle)] bg-[var(--bg-card)] p-6 sm:p-8 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1 overflow-hidden">
-          {/* Subtle light sweep */}
-          <div className="pointer-events-none absolute inset-0 -translate-x-[120%] group-hover:translate-x-[120%] transition-transform duration-1000 ease-out bg-gradient-to-r from-transparent via-white/10 dark:via-white/5 to-transparent" />
+        <div className="bento-card group relative lg:col-span-5 flex flex-col justify-between rounded-3xl border border-[var(--border-subtle)] bg-[var(--bg-card)] p-6 sm:p-8 shadow-card hover:shadow-lift transition-all duration-300 hover:-translate-y-1 overflow-hidden">
 
           {/* Stacked Pills — Clean & Soft Matching Reference */}
           <div className="space-y-2.5">
             {[
-              { icon: "🔍", text: "Understanding your business first" },
-              { icon: "🎯", text: "Aligning on strategy and goals" },
-              { icon: "🎨", text: "Concepts to pixel-perfect execution" },
-              { icon: "📦", text: "Final assets, ready to launch" },
+              { icon: <Search className="h-4 w-4 shrink-0 text-brand" aria-hidden="true" />, text: "Understanding your business first" },
+              { icon: <Target className="h-4 w-4 shrink-0 text-brand" aria-hidden="true" />, text: "Aligning on strategy and goals" },
+              { icon: <Palette className="h-4 w-4 shrink-0 text-brand" aria-hidden="true" />, text: "Concepts to pixel-perfect execution" },
+              { icon: <Package className="h-4 w-4 shrink-0 text-brand" aria-hidden="true" />, text: "Final assets, ready to launch" },
             ].map((item, idx) => (
               <div
                 key={idx}
-                className="flex items-center gap-3 rounded-full border border-[var(--border-subtle)] bg-[var(--bg-card-subtle)] px-4 py-2 text-xs sm:text-sm font-medium text-[var(--text-primary)] transition-all duration-200 hover:scale-[1.015] hover:border-black/30 dark:hover:border-white/30 cursor-default"
+                className="flex items-center gap-3 rounded-full border border-[var(--border-subtle)] bg-[var(--bg-card-subtle)] px-4 py-2 text-xs sm:text-sm font-medium text-[var(--text-primary)] transition-all duration-200 hover:scale-[1.015] hover:border-brand/40 cursor-default"
               >
-                <span className="text-base">{item.icon}</span>
+                {item.icon}
                 <span>{item.text}</span>
               </div>
             ))}
@@ -272,41 +221,54 @@ export function AboutBentoSection() {
         {/* ================= Row 2 ================= */}
 
         {/* Card 3: Tools I Use Daily (Left, 4 Cols) */}
-        <div className="bento-card group relative lg:col-span-4 flex flex-col justify-between rounded-3xl border border-[var(--border-subtle)] bg-[var(--bg-card)] p-6 sm:p-8 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1 overflow-hidden">
-          {/* Subtle light sweep */}
-          <div className="pointer-events-none absolute inset-0 -translate-x-[120%] group-hover:translate-x-[120%] transition-transform duration-1000 ease-out bg-gradient-to-r from-transparent via-white/10 dark:via-white/5 to-transparent" />
+        <div className="bento-card group relative lg:col-span-4 flex flex-col justify-between rounded-3xl border border-[var(--border-subtle)] bg-[var(--bg-card)] p-6 sm:p-8 shadow-card hover:shadow-lift transition-all duration-300 hover:-translate-y-1 overflow-hidden">
 
           {/* Tool Chips Grid — Soft, Balanced Pills */}
           <div className="space-y-2.5">
             <div className="flex flex-wrap items-center gap-2">
-              {["🎨 Figma", "📝 Notion", "⚡ Framer"].map((t) => (
+              {[
+                { name: "Figma", Icon: PenTool },
+                { name: "Notion", Icon: NotebookText },
+                { name: "Framer", Icon: Frame },
+              ].map(({ name, Icon }) => (
                 <span
-                  key={t}
-                  className="inline-flex items-center gap-1.5 rounded-full border border-[var(--border-subtle)] bg-[var(--bg-card-subtle)] px-3 py-1.5 text-xs font-medium text-[var(--text-primary)] transition-all duration-200 hover:scale-105 hover:border-black/30 dark:hover:border-white/30 cursor-default"
+                  key={name}
+                  className="inline-flex items-center gap-1.5 rounded-full border border-[var(--border-subtle)] bg-[var(--bg-card-subtle)] px-3 py-1.5 text-xs font-medium text-[var(--text-primary)] transition-all duration-200 hover:scale-105 hover:border-brand/40 cursor-default"
                 >
-                  {t}
+                  <Icon className="h-3.5 w-3.5 text-brand" aria-hidden="true" />
+                  {name}
                 </span>
               ))}
             </div>
 
             <div className="flex flex-wrap items-center gap-2">
-              {["▲ Next.js", "TS TypeScript", "🐘 Postgres"].map((t) => (
+              {[
+                { name: "Next.js", Icon: Triangle },
+                { name: "TypeScript", Icon: FileCode2 },
+                { name: "Postgres", Icon: Database },
+              ].map(({ name, Icon }) => (
                 <span
-                  key={t}
-                  className="inline-flex items-center gap-1.5 rounded-full border border-[var(--border-subtle)] bg-[var(--bg-card-subtle)] px-3 py-1.5 text-xs font-medium text-[var(--text-primary)] transition-all duration-200 hover:scale-105 hover:border-black/30 dark:hover:border-white/30 cursor-default"
+                  key={name}
+                  className="inline-flex items-center gap-1.5 rounded-full border border-[var(--border-subtle)] bg-[var(--bg-card-subtle)] px-3 py-1.5 text-xs font-medium text-[var(--text-primary)] transition-all duration-200 hover:scale-105 hover:border-brand/40 cursor-default"
                 >
-                  {t}
+                  <Icon className="h-3.5 w-3.5 text-brand" aria-hidden="true" />
+                  {name}
                 </span>
               ))}
             </div>
 
             <div className="flex flex-wrap items-center gap-2">
-              {["☁️ AWS", "🐳 Docker", "🐙 GitHub"].map((t) => (
+              {[
+                { name: "AWS", Icon: Cloud },
+                { name: "Docker", Icon: Container },
+                { name: "GitHub", Icon: GitBranch },
+              ].map(({ name, Icon }) => (
                 <span
-                  key={t}
-                  className="inline-flex items-center gap-1.5 rounded-full border border-[var(--border-subtle)] bg-[var(--bg-card-subtle)] px-3 py-1.5 text-xs font-medium text-[var(--text-primary)] transition-all duration-200 hover:scale-105 hover:border-black/30 dark:hover:border-white/30 cursor-default"
+                  key={name}
+                  className="inline-flex items-center gap-1.5 rounded-full border border-[var(--border-subtle)] bg-[var(--bg-card-subtle)] px-3 py-1.5 text-xs font-medium text-[var(--text-primary)] transition-all duration-200 hover:scale-105 hover:border-brand/40 cursor-default"
                 >
-                  {t}
+                  <Icon className="h-3.5 w-3.5 text-brand" aria-hidden="true" />
+                  {name}
                 </span>
               ))}
             </div>
@@ -324,20 +286,18 @@ export function AboutBentoSection() {
         </div>
 
         {/* Card 4: What I Stand For (Middle, 4 Cols) */}
-        <div className="bento-card group relative lg:col-span-4 flex flex-col justify-between rounded-3xl border border-[var(--border-subtle)] bg-[var(--bg-card)] p-6 sm:p-8 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1 overflow-hidden">
-          {/* Subtle light sweep */}
-          <div className="pointer-events-none absolute inset-0 -translate-x-[120%] group-hover:translate-x-[120%] transition-transform duration-1000 ease-out bg-gradient-to-r from-transparent via-white/10 dark:via-white/5 to-transparent" />
+        <div className="bento-card group relative lg:col-span-4 flex flex-col justify-between rounded-3xl border border-[var(--border-subtle)] bg-[var(--bg-card)] p-6 sm:p-8 shadow-card hover:shadow-lift transition-all duration-300 hover:-translate-y-1 overflow-hidden">
 
           {/* Principles Stack — Soft, Elegant Pills */}
           <div className="space-y-2.5">
             {[
-              { icon: <span className="text-neutral-400 font-bold">○</span>, text: "Clarity over complexity" },
-              { icon: <span className="text-neutral-400 font-bold">✓</span>, text: "Strategy over trends" },
-              { icon: <span className="text-base">🤝</span>, text: "Partnerships over one-off" },
+              { icon: <Eye className="h-4 w-4 shrink-0 text-brand" aria-hidden="true" />, text: "Clarity over complexity" },
+              { icon: <Check className="h-4 w-4 shrink-0 text-brand" aria-hidden="true" />, text: "Strategy over trends" },
+              { icon: <Handshake className="h-4 w-4 shrink-0 text-brand" aria-hidden="true" />, text: "Partnerships over one-off" },
             ].map((p, idx) => (
               <div
                 key={idx}
-                className="flex items-center gap-3 rounded-full border border-[var(--border-subtle)] bg-[var(--bg-card-subtle)] px-4 py-2.5 text-xs sm:text-sm font-medium text-[var(--text-primary)] transition-all duration-200 hover:scale-[1.015] hover:border-black/30 dark:hover:border-white/30 cursor-default"
+                className="flex items-center gap-3 rounded-full border border-[var(--border-subtle)] bg-[var(--bg-card-subtle)] px-4 py-2.5 text-xs sm:text-sm font-medium text-[var(--text-primary)] transition-all duration-200 hover:scale-[1.015] hover:border-brand/40 cursor-default"
               >
                 {p.icon}
                 <span>{p.text}</span>
@@ -357,9 +317,7 @@ export function AboutBentoSection() {
         </div>
 
         {/* Card 5: SEO Ready & Fast Performance (Right, 4 Cols) */}
-        <div className="bento-card group relative lg:col-span-4 flex flex-col justify-between rounded-3xl border border-[var(--border-subtle)] bg-[var(--bg-card)] p-6 sm:p-8 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1 overflow-hidden">
-          {/* Subtle light sweep */}
-          <div className="pointer-events-none absolute inset-0 -translate-x-[120%] group-hover:translate-x-[120%] transition-transform duration-1000 ease-out bg-gradient-to-r from-transparent via-white/10 dark:via-white/5 to-transparent" />
+        <div className="bento-card group relative lg:col-span-4 flex flex-col justify-between rounded-3xl border border-[var(--border-subtle)] bg-[var(--bg-card)] p-6 sm:p-8 shadow-card hover:shadow-lift transition-all duration-300 hover:-translate-y-1 overflow-hidden">
 
           {/* Top Info */}
           <div>

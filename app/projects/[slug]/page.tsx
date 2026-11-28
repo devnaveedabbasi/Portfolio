@@ -6,6 +6,7 @@ import { Footer } from "@/components/layout/Footer";
 import { projectsData, Project } from "@/constant/data";
 import { Badge } from "@/components/ui/Badge";
 import { CurtainButton } from "@/components/ui/curtain-button";
+import { Check, Zap } from "lucide-react";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -52,16 +53,16 @@ export default async function ProjectDetailPage({ params }: PageProps) {
         {/* ================= Breadcrumb Bar ================= */}
         <div className="border-b border-[var(--border-subtle)] bg-[var(--bg-card)]/40">
           <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-            <div className="flex items-center gap-2 text-xs font-mono text-[var(--text-muted)]">
+            <div className="flex items-center gap-2 text-xs tabular-nums text-[var(--text-muted)]">
               <Link href="/" className="hover:text-[var(--text-primary)] transition-colors">
-                HOME
+                Home
               </Link>
               <span>/</span>
               <Link href="/projects" className="hover:text-[var(--text-primary)] transition-colors">
-                PROJECTS
+                Projects
               </Link>
               <span>/</span>
-              <span className="font-semibold text-[var(--text-primary)] uppercase">
+              <span className="font-semibold text-[var(--text-primary)] capitalize">
                 {project.id}
               </span>
             </div>
@@ -81,12 +82,12 @@ export default async function ProjectDetailPage({ params }: PageProps) {
             <Badge variant="status" className="px-3.5 py-1 text-xs font-semibold">
               {project.category}
             </Badge>
-            <span className="font-mono text-xs text-[var(--text-muted)]">
+            <span className="tabular-nums text-xs text-[var(--text-muted)]">
               {project.year}
             </span>
           </div>
 
-          <h1 className="mt-6 text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-[var(--text-primary)] leading-[1.06]">
+          <h1 className="mt-6 display-1 text-[var(--text-primary)]">
             {project.title}
           </h1>
 
@@ -101,8 +102,8 @@ export default async function ProjectDetailPage({ params }: PageProps) {
           {/* Metadata Specs Matrix */}
           <div className="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-4 sm:gap-6 border-y border-[var(--border-subtle)] py-8">
             <div>
-              <div className="text-[11px] font-mono uppercase tracking-wider text-[var(--text-muted)]">
-                ROLE
+              <div className="text-xs tabular-nums text-[var(--text-muted)]">
+                Role
               </div>
               <div className="mt-1.5 font-bold text-sm sm:text-base text-[var(--text-primary)]">
                 {project.role}
@@ -110,8 +111,8 @@ export default async function ProjectDetailPage({ params }: PageProps) {
             </div>
 
             <div>
-              <div className="text-[11px] font-mono uppercase tracking-wider text-[var(--text-muted)]">
-                CLIENT / ORG
+              <div className="text-xs tabular-nums text-[var(--text-muted)]">
+                Client
               </div>
               <div className="mt-1.5 font-bold text-sm sm:text-base text-[var(--text-primary)]">
                 {project.client}
@@ -119,8 +120,8 @@ export default async function ProjectDetailPage({ params }: PageProps) {
             </div>
 
             <div>
-              <div className="text-[11px] font-mono uppercase tracking-wider text-[var(--text-muted)]">
-                TIMELINE
+              <div className="text-xs tabular-nums text-[var(--text-muted)]">
+                Timeline
               </div>
               <div className="mt-1.5 font-bold text-sm sm:text-base text-[var(--text-primary)]">
                 {project.timeline}
@@ -128,8 +129,8 @@ export default async function ProjectDetailPage({ params }: PageProps) {
             </div>
 
             <div>
-              <div className="text-[11px] font-mono uppercase tracking-wider text-[var(--text-muted)]">
-                DELIVERABLE
+              <div className="text-xs tabular-nums text-[var(--text-muted)]">
+                Deliverable
               </div>
               <div className="mt-1.5 font-bold text-sm sm:text-base text-[var(--text-primary)]">
                 Full Production System
@@ -158,8 +159,8 @@ export default async function ProjectDetailPage({ params }: PageProps) {
 
         {/* ================= Primary Hero Image Showcase ================= */}
         <section className="mx-auto max-w-7xl px-6 pb-20">
-          <div className="relative aspect-[16/10] w-full overflow-hidden rounded-3xl bg-[#121216] border border-neutral-800 p-3 sm:p-4 shadow-2xl">
-            <div className="relative flex h-full w-full flex-col items-center justify-center rounded-2xl border-2 border-dashed border-neutral-800 bg-[#15151c] p-8 text-center">
+          <div className="relative aspect-[16/10] w-full overflow-hidden rounded-3xl bg-neutral-950 border border-neutral-800 p-3 sm:p-4 shadow-2xl">
+            <div className="relative flex h-full w-full flex-col items-center justify-center rounded-2xl border-2 border-dashed border-neutral-800 bg-neutral-900 p-8 text-center">
               {/* L-bracket corner marks */}
               <div className="absolute top-4 left-4 h-4 w-4 border-t-2 border-l-2 border-neutral-600" />
               <div className="absolute top-4 right-4 h-4 w-4 border-t-2 border-r-2 border-neutral-600" />
@@ -203,10 +204,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
         <section className="mx-auto max-w-7xl px-6 py-12 border-t border-[var(--border-subtle)]">
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-12">
             <div className="lg:col-span-4">
-              <span className="font-mono text-xs uppercase tracking-widest text-[var(--text-muted)]">
-                [overview &amp; vision]
-              </span>
-              <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-[var(--text-primary)]">
+              <h2 className="text-3xl font-bold tracking-tight text-[var(--text-primary)]">
                 Architecting the solution.
               </h2>
             </div>
@@ -222,10 +220,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
         {/* ================= Impact & Metrics Matrix ================= */}
         <section className="mx-auto max-w-7xl px-6 py-16">
           <div className="rounded-3xl border border-[var(--border-subtle)] bg-[var(--bg-card)] p-8 sm:p-12 shadow-sm">
-            <span className="font-mono text-xs uppercase tracking-widest text-[var(--text-muted)]">
-              [impact &amp; verification]
-            </span>
-            <h3 className="mt-2 text-2xl sm:text-3xl font-extrabold tracking-tight text-[var(--text-primary)]">
+            <h3 className="text-2xl sm:text-3xl font-bold tracking-tight text-[var(--text-primary)]">
               Measurable Engineering Results
             </h3>
 
@@ -235,10 +230,10 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                   key={idx}
                   className="rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-card-subtle)] p-6"
                 >
-                  <div className="font-mono text-3xl sm:text-4xl font-extrabold text-[var(--text-primary)] tracking-tight">
+                  <div className="font-display tabular-nums text-3xl sm:text-4xl font-bold text-[var(--text-primary)] tracking-tight">
                     {metric.value}
                   </div>
-                  <div className="mt-2 text-xs font-semibold uppercase tracking-wider text-[var(--text-muted)]">
+                  <div className="mt-2 text-xs font-semibold text-[var(--text-muted)]">
                     {metric.label}
                   </div>
                 </div>
@@ -254,7 +249,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
             <div className="rounded-3xl border border-[var(--border-subtle)] bg-[var(--bg-card)] p-8 sm:p-10 shadow-sm">
               <div className="flex items-center gap-3">
                 <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-amber-500/10 text-amber-600 dark:text-amber-400 font-bold">
-                  ⚡
+                  <Zap className="h-4 w-4" aria-hidden="true" />
                 </span>
                 <h3 className="text-xl sm:text-2xl font-bold tracking-tight text-[var(--text-primary)]">
                   Engineering Challenges
@@ -264,7 +259,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
               <ul className="mt-6 space-y-4">
                 {project.challenges.map((ch, idx) => (
                   <li key={idx} className="flex items-start gap-3 text-sm sm:text-base leading-relaxed text-[var(--text-secondary)]">
-                    <span className="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-neutral-200 dark:bg-neutral-800 text-[10px] font-mono font-bold text-[var(--text-primary)]">
+                    <span className="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-neutral-200 dark:bg-neutral-800 text-[11px] tabular-nums font-bold text-[var(--text-primary)]">
                       {idx + 1}
                     </span>
                     <span>{ch}</span>
@@ -277,7 +272,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
             <div className="rounded-3xl border border-[var(--border-subtle)] bg-[var(--bg-card)] p-8 sm:p-10 shadow-sm">
               <div className="flex items-center gap-3">
                 <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 font-bold">
-                  ✓
+                  <Check className="h-4 w-4" aria-hidden="true" />
                 </span>
                 <h3 className="text-xl sm:text-2xl font-bold tracking-tight text-[var(--text-primary)]">
                   Architectural Solutions
@@ -287,8 +282,8 @@ export default async function ProjectDetailPage({ params }: PageProps) {
               <ul className="mt-6 space-y-4">
                 {project.solutions.map((sol, idx) => (
                   <li key={idx} className="flex items-start gap-3 text-sm sm:text-base leading-relaxed text-[var(--text-secondary)]">
-                    <span className="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-emerald-500 text-white text-[10px] font-bold">
-                      ✓
+                    <span className="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-emerald-500 text-white text-[11px] font-bold">
+                      <Check className="h-3 w-3" strokeWidth={3} aria-hidden="true" />
                     </span>
                     <span>{sol}</span>
                   </li>
@@ -301,10 +296,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
         {/* ================= Gallery Showcase with Precise Placeholder Dimensions ================= */}
         <section className="mx-auto max-w-7xl px-6 py-16 border-t border-[var(--border-subtle)]">
           <div className="max-w-2xl mb-12">
-            <span className="font-mono text-xs uppercase tracking-widest text-[var(--text-muted)]">
-              [gallery &amp; interfaces]
-            </span>
-            <h2 className="mt-3 text-3xl sm:text-4xl font-extrabold tracking-tight text-[var(--text-primary)]">
+            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[var(--text-primary)]">
               System Interface Details
             </h2>
             <p className="mt-3 text-base text-[var(--text-secondary)]">
@@ -319,10 +311,10 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                 className="flex flex-col justify-between rounded-3xl border border-[var(--border-subtle)] bg-[var(--bg-card)] p-4 sm:p-5 shadow-sm"
               >
                 {/* Specific Frame Placeholder */}
-                <div className={`relative w-full overflow-hidden rounded-2xl bg-[#141418] border border-neutral-800 p-4 ${
+                <div className={`relative w-full overflow-hidden rounded-2xl bg-neutral-950 border border-neutral-800 p-4 ${
                   idx === 2 ? "aspect-[9/14]" : "aspect-[16/10]"
                 }`}>
-                  <div className="flex h-full w-full flex-col items-center justify-center rounded-xl border border-dashed border-neutral-700 bg-[#161620] p-4 text-center">
+                  <div className="flex h-full w-full flex-col items-center justify-center rounded-xl border border-dashed border-neutral-700 bg-neutral-900 p-4 text-center">
                     {/* Corner marks */}
                     <div className="absolute top-2 left-2 h-2.5 w-2.5 border-t border-l border-neutral-500" />
                     <div className="absolute top-2 right-2 h-2.5 w-2.5 border-t border-r border-neutral-500" />
@@ -337,7 +329,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                       </svg>
                     </div>
 
-                    <div className="mt-2.5 inline-flex items-center gap-1.5 rounded-lg bg-white text-black px-2.5 py-1 text-[11px] font-mono font-bold shadow-sm">
+                    <div className="mt-2.5 inline-flex items-center gap-1.5 rounded-lg bg-white text-black px-2.5 py-1 text-xs font-mono font-bold shadow-sm">
                       <span>{item.size}</span>
                     </div>
 
@@ -362,10 +354,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
 
         {/* ================= Tech Stack Pill Matrix ================= */}
         <section className="mx-auto max-w-7xl px-6 py-16 border-t border-[var(--border-subtle)]">
-          <span className="font-mono text-xs uppercase tracking-widest text-[var(--text-muted)]">
-            [technologies utilized]
-          </span>
-          <h3 className="mt-2 text-2xl font-bold tracking-tight text-[var(--text-primary)]">
+          <h3 className="text-2xl font-bold tracking-tight text-[var(--text-primary)]">
             Full Stack Technologies &amp; Libraries
           </h3>
 
@@ -373,7 +362,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
             {project.tech.map((t) => (
               <span
                 key={t}
-                className="rounded-full border border-[var(--border-default)] bg-[var(--bg-card)] px-4 py-2 font-mono text-xs font-semibold text-[var(--text-primary)] shadow-sm"
+                className="rounded-full border border-[var(--border-default)] bg-[var(--bg-card)] px-4 py-2 tabular-nums text-xs font-semibold text-[var(--text-primary)] shadow-sm"
               >
                 {t}
               </span>
@@ -385,10 +374,10 @@ export default async function ProjectDetailPage({ params }: PageProps) {
         <section className="border-t border-[var(--border-subtle)] bg-[var(--bg-card)] py-16">
           <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-8 px-6 sm:flex-row">
             <div>
-              <span className="text-xs font-mono uppercase tracking-widest text-[var(--text-muted)]">
-                UP NEXT
+              <span className="text-xs tabular-nums text-[var(--text-muted)]">
+                Up next
               </span>
-              <h4 className="mt-1 text-2xl sm:text-3xl font-extrabold tracking-tight text-[var(--text-primary)]">
+              <h4 className="mt-1 text-2xl sm:text-3xl font-bold tracking-tight text-[var(--text-primary)]">
                 {nextProject.title}
               </h4>
               <p className="text-sm text-[var(--text-secondary)]">

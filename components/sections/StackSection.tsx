@@ -1,130 +1,25 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Badge } from "@/components/ui/Badge";
+
+import { TechIcon } from "@/components/ui/TechIcons";
 
 export function StackSection() {
-  const sectionRef = useRef<HTMLElement>(null);
-  const headerRef = useRef<HTMLDivElement>(null);
-  const cardsRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
-
-    if (!sectionRef.current) return;
-
-    const ctx = gsap.context(() => {
-      // Header subtle lift and fade
-      if (headerRef.current) {
-        gsap.fromTo(
-          headerRef.current,
-          { opacity: 0, y: 35 },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.8,
-            ease: "power3.out",
-            scrollTrigger: {
-              trigger: sectionRef.current,
-              start: "top 85%",
-            },
-          }
-        );
-      }
-
-      // 3 Architecture Cards Entrance: Card 1 from Left, Card 2 from Center, Card 3 from Right
-      const card1 = cardsRef.current?.querySelector(".stack-card-1");
-      const card2 = cardsRef.current?.querySelector(".stack-card-2");
-      const card3 = cardsRef.current?.querySelector(".stack-card-3");
-
-      if (card1 && card2 && card3) {
-        gsap.fromTo(
-          card1,
-          { opacity: 0, x: -50, y: 20 },
-          {
-            opacity: 1,
-            x: 0,
-            y: 0,
-            duration: 0.85,
-            ease: "power3.out",
-            scrollTrigger: {
-              trigger: cardsRef.current,
-              start: "top 80%",
-            },
-          }
-        );
-
-        gsap.fromTo(
-          card2,
-          { opacity: 0, y: 50, scale: 0.96 },
-          {
-            opacity: 1,
-            y: 0,
-            scale: 1,
-            duration: 0.85,
-            ease: "power3.out",
-            delay: 0.08,
-            scrollTrigger: {
-              trigger: cardsRef.current,
-              start: "top 80%",
-            },
-          }
-        );
-
-        gsap.fromTo(
-          card3,
-          { opacity: 0, x: 50, y: 20 },
-          {
-            opacity: 1,
-            x: 0,
-            y: 0,
-            duration: 0.85,
-            ease: "power3.out",
-            delay: 0.16,
-            scrollTrigger: {
-              trigger: cardsRef.current,
-              start: "top 80%",
-            },
-          }
-        );
-      }
-    }, sectionRef);
-
-    return () => ctx.revert();
-  }, []);
 
   return (
     <section
-      ref={sectionRef}
       id="stack"
       className="relative mx-auto max-w-7xl px-6 pt-16 sm:pt-24 pb-24 sm:pb-32 overflow-hidden"
     >
-      {/* Soft Ambient Subtle Glow */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 -z-10 flex items-center justify-center opacity-30 dark:opacity-20"
-      >
-        <div className="h-[450px] w-[1000px] rounded-full bg-[radial-gradient(ellipse_at_center,_rgba(99,102,241,0.08),_transparent_70%)] blur-3xl" />
-      </div>
-
       {/* Centered Section Header */}
-      <div ref={headerRef} className="mx-auto max-w-3xl text-center">
-        <div className="inline-block">
-          <Badge variant="status" className="px-4 py-1.5 text-xs font-semibold">
-            My Stack
-          </Badge>
-        </div>
+      <div className="mx-auto max-w-3xl text-center">
 
-        <h2 className="mt-5 text-4xl font-extrabold tracking-tight text-[var(--text-primary)] sm:text-5xl md:text-6xl leading-[1.12]">
-          The technologies I use to <br />
+        <h2 className="display-2 text-[var(--text-primary)]">
+          The technologies I use to <br className="hidden sm:inline" />
           <span>build scalable web apps.</span>
         </h2>
 
         <p className="mt-4 text-base sm:text-lg leading-relaxed text-[var(--text-secondary)]">
-          A production-hardened engineering toolkit focused on developer velocity,
-          bulletproof reliability, and lightning-fast user experiences.
+          The tools I use for frontend, backend and deployment.
         </p>
       </div>
 
@@ -133,7 +28,7 @@ export function StackSection() {
         {/* Top Connecting Curved Arrow (Card 1 -> Card 2) */}
         <svg
           aria-hidden="true"
-          className="hidden lg:block absolute -top-10 left-[31%] z-20 w-28 h-14 pointer-events-none text-[#2d3748] dark:text-neutral-400"
+          className="hidden lg:block absolute -top-10 left-[31%] z-20 w-28 h-14 pointer-events-none text-brand/70"
           viewBox="0 0 100 50"
           fill="none"
         >
@@ -157,7 +52,7 @@ export function StackSection() {
         {/* Bottom Connecting Curved Arrow (Card 2 -> Card 3) */}
         <svg
           aria-hidden="true"
-          className="hidden lg:block absolute -bottom-10 left-[64%] z-20 w-28 h-14 pointer-events-none text-[#2d3748] dark:text-neutral-400"
+          className="hidden lg:block absolute -bottom-10 left-[64%] z-20 w-28 h-14 pointer-events-none text-brand/70"
           viewBox="0 0 100 50"
           fill="none"
         >
@@ -179,13 +74,13 @@ export function StackSection() {
         </svg>
 
         {/* 3 Cards Grid — Expanded & Taller */}
-        <div ref={cardsRef} className="grid grid-cols-1 gap-8 lg:gap-10 md:grid-cols-3 items-stretch">
+        <div className="grid grid-cols-1 gap-8 lg:gap-10 md:grid-cols-3 items-stretch">
           {/* ================= Card 1: Frontend ================= */}
-          <div className="stack-card-1 group relative flex flex-col justify-between rounded-3xl border border-[var(--border-subtle)] bg-white dark:bg-[#121215] p-8 sm:p-10 shadow-[0_25px_60px_rgba(0,0,0,0.07)] dark:shadow-[0_25px_60px_rgba(0,0,0,0.55)] transition-all duration-300 hover:shadow-2xl md:-rotate-1 hover:rotate-0 min-h-[560px]">
+          <div className="stack-card-1 group relative flex flex-col justify-between rounded-3xl border border-[var(--border-subtle)] bg-[var(--bg-card)] p-8 sm:p-10 shadow-card transition-all duration-300 hover:shadow-lift md:-rotate-1 hover:rotate-0 min-h-[560px]">
             <div>
               {/* Header: Number & Title */}
               <div className="flex items-center justify-between">
-                <span className="font-extrabold text-5xl sm:text-6xl tracking-tight text-neutral-300 dark:text-neutral-700 select-none">
+                <span className="font-display font-bold text-5xl sm:text-6xl tracking-tight tabular-nums text-neutral-300 dark:text-neutral-700 select-none">
                   01
                 </span>
                 <span className="rounded-full border border-[var(--border-subtle)] bg-[var(--bg-card-subtle)] px-3 py-1 text-xs font-semibold text-[var(--text-secondary)]">
@@ -193,14 +88,14 @@ export function StackSection() {
                 </span>
               </div>
 
-              <h3 className="mt-4 text-3xl font-extrabold tracking-tight text-[var(--text-primary)]">
+              <h3 className="mt-4 text-3xl font-bold tracking-tight text-[var(--text-primary)]">
                 Frontend
               </h3>
 
               {/* Rich Multi-Row Logos Grid */}
               <div className="my-6 space-y-3">
                 {/* Row 1 */}
-                <div className="flex flex-wrap items-center gap-3">
+                <div className="flex flex-wrap items-center gap-2 sm:gap-3">
                   {/* React */}
                   <span title="React" className="flex items-center justify-center p-1 rounded-lg bg-neutral-50 dark:bg-neutral-900 border border-[var(--border-subtle)] hover:scale-110 transition-transform">
                     <svg className="h-7 w-7" viewBox="0 0 24 24" fill="none">
@@ -272,28 +167,28 @@ export function StackSection() {
             </div>
 
             {/* Core Capability Badges */}
-            <div className="mt-6 border-t border-[var(--border-subtle)] pt-5 space-y-2 text-xs font-medium text-[var(--text-secondary)]">
+            <div className="mt-6 border-t border-[var(--border-subtle)] pt-5 space-y-2.5 text-[13px] font-medium text-[var(--text-secondary)]">
               <div className="flex items-center gap-2">
-                <span className="text-black dark:text-white font-bold">✓</span>
+                <span className="text-brand font-bold" aria-hidden="true">✓</span>
                 <span>Next.js 15 Server Actions & App Router</span>
               </div>
               <div className="flex items-center gap-2">
-                <span className="text-black dark:text-white font-bold">✓</span>
+                <span className="text-brand font-bold" aria-hidden="true">✓</span>
                 <span>Tailwind CSS, Radix UI & Micro-Interactions</span>
               </div>
               <div className="flex items-center gap-2">
-                <span className="text-black dark:text-white font-bold">✓</span>
+                <span className="text-brand font-bold" aria-hidden="true">✓</span>
                 <span>Sub-Second Page Loads & 99+ Core Web Vitals</span>
               </div>
             </div>
           </div>
 
           {/* ================= Card 2: Backend ================= */}
-          <div className="stack-card-2 group relative flex flex-col justify-between rounded-3xl border border-[var(--border-subtle)] bg-white dark:bg-[#121215] p-8 sm:p-10 shadow-[0_25px_60px_rgba(0,0,0,0.07)] dark:shadow-[0_25px_60px_rgba(0,0,0,0.55)] transition-all duration-300 hover:shadow-2xl md:rotate-1 hover:rotate-0 min-h-[560px]">
+          <div className="stack-card-2 group relative flex flex-col justify-between rounded-3xl border border-[var(--border-subtle)] bg-[var(--bg-card)] p-8 sm:p-10 shadow-card transition-all duration-300 hover:shadow-lift md:rotate-1 hover:rotate-0 min-h-[560px]">
             <div>
               {/* Header: Number & Title */}
               <div className="flex items-center justify-between">
-                <span className="font-extrabold text-5xl sm:text-6xl tracking-tight text-neutral-300 dark:text-neutral-700 select-none">
+                <span className="font-display font-bold text-5xl sm:text-6xl tracking-tight tabular-nums text-neutral-300 dark:text-neutral-700 select-none">
                   02
                 </span>
                 <span className="rounded-full border border-[var(--border-subtle)] bg-[var(--bg-card-subtle)] px-3 py-1 text-xs font-semibold text-[var(--text-secondary)]">
@@ -301,14 +196,14 @@ export function StackSection() {
                 </span>
               </div>
 
-              <h3 className="mt-4 text-3xl font-extrabold tracking-tight text-[var(--text-primary)]">
+              <h3 className="mt-4 text-3xl font-bold tracking-tight text-[var(--text-primary)]">
                 Backend
               </h3>
 
               {/* Rich Multi-Row Logos Grid */}
               <div className="my-6 space-y-3">
                 {/* Row 1: Graphic Logos */}
-                <div className="flex flex-wrap items-center gap-3">
+                <div className="flex flex-wrap items-center gap-2 sm:gap-3">
                   {/* Node.js */}
                   <span title="Node.js" className="flex items-center justify-center p-1 rounded-lg bg-neutral-50 dark:bg-neutral-900 border border-[var(--border-subtle)] hover:scale-110 transition-transform">
                     <svg className="h-7 w-7" viewBox="0 0 24 24" fill="#5FA04E">
@@ -325,11 +220,9 @@ export function StackSection() {
                     </svg>
                   </span>
 
-                  {/* Supabase */}
-                  <span title="Supabase" className="flex items-center justify-center p-1 rounded-lg bg-neutral-50 dark:bg-neutral-900 border border-[var(--border-subtle)] hover:scale-110 transition-transform">
-                    <svg className="h-7 w-7" viewBox="0 0 24 24" fill="#3ECF8E">
-                      <path d="M11.9 1.036c-.015-.986-1.26-1.41-1.874-.637L.764 12.05C-.33 13.427.65 15.455 2.409 15.455h9.579l.113 7.51c.014.985 1.259 1.408 1.873.636l9.262-11.653c1.093-1.375.113-3.403-1.645-3.403h-9.642z" />
-                    </svg>
+                  {/* MongoDB */}
+                  <span title="MongoDB" className="flex items-center justify-center p-1 rounded-lg bg-neutral-50 dark:bg-neutral-900 border border-[var(--border-subtle)] hover:scale-110 transition-transform">
+                    <TechIcon name="mongodb" className="h-7 w-7 text-[#47A248]" />
                   </span>
 
                   {/* Firebase */}
@@ -363,7 +256,7 @@ export function StackSection() {
                     Prisma ORM
                   </span>
                   <span className="inline-flex items-center gap-1 rounded-md bg-neutral-100 dark:bg-neutral-800 px-2.5 py-1 text-xs font-semibold text-[var(--text-primary)]">
-                    Supabase
+                    MongoDB
                   </span>
                   <span className="inline-flex items-center gap-1 rounded-md bg-neutral-100 dark:bg-neutral-800 px-2.5 py-1 text-xs font-semibold text-[var(--text-primary)]">
                     Firebase
@@ -381,33 +274,33 @@ export function StackSection() {
               <p className="mt-4 text-sm sm:text-base leading-relaxed text-[var(--text-secondary)]">
                 Architecting secure, resilient, and event-driven server systems capable
                 of handling high concurrency. Specializing in Node.js, Nest.js,
-                PostgreSQL, Supabase, Firebase, and real-time database synchronizations.
+                PostgreSQL, MongoDB, Firebase, and real-time database synchronizations.
               </p>
             </div>
 
             {/* Core Capability Badges */}
-            <div className="mt-6 border-t border-[var(--border-subtle)] pt-5 space-y-2 text-xs font-medium text-[var(--text-secondary)]">
+            <div className="mt-6 border-t border-[var(--border-subtle)] pt-5 space-y-2.5 text-[13px] font-medium text-[var(--text-secondary)]">
               <div className="flex items-center gap-2">
-                <span className="text-black dark:text-white font-bold">✓</span>
+                <span className="text-brand font-bold" aria-hidden="true">✓</span>
                 <span>Node.js & Nest.js High-Concurrency Architectures</span>
               </div>
               <div className="flex items-center gap-2">
-                <span className="text-black dark:text-white font-bold">✓</span>
-                <span>PostgreSQL, Prisma ORM & Supabase Database Design</span>
+                <span className="text-brand font-bold" aria-hidden="true">✓</span>
+                <span>PostgreSQL, MongoDB & Prisma ORM Database Design</span>
               </div>
               <div className="flex items-center gap-2">
-                <span className="text-black dark:text-white font-bold">✓</span>
+                <span className="text-brand font-bold" aria-hidden="true">✓</span>
                 <span>Firebase Auth, Redis In-Memory & Real-Time WebSockets</span>
               </div>
             </div>
           </div>
 
           {/* ================= Card 3: DevOps & Tools ================= */}
-          <div className="stack-card-3 group relative flex flex-col justify-between rounded-3xl border border-[var(--border-subtle)] bg-white dark:bg-[#121215] p-8 sm:p-10 shadow-[0_25px_60px_rgba(0,0,0,0.07)] dark:shadow-[0_25px_60px_rgba(0,0,0,0.55)] transition-all duration-300 hover:shadow-2xl md:-rotate-0.5 hover:rotate-0 min-h-[560px]">
+          <div className="stack-card-3 group relative flex flex-col justify-between rounded-3xl border border-[var(--border-subtle)] bg-[var(--bg-card)] p-8 sm:p-10 shadow-card transition-all duration-300 hover:shadow-lift md:-rotate-0.5 hover:rotate-0 min-h-[560px]">
             <div>
               {/* Header: Number & Title */}
               <div className="flex items-center justify-between">
-                <span className="font-extrabold text-5xl sm:text-6xl tracking-tight text-neutral-300 dark:text-neutral-700 select-none">
+                <span className="font-display font-bold text-5xl sm:text-6xl tracking-tight tabular-nums text-neutral-300 dark:text-neutral-700 select-none">
                   03
                 </span>
                 <span className="rounded-full border border-[var(--border-subtle)] bg-[var(--bg-card-subtle)] px-3 py-1 text-xs font-semibold text-[var(--text-secondary)]">
@@ -415,14 +308,14 @@ export function StackSection() {
                 </span>
               </div>
 
-              <h3 className="mt-4 text-3xl font-extrabold tracking-tight text-[var(--text-primary)]">
+              <h3 className="mt-4 text-3xl font-bold tracking-tight text-[var(--text-primary)]">
                 DevOps & Tools
               </h3>
 
               {/* Rich Multi-Row Logos Grid */}
               <div className="my-6 space-y-3">
                 {/* Row 1 */}
-                <div className="flex flex-wrap items-center gap-3">
+                <div className="flex flex-wrap items-center gap-2 sm:gap-3">
                   {/* Docker */}
                   <span title="Docker" className="flex items-center justify-center p-1 rounded-lg bg-neutral-50 dark:bg-neutral-900 border border-[var(--border-subtle)] hover:scale-110 transition-transform">
                     <svg className="h-7 w-7" viewBox="0 0 24 24" fill="#2496ED">
@@ -503,17 +396,17 @@ export function StackSection() {
             </div>
 
             {/* Core Capability Badges */}
-            <div className="mt-6 border-t border-[var(--border-subtle)] pt-5 space-y-2 text-xs font-medium text-[var(--text-secondary)]">
+            <div className="mt-6 border-t border-[var(--border-subtle)] pt-5 space-y-2.5 text-[13px] font-medium text-[var(--text-secondary)]">
               <div className="flex items-center gap-2">
-                <span className="text-black dark:text-white font-bold">✓</span>
+                <span className="text-brand font-bold" aria-hidden="true">✓</span>
                 <span>Containerized Microservices with Docker & K8s</span>
               </div>
               <div className="flex items-center gap-2">
-                <span className="text-black dark:text-white font-bold">✓</span>
+                <span className="text-brand font-bold" aria-hidden="true">✓</span>
                 <span>Scalable AWS Infrastructure (EC2, S3, RDS, Lambda)</span>
               </div>
               <div className="flex items-center gap-2">
-                <span className="text-black dark:text-white font-bold">✓</span>
+                <span className="text-brand font-bold" aria-hidden="true">✓</span>
                 <span>Automated CI/CD GitHub Actions & Vercel Edge Deploy</span>
               </div>
             </div>

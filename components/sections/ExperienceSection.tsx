@@ -1,9 +1,9 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import gsap from "gsap";
+import { DrawSVGPlugin } from "gsap/DrawSVGPlugin";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Badge } from "@/components/ui/Badge";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 
 export interface DetailedExperience {
@@ -95,335 +95,143 @@ export const detailedExperiences: DetailedExperience[] = [
   },
 ];
 
+// Rail geometry in px: the main line sits at x=7, each role's branch at x=31.
+const FORK = "M7 0 C7 24 31 20 31 44";
+const MERGE = "M31 0 C31 24 7 20 7 44";
+
+function BranchCurve({ d, className }: { d: string; className: string }) {
+  return (
+    <svg
+      aria-hidden="true"
+      className={`absolute left-0 h-11 w-11 text-brand ${className}`}
+      viewBox="0 0 44 44"
+      fill="none"
+    >
+      <path d={d} stroke="currentColor" strokeWidth="2" className="git-curve" />
+    </svg>
+  );
+}
+
 export function ExperienceSection() {
-  const stageRef = useRef<HTMLDivElement>(null);
-  const cardsContainerRef = useRef<HTMLDivElement>(null);
-  const [activeIndex, setActiveIndex] = useState(0);
-  const activeIndexRef = useRef(0);
-  const scrollTriggerRef = useRef<ScrollTrigger | null>(null);
+  const graphRef = useRef<HTMLOListElement>(null);
 
   useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
+    gsap.registerPlugin(ScrollTrigger, DrawSVGPlugin);
+    if (!graphRef.current) return;
 
-    if (!stageRef.current || !cardsContainerRef.current) return;
+    // The graph is fully drawn by default; motion only replays the drawing on scroll.
+    const mm = gsap.matchMedia(graphRef);
 
-    const cards = gsap.utils.toArray<HTMLElement>(".exp-pinned-card");
-    const totalCards = cards.length;
-
-    const ctx = gsap.context(() => {
-      // Master "Pinned Panels with Overscroll" Timeline
-      // Linear ease: "none" + scrub: 0.5 for butter-smooth Lenis-driven momentum
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: stageRef.current,
-          start: "top 12%",
-          end: () => `+=${(totalCards - 1) * 750}`,
-          pin: true,
-          scrub: 0.5,
-          anticipatePin: 1,
-          fastScrollEnd: true,
-          preventOverlaps: true,
-          onUpdate: (self) => {
-            const rawIndex = Math.round(self.progress * (totalCards - 1));
-            const clamped = Math.min(totalCards - 1, Math.max(0, rawIndex));
-            if (clamped !== activeIndexRef.current) {
-              activeIndexRef.current = clamped;
-              setActiveIndex(clamped);
-            }
+    mm.add("(prefers-reduced-motion: no-preference)", () => {
+      gsap.fromTo(
+        ".git-main",
+        { scaleY: 0 },
+        {
+          scaleY: 1,
+          ease: "none",
+          scrollTrigger: {
+            trigger: graphRef.current,
+            start: "top 75%",
+            end: "bottom 75%",
+            scrub: 0.4,
           },
-        },
+        }
+      );
+
+      gsap.utils.toArray<HTMLElement>(".git-row").forEach((row) => {
+        const [fork, merge] = row.querySelectorAll(".git-curve");
+
+        gsap
+          .timeline({
+            defaults: { ease: "none" },
+            scrollTrigger: { trigger: row, start: "top 75%", end: "bottom 75%", scrub: 0.4 },
+          })
+          .fromTo(fork, { drawSVG: "0%" }, { drawSVG: "100%", duration: 0.12 })
+          .fromTo(row.querySelector(".git-node"), { scale: 0 }, { scale: 1, duration: 0.08 })
+          .fromTo(row.querySelector(".git-branch"), { scaleY: 0 }, { scaleY: 1, duration: 0.68 })
+          .fromTo(merge, { drawSVG: "0%" }, { drawSVG: "100%", duration: 0.12 });
       });
+    });
 
-      scrollTriggerRef.current = tl.scrollTrigger || null;
-
-      // Animate each subsequent panel over the previous one with pure linear scrub
-      cards.forEach((card, i) => {
-        if (i === 0) return;
-
-        // Incoming panel wipes/slides up from below smoothly
-        tl.fromTo(
-          card,
-          { yPercent: 100, opacity: 1 },
-          {
-            yPercent: 0,
-            opacity: 1,
-            ease: "none",
-            duration: 1,
-          }
-        );
-
-        // Previous panel recedes slightly with depth scaling (NO expensive blur filter!)
-        tl.to(
-          cards[i - 1],
-          {
-            scale: 0.94,
-            opacity: 0.35,
-            yPercent: -4,
-            ease: "none",
-            duration: 1,
-          },
-          "<" // Synchronous with incoming card
-        );
-      });
-    }, stageRef);
-
-    return () => ctx.revert();
+    return () => mm.revert();
   }, []);
-
-  // Quick navigation when clicking timeline nodes or pills
-  const scrollToPanel = (index: number) => {
-    const st = scrollTriggerRef.current;
-    if (!st) return;
-    const total = detailedExperiences.length;
-    const progress = index / (total - 1);
-    const targetScroll = st.start + progress * (st.end - st.start);
-    window.scrollTo({ top: targetScroll, behavior: "smooth" });
-  };
 
   return (
     <section id="experience" className="mx-auto max-w-7xl px-6 py-24 sm:py-32">
-      <SectionHeader
-        pillText="EXPERIENCE & TRACK RECORD"
-        title="Where I've contributed & delivered"
-        description="A timeline of high-impact engineering across startups, client products, and technical teams. Scroll down to browse through each pinned experience."
-      />
+      <SectionHeader title="Where I've worked" description="Newest first." />
 
-      {/* Main Pinned Stage Container */}
-      <div ref={stageRef} className="mt-12 sm:mt-16 w-full">
-        {/* Mobile Horizontal Timeline Nav (< lg) */}
-        <div className="lg:hidden flex items-center justify-between pb-4 border-b border-[var(--border-subtle)] mb-5 overflow-x-auto gap-2">
-          {detailedExperiences.map((exp, idx) => (
-            <button
-              key={exp.id}
-              onClick={() => scrollToPanel(idx)}
-              className={`px-3 py-1.5 rounded-full text-xs font-semibold shrink-0 transition-colors duration-200 cursor-pointer ${
-                activeIndex === idx
-                  ? "bg-black text-white dark:bg-white dark:text-black shadow-sm"
-                  : "bg-neutral-100 dark:bg-neutral-900 text-[var(--text-secondary)] border border-[var(--border-subtle)]"
-              }`}
-            >
-              {exp.yearShort} · {exp.company}
-            </button>
-          ))}
-        </div>
+      <ol ref={graphRef} className="relative mt-12 sm:mt-16">
+        {/* main line */}
+        <li aria-hidden="true" className="absolute bottom-0 left-[6px] top-0 w-0.5">
+          <div className="h-full w-full bg-[var(--border-default)]" />
+          <div className="git-main absolute inset-0 origin-top bg-brand" />
+        </li>
 
-        {/* 2-Column Layout: Left Side Timeline + Right Pinned Cards */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-          {/* ================= Left Side Timeline (Desktop) ================= */}
-          <div className="hidden lg:flex lg:col-span-4 flex-col justify-between py-4 pr-6 h-[580px] sm:h-[560px] md:h-[580px] border-r border-[var(--border-subtle)]">
-            {/* Top Label */}
-            <div>
-              <div className="flex items-center gap-2">
-                <span className="h-2 w-2 rounded-full bg-black dark:bg-white animate-pulse" />
-                <span className="text-xs font-bold uppercase tracking-widest text-[var(--text-muted)]">
-                  Timeline Flow
-                </span>
-              </div>
-              <h3 className="mt-2 text-xl font-black tracking-tight text-[var(--text-primary)]">
-                Career Progression
-              </h3>
-              <p className="mt-1 text-xs text-[var(--text-secondary)]">
-                Scroll to explore each chapter or click a year.
-              </p>
-            </div>
+        {detailedExperiences.map((exp) => {
+          const isCurrent = exp.date.includes("Present");
 
-            {/* Vertical Connecting Line & Milestone Nodes */}
-            <div className="relative my-auto flex flex-col justify-between h-[360px] py-2">
-              {/* Background Connecting Track Line */}
-              <div className="absolute left-[13px] top-3 bottom-3 w-0.5 bg-neutral-200 dark:bg-neutral-800" />
-
-              {/* Active Progress Filling Line */}
-              <div
-                className="absolute left-[13px] top-3 w-0.5 bg-black dark:bg-white transition-[height] duration-200 ease-out origin-top"
-                style={{
-                  height: `${(activeIndex / (detailedExperiences.length - 1)) * 96}%`,
-                }}
-              />
-
-              {/* 4 Experience Milestones */}
-              {detailedExperiences.map((exp, idx) => {
-                const isActive = activeIndex === idx;
-                const isPast = activeIndex >= idx;
-
-                return (
-                  <button
-                    key={exp.id}
-                    onClick={() => scrollToPanel(idx)}
-                    className="group relative flex items-center gap-4 text-left cursor-pointer transition-colors duration-200"
-                  >
-                    {/* Node Circle Dot */}
-                    <div
-                      className={`relative z-10 flex h-7 w-7 shrink-0 items-center justify-center rounded-full border-2 transition-all duration-200 ${
-                        isActive
-                          ? "border-black bg-white dark:border-white dark:bg-black scale-110 shadow-md ring-2 ring-black/10 dark:ring-white/10"
-                          : isPast
-                          ? "border-black bg-black text-white dark:border-white dark:bg-white dark:text-black"
-                          : "border-neutral-300 bg-white dark:border-neutral-700 dark:bg-neutral-900 group-hover:border-neutral-400"
-                      }`}
-                    >
-                      {isActive ? (
-                        <span className="h-2.5 w-2.5 rounded-full bg-black dark:bg-white" />
-                      ) : isPast ? (
-                        <span className="h-2 w-2 rounded-full bg-white dark:bg-black" />
-                      ) : (
-                        <span className="h-1.5 w-1.5 rounded-full bg-neutral-300 dark:bg-neutral-700" />
-                      )}
-                    </div>
-
-                    {/* Timeline Text: Year & Company */}
-                    <div>
-                      <div
-                        className={`font-mono text-xs font-bold transition-colors ${
-                          isActive
-                            ? "text-black dark:text-white"
-                            : "text-neutral-400 dark:text-neutral-500"
-                        }`}
-                      >
-                        {exp.yearShort}
-                      </div>
-                      <div
-                        className={`text-sm font-extrabold tracking-tight transition-colors ${
-                          isActive
-                            ? "text-black dark:text-white"
-                            : "text-neutral-500 dark:text-neutral-400 group-hover:text-[var(--text-primary)]"
-                        }`}
-                      >
-                        {exp.company}
-                      </div>
-                      <div className="text-[11px] text-[var(--text-muted)] line-clamp-1">
-                        {exp.title}
-                      </div>
-                    </div>
-                  </button>
-                );
-              })}
-            </div>
-
-            {/* Bottom Step Indicator */}
-            <div className="pt-4 border-t border-[var(--border-subtle)] flex items-center justify-between text-xs">
-              <span className="font-bold text-[var(--text-muted)] uppercase tracking-wider">
-                Active Position
-              </span>
-              <span className="font-mono font-black text-black dark:text-white">
-                0{activeIndex + 1} / 0{detailedExperiences.length}
-              </span>
-            </div>
-          </div>
-
-          {/* ================= Right Side Pinned Cards Deck ================= */}
-          <div className="lg:col-span-8">
-            <div
-              ref={cardsContainerRef}
-              className="relative w-full h-[580px] sm:h-[560px] md:h-[580px]"
-            >
-              {detailedExperiences.map((exp, index) => (
+          return (
+            <li key={exp.id} className="git-row grid grid-cols-[44px_minmax(0,1fr)] gap-x-3 sm:gap-x-8">
+              <div className="relative" aria-hidden="true">
+                <BranchCurve d={FORK} className="top-0" />
+                <div className="git-branch absolute bottom-11 left-[30px] top-11 w-0.5 origin-top bg-brand" />
                 <div
-                  key={exp.id}
-                  className="exp-pinned-card transform-gpu will-change-transform absolute inset-0 w-full h-full rounded-3xl border border-[var(--border-subtle)] bg-white dark:bg-[#121215] p-6 sm:p-9 md:p-10 shadow-[0_25px_60px_rgba(0,0,0,0.06)] dark:shadow-[0_25px_60px_rgba(0,0,0,0.6)] flex flex-col justify-between overflow-hidden"
-                  style={{ zIndex: index + 10 }}
-                >
-                  {/* Card Header & Content */}
-                  <div>
-                    <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[var(--border-subtle)] pb-5 sm:pb-6">
-                      <div className="flex items-center gap-4">
-                        <span className="font-mono text-3xl sm:text-4xl font-extrabold text-neutral-300 dark:text-neutral-700 select-none">
-                          0{index + 1}
-                        </span>
-                        <div>
-                          <div className="flex items-center gap-2.5">
-                            <h3 className="text-xl sm:text-2xl font-extrabold tracking-tight text-[var(--text-primary)]">
-                              {exp.title}
-                            </h3>
-                            <span className="h-2 w-2 rounded-full bg-black dark:bg-white shrink-0" />
-                          </div>
-                          <div className="text-sm font-semibold text-[var(--text-secondary)] mt-0.5">
-                            {exp.company} ·{" "}
-                            <span className="font-normal text-[var(--text-muted)]">
-                              {exp.type} ({exp.location})
-                            </span>
-                          </div>
-                        </div>
-                      </div>
+                  className={`git-node absolute left-[23px] top-10 h-4 w-4 rounded-full border-[3px] border-brand ${
+                    isCurrent ? "bg-brand ring-4 ring-brand/20" : "bg-[var(--bg-page)]"
+                  }`}
+                />
+                <BranchCurve d={MERGE} className="bottom-0" />
+              </div>
 
-                      <div className="flex items-center gap-3">
-                        <Badge
-                          variant="outline"
-                          className="font-mono text-xs px-3.5 py-1.5 border-[var(--border-subtle)] text-[var(--text-primary)] font-bold"
-                        >
-                          {exp.date}
-                        </Badge>
-                        <span className="hidden sm:inline-block rounded-full bg-neutral-100 dark:bg-neutral-900 border border-[var(--border-subtle)] px-3 py-1 text-xs font-semibold text-[var(--text-secondary)]">
-                          {exp.scope.split("·")[0]?.trim()}
-                        </span>
-                      </div>
-                    </div>
-
-                    {/* Tech Scope Ribbon */}
-                    <div className="mt-4 flex items-center gap-2 text-xs sm:text-sm font-semibold text-[var(--text-primary)]">
-                      <span className="text-xs uppercase tracking-wider font-bold text-[var(--text-muted)]">
-                        Tech Scope:
-                      </span>
-                      <span>{exp.scope}</span>
-                    </div>
-
-                    {/* Overview Paragraph */}
-                    <p className="mt-3 sm:mt-4 text-sm sm:text-base leading-relaxed text-[var(--text-secondary)]">
-                      {exp.overview}
-                    </p>
-
-                    {/* Key Deliverables Bullet Points */}
-                    <div className="mt-5 sm:mt-6 space-y-2.5">
-                      <div className="text-xs font-bold uppercase tracking-wider text-[var(--text-muted)]">
-                        Key Responsibilities & Deliverables:
-                      </div>
-                      <div className="grid grid-cols-1 gap-2.5">
-                        {exp.bullets.map((bullet, bIdx) => (
-                          <div
-                            key={bIdx}
-                            className="flex items-start gap-3 text-xs sm:text-sm text-[var(--text-primary)]"
-                          >
-                            <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-black text-white dark:bg-white dark:text-black mt-0.5 shadow-sm text-xs">
-                              <svg
-                                className="w-2.5 h-2.5"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                                strokeWidth="3.5"
-                              >
-                                <path
-                                  strokeLinecap="round"
-                                  strokeLinejoin="round"
-                                  d="M5 13l4 4L19 7"
-                                />
-                              </svg>
-                            </span>
-                            <span className="leading-relaxed">{bullet}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
+              <article className="grid gap-4 pb-16 pt-8 lg:grid-cols-[15rem_minmax(0,1fr)] lg:gap-12">
+                <header>
+                  <div className="font-display text-xl font-semibold tabular-nums text-[var(--text-primary)]">
+                    {exp.date}
                   </div>
-
-                  {/* Core Stack Chips Footer */}
-                  <div className="pt-5 mt-4 border-t border-[var(--border-subtle)] flex flex-wrap items-center gap-2">
-                    <span className="text-xs font-bold text-[var(--text-muted)] mr-1">
-                      Core Stack:
+                  <div className="mt-1 text-base font-bold text-brand">{exp.company}</div>
+                  <div className="mt-1 text-sm text-[var(--text-muted)]">
+                    {exp.type}, {exp.location}
+                  </div>
+                  <div className="mt-3 flex flex-wrap items-center gap-2 font-mono text-xs">
+                    <span className="rounded-md border border-[var(--border-default)] px-2 py-0.5 text-[var(--text-secondary)]">
+                      {exp.id}
                     </span>
+                    {isCurrent && (
+                      <span className="rounded-md bg-primary px-2 py-0.5 font-medium text-primary-foreground">
+                        HEAD
+                      </span>
+                    )}
+                  </div>
+                </header>
+
+                <div className="max-w-2xl">
+                  <h3 className="text-2xl font-semibold text-[var(--text-primary)] sm:text-3xl">
+                    {exp.title}
+                  </h3>
+                  <p className="mt-3 text-base leading-relaxed text-[var(--text-secondary)]">
+                    {exp.overview}
+                  </p>
+                  <ul className="mt-5 list-disc space-y-2.5 pl-5 text-sm leading-relaxed text-[var(--text-primary)] marker:text-brand sm:text-[15px]">
+                    {exp.bullets.map((bullet) => (
+                      <li key={bullet}>{bullet}</li>
+                    ))}
+                  </ul>
+                  <ul className="mt-6 flex flex-wrap gap-2" aria-label="Technologies used">
                     {exp.skills.map((skill) => (
-                      <span
+                      <li
                         key={skill}
-                        className="inline-flex items-center rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-card-subtle)] px-2.5 py-1 text-xs font-semibold text-[var(--text-primary)] transition-colors hover:border-black dark:hover:border-white"
+                        className="rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-card)] px-2.5 py-1 text-xs font-medium text-[var(--text-secondary)]"
                       >
                         {skill}
-                      </span>
+                      </li>
                     ))}
-                  </div>
+                  </ul>
                 </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
+              </article>
+            </li>
+          );
+        })}
+      </ol>
     </section>
   );
 }

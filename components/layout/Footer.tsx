@@ -5,15 +5,12 @@ import { ThemeToggle } from "@/components/ui/ThemeToggle";
 
 export function Footer() {
   return (
-    <footer className="w-full bg-[var(--footer-bg)] text-[var(--footer-text)] pt-24 pb-16 overflow-hidden transition-colors">
+    <footer className="dark band w-full bg-[var(--footer-bg)] text-[var(--footer-text)] pt-24 pb-16 overflow-hidden transition-colors">
       <div className="mx-auto max-w-7xl px-6">
         {/* Top Callout */}
         <div className="max-w-3xl">
-          <div className="text-xs font-bold uppercase tracking-widest text-[var(--footer-muted)]">
-            GET IN TOUCH
-          </div>
-          <h2 className="mt-4 text-3xl font-extrabold tracking-tight text-[var(--footer-text)] sm:text-5xl">
-            Let&apos;s engineer something extraordinary together.
+          <h2 className="display-2 max-w-2xl text-[var(--footer-text)]">
+            Let&apos;s work together.
           </h2>
           <p className="mt-4 text-base text-[var(--footer-muted)]">
             Available for select freelance contracts, engineering leadership, and high-concurrency systems advisory.
@@ -37,7 +34,7 @@ export function Footer() {
               icon={<MailIcon />}
             />
 
-            <ThemeToggle className="ml-2 border-neutral-700 text-white bg-neutral-900 hover:border-white hover:bg-neutral-800" />
+            <ThemeToggle className="ml-2" />
           </div>
         </div>
 
@@ -48,8 +45,8 @@ export function Footer() {
         <div className="grid grid-cols-2 gap-10 md:grid-cols-4">
           {/* Navigation */}
           <div>
-            <div className="text-xs font-bold uppercase tracking-wider text-[var(--footer-muted)]">
-              NAVIGATION
+            <div className="text-xs font-bold text-[var(--footer-muted)]">
+              Navigation
             </div>
             <ul className="mt-4 space-y-2.5 text-sm font-medium text-neutral-400">
               {navLinks.map((link) => (
@@ -64,8 +61,8 @@ export function Footer() {
 
           {/* Connect */}
           <div>
-            <div className="text-xs font-bold uppercase tracking-wider text-[var(--footer-muted)]">
-              CONNECT
+            <div className="text-xs font-bold text-[var(--footer-muted)]">
+              Connect
             </div>
             <ul className="mt-4 space-y-2.5 text-sm font-medium text-neutral-400">
               {socialLinks.map((social) => (
@@ -93,8 +90,8 @@ export function Footer() {
 
           {/* Location & Time */}
           <div>
-            <div className="text-xs font-bold uppercase tracking-wider text-[var(--footer-muted)]">
-              LOCATION &amp; TIME
+            <div className="text-xs font-bold text-[var(--footer-muted)]">
+              Location &amp; time
             </div>
             <div className="mt-4 space-y-2 text-sm text-neutral-300">
               <div className="font-semibold text-white">{personalInfo.location}</div>
@@ -108,13 +105,13 @@ export function Footer() {
 
           {/* Edition & Colophon */}
           <div>
-            <div className="text-xs font-bold uppercase tracking-wider text-[var(--footer-muted)]">
-              EDITION &amp; CRAFT
+            <div className="text-xs font-bold text-[var(--footer-muted)]">
+              Edition &amp; craft
             </div>
             <div className="mt-4 space-y-2 text-sm text-neutral-400">
               <div className="text-white font-medium">Dynamic Monochrome Edition</div>
               <div>Light &amp; Dark Theme with CSS Variables</div>
-              <div className="pt-2 text-xs text-neutral-500">
+              <div className="pt-2 text-xs text-neutral-400">
                 © {new Date().getFullYear()} {personalInfo.name}. All rights reserved.
               </div>
             </div>
@@ -123,7 +120,7 @@ export function Footer() {
 
         {/* Giant Monogram Typography Watermark */}
         <div className="mt-20 select-none border-t border-[var(--footer-border)] pt-10 text-center overflow-hidden">
-          <div className="text-[12.5vw] font-black tracking-tighter leading-none text-[var(--footer-watermark)] hover:text-white/25 transition-colors duration-300 select-none cursor-default">
+          <div className="font-display text-[9.8vw] font-bold tracking-tight whitespace-nowrap leading-none text-[var(--footer-watermark)] hover:text-brand/40 transition-colors duration-300 select-none cursor-default">
             NAVEED ABBASI
           </div>
         </div>

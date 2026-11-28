@@ -10,7 +10,36 @@ export default {
   ],
   theme: {
     extend: {
+      spacing: {
+        "5.5": "1.375rem",
+        "18": "4.5rem",
+        "22": "5.5rem",
+      },
+      boxShadow: {
+        card: "var(--shadow-card)",
+        lift: "var(--shadow-lift)",
+      },
       colors: {
+        // single accent, supports opacity modifiers
+        brand: {
+          DEFAULT: "rgb(var(--brand-rgb) / <alpha-value>)",
+          soft: "var(--brand-soft)",
+        },
+        // cool ink neutrals, replacing Tailwind's grey scale
+        black: "#061429",
+        neutral: {
+          50: "#f5f8fc",
+          100: "#ecf1f8",
+          200: "#dde6f1",
+          300: "#c3d0e2",
+          400: "#96a8c2",
+          500: "#647693",
+          600: "#475874",
+          700: "#2d3f5c",
+          800: "#1b2b47",
+          900: "#112038",
+          950: "#091528",
+        },
         // shadcn semantic tokens
         background: "var(--bg-page)",
         foreground: "var(--text-primary)",
@@ -76,8 +105,9 @@ export default {
         },
       },
       fontFamily: {
-        sans: ["var(--font-inter)", "Inter", "system-ui", "-apple-system", "sans-serif"],
-        inter: ["var(--font-inter)", "Inter", "sans-serif"],
+        sans: ["var(--font-body)", "system-ui", "-apple-system", "sans-serif"],
+        display: ["var(--font-display)", "var(--font-body)", "sans-serif"],
+        mono: ["var(--font-code)", "ui-monospace", "monospace"],
       },
     },
   },

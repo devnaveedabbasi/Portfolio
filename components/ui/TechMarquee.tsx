@@ -7,39 +7,6 @@ export interface TechBrand {
 
 export const defaultTechBrands: TechBrand[] = [
   {
-    name: "Taskgen",
-    icon: (
-      <svg className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M10.5 4a1.5 1.5 0 0 1 3 0v6.5H20a1.5 1.5 0 0 1 0 3h-6.5V20a1.5 1.5 0 0 1-3 0v-6.5H4a1.5 1.5 0 0 1 0-3h6.5V4z" />
-      </svg>
-    ),
-  },
-  {
-    name: "Trackly",
-    icon: (
-      <svg className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M14 2L5 13.5h6L9.5 22 19 10.5h-6.5L14 2z" />
-      </svg>
-    ),
-  },
-  {
-    name: "Finte",
-    icon: (
-      <svg className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M21 3C11.5 3.5 4 11 4 20.5 13.5 20 21 12.5 21 3z" />
-      </svg>
-    ),
-  },
-  {
-    name: "Proofly",
-    icon: (
-      <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
-        <circle cx="12" cy="12" r="9.5" />
-        <path d="M2.5 12h19M12 2.5a14 14 0 0 1 0 19M12 2.5a14 14 0 0 0 0 19" />
-      </svg>
-    ),
-  },
-  {
     name: "Next.js",
     icon: (
       <svg className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
@@ -149,11 +116,11 @@ export function TechMarquee({
 
       {/* Scrolling Logomarks Track */}
       <div className="flex select-none">
-        <div className="animate-marquee flex items-center gap-10 sm:gap-14 whitespace-nowrap">
+        <div className="animate-marquee flex items-center gap-[var(--marquee-gap)] whitespace-nowrap [--marquee-gap:2.5rem] sm:[--marquee-gap:3.5rem]">
           {fullTrack.map((brand, idx) => (
             <div
               key={idx}
-              className="group flex items-center gap-2.5 text-neutral-400 dark:text-neutral-500 opacity-75 transition-all duration-200 hover:opacity-100 hover:text-[var(--text-primary)]"
+              className="group flex items-center gap-2.5 text-[var(--text-muted)] transition-colors duration-200 hover:text-[var(--text-primary)]"
             >
               <span className="flex h-5 w-5 shrink-0 items-center justify-center transition-transform group-hover:scale-110">
                 {brand.icon}

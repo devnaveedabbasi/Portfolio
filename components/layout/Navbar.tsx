@@ -27,13 +27,13 @@ export function Navbar() {
       className={`sticky top-0 z-50 w-full transition-all duration-300 ease-in-out ${
         isScrolled
           ? "pt-3 sm:pt-4 px-4 sm:px-8 bg-transparent pointer-events-none"
-          : "pt-0 px-0 bg-white dark:bg-[#09090b] border-b border-[var(--border-subtle)]"
+          : "pt-0 px-0 bg-[var(--bg-page)] border-b border-[var(--border-subtle)]"
       }`}
     >
       <div
         className={`mx-auto flex items-center justify-between pointer-events-auto transition-all duration-300 ease-in-out ${
           isScrolled
-            ? "max-w-4xl sm:max-w-5xl rounded-full border border-[var(--border-default)] bg-white dark:bg-[#121215] shadow-[0_12px_36px_rgba(0,0,0,0.12)] dark:shadow-[0_12px_36px_rgba(0,0,0,0.6)] px-4 sm:px-6 py-2 sm:py-2.5"
+            ? "max-w-4xl sm:max-w-5xl rounded-full border border-[var(--border-default)] bg-[var(--bg-card)] shadow-card px-4 sm:px-6 py-2 sm:py-2.5"
             : "max-w-7xl px-6 py-4"
         }`}
       >
@@ -68,7 +68,7 @@ export function Navbar() {
             <Link
               key={link.name}
               href={link.href}
-              className="transition-colors hover:text-[var(--text-primary)] hover:font-semibold"
+              className="transition-colors hover:text-brand"
             >
               {link.name}
             </Link>
@@ -85,7 +85,7 @@ export function Navbar() {
             text="Get in touch ↗"
             size="sm"
             variant="default"
-            href="#contact"
+            href="/#contact"
           />
         </div>
 
@@ -96,6 +96,7 @@ export function Navbar() {
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="flex h-9 w-9 items-center justify-center rounded-full border border-[var(--border-default)] bg-[var(--bg-card)] text-[var(--text-primary)]"
             aria-label="Toggle mobile menu"
+            aria-expanded={mobileMenuOpen}
           >
             {mobileMenuOpen ? "✕" : "☰"}
           </button>
@@ -107,8 +108,8 @@ export function Navbar() {
         <div
           className={`pointer-events-auto transition-all duration-300 ${
             isScrolled
-              ? "max-w-4xl mx-auto mt-2 rounded-2xl border border-[var(--border-default)] bg-white dark:bg-[#121215] shadow-xl px-6 py-6 md:hidden"
-              : "border-b border-[var(--border-subtle)] bg-white dark:bg-[#09090b] px-6 py-6 md:hidden"
+              ? "max-w-4xl mx-auto mt-2 rounded-2xl border border-[var(--border-default)] bg-[var(--bg-card)] shadow-xl px-6 py-6 md:hidden"
+              : "border-b border-[var(--border-subtle)] bg-[var(--bg-page)] px-6 py-6 md:hidden"
           }`}
         >
           <nav className="flex flex-col gap-4 text-base font-medium text-[var(--text-primary)]">
@@ -127,7 +128,7 @@ export function Navbar() {
                 text="Get in touch ↗"
                 size="default"
                 variant="default"
-                href="#contact"
+                href="/#contact"
                 onClick={() => setMobileMenuOpen(false)}
                 className="w-full"
               />

@@ -7,6 +7,7 @@ import { motion, useMotionValue, useSpring } from "motion/react";
 export function SmoothCursor() {
   const [isVisible, setIsVisible] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
+  const [isViewing, setIsViewing] = useState(false);
   const [isPointerDevice, setIsPointerDevice] = useState(false);
 
   // Raw mouse coordinates
@@ -54,6 +55,8 @@ export function SmoothCursor() {
         'a, button, [role="button"], input, textarea, select, [data-cursor="pointer"], .cursor-pointer'
       );
       setIsHovered(!!interactive);
+      // project previews turn the dot into a "View" label
+      setIsViewing(!!target.closest('[data-cursor="view"]'));
     };
 
     window.addEventListener("mousemove", handleMouseMove, { passive: true });
@@ -84,21 +87,25 @@ export function SmoothCursor() {
       initial={{ opacity: 0, scale: 0.5 }}
       animate={{
         opacity: isVisible ? 1 : 0,
-        scale: isHovered ? 2.2 : 1,
+        scale: isViewing ? 1 : isHovered ? 2.2 : 1,
       }}
       transition={{
         opacity: { duration: 0.2 },
         scale: { type: "spring", damping: 20, stiffness: 300 },
       }}
     >
-      {/* Outer fluid trailing dot (Theme-adaptive: black in light mode, white in dark mode) */}
+      {/* Trailing dot, expands into a label over project previews */}
       <div
-        className={`h-3 w-3 rounded-full bg-[var(--text-primary)] transition-all duration-200 ${
-          isHovered
-            ? "opacity-35 ring-4 ring-[var(--text-primary)]/20"
-            : "opacity-85 shadow-[0_0_8px_rgba(0,0,0,0.25)] dark:shadow-[0_0_8px_rgba(255,255,255,0.4)]"
+        className={`flex items-center justify-center rounded-full text-sm font-bold text-primary-foreground transition-all duration-200 ${
+          isViewing
+            ? "h-20 w-20 bg-brand opacity-100"
+            : isHovered
+            ? "h-3 w-3 bg-brand opacity-35 ring-4 ring-brand/25"
+            : "h-3 w-3 bg-brand opacity-90"
         }`}
-      />
+      >
+        {isViewing && "View"}
+      </div>
     </motion.div>
   );
 }

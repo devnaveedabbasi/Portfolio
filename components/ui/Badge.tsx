@@ -16,13 +16,13 @@ export function Badge({
   ...props
 }: BadgeProps) {
   const baseStyles =
-    "inline-flex items-center gap-2 rounded-full px-3.5 py-1 text-xs font-bold uppercase tracking-wider transition-colors";
+    "inline-flex items-center gap-2 rounded-full px-3.5 py-1 text-xs font-semibold transition-colors";
 
   const variantStyles = {
     default:
-      "bg-[var(--accent-badge-bg)] text-[var(--accent-badge-text)] border border-[var(--accent-badge-border)] shadow-sm",
+      "bg-[var(--accent-badge-bg)] text-[var(--accent-badge-text)] border border-[var(--accent-badge-border)]",
     status:
-      "bg-[var(--accent-badge-bg)] text-[var(--accent-badge-text)] border border-[var(--accent-badge-border)] shadow-sm font-semibold normal-case text-xs",
+      "bg-[var(--accent-badge-bg)] text-[var(--accent-badge-text)] border border-[var(--accent-badge-border)]",
     outline:
       "bg-transparent text-[var(--text-secondary)] border border-[var(--border-subtle)] hover:border-[var(--text-primary)]",
   };
@@ -36,13 +36,13 @@ export function Badge({
           <span
             className={cn(
               "absolute inline-flex h-full w-full rounded-full opacity-30 animate-ping",
-              isGreen ? "bg-[var(--accent-green)]" : "bg-[var(--text-primary)]"
+              isGreen ? "bg-[var(--accent-green)]" : "bg-brand"
             )}
           />
           <span
             className={cn(
               "relative inline-flex h-2 w-2 rounded-full",
-              isGreen ? "bg-[var(--accent-green)]" : "bg-[var(--text-primary)]"
+              isGreen ? "bg-[var(--accent-green)]" : "bg-brand"
             )}
           />
         </span>

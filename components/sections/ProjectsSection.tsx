@@ -20,13 +20,13 @@ function ProjectCard({ project }: { project: Project }) {
         - Outer box acts as the clipping curtain mask
         - Inner media scales from 1.25 -> 1.0 with scroll scrub
       */}
-      <Link href={`/projects/${project.id}`} className="block overflow-hidden rounded-3xl">
-        <div className="project-curtain-mask relative w-full aspect-[4/3] rounded-3xl bg-[#121215] border border-neutral-800/80 p-2 sm:p-2.5 shadow-2xl overflow-hidden transition-colors duration-500 group-hover:border-neutral-700">
-          <div className="relative w-full h-full overflow-hidden rounded-2xl bg-[#16161b]">
+      <Link href={`/projects/${project.id}`} data-cursor="view" className="block overflow-hidden rounded-3xl">
+        <div className="project-curtain-mask relative w-full aspect-[4/3] rounded-3xl bg-[var(--bg-card)] border border-neutral-800/80 p-2 sm:p-2.5 shadow-2xl overflow-hidden transition-colors duration-500 group-hover:border-neutral-700">
+          <div className="relative w-full h-full overflow-hidden rounded-2xl bg-[var(--bg-card-subtle)]">
             {/* Inner Media Element with GSAP Parallax Scrub & Hover Scale */}
             <div className="project-inner-media relative w-full h-full will-change-transform transition-transform duration-700 ease-out group-hover:scale-105">
               {/* Architectural Image Placeholder with Clean Camera & Dimension Tag */}
-              <div className="relative flex h-full w-full flex-col items-center justify-center rounded-2xl border-2 border-dashed border-neutral-800/80 bg-[#141418] p-6 text-center transition-all duration-300 group-hover:border-neutral-700 group-hover:bg-[#18181f]">
+              <div className="relative flex h-full w-full flex-col items-center justify-center rounded-2xl border-2 border-dashed border-neutral-800/80 bg-[var(--bg-card)] p-6 text-center transition-all duration-300 group-hover:border-neutral-700 group-hover:bg-[var(--bg-card-subtle)]">
                 {/* L-bracket corner marks */}
                 <div className="absolute top-3 left-3 h-3 w-3 border-t-2 border-l-2 border-neutral-700 group-hover:border-neutral-500 transition-colors" />
                 <div className="absolute top-3 right-3 h-3 w-3 border-t-2 border-r-2 border-neutral-700 group-hover:border-neutral-500 transition-colors" />
@@ -60,7 +60,7 @@ function ProjectCard({ project }: { project: Project }) {
                 <span className="mt-2 text-xs font-bold text-neutral-300 tracking-wide">
                   {project.title} Preview
                 </span>
-                <span className="text-[11px] text-neutral-500 font-medium">
+                <span className="text-xs text-neutral-400 font-medium">
                   Click to view full case study
                 </span>
               </div>
@@ -79,7 +79,7 @@ function ProjectCard({ project }: { project: Project }) {
 
         {/* Project Title */}
         <Link href={`/projects/${project.id}`} className="group/title">
-          <h4 className="mt-2 text-2xl sm:text-3xl font-extrabold tracking-tight text-white group-hover/title:text-neutral-300 transition-colors">
+          <h4 className="mt-2 text-2xl sm:text-3xl font-bold tracking-tight text-white group-hover/title:text-neutral-300 transition-colors">
             {project.title}
           </h4>
         </Link>
@@ -185,28 +185,23 @@ export function ProjectsSection() {
     <section
       ref={sectionRef}
       id="works"
-      className="relative bg-black text-white py-24 sm:py-36 px-6 sm:px-10 lg:px-16 overflow-hidden border-t border-neutral-900"
+      className="dark band relative bg-[var(--bg-page)] text-white py-24 sm:py-36 px-6 sm:px-10 lg:px-16 overflow-hidden border-t border-neutral-900"
     >
       <div className="mx-auto max-w-7xl">
         {/* ================= Header Row ================= */}
         <div className="flex flex-col md:flex-row md:items-start justify-between gap-8 pb-16 sm:pb-24 border-b border-neutral-900">
           <div>
-            {/* Minimal [portfolio] label */}
-            <span className="text-xs sm:text-sm font-mono uppercase tracking-widest text-neutral-400">
-              [portfolio]
-            </span>
 
             {/* Massive Bold Heading */}
-            <h2 className="mt-4 text-4xl sm:text-6xl md:text-7xl font-black tracking-tight text-white leading-[1.06]">
-              Projects Built with <br />
-              <span>Obsession.</span>
+            <h2 className="display-1 text-white">
+              Selected projects
             </h2>
           </div>
 
           {/* Top Right Grid Marks & View All Work Pill Button */}
           <div className="flex items-center gap-8 self-start md:self-auto">
             {/* Grid Plus Marks */}
-            <div className="hidden lg:flex items-center gap-12 text-neutral-600 font-mono text-sm select-none">
+            <div className="hidden lg:flex items-center gap-12 text-neutral-600 tabular-nums text-sm select-none">
               <span>+</span>
               <span>+</span>
             </div>

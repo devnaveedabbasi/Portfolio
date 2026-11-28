@@ -24,7 +24,7 @@ export function ThemeToggle({ className = "" }: { className?: string }) {
       onClick={() => setTheme(isDark ? "light" : "dark")}
       aria-label="Toggle Dark & Light Mode"
       title={`Switch to ${isDark ? "Light" : "Dark"} Mode`}
-      className={`group relative flex h-9 w-9 items-center justify-center rounded-full border border-[var(--border-default)] bg-[var(--bg-card)] text-[var(--text-primary)] transition-all hover:border-[var(--text-primary)] hover:bg-[var(--bg-muted)] active:scale-95 ${className}`}
+      className={`group relative flex h-9 w-9 items-center justify-center rounded-full border border-[var(--border-default)] bg-[var(--bg-card)] text-[var(--text-primary)] transition-all hover:border-brand hover:text-brand hover:bg-[var(--bg-muted)] active:scale-95 ${className}`}
     >
       {isDark ? (
         /* Sun Icon for switching to light */

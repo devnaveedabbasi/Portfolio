@@ -14,9 +14,9 @@ export function SmoothScrollProvider({ children }: { children: React.ReactNode }
 
     gsap.registerPlugin(ScrollTrigger);
 
-    // Initialize high-performance Lenis with buttery-smooth 0.08 lerp
+    // Lenis smooth scrolling
     const lenis = new Lenis({
-      lerp: 0.08,
+      lerp: 0.1,
       smoothWheel: true,
       wheelMultiplier: 0.9,
       touchMultiplier: 1.2,

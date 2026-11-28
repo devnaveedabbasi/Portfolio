@@ -86,8 +86,8 @@ function AccordionRow({ item, isOpen, onToggle }: AccordionRowProps) {
     <div
       className={`faq-item overflow-hidden rounded-2xl border transition-colors duration-200 ${
         isOpen
-          ? "bg-neutral-100/70 dark:bg-[#121215] border-neutral-300 dark:border-neutral-700 shadow-sm"
-          : "bg-[var(--bg-card)] border-[var(--border-subtle)] hover:border-black/30 dark:hover:border-white/30"
+          ? "bg-[var(--bg-card)] border-brand/45 shadow-card"
+          : "bg-[var(--bg-card)] border-[var(--border-subtle)] hover:border-brand/40"
       }`}
     >
       <button
@@ -96,15 +96,15 @@ function AccordionRow({ item, isOpen, onToggle }: AccordionRowProps) {
         className="flex w-full items-center justify-between px-7 py-5.5 sm:py-6 text-left text-base sm:text-lg font-bold text-[var(--text-primary)] cursor-pointer group select-none"
         aria-expanded={isOpen}
       >
-        <span className="transition-colors group-hover:text-black dark:group-hover:text-white">
+        <span className="transition-colors group-hover:text-brand">
           {item.question}
         </span>
         <div
           ref={iconRef}
           className={`ml-5 flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-[var(--border-subtle)] bg-[var(--bg-card-subtle)] transition-colors duration-200 ${
             isOpen
-              ? "bg-black text-white dark:bg-white dark:text-black border-transparent"
-              : "group-hover:border-black dark:group-hover:border-white group-hover:text-black dark:group-hover:text-white"
+              ? "bg-primary text-primary-foreground border-transparent"
+              : "group-hover:border-brand group-hover:text-brand"
           }`}
         >
           <svg

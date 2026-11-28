@@ -4,6 +4,7 @@ import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { personalInfo, projectsData } from "@/constant/data";
+import { Briefcase, Calendar, Rocket, Sparkles, Zap } from "lucide-react";
 
 interface ChatMessage {
   id: string;
@@ -27,22 +28,22 @@ const INITIAL_GREETING: ChatMessage = {
 
 const COMMAND_ACTIONS = [
   {
-    icon: "⚡",
+    icon: Zap,
     title: "Tech Stack & Architecture",
     query: "What is your complete technical stack and architecture specialty?",
   },
   {
-    icon: "🚀",
+    icon: Rocket,
     title: "Explore Featured Projects",
     query: "Tell me about your best projects and case studies.",
   },
   {
-    icon: "💼",
+    icon: Briefcase,
     title: "Availability & Hire",
     query: "Are you available for full-time or contract hire?",
   },
   {
-    icon: "📅",
+    icon: Calendar,
     title: "Book a Strategy Call",
     query: "How can I book a call or interview with Naveed?",
   },
@@ -259,7 +260,7 @@ export function Chatbot() {
         <button
           onClick={() => setIsOpen((prev) => !prev)}
           aria-label={isOpen ? "Close AI Assistant" : "Open Naveed AI Assistant"}
-          className={`group relative flex items-center gap-3 rounded-full border border-white/20 dark:border-white/15 bg-black/90 dark:bg-[#121216]/95 px-4 py-3 text-white shadow-[0_16px_40px_rgba(0,0,0,0.35)] dark:shadow-[0_16px_40px_rgba(0,0,0,0.7)] backdrop-blur-2xl transition-all duration-300 hover:scale-105 hover:border-white/40 active:scale-95 cursor-pointer ${
+          className={`group relative flex items-center gap-3 rounded-full border border-white/20 dark:border-white/15 bg-black/90 dark:bg-neutral-950/95 px-4 py-3 text-white shadow-[0_16px_40px_rgba(0,0,0,0.35)] dark:shadow-[0_16px_40px_rgba(0,0,0,0.7)] backdrop-blur-2xl transition-all duration-300 hover:scale-105 hover:border-white/40 active:scale-95 cursor-pointer ${
             isOpen ? "ring-2 ring-white/30" : ""
           }`}
         >
@@ -271,7 +272,7 @@ export function Chatbot() {
 
           {/* Shimmering Label */}
           <span className="flex items-center gap-1.5 text-xs font-bold tracking-tight text-white select-none">
-            <span className="text-amber-400">✦</span>
+            <Sparkles className="h-3.5 w-3.5 text-[#8cc8fa]" aria-hidden="true" />
             <span>{isOpen ? "Close Assistant" : "Ask Naveed AI"}</span>
           </span>
 
@@ -296,7 +297,7 @@ export function Chatbot() {
         <div
           role="dialog"
           aria-label="Naveed AI Intelligence Assistant"
-          className="fixed bottom-22 sm:bottom-24 right-4 sm:right-6 z-50 flex w-[calc(100vw-2rem)] sm:w-[420px] h-[600px] max-h-[85vh] flex-col rounded-[28px] border border-white/20 dark:border-white/10 bg-[#0d0d12]/95 dark:bg-[#0a0a0f]/95 backdrop-blur-3xl shadow-[0_25px_70px_rgba(0,0,0,0.65)] overflow-hidden transition-all duration-300 animate-in fade-in zoom-in-95"
+          className="fixed bottom-22 sm:bottom-24 right-4 sm:right-6 z-50 flex w-[calc(100vw-2rem)] sm:w-[420px] h-[600px] max-h-[85vh] flex-col rounded-[28px] border border-white/20 dark:border-white/10 bg-neutral-950/95 dark:bg-neutral-950/95 backdrop-blur-3xl shadow-[0_25px_70px_rgba(0,0,0,0.65)] overflow-hidden transition-all duration-300 animate-in fade-in zoom-in-95"
         >
           {/* Subtle Top Inner Sheen Line */}
           <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/40 to-transparent" />
@@ -313,7 +314,7 @@ export function Chatbot() {
                   height={44}
                   className="h-full w-full object-cover object-top"
                 />
-                <span className="absolute bottom-0 right-0 h-3 w-3 rounded-full border-2 border-[#0d0d12] bg-emerald-500 shadow-[0_0_8px_#10B981]" />
+                <span className="absolute bottom-0 right-0 h-3 w-3 rounded-full border-2 border-neutral-950 bg-emerald-500 shadow-[0_0_8px_#10B981]" />
               </div>
 
               {/* Bot Identity */}
@@ -322,11 +323,11 @@ export function Chatbot() {
                   <h3 className="text-sm font-bold tracking-tight text-white">
                     Naveed AI
                   </h3>
-                  <span className="inline-flex items-center gap-1 rounded-full border border-white/20 bg-white/10 px-2 py-0.5 text-[10px] font-mono font-bold tracking-wider text-amber-300">
-                    <span>✦</span> PRO
+                  <span className="inline-flex items-center gap-1 rounded-full border border-white/20 bg-white/10 px-2 py-0.5 text-[11px] tabular-nums font-bold tracking-wider text-[#8cc8fa]">
+                    <Sparkles className="h-2.5 w-2.5" aria-hidden="true" /> PRO
                   </span>
                 </div>
-                <p className="text-[11px] text-neutral-400">
+                <p className="text-xs text-neutral-400">
                   Portfolio Agent · Instant Answers
                 </p>
               </div>
@@ -337,6 +338,7 @@ export function Chatbot() {
               <button
                 onClick={handleResetChat}
                 title="Restart Chat Session"
+                aria-label="Restart chat session"
                 className="flex h-8 w-8 items-center justify-center rounded-full text-neutral-400 hover:bg-white/10 hover:text-white transition-all active:scale-95 cursor-pointer"
               >
                 <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -350,6 +352,7 @@ export function Chatbot() {
               <button
                 onClick={() => setIsOpen(false)}
                 title="Close Window"
+                aria-label="Close chat window"
                 className="flex h-8 w-8 items-center justify-center rounded-full text-neutral-400 hover:bg-white/10 hover:text-white transition-all active:scale-95 cursor-pointer"
               >
                 <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -361,7 +364,7 @@ export function Chatbot() {
           </div>
 
           {/* ================= Message Stream ================= */}
-          <div className="flex-1 overflow-y-auto p-4 sm:p-5 space-y-4 text-sm scroll-smooth">
+          <div className="flex-1 overflow-y-auto overscroll-contain p-4 sm:p-5 space-y-4 text-sm scroll-smooth">
             {messages.map((msg) => (
               <div
                 key={msg.id}
@@ -374,10 +377,19 @@ export function Chatbot() {
                   className={`relative max-w-[88%] rounded-2xl px-4 py-3 text-sm leading-relaxed whitespace-pre-line shadow-md transition-all ${
                     msg.sender === "user"
                       ? "bg-white text-black font-medium rounded-br-xs"
-                      : "bg-[#181820]/90 border border-white/10 text-neutral-200 rounded-bl-xs"
+                      : "bg-neutral-900/90 border border-white/10 text-neutral-200 rounded-bl-xs"
                   }`}
                 >
-                  {msg.text}
+                  {/* **bold** segments render as emphasis instead of literal asterisks */}
+                  {msg.text.split(/\*\*(.+?)\*\*/g).map((part, i) =>
+                    i % 2 ? (
+                      <strong key={i} className="font-bold">
+                        {part}
+                      </strong>
+                    ) : (
+                      part
+                    )
+                  )}
 
                   {/* Technical Badges Matrix (if returned) */}
                   {msg.badges && msg.badges.length > 0 && (
@@ -385,7 +397,7 @@ export function Chatbot() {
                       {msg.badges.map((badge, bIdx) => (
                         <span
                           key={bIdx}
-                          className="rounded-md border border-white/15 bg-white/5 px-2 py-0.5 font-mono text-[10px] font-semibold text-neutral-300"
+                          className="rounded-md border border-white/15 bg-white/5 px-2 py-0.5 tabular-nums text-[11px] font-semibold text-neutral-300"
                         >
                           {badge}
                         </span>
@@ -423,7 +435,7 @@ export function Chatbot() {
                 </div>
 
                 {/* Meta details below message: time & copy action */}
-                <div className="mt-1 flex items-center gap-2 px-1 text-[10px] text-neutral-500">
+                <div className="mt-1 flex items-center gap-2 px-1 text-[11px] text-neutral-400">
                   <span>{msg.time}</span>
                   {msg.sender === "bot" && (
                     <button
@@ -439,8 +451,8 @@ export function Chatbot() {
 
             {/* Futuristic Thinking / Typing Indicator */}
             {isTyping && (
-              <div className="flex items-center gap-2.5 rounded-2xl rounded-bl-xs border border-white/10 bg-[#181820]/90 px-4 py-3 w-fit shadow-md">
-                <span className="font-mono text-xs text-amber-300 animate-pulse">✦</span>
+              <div className="flex items-center gap-2.5 rounded-2xl rounded-bl-xs border border-white/10 bg-neutral-900/90 px-4 py-3 w-fit shadow-md">
+                <Sparkles className="h-3.5 w-3.5 animate-pulse text-[#8cc8fa]" aria-hidden="true" />
                 <div className="flex items-center gap-1">
                   <span className="h-1.5 w-1.5 rounded-full bg-neutral-400 animate-bounce" />
                   <span
@@ -452,8 +464,8 @@ export function Chatbot() {
                     style={{ animationDelay: "300ms" }}
                   />
                 </div>
-                <span className="text-[11px] font-mono text-neutral-400">
-                  Thinking...
+                <span className="text-xs tabular-nums text-neutral-400">
+                  Thinking…
                 </span>
               </div>
             )}
@@ -471,12 +483,12 @@ export function Chatbot() {
                   className="flex items-center justify-between rounded-xl border border-white/10 bg-white/[0.04] p-2 text-left hover:border-white/30 hover:bg-white/[0.08] transition-all active:scale-98 cursor-pointer group"
                 >
                   <div className="flex items-center gap-1.5 truncate">
-                    <span className="text-xs">{action.icon}</span>
-                    <span className="text-[11px] font-medium text-neutral-300 group-hover:text-white truncate">
+                    <action.icon className="h-3.5 w-3.5 shrink-0 text-[#8cc8fa]" aria-hidden="true" />
+                    <span className="text-xs font-medium text-neutral-300 group-hover:text-white truncate">
                       {action.title}
                     </span>
                   </div>
-                  <span className="text-xs text-neutral-500 group-hover:text-white transition-colors">
+                  <span className="text-xs text-neutral-400 group-hover:text-white transition-colors">
                     →
                   </span>
                 </button>
@@ -498,8 +510,11 @@ export function Chatbot() {
                 type="text"
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
-                placeholder="Ask about projects, stack, hire..."
-                className="w-full rounded-full border border-white/15 bg-white/[0.06] px-4 py-2.5 text-xs sm:text-sm text-white placeholder-neutral-500 focus:outline-none focus:border-white/40 focus:bg-white/[0.1] transition-all"
+                placeholder="Ask about projects, stack, hire…"
+                aria-label="Message"
+                name="message"
+                autoComplete="off"
+                className="w-full rounded-full border border-white/15 bg-white/[0.06] px-4 py-2.5 text-xs sm:text-sm text-white placeholder-neutral-500 focus:border-white/40 focus:bg-white/[0.1] transition-all"
               />
             </div>
 
@@ -510,7 +525,7 @@ export function Chatbot() {
               className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full transition-all ${
                 inputValue.trim() && !isTyping
                   ? "bg-white text-black hover:scale-105 active:scale-95 shadow-md cursor-pointer"
-                  : "bg-white/10 text-neutral-500 cursor-not-allowed"
+                  : "bg-white/10 text-neutral-400 cursor-not-allowed"
               }`}
             >
               <svg
@@ -529,7 +544,7 @@ export function Chatbot() {
           </form>
 
           {/* Footer Subtext */}
-          <div className="border-t border-white/5 py-1.5 text-center text-[10px] font-mono text-neutral-500 bg-black/90">
+          <div className="border-t border-white/5 py-1.5 text-center text-[11px] tabular-nums text-neutral-400 bg-black/90">
             ↵ Enter to send · Ready for LLM API integration
           </div>
         </div>

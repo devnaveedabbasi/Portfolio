@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
+import { JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { personalInfo } from "@/constant/data";
 import { SpeedInsights } from "@vercel/speed-insights/next";
@@ -9,16 +9,16 @@ import { SmoothScrollProvider } from "@/components/providers/SmoothScrollProvide
 import { SmoothCursor } from "@/components/ui/SmoothCursor";
 import { Chatbot } from "@/components/ui/Chatbot";
 
-const inter = Inter({
+const codeFont = JetBrains_Mono({
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-inter",
+  variable: "--font-code",
 });
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
-    { media: "(prefers-color-scheme: dark)", color: "#09090b" },
+    { media: "(prefers-color-scheme: light)", color: "#f6f9fc" },
+    { media: "(prefers-color-scheme: dark)", color: "#040c1a" },
   ],
   width: "device-width",
   initialScale: 1,
@@ -120,13 +120,23 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html
+      lang="en"
+      className={codeFont.variable}
+      suppressHydrationWarning
+    >
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        {/* Clash Display and Satoshi, served by Fontshare */}
+        <link rel="preconnect" href="https://api.fontshare.com" />
+        <link rel="preconnect" href="https://cdn.fontshare.com" crossOrigin="anonymous" />
+        {/* requested separately: the combined URL returns a different body font */}
         <link
-          href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
           rel="stylesheet"
+          href="https://api.fontshare.com/v2/css?f[]=clash-display@500,600,700&display=swap"
+        />
+        <link
+          rel="stylesheet"
+          href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap"
         />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
@@ -145,7 +155,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdWebsite) }}
         />
       </head>
-      <body className={`${inter.variable} font-sans bg-[var(--bg-page)] text-[var(--text-primary)] antialiased transition-colors duration-200`}>
+      <body className={`font-sans bg-[var(--bg-page)] text-[var(--text-primary)] antialiased transition-colors duration-200`}>
         <ThemeProvider>
           <SmoothScrollProvider>
             <SmoothCursor />

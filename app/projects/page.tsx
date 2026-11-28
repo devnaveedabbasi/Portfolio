@@ -5,7 +5,6 @@ import Link from "next/link";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { projectsData, Project } from "@/constant/data";
-import { Badge } from "@/components/ui/Badge";
 import { CurtainButton } from "@/components/ui/curtain-button";
 
 const CATEGORIES = [
@@ -45,50 +44,42 @@ export default function ProjectsArchivePage() {
         {/* ================= Header Section ================= */}
         <section className="relative mx-auto max-w-7xl px-6 pt-24 sm:pt-32 pb-12 sm:pb-16 border-b border-[var(--border-subtle)]">
           {/* Breadcrumb Navigation */}
-          <div className="flex items-center gap-2 text-xs font-mono text-[var(--text-muted)] mb-8">
+          <div className="flex items-center gap-2 text-xs tabular-nums text-[var(--text-muted)] mb-8">
             <Link href="/" className="hover:text-[var(--text-primary)] transition-colors">
-              HOME
+              Home
             </Link>
             <span>/</span>
-            <span className="text-[var(--text-primary)] font-semibold">PROJECTS ARCHIVE</span>
+            <span className="text-[var(--text-primary)] font-semibold">Projects archive</span>
           </div>
 
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8">
-            <div className="max-w-3xl">
-              <div className="inline-block">
-                <Badge variant="status" className="px-4 py-1.5 text-xs font-semibold">
-                  Featured Case Studies · 2024 — 2025
-                </Badge>
-              </div>
+            <div className="max-w-4xl">
 
-              <h1 className="mt-5 text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-[var(--text-primary)] leading-[1.08]">
-                Selected Works & <br />
-                <span>Engineering Case Studies.</span>
+              <h1 className="display-1 text-[var(--text-primary)]">
+                All projects
               </h1>
 
               <p className="mt-5 text-base sm:text-lg leading-relaxed text-[var(--text-secondary)]">
-                A complete index of production web applications, distributed platforms,
-                and high-performance software systems built with obsessive attention to speed,
-                scalability, and design craft.
+                Filter by category, or search by project name and technology.
               </p>
             </div>
 
             {/* Quick Stats Pill */}
             <div className="flex items-center gap-6 rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-card)] p-5 shadow-sm">
               <div>
-                <div className="text-3xl font-extrabold text-[var(--text-primary)]">
+                <div className="font-display text-3xl font-bold tabular-nums text-brand">
                   {projectsData.length}+
                 </div>
-                <div className="text-xs font-mono uppercase tracking-wider text-[var(--text-muted)]">
+                <div className="text-xs tabular-nums text-[var(--text-muted)]">
                   Featured Apps
                 </div>
               </div>
               <div className="h-8 w-[1px] bg-[var(--border-subtle)]" />
               <div>
-                <div className="text-3xl font-extrabold text-[var(--text-primary)]">
+                <div className="font-display text-3xl font-bold tabular-nums text-brand">
                   100%
                 </div>
-                <div className="text-xs font-mono uppercase tracking-wider text-[var(--text-muted)]">
+                <div className="text-xs tabular-nums text-[var(--text-muted)]">
                   Production Grade
                 </div>
               </div>
@@ -104,8 +95,8 @@ export default function ProjectsArchivePage() {
                   key={cat}
                   onClick={() => setSelectedCategory(cat)}
                   className={`rounded-full px-4 py-1.5 text-xs font-semibold transition-all cursor-pointer ${selectedCategory === cat
-                      ? "bg-black text-white dark:bg-white dark:text-black shadow-sm"
-                      : "bg-[var(--bg-card)] border border-[var(--border-subtle)] text-[var(--text-secondary)] hover:border-[var(--text-primary)] hover:text-[var(--text-primary)]"
+                      ? "bg-primary text-primary-foreground shadow-sm"
+                      : "bg-[var(--bg-card)] border border-[var(--border-subtle)] text-[var(--text-secondary)] hover:border-brand hover:text-brand"
                     }`}
                 >
                   {cat}
@@ -116,11 +107,14 @@ export default function ProjectsArchivePage() {
             {/* Search Input */}
             <div className="relative w-full md:w-72">
               <input
-                type="text"
+                type="search"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search projects or tech..."
-                className="w-full rounded-full border border-[var(--border-subtle)] bg-[var(--bg-card)] px-4 py-2 pl-10 text-xs sm:text-sm text-[var(--text-primary)] placeholder-[var(--text-muted)] focus:outline-none focus:border-[var(--border-strong)] transition-colors"
+                placeholder="Search projects or tech…"
+                aria-label="Search projects or technologies"
+                name="project-search"
+                autoComplete="off"
+                className="w-full rounded-full border border-[var(--border-subtle)] bg-[var(--bg-card)] px-4 py-2 pl-10 text-xs sm:text-sm text-[var(--text-primary)] placeholder-[var(--text-muted)] focus:border-brand transition-colors"
               />
               <svg
                 className="absolute left-3.5 top-2.5 sm:top-3 h-4 w-4 text-[var(--text-muted)]"
@@ -158,15 +152,16 @@ export default function ProjectsArchivePage() {
               {filteredProjects.map((project, idx) => (
                 <div
                   key={project.id}
-                  className="group flex flex-col justify-between rounded-3xl border border-[var(--border-subtle)] bg-[var(--bg-card)] p-4 sm:p-6 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+                  className="group flex flex-col justify-between rounded-3xl border border-[var(--border-subtle)] bg-[var(--bg-card)] p-4 sm:p-6 shadow-card hover:shadow-lift transition-all duration-300 hover:-translate-y-1"
                 >
                   {/* Top Image Frame with Precise Dimensions */}
                   <Link
                     href={`/projects/${project.id}`}
-                    className="block relative aspect-[16/10] w-full overflow-hidden rounded-2xl bg-[#141418] border border-neutral-800/80 transition-colors group-hover:border-neutral-600 cursor-pointer"
+                    data-cursor="view"
+                    className="block relative aspect-[16/10] w-full overflow-hidden rounded-2xl bg-neutral-950 border border-neutral-800/80 transition-colors group-hover:border-neutral-600 cursor-pointer"
                   >
                     {/* Placeholder Frame with L-brackets */}
-                    <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center transition-colors group-hover:bg-[#181820]">
+                    <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center transition-colors group-hover:bg-neutral-900">
                       {/* Corner marks */}
                       <div className="absolute top-3 left-3 h-3 w-3 border-t-2 border-l-2 border-neutral-700 group-hover:border-neutral-400 transition-colors" />
                       <div className="absolute top-3 right-3 h-3 w-3 border-t-2 border-r-2 border-neutral-700 group-hover:border-neutral-400 transition-colors" />
@@ -191,7 +186,7 @@ export default function ProjectsArchivePage() {
                       {/* Dimension Pill */}
                       <div className="mt-3 inline-flex items-center gap-2 rounded-xl bg-white text-black px-3 py-1 shadow-md">
                         <span className="h-1.5 w-1.5 rounded-full bg-neutral-800 animate-pulse" />
-                        <span className="font-mono text-[11px] font-black tracking-wider">
+                        <span className="font-mono text-xs font-black tracking-wider">
                           {project.recommendedSize}
                         </span>
                       </div>
@@ -206,14 +201,14 @@ export default function ProjectsArchivePage() {
                   <div className="mt-6 flex flex-1 flex-col justify-between">
                     <div>
                       {/* Category & Year */}
-                      <div className="flex items-center justify-between text-xs font-mono uppercase tracking-wider text-[var(--text-muted)]">
+                      <div className="flex items-center justify-between text-xs tabular-nums text-[var(--text-muted)]">
                         <span>{project.category}</span>
                         <span>{project.year}</span>
                       </div>
 
                       {/* Title */}
                       <Link href={`/projects/${project.id}`}>
-                        <h2 className="mt-2 text-2xl sm:text-3xl font-extrabold tracking-tight text-[var(--text-primary)] group-hover:text-neutral-500 dark:group-hover:text-neutral-300 transition-colors">
+                        <h2 className="mt-2 text-2xl sm:text-3xl font-bold tracking-tight text-[var(--text-primary)] group-hover:text-brand transition-colors">
                           {project.title}
                         </h2>
                       </Link>
@@ -230,10 +225,10 @@ export default function ProjectsArchivePage() {
                       <div className="mt-4 grid grid-cols-2 gap-2 border-t border-[var(--border-subtle)] pt-4">
                         {project.metrics.slice(0, 2).map((metric, mIdx) => (
                           <div key={mIdx} className="rounded-xl bg-[var(--bg-card-subtle)] p-2.5">
-                            <div className="font-mono text-xs font-bold text-[var(--text-primary)]">
+                            <div className="tabular-nums text-xs font-bold text-[var(--text-primary)]">
                               {metric.value}
                             </div>
-                            <div className="text-[10px] text-[var(--text-muted)]">
+                            <div className="text-[11px] text-[var(--text-muted)]">
                               {metric.label}
                             </div>
                           </div>
@@ -245,7 +240,7 @@ export default function ProjectsArchivePage() {
                         {project.tech.map((t) => (
                           <span
                             key={t}
-                            className="rounded-md border border-[var(--border-subtle)] bg-[var(--bg-muted)] px-2 py-0.5 font-mono text-[10px] font-medium text-[var(--text-secondary)]"
+                            className="rounded-md border border-[var(--border-subtle)] bg-[var(--bg-muted)] px-2 py-0.5 tabular-nums text-[11px] font-medium text-[var(--text-secondary)]"
                           >
                             {t}
                           </span>
@@ -255,8 +250,8 @@ export default function ProjectsArchivePage() {
 
                     {/* Footer Actions */}
                     <div className="mt-6 flex items-center justify-between pt-4 border-t border-[var(--border-subtle)]">
-                      <span className="text-xs font-mono text-[var(--text-muted)]">
-                        0{idx + 1} // ARCHIVE
+                      <span className="text-xs tabular-nums text-[var(--text-muted)]">
+                        0{idx + 1} / Archive
                       </span>
 
                       <CurtainButton
@@ -276,7 +271,7 @@ export default function ProjectsArchivePage() {
         {/* Bottom CTA Banner */}
         <section className="border-t border-[var(--border-subtle)] bg-[var(--bg-card)] py-16 text-center">
           <div className="mx-auto max-w-3xl px-6">
-            <h2 className="text-3xl font-extrabold tracking-tight text-[var(--text-primary)] sm:text-4xl">
+            <h2 className="text-3xl font-bold tracking-tight text-[var(--text-primary)] sm:text-4xl">
               Have a project in mind?
             </h2>
             <p className="mt-3 text-base text-[var(--text-secondary)]">

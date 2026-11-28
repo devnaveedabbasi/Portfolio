@@ -20,7 +20,7 @@ export const personalInfo: PersonalInfo = {
   status: "Available for projects",
   email: "devnaveedabbasi@gmail.com",
   phone: "+92 315 2891361",
-  location: "Islamabad, Pakistan",
+  location: "Hyderabad, Sindh",
   timezone: "PKT (UTC+5)",
   availability: "Available for Q1/Q2 Projects",
   experienceYears: "6+",
