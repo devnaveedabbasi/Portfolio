@@ -1,11 +1,13 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
+import gsap from "gsap";
 import {
   CertificateItem,
   row1Certificates,
   row2Certificates,
 } from "@/constant/data";
+import { riseWords, useScrollAnimation } from "@/lib/useScrollAnimation";
 
 function CertificateCard({
   item,
@@ -72,6 +74,21 @@ function CertificateCard({
 export function CertificationsSection() {
   const [selectedCert, setSelectedCert] = useState<CertificateItem | null>(null);
 
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useScrollAnimation(sectionRef, () => {
+    riseWords(".cert-title");
+    // the wrappers move; the rows inside keep their own endless marquee
+    const swing = { trigger: ".cert-stage", start: "top 96%", end: "top 38%", scrub: 0.6 };
+    [-1, 1].forEach((side, i) => {
+      gsap.fromTo(
+        `.cert-row-${i + 1}`,
+        { xPercent: side * 14, rotationX: 48, rotate: side * 4, scale: 0.84, opacity: 0.15 },
+        { xPercent: 0, rotationX: 0, rotate: 0, scale: 1, opacity: 1, ease: "none", scrollTrigger: swing }
+      );
+    });
+  });
+
   // Close modal on Escape key press
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -97,13 +114,14 @@ export function CertificationsSection() {
 
   return (
     <section
+      ref={sectionRef}
       id="certifications"
       className="relative py-16 sm:py-24 overflow-hidden bg-[var(--bg-page)] border-t border-[var(--border-subtle)]"
     >
       {/* Centered Section Header */}
       <div className="mx-auto max-w-4xl px-6 text-center">
 
-        <h2 className="display-2 text-[var(--text-primary)]">
+        <h2 className="cert-title display-2 text-[var(--text-primary)]">
           Certifications
         </h2>
 
@@ -113,11 +131,12 @@ export function CertificationsSection() {
       </div>
 
       {/* ================= Dual Infinite Marquee ================= */}
-      <div className="relative mt-10 sm:mt-14 w-full overflow-hidden select-none">
+      <div className="cert-stage relative mt-10 sm:mt-14 w-full overflow-hidden select-none [perspective:1100px]">
         {/* Left & Right Seamless Gradient Edge Fade Masks */}
         <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-16 sm:w-36 md:w-56 bg-gradient-to-r from-[var(--bg-page)] via-[var(--bg-page)]/80 to-transparent z-20" />
         <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-16 sm:w-36 md:w-56 bg-gradient-to-l from-[var(--bg-page)] via-[var(--bg-page)]/80 to-transparent z-20" />
 
+        <div className="cert-row-1">
         {/* ================= Row 1: Marquee Moving LEFT ================= */}
         <div className="flex w-max animate-marquee-left gap-[var(--marquee-gap)] py-2.5 [--marquee-gap:1rem] sm:[--marquee-gap:1.25rem]">
           {fullRow1.map((item, idx) => (
@@ -128,7 +147,9 @@ export function CertificationsSection() {
             />
           ))}
         </div>
+        </div>
 
+        <div className="cert-row-2">
         {/* ================= Row 2: Marquee Moving RIGHT ================= */}
         <div className="flex w-max animate-marquee-right gap-[var(--marquee-gap)] py-2.5 mt-2 sm:mt-3 [--marquee-gap:1rem] sm:[--marquee-gap:1.25rem]">
           {fullRow2.map((item, idx) => (
@@ -139,6 +160,7 @@ export function CertificationsSection() {
             />
           ))}
         </div>
+        </div>
       </div>
 
       {/* ================= Lightbox Modal for Full View ================= */}
@@ -148,7 +170,7 @@ export function CertificationsSection() {
           onClick={() => setSelectedCert(null)}
         >
           <div
-            className="relative max-w-4xl w-full bg-[var(--bg-card)] border border-neutral-300 dark:border-neutral-700 rounded-2xl p-4 sm:p-6 shadow-2xl overflow-hidden"
+            className="cert-pop relative max-w-4xl w-full bg-[var(--bg-card)] border border-neutral-300 dark:border-neutral-700 rounded-2xl p-4 sm:p-6 shadow-2xl overflow-hidden"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Header with Title and Close Button */}

@@ -6,6 +6,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { CurtainButton } from "@/components/ui/curtain-button";
 import { projectsData, Project } from "@/constant/data";
+import { riseWords, useScrollAnimation } from "@/lib/useScrollAnimation";
 
 // 4 Featured Projects for the Homepage Staggered Grid
 const col1Projects = [projectsData[0], projectsData[3]]; // Aurelia, Lumen
@@ -70,7 +71,7 @@ function ProjectCard({ project }: { project: Project }) {
       </Link>
 
       {/* Metadata Info Below Card */}
-      <div className="mt-6 sm:mt-8 flex flex-col text-white">
+      <div className="project-meta mt-6 sm:mt-8 flex flex-col text-white">
         {/* Category & Year */}
         <div className="flex items-center justify-between text-xs font-medium text-neutral-400">
           <span>{project.category}</span>
@@ -181,6 +182,28 @@ export function ProjectsSection() {
     return () => ctx.revert();
   }, []);
 
+  useScrollAnimation(sectionRef, () => {
+    riseWords(".works-title");
+    gsap.from(".works-cta", {
+      scale: 0,
+      rotate: -25,
+      duration: 0.8,
+      ease: "back.out(2)",
+      scrollTrigger: { trigger: ".works-cta", start: "top 90%" },
+    });
+    // the details under each preview arrive line by line
+    gsap.utils.toArray<HTMLElement>(".project-meta").forEach((meta) => {
+      gsap.from(meta.children, {
+        y: 36,
+        opacity: 0,
+        duration: 0.7,
+        stagger: 0.1,
+        ease: "power3.out",
+        scrollTrigger: { trigger: meta, start: "top 92%" },
+      });
+    });
+  });
+
   return (
     <section
       ref={sectionRef}
@@ -193,7 +216,7 @@ export function ProjectsSection() {
           <div>
 
             {/* Massive Bold Heading */}
-            <h2 className="display-1 text-white">
+            <h2 className="works-title display-1 text-white">
               Selected projects
             </h2>
           </div>
@@ -207,13 +230,15 @@ export function ProjectsSection() {
             </div>
 
             {/* Pill CTA Button with Curtain Effect */}
-            <CurtainButton
-              text="View All Work"
-              variant="default"
-              size="lg"
-              href="/projects"
-              icon={<span className="text-base font-bold">↗</span>}
-            />
+            <div className="works-cta">
+              <CurtainButton
+                text="View All Work"
+                variant="default"
+                size="lg"
+                href="/projects"
+                icon={<span className="text-base font-bold">↗</span>}
+              />
+            </div>
           </div>
         </div>
 

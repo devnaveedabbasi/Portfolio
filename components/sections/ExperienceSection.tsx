@@ -5,6 +5,7 @@ import gsap from "gsap";
 import { DrawSVGPlugin } from "gsap/DrawSVGPlugin";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SectionHeader } from "@/components/ui/SectionHeader";
+import { riseWords, useScrollAnimation } from "@/lib/useScrollAnimation";
 
 export interface DetailedExperience {
   id: string;
@@ -114,6 +115,21 @@ function BranchCurve({ d, className }: { d: string; className: string }) {
 
 export function ExperienceSection() {
   const graphRef = useRef<HTMLOListElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useScrollAnimation(sectionRef, () => {
+    riseWords("#experience-heading h2");
+
+    gsap.utils.toArray<HTMLElement>(".git-row").forEach((row) => {
+      const q = gsap.utils.selector(row);
+      gsap
+        .timeline({ scrollTrigger: { trigger: row, start: "top 74%" } })
+        .from(q("header > *"), { x: -44, opacity: 0, duration: 0.55, stagger: 0.08, ease: "power3.out" })
+        .from(q("h3, h3 + p"), { y: 32, opacity: 0, duration: 0.6, stagger: 0.12, ease: "power3.out" }, 0.1)
+        .from(q(".exp-point"), { x: 40, opacity: 0, duration: 0.5, stagger: 0.12, ease: "power2.out" }, "-=0.3")
+        .from(q(".exp-skill"), { scale: 0, opacity: 0, duration: 0.4, stagger: 0.05, ease: "back.out(2)" }, "-=0.2");
+    });
+  });
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger, DrawSVGPlugin);
@@ -157,8 +173,10 @@ export function ExperienceSection() {
   }, []);
 
   return (
-    <section id="experience" className="mx-auto max-w-7xl px-6 py-24 sm:py-32">
-      <SectionHeader title="Where I've worked" description="Newest first." />
+    <section ref={sectionRef} id="experience" className="mx-auto max-w-7xl overflow-x-clip px-6 py-24 sm:py-32">
+      <div id="experience-heading">
+        <SectionHeader title="Where I've worked" description="Newest first." />
+      </div>
 
       <ol ref={graphRef} className="relative mt-12 sm:mt-16">
         {/* main line */}
@@ -213,14 +231,16 @@ export function ExperienceSection() {
                   </p>
                   <ul className="mt-5 list-disc space-y-2.5 pl-5 text-sm leading-relaxed text-[var(--text-primary)] marker:text-brand sm:text-[15px]">
                     {exp.bullets.map((bullet) => (
-                      <li key={bullet}>{bullet}</li>
+                      <li key={bullet} className="exp-point">
+                        {bullet}
+                      </li>
                     ))}
                   </ul>
                   <ul className="mt-6 flex flex-wrap gap-2" aria-label="Technologies used">
                     {exp.skills.map((skill) => (
                       <li
                         key={skill}
-                        className="rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-card)] px-2.5 py-1 text-xs font-medium text-[var(--text-secondary)]"
+                        className="exp-skill rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-card)] px-2.5 py-1 text-xs font-medium text-[var(--text-secondary)]"
                       >
                         {skill}
                       </li>
